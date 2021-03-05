@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_table">
+
+    <fragment
+        android:id="@+id/nav_table"
+        android:name="com.app.layoutsejer1.ui.table.TableFragment"
+        android:label="@string/menu_table"
+        tools:layout="@layout/fragment_table" />
+
+    <fragment
+        android:id="@+id/nav_linear"
+        android:name="com.app.layoutsejer1.ui.linear.LinearFragment"
+        android:label="@string/menu_linear"
+        tools:layout="@layout/fragment_relative" />
+
+    <fragment
+        android:id="@+id/nav_relative"
+        android:name="com.app.layoutsejer1.ui.relative.RelativeFragment"
+        android:label="@string/menu_relative"
+        tools:layout="@layout/fragment_relative" />
+
+    <fragment
+        android:id="@+id/nav_absolute"
+        android:name="com.app.layoutsejer1.ui.absolute.AbsoluteFragment"
+        android:label="@string/menu_absolute"
+        tools:layout="@layout/fragment_absolute"/>
+
+    <fragment
+        android:id="@+id/nav_frame"
+        android:name="com.app.layoutsejer1.ui.frame.FrameFragment"
+        android:label="@string/menu_frame"
+        tools:layout="@layout/fragment_frame"/>
+</navigation>
