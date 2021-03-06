@@ -21,9 +21,9 @@ class AbsoluteFragment : Fragment() {
         absoluteViewModel =
             ViewModelProvider(this).get(AbsoluteViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_absolute, container, false)
-        val textView: TextView = root.findViewById(R.id.text_absolute)
+        //val textView: TextView = root.findViewById(R.id.text_absolute)
         absoluteViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
