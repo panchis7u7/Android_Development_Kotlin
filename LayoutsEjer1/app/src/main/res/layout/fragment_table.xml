@@ -7,17 +7,73 @@
     android:layout_height="match_parent"
     tools:context=".ui.table.TableFragment">
 
-    <TextView
-        android:id="@+id/text_table"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:stretchColumns="1,2,3"
+        android:padding="10dp">
+        <TableRow>
+            <TextView
+                android:text="ID"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Nombres"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Apellidos"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_column="1"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="1"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Carlos Sebastian"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Madrigal Rodriguez"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="2"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Juan Carlos"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+            <TextView
+                android:text="Madrigal Perez"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_column="1"/>
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
