@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         //app_bar_main
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        //val fab: FloatingActionButton = findViewById(R.id.fab)
+        /*fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-        }
+        }*/
         //Activity_main.xml
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         //Activity_main.xml -> Nav_view
