@@ -22,9 +22,9 @@ class LinearFragment : Fragment() {
         linearViewModel =
                 ViewModelProvider(this).get(LinearViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_linear, container, false)
-        val textView: TextView = root.findViewById(R.id.text_linear)
+        //val textView: TextView = root.findViewById(R.id.text_linear)
         linearViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
