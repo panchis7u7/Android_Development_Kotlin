@@ -12,4 +12,18 @@
     <string name="menu_frame">Frame</string>
     <string name="menu_absolute">Absolute</string>
     <string name="menu_linear">Linear</string>
+    <string-array name="diasItems">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+    </string-array>
+    <string-array name="horaItems">
+        <item>8:00</item>
+        <item>9:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+    </string-array>
 </resources>

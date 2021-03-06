@@ -22,9 +22,9 @@ class RelativeFragment : Fragment() {
         relativeViewModel =
                 ViewModelProvider(this).get(RelativeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_relative, container, false)
-        val textView: TextView = root.findViewById(R.id.text_relative)
+        //val textView: TextView = root.findViewById(R.id.text_relative)
         relativeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
