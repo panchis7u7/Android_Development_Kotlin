@@ -21,9 +21,9 @@ class FrameFragment : Fragment() {
         frameModel =
             ViewModelProvider(this).get(FrameViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_frame, container, false)
-        val textView: TextView = root.findViewById(R.id.text_frame)
+        //val textView: TextView = root.findViewById(R.id.text_frame)
         frameModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }
