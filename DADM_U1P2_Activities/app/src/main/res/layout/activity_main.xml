@@ -18,86 +18,99 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- ################################################################## -->
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTeam1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editTeam1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:textSize="100dp"
-                    android:ems="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="140dp"
-                    android:minWidth="130dp"
-                    android:padding="2dp"
-                    android:gravity="right"
-                    android:text="Margaritas"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        <!-- ################################################################## -->
+                android:layout_gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textSize="100dp" />
 
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="vs"
-                android:textStyle="bold"
-                android:textSize="50dp"
-                android:padding="2dp"
-                android:textAlignment="center"/>
-
-        <!-- ################################################################## -->
-
-            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="right"
+                android:minWidth="130dp"
+                android:padding="2dp"
+                android:text="Margaritas"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/editTeam2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:textSize="100dp"
-                    android:ems="1"/>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:textAlignment="center" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="140dp"
-                    android:minWidth="130dp"
-                    android:padding="2dp"
-                    android:textAlignment="center"
-                    android:text="Zorros"
-                    android:textSize="25dp"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
+        </LinearLayout>
 
         <!-- ################################################################## -->
 
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="vs"
+            android:textAlignment="center"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <!-- ################################################################## -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTeam2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textSize="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="130dp"
+                android:padding="2dp"
+                android:text="Zorros"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:textAlignment="center" />
+
         </LinearLayout>
+
+        <!-- ################################################################## -->
+
+    </LinearLayout>
 
     <!-- ################################################################## -->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear">
@@ -106,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:width="200dp"
-            android:text="Siguiente"/>
+            android:text="Siguiente" />
     </LinearLayout>
 
     <!-- ################################################################## -->
