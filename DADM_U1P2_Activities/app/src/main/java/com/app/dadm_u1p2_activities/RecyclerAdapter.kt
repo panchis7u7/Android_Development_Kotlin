@@ -39,5 +39,4 @@ class RecyclerAdapter (private var nombresEquiposCasa: List<String>,
     override fun getItemCount(): Int {
         return nombresEquiposCasa.size
     }
-
 }
