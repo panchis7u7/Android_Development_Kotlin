@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
 
 <!-- ################################################################## -->
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_margin="20dp"
         android:background="@drawable/shadow"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
+        android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +26,7 @@ android:layout_height="match_parent">
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTeam1"
+                android:id="@+id/act1EditTeam1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -41,10 +37,11 @@ android:layout_height="match_parent">
                 android:textSize="80dp" />
 
             <TextView
-                android:id="@+id/act1_eq1"
+                android:id="@+id/act1Team1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:textAlignment="center"
+                android:gravity="center"
                 android:minWidth="130dp"
                 android:padding="2dp"
                 android:text="Margaritas"
@@ -52,7 +49,7 @@ android:layout_height="match_parent">
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/act1ImageTeam1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -79,7 +76,7 @@ android:layout_height="match_parent">
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/act1_eqe2"
+                android:id="@+id/act1EditTeam2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -90,6 +87,7 @@ android:layout_height="match_parent">
                 android:textSize="80dp" />
 
             <TextView
+                android:id="@+id/act1Team2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="130dp"
@@ -100,7 +98,7 @@ android:layout_height="match_parent">
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/act1ImageTeam2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -129,5 +127,3 @@ android:layout_height="match_parent">
 </LinearLayout>-->
 
 <!-- ################################################################## -->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
