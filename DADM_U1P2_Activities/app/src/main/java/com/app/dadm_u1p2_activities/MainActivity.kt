@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun getWinners(): MutableList<EditModel>{
         var duelos: MutableList<EditModel> = arrayListOf()
         var civilizaciones: MutableList<Civilizacion> = arrayListOf()
+
         for(i in 0 .. adapter.editModels.size-1){
             var duelo: EditModel = adapter.editModels.get(i)
             if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante()) {
