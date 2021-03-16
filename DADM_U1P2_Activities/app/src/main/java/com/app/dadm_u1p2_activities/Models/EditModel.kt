@@ -1,33 +1,32 @@
 package com.app.dadm_u1p2_activities.Models
 
 class EditModel(
-    private var textViewCasa: String,
-    private var textViewVisitante: String,
-    private var imagenUrlCasa: String,
-    private var imagenUrlVisitante: String){
+    private var civilizacionCasa: Civilizacion,
+    private var civilizacionVisitante: Civilizacion){
 
-    private lateinit var editTextPuntuajeCasa: String
-    private lateinit var editTextPuntuajeVisitante: String
+    private var editTextPuntuajeCasa: String = ""
+    private var editTextPuntuajeVisitante: String = ""
 
-    //-------------------------------------- Nombre Casa -----------------------------------------//
-    public fun getEquipoCasa(): String{
-        return this.textViewCasa
+    //--------------------------------------- Civil Casa -----------------------------------------//
+
+    public fun getCivilizacionCasa(): Civilizacion{
+        return this.civilizacionCasa
     }
 
-    public fun setEquipoCasa(nombre: String){
-        this.textViewCasa = nombre
+    public fun setCivilizacionCasa(civilizacionCasa: Civilizacion){
+        this.civilizacionCasa = civilizacionCasa
     }
 
     //--------------------------------------------------------------------------------------------//
 
-    //------------------------------------ Nombre Visitante --------------------------------------//
+    //------------------------------------- Civil Visitante --------------------------------------//
 
-    public fun getEquipoVisitante(): String{
-        return this.textViewVisitante
+    public fun getCivilizacionVisitante(): Civilizacion{
+        return this.civilizacionVisitante
     }
 
-    public fun setEquipoVisitante(nombre: String){
-        this.textViewVisitante = nombre
+    public fun setCivilizacionVisitante(civilizacionVisitante: Civilizacion){
+        this.civilizacionVisitante = civilizacionVisitante
     }
 
     //--------------------------------------------------------------------------------------------//
@@ -52,30 +51,6 @@ class EditModel(
 
     public fun setPuntuajeVisitante(puntuaje: Int){
         this.editTextPuntuajeVisitante = puntuaje.toString()
-    }
-
-    //--------------------------------------------------------------------------------------------//
-
-    //-------------------------------------- Imagen Casa -----------------------------------------//
-
-    public fun getImagenCasa(): String{
-        return this.imagenUrlCasa
-    }
-
-    public fun setImagenCasa(url: String){
-        this.imagenUrlVisitante = url
-    }
-
-    //--------------------------------------------------------------------------------------------//
-
-    //------------------------------------ Imagen Visitante --------------------------------------//
-
-    public fun getImagenVisitante(): String{
-        return this.imagenUrlVisitante
-    }
-
-    public fun setImagenVisitante(url: String){
-        this.imagenUrlVisitante = url
     }
 
     //--------------------------------------------------------------------------------------------//

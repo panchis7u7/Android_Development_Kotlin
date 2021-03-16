@@ -71,10 +71,10 @@ class RecyclerAdapter(private var ctx: Context,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //holder.nombreEquipoC.text = nombresEquiposCasa[position]
         //holder.nombreEquipoV.text = nombresEquiposVisitantes[position]
-        holder.nombreEquipoC.text = models.get(position).getEquipoCasa()
-        holder.nombreEquipoV.text = models.get(position).getEquipoVisitante()
-        Picasso.get().load(models[position].getImagenCasa()).into(holder.imagenEquipoC);
-        Picasso.get().load(models[position].getImagenVisitante()).into(holder.imagenEquipoV);
+        holder.nombreEquipoC.text = models.get(position).getCivilizacionCasa().getNombre()
+        holder.nombreEquipoV.text = models.get(position).getCivilizacionVisitante().getNombre()
+        Picasso.get().load(models[position].getCivilizacionCasa().getImagen()).into(holder.imagenEquipoC);
+        Picasso.get().load(models[position].getCivilizacionVisitante().getImagen()).into(holder.imagenEquipoV);
     }
 
     override fun getItemCount(): Int {

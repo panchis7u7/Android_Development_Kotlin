@@ -1,134 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CBCBCB"
     tools:context=".Semifinal2">
 
-    <!-- ################################################################## -->
-
-    <LinearLayout
-        android:id="@+id/linear"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/shadow"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <!-- ################################################################## -->
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainRecyclerViewSemi"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editTeam1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="1"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textAlignment="center"
-                android:textSize="80dp" />
-
-            <TextView
-                android:id="@+id/act1_eq1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:minWidth="130dp"
-                android:padding="2dp"
-                android:text="Margaritas"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:textAlignment="center" />
-
-        </LinearLayout>
-
-        <!-- ################################################################## -->
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="vs"
-            android:textAlignment="center"
-            android:textSize="50dp"
-            android:textStyle="bold" />
-
-        <!-- ################################################################## -->
+            tools:itemCount="2"
+            tools:listitem="@layout/enfrentamientos_layout"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/mainRecyclerViewSemi">
 
-            <EditText
-                android:id="@+id/act1_eqe2"
+            <Button
+                android:id="@+id/btnSigS2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="1"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textAlignment="center"
-                android:textSize="80dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="130dp"
-                android:padding="2dp"
-                android:text="Zorros"
-                android:textAlignment="center"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:textAlignment="center" />
-
+                android:width="200dp"
+                android:text="Siguiente" />
         </LinearLayout>
 
-        <!-- ################################################################## -->
+    </RelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear">
-
-        <Button
-            android:id="@+id/btnSigS1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="200dp"
-            android:text="Siguiente" />
-    </LinearLayout>
-
-    <!-- ################################################################## -->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
