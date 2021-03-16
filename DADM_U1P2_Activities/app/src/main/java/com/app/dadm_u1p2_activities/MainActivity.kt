@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,13 +31,15 @@ class MainActivity : AppCompatActivity() {
                                                    imagenesEquiposVisitante)
 
         btnSigS1.setOnClickListener{
-            //var equipos: MutableList<String>
-            var equipos: String = ""
-            for(i in 0 .. mainRecyclerView.childCount) {
-                (mainRecyclerView.findViewHolderForLayoutPosition(i) as RecyclerAdapter.ViewHolder).puntuajeEquipoC
-                equipos += (mainRecyclerView.findViewHolderForLayoutPosition(i) as RecyclerAdapter.ViewHolder).puntuajeEquipoC.text
+            var nombreEquiposC: MutableList<String> = arrayListOf()
+            var nombreEquiposV: MutableList<String> = arrayListOf()
+            var message: String = ""
+            for(i in 1 .. mainRecyclerView.childCount){
+                (mainRecyclerView.fin as RecyclerAdapter.ViewHolder).puntuajeEquipoV
+                var holder: RecyclerAdapter.ViewHolder = (mainRecyclerView.findViewHolderForLayoutPosition(i) as RecyclerAdapter.ViewHolder)
+                message += holder.puntuajeEquipoV.text
             }
-            Log.d("equipo casa: ", equipos)
+            Log.d("Puntuaje: ", message)
             //val intent = Intent(this, Semifinal2::class.java)
             //startActivity(intent)
         }
