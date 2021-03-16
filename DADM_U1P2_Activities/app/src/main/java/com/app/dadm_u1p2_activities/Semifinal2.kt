@@ -62,21 +62,4 @@ class Semifinal2 : AppCompatActivity() {
         return duelos
     }
 
-    private fun populateList(): MutableList<EditModel>{
-        var duelos: MutableList<EditModel> = arrayListOf()
-        var civilizaciones: MutableList<Civilizacion> = arrayListOf()
-        for(i in 0 .. RecyclerAdapter.models.size-1){
-            var duelo: EditModel = adapter.editModels.get(i)
-            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
-                civilizaciones.add(duelo.getCivilizacionCasa())
-            else
-                civilizaciones.add(duelo.getCivilizacionVisitante())
-        }
-
-        for(j in 0 .. civilizaciones.size-1 step 2){
-            duelos.add(EditModel(civilizaciones[j], civilizaciones[j+1]))
-        }
-
-        return duelos
-    }
 }

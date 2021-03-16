@@ -15,9 +15,9 @@ class FinalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_final)
-        var casa: Civilizacion = Civilizacion(intent.getStringExtra("Equipo1").toString(),
+        var casa = Civilizacion(intent.getStringExtra("Equipo1").toString(),
             intent.getStringExtra("Equipo1Imagen").toString())
-        var visitante: Civilizacion = Civilizacion(intent.getStringExtra("Equipo2").toString(),
+        var visitante = Civilizacion(intent.getStringExtra("Equipo2").toString(),
             intent.getStringExtra("Equipo2Imagen").toString())
 
         act3Team1.text = casa.getNombre()
