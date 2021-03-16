@@ -19,16 +19,17 @@ class Semifinal2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_semifinal2)
 
-        adapter = RecyclerAdapter(this, RecyclerAdapter.models)
         modelos = RecyclerAdapter.models
+        adapter = RecyclerAdapter(this, modelos)
 
         mainRecyclerViewSemi.layoutManager = LinearLayoutManager(this)
-        mainRecyclerViewSemi.adapter = RecyclerAdapter(this, modelos)
+        mainRecyclerViewSemi.adapter = adapter
 
         btnSigS2.setOnClickListener{
             RecyclerAdapter.models = getWinners()
             for(i in 0 .. RecyclerAdapter.models.size-1){
-                Log.d("$i: ", adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
+                Log.d("$i: ",
+                        adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
                         adapter.editModels.get(i).getPuntuajeCasa() +
                         adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
                         adapter.editModels.get(i).getPuntuajeVisitante())
@@ -47,7 +48,7 @@ class Semifinal2 : AppCompatActivity() {
     private fun getWinners(): MutableList<EditModel>{
         var duelos: MutableList<EditModel> = arrayListOf()
         var civilizaciones: MutableList<Civilizacion> = arrayListOf()
-        for(i in 0 .. RecyclerAdapter.models.size-1){
+        for(i in 0 .. adapter.editModels.size-1){
             var duelo: EditModel = adapter.editModels.get(i)
             if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
                 civilizaciones.add(duelo.getCivilizacionCasa())
