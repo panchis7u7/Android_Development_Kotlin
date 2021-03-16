@@ -22,6 +22,7 @@ class Semifinal2 : AppCompatActivity() {
         adapter = RecyclerAdapter(this, RecyclerAdapter.models)
         modelos = populateList()
 
+        RecyclerAdapter.models = modelos
         mainRecyclerViewSemi.layoutManager = LinearLayoutManager(this)
         mainRecyclerViewSemi.adapter = RecyclerAdapter(this, modelos)
 

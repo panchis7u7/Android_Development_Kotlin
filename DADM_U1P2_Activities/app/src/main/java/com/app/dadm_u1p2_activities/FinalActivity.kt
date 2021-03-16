@@ -7,9 +7,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
-import com.app.dadm_u1p2_activities.Models.WinnerActivity
 import kotlinx.android.synthetic.main.activity_final.*
-import kotlinx.android.synthetic.main.activity_semifinal2.*
 
 class FinalActivity : AppCompatActivity() {
     private lateinit var adapter: RecyclerAdapter
