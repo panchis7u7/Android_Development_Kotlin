@@ -32,7 +32,7 @@ class Semifinal2 : AppCompatActivity() {
                         adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
                         adapter.editModels.get(i).getPuntuajeVisitante())
             }
-            val intent = Intent(this, Semifinal2::class.java)
+            val intent = Intent(this, FinalActivity::class.java)
             startActivity(intent)
         }
     }
