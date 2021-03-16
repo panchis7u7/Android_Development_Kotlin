@@ -23,15 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         modelos = populateList()
 
+        var adapter: RecyclerAdapter = RecyclerAdapter(this, modelos)
         mainRecyclerView.layoutManager = LinearLayoutManager(this)
-        mainRecyclerView.adapter = RecyclerAdapter(this, modelos)
+        mainRecyclerView.adapter = adapter
 
         btnSigS1.setOnClickListener{
-            for(i in 0 .. RecyclerAdapter.models.size-1){
-                Log.d("$i: ", RecyclerAdapter.models.get(i).getCivilizacionCasa().getNombre() +
-                        RecyclerAdapter.models.get(i).getPuntuajeCasa() +
-                        RecyclerAdapter.models.get(i).getCivilizacionVisitante().getNombre() +
-                        RecyclerAdapter.models.get(i).getPuntuajeVisitante())
+            for(i in 0 .. adapter.editModels.size-1){
+                Log.d("$i: ", adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
+                        adapter.editModels.get(i).getPuntuajeCasa() +
+                        adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
+                        adapter.editModels.get(i).getPuntuajeVisitante())
             }
             val intent = Intent(this, Semifinal2::class.java)
             startActivity(intent)

@@ -40,7 +40,10 @@ class RecyclerAdapter(private var ctx: Context,
                     }
 
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                        models.get(adapterPosition).setPuntuajeCasa(puntuajeEquipoC.text.toString().toInt())
+                        if(puntuajeEquipoC.text.toString() == "")
+                            editModels.get(adapterPosition).setPuntuajeCasa(0)
+                        else
+                            editModels.get(adapterPosition).setPuntuajeCasa(puntuajeEquipoC.text.toString().toInt())
                     }
 
                     override fun afterTextChanged(s: Editable?) {
@@ -53,7 +56,10 @@ class RecyclerAdapter(private var ctx: Context,
                     }
 
                     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                        models.get(adapterPosition).setPuntuajeVisitante(puntuajeEquipoV.text.toString().toInt())
+                        if(puntuajeEquipoV.text.toString() == "")
+                            editModels.get(adapterPosition).setPuntuajeVisitante(0)
+                        else
+                            editModels.get(adapterPosition).setPuntuajeVisitante(puntuajeEquipoV.text.toString().toInt())
                     }
 
                     override fun afterTextChanged(s: Editable?) {
@@ -69,15 +75,13 @@ class RecyclerAdapter(private var ctx: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.nombreEquipoC.text = nombresEquiposCasa[position]
-        //holder.nombreEquipoV.text = nombresEquiposVisitantes[position]
-        holder.nombreEquipoC.text = models.get(position).getCivilizacionCasa().getNombre()
-        holder.nombreEquipoV.text = models.get(position).getCivilizacionVisitante().getNombre()
-        Picasso.get().load(models[position].getCivilizacionCasa().getImagen()).into(holder.imagenEquipoC);
-        Picasso.get().load(models[position].getCivilizacionVisitante().getImagen()).into(holder.imagenEquipoV);
+        holder.nombreEquipoC.text = editModels.get(position).getCivilizacionCasa().getNombre()
+        holder.nombreEquipoV.text = editModels.get(position).getCivilizacionVisitante().getNombre()
+        Picasso.get().load(editModels[position].getCivilizacionCasa().getImagen()).into(holder.imagenEquipoC);
+        Picasso.get().load(editModels[position].getCivilizacionVisitante().getImagen()).into(holder.imagenEquipoV);
     }
 
     override fun getItemCount(): Int {
-        return models.size
+        return editModels.size
     }
 }
