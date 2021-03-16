@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
@@ -11,6 +12,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_final.*
 
 class FinalActivity : AppCompatActivity() {
+
+    private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +30,30 @@ class FinalActivity : AppCompatActivity() {
 
         btnSigS3.setOnClickListener{
             var ganador: Civilizacion =  obtenerGanador(EditModel(casa, visitante))
-            Log.d("Ganador: ", ganador.getNombre())
-            val intent = Intent(this, WinnerActivity::class.java)
-            var bundle = Bundle()
-            bundle.putString("ganador", ganador.getNombre())
-            bundle.putString("imagenGanador", ganador.getImagen())
-            intent.putExtras(bundle)
-            startActivity(intent)
+            if(!empate) {
+                Log.d("Ganador: ", ganador.getNombre())
+                val intent = Intent(this, WinnerActivity::class.java)
+                var bundle = Bundle()
+                bundle.putString("ganador", ganador.getNombre())
+                bundle.putString("imagenGanador", ganador.getImagen())
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
         }
     }
 
     private fun obtenerGanador(duelo: EditModel): Civilizacion{
         var ganador = Civilizacion()
-        if(act3EditTeam1.text.toString().toInt() > act3EditTeam2.text.toString().toInt())
+        if(act3EditTeam1.text.toString().toInt() > act3EditTeam2.text.toString().toInt()) {
+            this.empate = false
             return duelo.getCivilizacionCasa()
-        else
+        } else if(act3EditTeam1.text.toString().toInt() < act3EditTeam2.text.toString().toInt()) {
+            this.empate = false
             return duelo.getCivilizacionVisitante()
+        } else {
+            this.empate = true
+            Toast.makeText(this, "Hubo un empate!", Toast.LENGTH_LONG).show()
+            return Civilizacion()
+        }
     }
 }

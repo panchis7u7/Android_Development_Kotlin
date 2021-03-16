@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private var modelos = mutableListOf<EditModel>()
     private lateinit var adapter: RecyclerAdapter
+    private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +31,16 @@ class MainActivity : AppCompatActivity() {
 
         btnSigS1.setOnClickListener{
             RecyclerAdapter.models = getWinners()
-            for(i in 0 .. adapter.editModels.size-1){
-                Log.d("$i: ", adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
-                        adapter.editModels.get(i).getPuntuajeCasa() +
-                        adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
-                        adapter.editModels.get(i).getPuntuajeVisitante())
+            if(!empate) {
+                for (i in 0..adapter.editModels.size - 1) {
+                    Log.d("$i: ", adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
+                            adapter.editModels.get(i).getPuntuajeCasa() +
+                            adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
+                            adapter.editModels.get(i).getPuntuajeVisitante())
+                }
+                val intent = Intent(this, Semifinal2::class.java)
+                startActivity(intent)
             }
-            val intent = Intent(this, Semifinal2::class.java)
-            startActivity(intent)
         }
     }
 
@@ -46,10 +49,17 @@ class MainActivity : AppCompatActivity() {
         var civilizaciones: MutableList<Civilizacion> = arrayListOf()
         for(i in 0 .. adapter.editModels.size-1){
             var duelo: EditModel = adapter.editModels.get(i)
-            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
+            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante()) {
+                this.empate = false
                 civilizaciones.add(duelo.getCivilizacionCasa())
-            else
+            } else if(duelo.getPuntuajeCasa() < duelo.getPuntuajeVisitante()) {
+                this.empate = false
                 civilizaciones.add(duelo.getCivilizacionVisitante())
+            } else {
+                this.empate= true
+                Toast.makeText(this, "Hubo un empate!", Toast.LENGTH_LONG).show()
+                return arrayListOf()
+            }
         }
 
         for(j in 0 .. civilizaciones.size-1 step 2){

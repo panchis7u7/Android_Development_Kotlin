@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
@@ -14,6 +15,7 @@ class Semifinal2 : AppCompatActivity() {
 
     private var modelos = mutableListOf<EditModel>()
     private lateinit var adapter: RecyclerAdapter
+    private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +29,23 @@ class Semifinal2 : AppCompatActivity() {
 
         btnSigS2.setOnClickListener{
             RecyclerAdapter.models = getWinners()
-            for(i in 0 .. RecyclerAdapter.models.size-1){
-                Log.d("$i: ",
-                        adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
-                        adapter.editModels.get(i).getPuntuajeCasa() +
-                        adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
-                        adapter.editModels.get(i).getPuntuajeVisitante())
+            if(!empate) {
+                for (i in 0..RecyclerAdapter.models.size - 1) {
+                    Log.d("$i: ",
+                            adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
+                                    adapter.editModels.get(i).getPuntuajeCasa() +
+                                    adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
+                                    adapter.editModels.get(i).getPuntuajeVisitante())
+                }
+                val intent = Intent(this, FinalActivity::class.java)
+                var bundle = Bundle()
+                bundle.putString("Equipo1", RecyclerAdapter.models.get(0).getCivilizacionCasa().getNombre())
+                bundle.putString("Equipo1Imagen", RecyclerAdapter.models.get(0).getCivilizacionCasa().getImagen())
+                bundle.putString("Equipo2", RecyclerAdapter.models.get(0).getCivilizacionVisitante().getNombre())
+                bundle.putString("Equipo2Imagen", RecyclerAdapter.models.get(0).getCivilizacionVisitante().getImagen())
+                intent.putExtras(bundle)
+                startActivity(intent)
             }
-            val intent = Intent(this, FinalActivity::class.java)
-            var bundle = Bundle()
-            bundle.putString("Equipo1", RecyclerAdapter.models.get(0).getCivilizacionCasa().getNombre())
-            bundle.putString("Equipo1Imagen", RecyclerAdapter.models.get(0).getCivilizacionCasa().getImagen())
-            bundle.putString("Equipo2", RecyclerAdapter.models.get(0).getCivilizacionVisitante().getNombre())
-            bundle.putString("Equipo2Imagen", RecyclerAdapter.models.get(0).getCivilizacionVisitante().getImagen())
-            intent.putExtras(bundle)
-            startActivity(intent)
         }
     }
 
@@ -50,10 +54,17 @@ class Semifinal2 : AppCompatActivity() {
         var civilizaciones: MutableList<Civilizacion> = arrayListOf()
         for(i in 0 .. adapter.editModels.size-1){
             var duelo: EditModel = adapter.editModels.get(i)
-            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
+            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante()) {
+                this.empate = false
                 civilizaciones.add(duelo.getCivilizacionCasa())
-            else
+            } else if(duelo.getPuntuajeCasa() < duelo.getPuntuajeVisitante()) {
+                this.empate = false
                 civilizaciones.add(duelo.getCivilizacionVisitante())
+            } else {
+                this.empate = true
+                Toast.makeText(this, "Hubo un empate!", Toast.LENGTH_LONG).show()
+                return arrayListOf()
+            }
         }
 
         for(j in 0 .. civilizaciones.size-1 step 2){
