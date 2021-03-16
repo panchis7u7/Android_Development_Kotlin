@@ -21,6 +21,6 @@ class WinnerActivity : AppCompatActivity() {
             .addSizes(Size(12))
             .setPosition(-50f, viewConfetti.width+50f, -50f)
             .streamFor(300, 3000L)
-        ganadorTV.text = savedInstanceState?.getString("ganador")
+        ganadorTV.text = intent.getStringExtra("ganador").toString()
     }
 }

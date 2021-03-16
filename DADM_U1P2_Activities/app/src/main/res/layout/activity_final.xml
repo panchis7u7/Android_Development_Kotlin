@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- ################################################################## -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,38 +9,130 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CBCBCB"
+    android:layout_gravity="center"
+    android:gravity="center"
     tools:context=".FinalActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<LinearLayout
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/shadow"
+    android:elevation="10dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mainRecyclerViewFinal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            tools:itemCount="1"
-            tools:listitem="@layout/enfrentamientos_layout"/>
+    <!-- ################################################################## -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/act3EditTeam1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:ems="1"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textSize="80dp" />
+
+        <TextView
+            android:id="@+id/act3Team1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/mainRecyclerViewSemi">
+            android:minWidth="130dp"
+            android:padding="2dp"
+            android:text="Margaritas"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnSigS3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:width="200dp"
-                android:text="Siguiente" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/act3ImageTeam1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <!-- ################################################################## -->
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="vs"
+        android:textAlignment="center"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <!-- ################################################################## -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/act3EditTeam2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="1"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center"
+            android:textSize="80dp" />
+
+        <TextView
+            android:id="@+id/act3Team2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="130dp"
+            android:padding="2dp"
+            android:text="Zorros"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/act3ImageTeam2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <!-- ################################################################## -->
 
 </LinearLayout>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/linear">
+
+    <Button
+        android:id="@+id/btnSigS3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="Siguiente" />
+</LinearLayout>
+
+</LinearLayout>
+    <!-- ################################################################## -->

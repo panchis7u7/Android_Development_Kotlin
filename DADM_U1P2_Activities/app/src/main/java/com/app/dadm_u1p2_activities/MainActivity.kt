@@ -16,18 +16,19 @@ import java.lang.StringBuilder
 class MainActivity : AppCompatActivity() {
 
     private var modelos = mutableListOf<EditModel>()
+    private lateinit var adapter: RecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        adapter = RecyclerAdapter(this, RecyclerAdapter.models)
         modelos = populateList()
 
-        var adapter: RecyclerAdapter = RecyclerAdapter(this, modelos)
         mainRecyclerView.layoutManager = LinearLayoutManager(this)
-        mainRecyclerView.adapter = adapter
-
+        mainRecyclerView.adapter = RecyclerAdapter(this, modelos)
         btnSigS1.setOnClickListener{
+            RecyclerAdapter.models = getWinners()
             for(i in 0 .. adapter.editModels.size-1){
                 Log.d("$i: ", adapter.editModels.get(i).getCivilizacionCasa().getNombre() +
                         adapter.editModels.get(i).getPuntuajeCasa() +
@@ -37,6 +38,24 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Semifinal2::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun getWinners(): MutableList<EditModel>{
+        var duelos: MutableList<EditModel> = arrayListOf()
+        var civilizaciones: MutableList<Civilizacion> = arrayListOf()
+        for(i in 0 .. adapter.editModels.size-1){
+            var duelo: EditModel = adapter.editModels.get(i)
+            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
+                civilizaciones.add(duelo.getCivilizacionCasa())
+            else
+                civilizaciones.add(duelo.getCivilizacionVisitante())
+        }
+
+        for(j in 0 .. civilizaciones.size-1 step 2){
+            duelos.add(EditModel(civilizaciones[j], civilizaciones[j+1]))
+        }
+
+        return duelos
     }
 
     private fun populateList(): MutableList<EditModel>{

@@ -7,22 +7,26 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_final.*
 
 class FinalActivity : AppCompatActivity() {
-    private lateinit var adapter: RecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_final)
+        var casa: Civilizacion = Civilizacion(intent.getStringExtra("Equipo1").toString(),
+            intent.getStringExtra("Equipo1Imagen").toString())
+        var visitante: Civilizacion = Civilizacion(intent.getStringExtra("Equipo2").toString(),
+            intent.getStringExtra("Equipo2Imagen").toString())
 
-        adapter = RecyclerAdapter(this, RecyclerAdapter.models)
-        var ganador: Civilizacion =  populateList()
-
-        mainRecyclerViewFinal.layoutManager = LinearLayoutManager(this)
-        mainRecyclerViewFinal.adapter = RecyclerAdapter(this, RecyclerAdapter.models)
+        act3Team1.text = casa.getNombre()
+        act3Team2.text = visitante.getNombre()
+        Picasso.get().load(casa.getImagen()).into(act3ImageTeam1);
+        Picasso.get().load(visitante.getImagen()).into(act3ImageTeam2);
 
         btnSigS3.setOnClickListener{
+            var ganador: Civilizacion =  obtenerGanador(EditModel(casa, visitante))
             Log.d("Ganador: ", ganador.getNombre())
             val intent = Intent(this, WinnerActivity::class.java)
             var bundle = Bundle()
@@ -33,16 +37,11 @@ class FinalActivity : AppCompatActivity() {
         }
     }
 
-    private fun populateList(): Civilizacion{
+    private fun obtenerGanador(duelo: EditModel): Civilizacion{
         var ganador = Civilizacion()
-        for(i in 0 .. adapter.editModels.size-1){
-            var duelo: EditModel = adapter.editModels.get(i)
-            if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
-                ganador = duelo.getCivilizacionCasa()
-            else
-                ganador = duelo.getCivilizacionVisitante()
-        }
-
-        return ganador
+        if(act3EditTeam1.text.toString().toInt() > act3EditTeam2.text.toString().toInt())
+            return duelo.getCivilizacionCasa()
+        else
+            return duelo.getCivilizacionVisitante()
     }
 }
