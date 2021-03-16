@@ -22,11 +22,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = RecyclerAdapter(this, RecyclerAdapter.models)
         modelos = populateList()
+        adapter = RecyclerAdapter(this, modelos)
 
         mainRecyclerView.layoutManager = LinearLayoutManager(this)
-        mainRecyclerView.adapter = RecyclerAdapter(this, modelos)
+        mainRecyclerView.adapter = adapter
+
         btnSigS1.setOnClickListener{
             RecyclerAdapter.models = getWinners()
             for(i in 0 .. adapter.editModels.size-1){
@@ -43,8 +44,8 @@ class MainActivity : AppCompatActivity() {
     private fun getWinners(): MutableList<EditModel>{
         var duelos: MutableList<EditModel> = arrayListOf()
         var civilizaciones: MutableList<Civilizacion> = arrayListOf()
-        for(i in 0 .. RecyclerAdapter.models.size-1){
-            var duelo: EditModel = RecyclerAdapter.models.get(i)
+        for(i in 0 .. adapter.editModels.size-1){
+            var duelo: EditModel = adapter.editModels.get(i)
             if(duelo.getPuntuajeCasa() > duelo.getPuntuajeVisitante())
                 civilizaciones.add(duelo.getCivilizacionCasa())
             else
