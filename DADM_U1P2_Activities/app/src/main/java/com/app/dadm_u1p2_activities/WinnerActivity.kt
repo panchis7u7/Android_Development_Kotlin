@@ -20,7 +20,7 @@ class WinnerActivity : AppCompatActivity() {
             .setTimeToLive(2000L)
             .addShapes(Shape.Square, Shape.Circle)
             .addSizes(Size(12))
-            .setPosition(-50f, viewConfetti.width+50f, -50f)
+            .setPosition(-50f, viewConfetti.width+1000f, -50f, viewConfetti.height+50f)
             .streamFor(300, 3000L)
         civilizacionGanadora.text = intent.getStringExtra("ganador").toString()
         Picasso.get().load(intent.getStringExtra("imagenGanador")).into(imagenCivilizacionGanadora);
