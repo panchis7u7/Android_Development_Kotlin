@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Felicidades a la civilizacion: "
+                android:text="@string/civilizationCelebration"
                 android:textSize="25dp" />
 
             <TextView

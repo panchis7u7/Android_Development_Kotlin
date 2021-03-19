@@ -64,7 +64,7 @@ class SemiFinalActivity : AppCompatActivity() {
                 civilizaciones.add(duelo.getCivilizacionVisitante())
             } else {
                 this.empate = true
-                Toast.makeText(this, "Hubo un empate!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.tieToast), Toast.LENGTH_LONG).show()
                 return arrayListOf()
             }
         }

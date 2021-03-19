@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DADM_U1P2_Activities</string>
+    <string name="persians">Persians</string>
+    <string name="teutons">Teutons</string>
+    <string name="saracens">Saracens</string>
+    <string name="spanish">Spanish</string>
+    <string name="vikings">Vikings</string>
+    <string name="aztecs">Aztecs</string>
+    <string name="japanese">Japanese</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="btnNext">Next</string>
+    <string name="tieToast">There was a tie!</string>
+    <string name="civilizationCelebration">Congratulations! to the civilization:</string>
+</resources>

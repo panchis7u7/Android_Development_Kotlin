@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DADM_U1P2_Activities</string>
+    <string name="persians">Persas</string>
+    <string name="teutons">Teutones</string>
+    <string name="saracens">Sarracenos</string>
+    <string name="spanish">Españoles</string>
+    <string name="vikings">Vikingos</string>
+    <string name="aztecs">Aztecas</string>
+    <string name="japanese">Japoneses</string>
+    <string name="vietnamese">Vietnamitas</string>
+    <string name="btnNext">Siguiente</string>
+    <string name="tieToast">Hubo un empate!</string>
+    <string name="civilizationCelebration">Felicidades! a la civilizacion:</string>
 </resources>
