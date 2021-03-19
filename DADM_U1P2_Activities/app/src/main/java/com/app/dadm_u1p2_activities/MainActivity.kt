@@ -4,32 +4,32 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.StringBuilder
+import com.app.dadm_u1p2_activities.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var modelos = mutableListOf<EditModel>()
+    private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: RecyclerAdapter
+    private var modelos = mutableListOf<EditModel>()
     private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         modelos = populateList()
         adapter = RecyclerAdapter(this, modelos)
 
-        mainRecyclerView.layoutManager = LinearLayoutManager(this)
-        mainRecyclerView.adapter = adapter
+        binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.mainRecyclerView.adapter = adapter
 
-        btnSigS1.setOnClickListener{
+        binding.btnSigS1.setOnClickListener{
             RecyclerAdapter.models = getWinners()
             if(!empate) {
                 for (i in 0..adapter.editModels.size - 1) {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                             adapter.editModels.get(i).getCivilizacionVisitante().getNombre() +
                             adapter.editModels.get(i).getPuntuajeVisitante())
                 }
-                val intent = Intent(this, Semifinal2::class.java)
+                val intent = Intent(this, SemiFinalActivity::class.java)
                 startActivity(intent)
             }
         }

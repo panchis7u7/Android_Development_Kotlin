@@ -8,26 +8,28 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_semifinal2.*
+import com.app.dadm_u1p2_activities.databinding.ActivitySemifinalBinding
 
-class Semifinal2 : AppCompatActivity() {
+class SemiFinalActivity : AppCompatActivity() {
 
-    private var modelos = mutableListOf<EditModel>()
+    private lateinit var binding: ActivitySemifinalBinding
     private lateinit var adapter: RecyclerAdapter
+    private var modelos = mutableListOf<EditModel>()
     private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_semifinal2)
+        //setContentView(R.layout.activity_semifinal)
+        binding = ActivitySemifinalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         modelos = RecyclerAdapter.models
         adapter = RecyclerAdapter(this, modelos)
 
-        mainRecyclerViewSemi.layoutManager = LinearLayoutManager(this)
-        mainRecyclerViewSemi.adapter = adapter
+        binding.mainRecyclerViewSemi.layoutManager = LinearLayoutManager(this)
+        binding.mainRecyclerViewSemi.adapter = adapter
 
-        btnSigS2.setOnClickListener{
+        binding.btnSigS2.setOnClickListener{
             RecyclerAdapter.models = getWinners()
             if(!empate) {
                 for (i in 0..RecyclerAdapter.models.size - 1) {

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DADM_U1P2_Activities">
         <activity android:name=".WinnerActivity"></activity>
         <activity android:name=".FinalActivity" />
-        <activity android:name=".Semifinal2" />
+        <activity android:name=".SemiFinalActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

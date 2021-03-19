@@ -5,30 +5,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.dadm_u1p2_activities.Models.Civilizacion
 import com.app.dadm_u1p2_activities.Models.EditModel
+import com.app.dadm_u1p2_activities.databinding.ActivityFinalBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_final.*
 
 class FinalActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityFinalBinding
     private var empate: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_final)
+        //setContentView(R.layout.activity_final)
+        binding = ActivityFinalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         var casa = Civilizacion(intent.getStringExtra("Equipo1").toString(),
             intent.getStringExtra("Equipo1Imagen").toString())
         var visitante = Civilizacion(intent.getStringExtra("Equipo2").toString(),
             intent.getStringExtra("Equipo2Imagen").toString())
 
-        act3Team1.text = casa.getNombre()
-        act3Team2.text = visitante.getNombre()
-        Picasso.get().load(casa.getImagen()).into(act3ImageTeam1);
-        Picasso.get().load(visitante.getImagen()).into(act3ImageTeam2);
+        binding.act3Team1.text = casa.getNombre()
+        binding.act3Team2.text = visitante.getNombre()
+        Picasso.get().load(casa.getImagen()).into(binding.act3ImageTeam1);
+        Picasso.get().load(visitante.getImagen()).into(binding.act3ImageTeam2);
 
-        btnSigS3.setOnClickListener{
+        binding.btnSigS3.setOnClickListener{
             var ganador: Civilizacion =  obtenerGanador(EditModel(casa, visitante))
             if(!empate) {
                 Log.d("Ganador: ", ganador.getNombre())
@@ -44,10 +46,10 @@ class FinalActivity : AppCompatActivity() {
 
     private fun obtenerGanador(duelo: EditModel): Civilizacion{
         var ganador = Civilizacion()
-        if(act3EditTeam1.text.toString().toInt() > act3EditTeam2.text.toString().toInt()) {
+        if(binding.act3EditTeam1.text.toString().toInt() > binding.act3EditTeam2.text.toString().toInt()) {
             this.empate = false
             return duelo.getCivilizacionCasa()
-        } else if(act3EditTeam1.text.toString().toInt() < act3EditTeam2.text.toString().toInt()) {
+        } else if(binding.act3EditTeam1.text.toString().toInt() < binding.act3EditTeam2.text.toString().toInt()) {
             this.empate = false
             return duelo.getCivilizacionVisitante()
         } else {
