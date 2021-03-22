@@ -1,5 +1,6 @@
 package com.app.dadm_u1p3_bindingsdynamic
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.app.dadm_u1p3_bindingsdynamic.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+AdapterView.OnItemClickListener{
 
     private lateinit var binding: ActivityMainBinding
     private var pelicula = ""
@@ -21,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //------------------------------------------------------------------------------------------
+        // Manejadores de eventos a traves de funciones anonimas.
 
         val boletos = ArrayList<String>()
         for(i in 1..10)
@@ -47,8 +52,23 @@ class MainActivity : AppCompatActivity() {
                     actualizaSeleccion()
                 }
             }
-
         }
+
+        binding.btnComprar.setOnClickListener{
+            val intent = Intent(this, CompraActivity::class.java)
+            val datos = arrayOf(pelicula, sala, horario, nBoletos)
+            intent.putExtra("datos", datos)
+            startActivity(intent)
+        }
+
+        //------------------------------------------------------------------------------------------
+        // Manejadores de eventos a traves de herencia.
+
+        binding.listViewPeliculas.onItemClickListener = this
+        binding.spinnerHorarios.onItemSelectedListener = this
+
+        //------------------------------------------------------------------------------------------
+
     }
 
     private fun actualizaSeleccion() {
@@ -60,4 +80,27 @@ class MainActivity : AppCompatActivity() {
         """.trimIndent()
     }
 
+    //----------------------------------------------------------------------------------------------
+    // listViewPeliculas events.
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        view?.let {
+            val textView = it as TextView
+            pelicula = "" + textView.text
+            actualizaSeleccion()
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    // spinnerHorarios events.
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+    //----------------------------------------------------------------------------------------------
 }
