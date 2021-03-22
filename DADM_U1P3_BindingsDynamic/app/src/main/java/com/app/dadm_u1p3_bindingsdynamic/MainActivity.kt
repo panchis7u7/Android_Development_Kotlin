@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.app.dadm_u1p3_bindingsdynamic.databinding.ActivityMainBinding
+import com.app.dadm_u1p3_bindingsdynamic.models.EntradaCine
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 AdapterView.OnItemClickListener{
@@ -56,8 +57,10 @@ AdapterView.OnItemClickListener{
 
         binding.btnComprar.setOnClickListener{
             val intent = Intent(this, CompraActivity::class.java)
-            val datos = arrayOf(pelicula, sala, horario, nBoletos)
-            intent.putExtra("datos", datos)
+            //val datos = arrayOf(pelicula, sala, horario, nBoletos)
+            //intent.putExtra("datos", datos)
+            val entrada: EntradaCine = EntradaCine(pelicula, sala, horario, nBoletos)
+            intent.putExtra("entrada", entrada)
             startActivity(intent)
         }
 
