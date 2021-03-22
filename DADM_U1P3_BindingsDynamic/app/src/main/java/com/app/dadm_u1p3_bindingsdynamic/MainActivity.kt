@@ -2,6 +2,10 @@ package com.app.dadm_u1p3_bindingsdynamic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.app.dadm_u1p3_bindingsdynamic.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +22,42 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val salas
+        val boletos = ArrayList<String>()
+        for(i in 1..10)
+            boletos.add("$i")
+        binding.spinnerNumBoletos.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+        boletos)
+        binding.spinnerNumBoletos.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.let {
+                    val textView = findViewById<TextView>(android.R.id.text1)
+                    nBoletos = textView.text.toString()
+                    actualizaSeleccion()
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        val salas: Array<String> = arrayOf("Normal", "4DX")
+        binding.listViewSala.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, salas)
+        binding.listViewSala.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                view?.let {
+                    sala = salas[position]
+                    actualizaSeleccion()
+                }
+            }
+
+        }
     }
+
+    private fun actualizaSeleccion() {
+        binding.textSeleccion.text = """Tu selección:
+           Película: $pelicula
+           Sala: $sala
+           Horario: $horario
+           Boletos: $nBoletos
+        """.trimIndent()
+    }
+
 }
