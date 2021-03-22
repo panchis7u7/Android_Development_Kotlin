@@ -62,6 +62,8 @@ AdapterView.OnItemClickListener{
         }
 
         //------------------------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------
         // Manejadores de eventos a traves de herencia.
 
         binding.listViewPeliculas.onItemClickListener = this
@@ -97,7 +99,8 @@ AdapterView.OnItemClickListener{
     // spinnerHorarios events.
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("Not yet implemented")
+        horario = resources.getStringArray(R.array.horarios)[position]
+        actualizaSeleccion()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
