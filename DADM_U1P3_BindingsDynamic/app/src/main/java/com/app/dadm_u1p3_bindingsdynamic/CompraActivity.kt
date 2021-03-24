@@ -16,13 +16,13 @@ class CompraActivity : AppCompatActivity() {
         setContentView(binding.root)
         //val datos = intent.getStringArrayExtra("datos")
         intent?.let {
-            val user: EntradaCine = it.extras!!.getParcelable<EntradaCine>("entrada") as EntradaCine
-            binding.txtCompra.text = """¡¡Gracias por tu compra!!!
+            val entrada: EntradaCine = it.extras!!.getParcelable<EntradaCine>("entrada") as EntradaCine
+            binding.txtCompra.text = """¡¡${getString(R.string.graciasCompra)}!!!
             |
-            |Película: ${user.pelicula}
-            |Sala: ${user.sala}
-            |Horario: ${user.horario}
-            |Boletos: ${user.boletos}
+            |${getString(R.string.pelicula)}: ${entrada.pelicula}
+            |${getString(R.string.sala)}: ${entrada.sala}
+            |${getString(R.string.horario)}: ${entrada.horario}
+            |${getString(R.string.boletos)}: ${entrada.nBoletos}
         """.trimMargin()
         }
     }

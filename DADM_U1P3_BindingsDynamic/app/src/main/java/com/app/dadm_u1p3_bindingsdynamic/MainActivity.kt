@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import com.app.dadm_u1p3_bindingsdynamic.databinding.ActivityMainBinding
 import com.app.dadm_u1p3_bindingsdynamic.models.EntradaCine
@@ -36,8 +37,8 @@ AdapterView.OnItemClickListener{
         binding.spinnerNumBoletos.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 view?.let {
-                    val textView = findViewById<TextView>(android.R.id.text1)
-                    nBoletos = textView.text.toString()
+                    val spinner = findViewById<Spinner>(R.id.spinnerNumBoletos)
+                    nBoletos = spinner.selectedItem.toString()
                     actualizaSeleccion()
                 }
             }
@@ -77,11 +78,11 @@ AdapterView.OnItemClickListener{
     }
 
     private fun actualizaSeleccion() {
-        binding.textSeleccion.text = """Tu selección:
-           Película: $pelicula
-           Sala: $sala
-           Horario: $horario
-           Boletos: $nBoletos
+        binding.textSeleccion.text = """${getString(R.string.tuSeleccion)}:
+           ${getString(R.string.pelicula)}: $pelicula
+           ${getString(R.string.sala)}: $sala
+           ${getString(R.string.horario)}: $horario
+           ${getString(R.string.boletos)}: $nBoletos
         """.trimIndent()
     }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DADM_U1P3_BindingsDynamic</string>
+    <string-array name="peliculas">
+        <item>The Martian</item>
+        <item>Interstellar</item>
+        <item>Gravity</item>
+    </string-array>
+    <string-array name="horarios">
+        <item>14:00</item>
+        <item>16:00</item>
+        <item>18:00</item>
+        <item>20:00</item>
+    </string-array>
+    <string name="tuSeleccion">Your Selection is</string>
+    <string name="graciasCompra">Thanks for purchasing</string>
+    <string name="pelicula">Film</string>
+    <string name="sala">Room</string>
+    <string name="horario">Schedule</string>
+    <string name="boletos">Tickets</string>
+    <string name="comprar">Buy</string>
+</resources>

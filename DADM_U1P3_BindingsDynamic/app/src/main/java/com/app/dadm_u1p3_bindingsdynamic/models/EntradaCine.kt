@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class EntradaCine(val pelicula: String,
                        val sala: String,
                        val horario: String,
-                       val boletos: String) : Parcelable {
+                       val nBoletos: String) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -19,7 +19,7 @@ data class EntradaCine(val pelicula: String,
         parcel.writeString(pelicula) ?: ""
         parcel.writeString(sala) ?: ""
         parcel.writeString(horario) ?: ""
-        parcel.writeString(boletos) ?: ""
+        parcel.writeString(nBoletos) ?: ""
     }
 
     override fun describeContents(): Int {
