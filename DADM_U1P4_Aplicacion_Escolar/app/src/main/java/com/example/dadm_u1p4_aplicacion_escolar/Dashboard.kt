@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityDashboardBinding
 
@@ -32,14 +31,14 @@ class Dashboard : AppCompatActivity() {
     private fun populateList() : MutableList<GridButton> {
         var items: MutableList<GridButton> = mutableListOf<GridButton>()
 
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
-        items.add(GridButton("Hola", "http://simpleicon.com/wp-content/uploads/dashboard.png"))
+        items.add(GridButton("Hola1", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola2", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola3", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola4", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola5", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola6", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola7", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola8", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
 
         return items
     }

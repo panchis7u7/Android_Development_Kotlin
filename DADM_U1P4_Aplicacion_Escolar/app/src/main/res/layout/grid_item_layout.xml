@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="170dp"
     android:layout_height="170dp"
-    app:cardCornerRadius="12dp"
     app:cardElevation="5dp"
     app:cardBackgroundColor="@color/gray"
-    android:layout_margin="1dp">
+    app:strokeColor="#5E5E5E"
+    app:strokeWidth="1sp"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/iconoGridItem"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="12dp"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp" />
         <TextView
             android:id="@+id/tituloGridItem"
             android:layout_width="wrap_content"
@@ -32,4 +35,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
