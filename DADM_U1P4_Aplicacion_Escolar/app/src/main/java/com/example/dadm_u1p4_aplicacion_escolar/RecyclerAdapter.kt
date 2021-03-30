@@ -15,12 +15,15 @@ class RecyclerAdapter(private var context: Context,
                       public var buttons: MutableList<GridButton>) :
 RecyclerView.Adapter<RecyclerAdapter.ItemHolder>(){
 
-    inner class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tituloGridItem: TextView = view.findViewById<TextView>(R.id.tituloGridItem)
-        val imagenGridItem: ImageView = view.findViewById<ImageView>(R.id.iconoGridItem)
+    inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tituloGridItem: TextView = itemView.findViewById<TextView>(R.id.tituloGridItem)
+        val imagenGridItem: ImageView = itemView.findViewById<ImageView>(R.id.iconoGridItem)
 
         init {
-
+            itemView.setOnClickListener { v: View ->
+                val position: Int = adapterPosition
+                Toast.makeText(itemView.context, "Hiciste click en el item : ${position + 1}", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -33,10 +36,6 @@ RecyclerView.Adapter<RecyclerAdapter.ItemHolder>(){
         var gridButton: GridButton = buttons.get(position)
         holder.tituloGridItem.text = gridButton.texto
         Picasso.get().load(gridButton.imagen).into(holder.imagenGridItem)
-
-        holder.tituloGridItem.setOnClickListener {
-            Toast.makeText(context, gridButton.texto, Toast.LENGTH_LONG).show()
-        }
     }
 
     override fun getItemCount(): Int {
