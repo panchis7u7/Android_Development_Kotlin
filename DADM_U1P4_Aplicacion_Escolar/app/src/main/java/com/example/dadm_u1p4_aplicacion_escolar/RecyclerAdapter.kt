@@ -9,7 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
-import com.squareup.picasso.Picasso
 
 class RecyclerAdapter(private var context: Context,
                       public var buttons: MutableList<GridButton>) :
@@ -35,7 +34,7 @@ RecyclerView.Adapter<RecyclerAdapter.ItemHolder>(){
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         var gridButton: GridButton = buttons.get(position)
         holder.tituloGridItem.text = gridButton.texto
-        Picasso.get().load(gridButton.imagen).into(holder.imagenGridItem)
+        holder.imagenGridItem.setImageResource(gridButton.icono)
     }
 
     override fun getItemCount(): Int {

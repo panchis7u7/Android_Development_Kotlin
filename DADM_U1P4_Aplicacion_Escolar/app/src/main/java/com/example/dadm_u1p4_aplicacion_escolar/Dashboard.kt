@@ -31,14 +31,15 @@ class Dashboard : AppCompatActivity() {
     private fun populateList() : MutableList<GridButton> {
         var items: MutableList<GridButton> = mutableListOf<GridButton>()
 
-        items.add(GridButton("Hola1", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola2", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola3", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola4", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola5", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola6", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola7", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
-        items.add(GridButton("Hola8", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
+        items.add(GridButton("Hola1", R.drawable.icon_notas))
+        items.add(GridButton("Hola2", R.drawable.icon_notas))
+        items.add(GridButton("Hola3", R.drawable.icon_notas))
+        items.add(GridButton("Hola4", R.drawable.icon_notas))
+        items.add(GridButton("Hola5", R.drawable.icon_notas))
+        items.add(GridButton("Hola6", R.drawable.icon_notas))
+        items.add(GridButton("Hola7", R.drawable.icon_notas))
+        items.add(GridButton("Hola8", R.drawable.icon_notas))
+        //items.add(GridButton("Hola8", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))
 
         return items
     }
