@@ -31,10 +31,10 @@ class Dashboard : AppCompatActivity() {
     private fun populateList() : MutableList<GridButton> {
         var items: MutableList<GridButton> = mutableListOf<GridButton>()
 
-        items.add(GridButton("Hola1", R.drawable.icon_notas))
-        items.add(GridButton("Hola2", R.drawable.icon_notas))
-        items.add(GridButton("Hola3", R.drawable.icon_notas))
-        items.add(GridButton("Hola4", R.drawable.icon_notas))
+        items.add(GridButton("Calificaciones", R.drawable.icon_notas))
+        items.add(GridButton("Horario", R.drawable.icon_horario))
+        items.add(GridButton("Avance reticular", R.drawable.icon_avance))
+        items.add(GridButton("Datos", R.drawable.icon_datos))
         items.add(GridButton("Hola5", R.drawable.icon_notas))
         items.add(GridButton("Hola6", R.drawable.icon_notas))
         items.add(GridButton("Hola7", R.drawable.icon_notas))
