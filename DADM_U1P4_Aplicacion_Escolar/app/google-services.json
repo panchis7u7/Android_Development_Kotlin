@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "976379461775",
+    "project_id": "login-677de",
+    "storage_bucket": "login-677de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976379461775:android:9e141a869d2cf19feb70fa",
+        "android_client_info": {
+          "package_name": "com.example.dadm_u1p4_aplicacion_escolar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976379461775-ta75mnr71pr905dq30r8ib05unej8m6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWnEMJe7BjNbGt7ChpsoISf85YnhQRrS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976379461775-ta75mnr71pr905dq30r8ib05unej8m6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
