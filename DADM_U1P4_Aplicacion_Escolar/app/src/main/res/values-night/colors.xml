@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#2D2D2D</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorPrimary">#6CCD17</color>
+    <color name="colorPrimary">#3DDC84</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorTextWhite">#FFFFFF</color>
     <color name="colorWhite">#1D1D1D</color>
@@ -18,4 +18,7 @@
     <color name="colorEditText">#3BFFFFFF</color>
     <color name="colorButton">#BB86FC</color>
     <color name="colorTextPrimary">#BB86FC</color>
+
+    <!-- Color borde de los botones en el dashboard. -->
+    <color name="colorBorderDashboard">#386C0A</color>
 </resources>
