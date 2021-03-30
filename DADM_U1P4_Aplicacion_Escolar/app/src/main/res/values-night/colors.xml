@@ -9,13 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#2D2D2D</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorPrimary">#0E68FF</color>
-    <color name="colorPrimaryDark">#0E68FF</color>
+    <color name="colorPrimary">#6CCD17</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorTextWhite">#FFFFFF</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorTextBlack">#000000</color>
+    <color name="colorWhite">#1D1D1D</color>
+    <color name="colorTextBlack">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorEditText">#14000000</color>
-    <color name="colorButton">#0E68FF</color>
-    <color name="colorTextPrimary">#0E68FF</color>
+    <color name="colorEditText">#3BFFFFFF</color>
+    <color name="colorButton">#BB86FC</color>
+    <color name="colorTextPrimary">#BB86FC</color>
 </resources>
