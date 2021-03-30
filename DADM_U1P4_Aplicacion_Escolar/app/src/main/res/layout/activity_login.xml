@@ -34,7 +34,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="36dp"
                             android:textColor="@color/colorTextWhite"
-                            android:text="Welcome back"
+                            android:text="Bienvenido!"
                             android:layout_marginTop="12dp"
                             android:fontFamily="@font/googlesans_bold"/>
 
@@ -59,7 +59,77 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextBlack"/>
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="26dp"
+                    android:text="LOGIN"
+                    android:fontFamily="@font/googlesans_medium"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="48dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+
+                        <EditText
+                            android:drawableEnd="@drawable/icon_account"
+                            android:drawableRight="@drawable/icon_account"
+                            android:drawableTint="@color/colorBlack"
+                            android:hint="No. Control"
+                            android:textColor="@color/colorTextBlack"
+                            android:paddingLeft="26dp"
+                            android:paddingRight="26dp"
+                            android:inputType="number"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:background="@drawable/edit_text_background"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginRight="48dp"/>
+
+                        <EditText
+                            android:layout_marginTop="24dp"
+                            android:drawableEnd="@drawable/icon_pass"
+                            android:drawableRight="@drawable/icon_pass"
+                            android:drawableTint="@color/colorBlack"
+                            android:hint="Contraseña"
+                            android:textColor="@color/colorTextBlack"
+                            android:paddingLeft="26dp"
+                            android:paddingRight="26dp"
+                            android:inputType="numberPassword"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:background="@drawable/edit_text_background"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginRight="48dp"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Recuerdame"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:textColor="@color/colorTextBlack"/>
+
+                        <Button
+                            android:id="@+id/btn_login"
+                            android:layout_marginTop="36dp"
+                            android:background="@drawable/button_background"
+                            android:backgroundTint="@color/colorButton"
+                            android:layout_width="156dp"
+                            android:layout_height="52dp"
+                            android:layout_gravity="center"
+                            android:text="Inicia Sesion"
+                            android:textAllCaps="false"
+                            android:textSize="16dp"
+                            android:fontFamily="@font/googlesans_medium"
+                            android:textColor="@color/colorTextWhite"/>
+
+                </LinearLayout>
 
         </RelativeLayout>
 

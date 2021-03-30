@@ -15,4 +15,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTextBlack">#000000</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorEditText">#14000000</color>
+    <color name="colorButton">#0E68FF</color>
 </resources>
