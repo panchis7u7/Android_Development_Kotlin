@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registrar"
+    android:orientation="vertical"
+    android:weightSum="4"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/back_icon"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="18dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36dp"
+                android:textColor="@color/colorTextWhite"
+                android:text="Bienvenido!"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/googlesans_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextWhite"
+                android:text="Registrate para empezar!"
+                android:fontFamily="@font/googlesans_medium"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/card_background"
+        android:elevation="36dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/googlesans_medium"
+            android:text="REGISTRAR"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="26dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="28dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/textViewControl"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableEnd="@drawable/icon_account"
+                android:drawableRight="@drawable/icon_account"
+                android:drawableTint="@color/colorBlack"
+                android:fontFamily="@font/googlesans_medium"
+                android:hint="No. Control"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/colorTextBlack" />
+
+            <EditText
+                android:id="@+id/textViewNombre"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableEnd="@drawable/icon_pass"
+                android:drawableRight="@drawable/icon_pass"
+                android:drawableTint="@color/colorBlack"
+                android:fontFamily="@font/googlesans_medium"
+                android:hint="Nombre"
+                android:inputType="numberPassword"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/colorTextBlack" />
+
+            <EditText
+                android:id="@+id/textViewCarrera"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableEnd="@drawable/icon_pass"
+                android:drawableRight="@drawable/icon_pass"
+                android:drawableTint="@color/colorBlack"
+                android:fontFamily="@font/googlesans_medium"
+                android:hint="Carrera"
+                android:inputType="numberPassword"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/colorTextBlack" />
+
+            <EditText
+                android:id="@+id/textViewContra"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableEnd="@drawable/icon_pass"
+                android:drawableRight="@drawable/icon_pass"
+                android:drawableTint="@color/colorBlack"
+                android:fontFamily="@font/googlesans_medium"
+                android:hint="Contraseña"
+                android:inputType="numberPassword"
+                android:paddingLeft="26dp"
+                android:paddingRight="26dp"
+                android:textColor="@color/colorTextBlack" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="156dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/colorButton"
+                android:fontFamily="@font/googlesans_medium"
+                android:text="Inicia Sesion"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
