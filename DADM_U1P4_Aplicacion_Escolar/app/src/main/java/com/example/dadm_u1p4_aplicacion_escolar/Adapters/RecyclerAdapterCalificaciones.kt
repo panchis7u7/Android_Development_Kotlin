@@ -1,7 +1,6 @@
-package com.example.dadm_u1p4_aplicacion_escolar
+package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,10 +8,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
+import com.example.dadm_u1p4_aplicacion_escolar.R
 
-class RecyclerAdapter(private var context: Context,
-                      public var buttons: MutableList<GridButton>) :
-RecyclerView.Adapter<RecyclerAdapter.ItemHolder>(){
+class RecyclerAdapterCalificaciones(private var context: Context,
+                                    public var buttons: MutableList<GridButton>) :
+    RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tituloGridItem: TextView = itemView.findViewById<TextView>(R.id.tituloGridItem)
@@ -27,17 +27,15 @@ RecyclerView.Adapter<RecyclerAdapter.ItemHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.grid_item_layout, parent, false)
-        return ItemHolder(itemHolder)
+        TODO("Not yet implemented")
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var gridButton: GridButton = buttons.get(position)
-        holder.tituloGridItem.text = gridButton.texto
-        holder.imagenGridItem.setImageResource(gridButton.icono)
+        TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {
-        return buttons.size
+        TODO("Not yet implemented")
     }
+
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterDashboard
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityDashboardBinding
 
@@ -11,7 +12,7 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var gridLayoutManager: GridLayoutManager
-    private lateinit var gridItemAdapter: RecyclerAdapter
+    private lateinit var gridItemAdapter: RecyclerAdapterDashboard
     private var models: MutableList<GridButton> = mutableListOf<GridButton>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class Dashboard : AppCompatActivity() {
         binding.mainRecyclerView.layoutManager = gridLayoutManager
         binding.mainRecyclerView.setHasFixedSize(true)
         models = populateList()
-        gridItemAdapter = RecyclerAdapter(applicationContext, models)
+        gridItemAdapter = RecyclerAdapterDashboard(applicationContext, models)
         binding.mainRecyclerView.adapter = gridItemAdapter
     }
 
