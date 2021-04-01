@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="140dip"
+    android:layout_height="140dip"
+    app:cardElevation="5dp"
+    app:cardBackgroundColor="@color/colorCalificacionesItem"
+    app:cardCornerRadius="6dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginLeft="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/textViewClave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="B4T1"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextWhite"/>
+
+        <TextView
+            android:id="@+id/textViewMateria"
+            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif"
+            android:text="Matematicas aplicadas a comunicaciones"
+            android:gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:id="@+id/textViewCalificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:text="100"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:text=" / "/>
+
+            <TextView
+                android:id="@+id/textViewRegularizacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:text="O1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
