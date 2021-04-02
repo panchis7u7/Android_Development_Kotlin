@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/black">
-
-    <TableRow>
+    <TableRow
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/textViewClave"
@@ -35,55 +33,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextWhite"
+                android:minWidth="80dp"
                 android:text="Calculo Diferencial"
+                android:ems="11"
                 android:fontFamily="sans-serif"
-                android:textSize="14sp"
-                android:ems="12"/>
+                android:textSize="14sp"/>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/textViewCreditos"
+            android:layout_weight="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextWhite"
             android:textAlignment="center"
             android:fontFamily="sans-serif"
             android:layout_gravity="center"
-            android:minEms="5"
             android:textSize="14sp"
+            android:ems="2"
             android:text="5"/>
 
         <TextView
             android:id="@+id/textViewCalificacion"
+            android:layout_weight="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextWhite"
             android:fontFamily="sans-serif"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:minEms="6"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:textSize="14sp"
+            android:ems="6"
             android:text="100"/>
 
         <TextView
             android:id="@+id/textViewEvaluacion"
+            android:layout_weight="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextWhite"
             android:fontFamily="sans-serif"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:minEms="15"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:textSize="14sp"
+            android:minEms="16"
             android:text="Evaluacion Ordinaria Primera Vez"/>
 
         <TextView
             android:id="@+id/textViewObservaciones"
+            android:layout_weight="5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextWhite"
@@ -95,8 +98,7 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:textSize="14sp"
+            android:ems="8"
             android:text="Curso Aprobado"/>
 
     </TableRow>
-
-</TableLayout>

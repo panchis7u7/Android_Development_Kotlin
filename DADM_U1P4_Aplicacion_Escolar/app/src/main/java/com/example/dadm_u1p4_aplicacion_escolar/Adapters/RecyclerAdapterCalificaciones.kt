@@ -10,7 +10,7 @@ import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteMateria
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
 class RecyclerAdapterCalificaciones(private var context: Context,
-                                    public var calificaciones: MutableList<ReporteMateria>) :
+                                    public var materias: MutableList<ReporteMateria>) :
     RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,7 +32,7 @@ class RecyclerAdapterCalificaciones(private var context: Context,
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var reporteMateria : ReporteMateria = calificaciones.get(position)
+        var reporteMateria : ReporteMateria = materias.get(position)
         holder.textViewClave.text = reporteMateria.materia.clave
         holder.textViewMateria.text = reporteMateria.materia.materia
         holder.textViewCreditos.text = reporteMateria.materia.creditos
@@ -42,7 +42,11 @@ class RecyclerAdapterCalificaciones(private var context: Context,
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return materias.size
+    }
+
+    private fun setCallItemRecycler(recyclerView: RecyclerView, materias: MutableList<ReporteMateria>){
+
     }
 
 }
