@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".AvanceCurricular"
-    android:layout_margin="20dp">
+    android:layout_gravity="center"
+    android:layout_margin="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerAvance"
+        android:id="@+id/recyclerAvanceCurricular"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/avance_item_layout"/>
+        tools:listitem="@layout/avance_curricular_semestre"/>
 
-</com.google.android.material.card.MaterialCardView>
+</ScrollView>

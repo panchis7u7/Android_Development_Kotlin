@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
-class RecyclerAdapterAvanceCurricular (private var context: Context,
-                                       private var materias: MutableList<Materia>) :
-RecyclerView.Adapter<RecyclerAdapterAvanceCurricular.ItemHolder>(){
+class RecyclerAdapterAvanceMaterias (private var context: Context,
+                                     private var materias: MutableList<Materia>) :
+RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewClave: TextView = itemView.findViewById<TextView>(R.id.textViewClave)

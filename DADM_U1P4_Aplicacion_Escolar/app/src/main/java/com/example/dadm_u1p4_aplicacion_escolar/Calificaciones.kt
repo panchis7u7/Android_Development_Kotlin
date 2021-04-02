@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceCurricular
+import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceMaterias
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityCalificacionesBinding
 
@@ -12,7 +12,7 @@ class Calificaciones : AppCompatActivity() {
 
     private lateinit var binding: ActivityCalificacionesBinding
     private lateinit var gridLayoutManager: GridLayoutManager
-    private lateinit var gridItemAdapter: RecyclerAdapterAvanceCurricular
+    private lateinit var gridItemAdapter: RecyclerAdapterAvanceMaterias
     private var models: MutableList<Materia> = mutableListOf<Materia>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
