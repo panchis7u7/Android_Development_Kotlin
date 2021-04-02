@@ -134,7 +134,6 @@
                             android:id="@+id/btn_login"
                             android:layout_marginTop="36dp"
                             android:background="@drawable/button_background"
-                            android:backgroundTint="@color/colorButton"
                             android:layout_width="156dp"
                             android:layout_height="52dp"
                             android:layout_gravity="center"

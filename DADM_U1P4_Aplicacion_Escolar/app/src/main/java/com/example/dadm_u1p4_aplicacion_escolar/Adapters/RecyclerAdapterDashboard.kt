@@ -31,7 +31,7 @@ RecyclerView.Adapter<RecyclerAdapterDashboard.ItemHolder>(){
                     0 -> {itemView.context.startActivity(Intent(it.context, Calificaciones::class.java))}
                     1 -> {}
                     2 -> {itemView.context.startActivity(Intent(it.context, AvanceCurricular::class.java))}
-                    3 -> {}
+                    3 -> {itemView.context.startActivity(Intent(it.context, Perfil::class.java))}
                     4 -> {
                         Login.auth.signOut()
                         itemView.context.startActivity(Intent(it.context, Login::class.java))
