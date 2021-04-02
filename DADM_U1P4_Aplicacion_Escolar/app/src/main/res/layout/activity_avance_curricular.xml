@@ -10,7 +10,7 @@
     android:layout_margin="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerAvanceCurricular"
+        android:id="@+id/recyclerSemestres"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/avance_curricular_semestre"/>

@@ -52,11 +52,11 @@ class AvanceCurricular : AppCompatActivity() {
     }
 
     private fun semestresRecycler(semestres: MutableList<Semestre>){
-        binding.recyclerAvanceCurricular.layoutManager = LinearLayoutManager(this@AvanceCurricular,
+        binding.recyclerSemestres.layoutManager = LinearLayoutManager(this@AvanceCurricular,
         RecyclerView.VERTICAL, false)
         var recycleAdapterSemestre: RecyclerAdapterAvanceSemestres = RecyclerAdapterAvanceSemestres(
             this@AvanceCurricular, semestres)
-        binding.recyclerAvanceCurricular.adapter= recycleAdapterSemestre
+        binding.recyclerSemestres.adapter= recycleAdapterSemestre
 
     }
 }

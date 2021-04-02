@@ -10,7 +10,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
+
+    companion object {
+        lateinit var auth: FirebaseAuth
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,11 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        login()
+        if(auth.currentUser != null) {
+            val intent = Intent(this@Login, Dashboard::class.java)
+            startActivity(intent)
+        } else
+            login()
     }
 
     private fun login(){
