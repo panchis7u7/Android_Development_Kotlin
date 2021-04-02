@@ -1,37 +1,44 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
+import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteMateria
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
 class RecyclerAdapterCalificaciones(private var context: Context,
-                                    public var buttons: MutableList<GridButton>) :
+                                    public var calificaciones: MutableList<ReporteMateria>) :
     RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tituloGridItem: TextView = itemView.findViewById<TextView>(R.id.tituloGridItem)
-        val imagenGridItem: ImageView = itemView.findViewById<ImageView>(R.id.iconoGridItem)
+        val textViewClave: TextView = itemView.findViewById<TextView>(R.id.textViewClave)
+        val textViewMateria: TextView = itemView.findViewById<TextView>(R.id.textViewMateria)
+        val textViewCreditos: TextView = itemView.findViewById<TextView>(R.id.textViewCreditos)
+        val textViewCalificacion: TextView = itemView.findViewById<TextView>(R.id.textViewCalificacion)
+        val textViewEvaluacion: TextView = itemView.findViewById<TextView>(R.id.textViewEvaluacion)
+        val textViewObservaciones: TextView = itemView.findViewById<TextView>(R.id.textViewObservaciones)
 
         init {
-            itemView.setOnClickListener { v: View ->
-                val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "Hiciste click en el item : ${position + 1}", Toast.LENGTH_LONG).show()
-            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        TODO("Not yet implemented")
+        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_calificaciones_layout, parent, false)
+        return ItemHolder(itemHolder)
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        TODO("Not yet implemented")
+        var reporteMateria : ReporteMateria = calificaciones.get(position)
+        holder.textViewClave.text = reporteMateria.materia.clave
+        holder.textViewMateria.text = reporteMateria.materia.materia
+        holder.textViewCreditos.text = reporteMateria.materia.creditos
+        holder.textViewCalificacion.text = reporteMateria.calificacion
+        holder.textViewEvaluacion.text = reporteMateria.evaluacion
+        holder.textViewObservaciones.text = reporteMateria.observaciones
     }
 
     override fun getItemCount(): Int {

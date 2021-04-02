@@ -21,7 +21,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.avance_item_layout, parent, false)
+        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_avance_layout, parent, false)
         return ItemHolder(itemHolder)
     }
 

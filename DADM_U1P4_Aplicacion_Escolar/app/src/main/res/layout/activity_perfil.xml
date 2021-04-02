@@ -1,108 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardBackgroundColor="@color/gray"
-    app:strokeColor="@color/colorBorderDashboard"
-    app:strokeWidth="2dp"
-    android:elevation="32dp"
-    android:layout_margin="30dp"
-    app:cardCornerRadius="14dp"
+    android:background="@color/black"
+    android:padding="30dp"
     tools:context=".Perfil">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.card.MaterialCardView
+        app:cardBackgroundColor="@color/gray"
+        android:elevation="32dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="20dp">
+        android:layout_width="match_parent"
+        app:cardCornerRadius="14dp">
 
-        <ImageView
-            android:id="@+id/imageViewAlumno"
-            android:layout_width="180dp"
-            android:layout_height="180dp"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Nombre:"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="18dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
 
-        <EditText
-            android:id="@+id/alumnoNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Carlos Sebastian Madrigal Rodriguez"
-            android:textSize="18sp"
-            android:fontFamily="@font/googlesans_regular"
-            android:textColor="@color/colorTextWhite"/>
+            <ImageView
+                android:id="@+id/imageViewAlumno"
+                android:layout_width="180dp"
+                android:layout_height="180dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="No. Control::"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Nombre:"
+                android:fontFamily="@font/googlesans_bold"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="18dp"/>
 
-        <EditText
-            android:id="@+id/alumnoControl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="18121699"
-            android:textSize="18sp"
-            android:fontFamily="@font/googlesans_regular"
-            android:textColor="@color/colorTextWhite"/>
+            <EditText
+                android:id="@+id/alumnoNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Carlos Sebastian Madrigal Rodriguez"
+                android:textSize="18sp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="@color/colorTextWhite"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Carrera:"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="No. Control::"
+                android:fontFamily="@font/googlesans_bold"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="18dp"/>
 
-        <EditText
-            android:id="@+id/alumnoCarrera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Carlos Sebastian Madrigal Rodriguez"
-            android:textSize="18sp"
-            android:fontFamily="@font/googlesans_regular"
-            android:textColor="@color/colorTextWhite"/>
+            <EditText
+                android:id="@+id/alumnoControl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="18121699"
+                android:textSize="18sp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="@color/colorTextWhite"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Correo:"
-            android:fontFamily="@font/googlesans_bold"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Carrera:"
+                android:fontFamily="@font/googlesans_bold"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="18dp"/>
 
-        <EditText
-            android:id="@+id/alumnoCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="l18121699@morelia.tecnm.mx"
-            android:textSize="18sp"
-            android:fontFamily="@font/googlesans_regular"
-            android:textColor="@color/colorTextWhite"/>
+            <EditText
+                android:id="@+id/alumnoCarrera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Carlos Sebastian Madrigal Rodriguez"
+                android:textSize="18sp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="@color/colorTextWhite"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Aplicar"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Correo:"
+                android:fontFamily="@font/googlesans_bold"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/alumnoCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="l18121699@morelia.tecnm.mx"
+                android:textSize="18sp"
+                android:fontFamily="@font/googlesans_regular"
+                android:textColor="@color/colorTextWhite"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Aplicar"/>
 
 
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

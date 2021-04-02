@@ -1,20 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
 
-    <ScrollView
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Calificaciones">
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/black">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_materia"/>
+        <TableRow>
 
-    </ScrollView>
+            <TextView
+                android:id="@+id/textViewHeaderPeriodo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:layout_span="5"
+                android:text="Agosto - Diciembre 2019"/>
 
-</LinearLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textViewHeaderMateria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:text="Materia"/>
+
+            <TextView
+                android:id="@+id/textViewHeaderCreditos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:text="Creditos"/>
+
+            <TextView
+                android:id="@+id/textViewHeaderCalificaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:text="Calificacion"/>
+
+            <TextView
+                android:id="@+id/textViewHeaderEvaluacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:text="Evaluacion"/>
+
+            <TextView
+                android:id="@+id/textViewHeaderObservaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textSize="14sp"
+                android:text="Observaciones"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</HorizontalScrollView>

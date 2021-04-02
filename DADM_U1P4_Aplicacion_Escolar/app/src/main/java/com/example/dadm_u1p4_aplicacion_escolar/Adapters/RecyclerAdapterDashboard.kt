@@ -1,6 +1,5 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.*
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
-import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 
 class RecyclerAdapterDashboard(private var context: Context,
                                public var buttons: MutableList<GridButton>) :
@@ -42,7 +38,7 @@ RecyclerView.Adapter<RecyclerAdapterDashboard.ItemHolder>(){
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.dashboard_item_layout, parent, false)
+        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_dashboard_layout, parent, false)
         return ItemHolder(itemHolder)
     }
 
