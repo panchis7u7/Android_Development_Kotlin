@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteMateria
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteSemestral
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
@@ -36,7 +36,7 @@ RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
         return registros.size
     }
 
-    private fun setCallItemRecycler(recyclerView: RecyclerView, registros: MutableList<ReporteMateria>){
+    private fun setCallItemRecycler(recyclerView: RecyclerView, registros: MutableList<Materia>){
         var itemRecyclerAdapter: RecyclerAdapterCalificacionesItems = RecyclerAdapterCalificacionesItems(context, registros)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = itemRecyclerAdapter
