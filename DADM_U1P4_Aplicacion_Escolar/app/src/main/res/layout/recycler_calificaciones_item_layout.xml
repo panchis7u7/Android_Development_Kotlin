@@ -1,108 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<HorizontalScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:context=".Calificaciones">
 
-    <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black">
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        android:padding="10dp">
 
-        <TableRow>
-
-            <TextView
-                android:id="@+id/textViewHeaderPeriodo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:layout_span="5"
-                android:text="Agosto - Diciembre 2019"/>
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/textViewHeaderMateria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:text="Materia"/>
-
-            <TextView
-                android:id="@+id/textViewHeaderCreditos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:text="Creditos"/>
-
-            <TextView
-                android:id="@+id/textViewHeaderCalificaciones"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:text="Calificacion"/>
-
-            <TextView
-                android:id="@+id/textViewHeaderEvaluacion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:text="Evaluacion"/>
-
-            <TextView
-                android:id="@+id/textViewHeaderObservaciones"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="14sp"
-                android:text="Observaciones"/>
-
-        </TableRow>
-
-        <TableRow>
-        <androidx.recyclerview.widget.RecyclerView
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_calificaciones_layout"/>
-        </TableRow>
-    </TableLayout>
+            android:layout_height="wrap_content">
 
-</HorizontalScrollView>
+            <TableLayout
+                android:id="@+id/tableLayoutCalificaciones"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:background="@color/black">
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderPeriodo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextWhite"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textSize="13sp"
+                        android:layout_span="5"
+                        android:text="Agosto - Diciembre 2019"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderMateria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextWhite"
+                        android:fontFamily="sans-serif"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:minWidth="200dp"
+                        android:textSize="14sp"
+                        android:ems="13"
+                        android:text="Materia"/>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderCreditos"
+                        android:layout_weight="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorTextWhite"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textSize="14sp"
+                        android:ems="4"
+                        android:text="Creditos"/>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderCalificaciones"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextWhite"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textSize="14sp"
+                        android:ems="6"
+                        android:text="Calificacion"/>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderEvaluacion"
+                        android:layout_weight="4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextWhite"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textSize="14sp"
+                        android:ems="16"
+                        android:text="Evaluacion"/>
+
+                    <TextView
+                        android:id="@+id/textViewHeaderObservaciones"
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextWhite"
+                        android:fontFamily="sans-serif"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textSize="14sp"
+                        android:ems="8"
+                        android:text="Observaciones"/>
+
+                </TableRow>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerCalificaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_calificaciones_layout"/>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

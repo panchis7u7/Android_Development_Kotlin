@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
@@ -25,7 +24,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.avance_curricular_semestre, parent, false)
+        val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.recycler_avance_item_layout, parent, false)
         return ItemHolder(itemHolder)
     }
 
