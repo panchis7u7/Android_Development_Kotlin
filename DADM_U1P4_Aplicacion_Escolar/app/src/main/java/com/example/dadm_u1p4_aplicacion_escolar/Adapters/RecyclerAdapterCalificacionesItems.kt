@@ -10,7 +10,7 @@ import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
 class RecyclerAdapterCalificacionesItems(private var context: Context,
-                                         public var materias: MutableList<Materia>) :
+                                         private var materias: MutableList<Materia>) :
     RecyclerView.Adapter<RecyclerAdapterCalificacionesItems.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -3,27 +3,23 @@ package com.example.dadm_u1p4_aplicacion_escolar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceMaterias
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSemestres
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurricularBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import java.util.*
 import kotlin.collections.HashMap
 
 class AvanceCurricular : AppCompatActivity() {
     private lateinit var binding: ActivityAvanceCurricularBinding
-    private lateinit var gridLayoutManager: GridLayoutManager
-    private lateinit var gridItemAdapter: RecyclerAdapterAvanceMaterias
-    private var models: MutableList<Materia> = mutableListOf<Materia>()
 
     //Firebase.
     private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,69 +27,57 @@ class AvanceCurricular : AppCompatActivity() {
         //setContentView(R.layout.activity_avance_curricular)
         setContentView(binding.root)
 
-        semestresRecycler(populateList())
-    }
+        auth = FirebaseAuth.getInstance()
+        var semestres: MutableList<Semestre> = mutableListOf()
 
-    private fun populateList(): MutableList<Semestre>{
-
-        /*db = FirebaseFirestore.getInstance()
-        var materias1: MutableList<Materia> = mutableListOf()
-
+        db = FirebaseFirestore.getInstance()
         db.collection("carreras/ITICs/reticula").document("semestre").get()
             .addOnSuccessListener { document ->
                 if(document != null) {
-                    Log.d("Data", "Datos: ${document.data}")
-                    //val res = document.toObject(Materia::class.java)
+                    for(i in 1 .. 2) {
+                        var lista: List<Object> = document.get(i.toString()) as List<Object>
 
-                    var lista: List<Object> = document.get("1") as List<Object>
-                    for(i in 0 .. (lista.size-1)){
-                        var mat = (lista.get(i) as HashMap<String, Any>)
-                        materias1.add(Materia((mat.get("clave") as String), (mat.get("materia") as String),
-                            (mat.get("creditos") as String)))
-                        Log.d("Data", "Datos: ${materias1.get(i).clave}, ${materias1.get(i).materia}, ${materias1.get(i).creditos}")
+                        var materias: MutableList<Materia> = mutableListOf()
+
+                        lista.map {
+                            var mat = (it as HashMap<String, Any>)
+
+                            materias.add(Materia((mat.get("clave") as String),
+                                (mat.get("materia") as String),
+                                (mat.get("creditos") as String)))
+                        }
+                        semestres.add(Semestre("Semestre $i", materias))
+                    }
+
+                    db.collection("materias").document(auth.currentUser.uid).get()
+                        .addOnSuccessListener { doc ->
+                            if(doc != null) {
+                                var listaUsuarioSemestre: HashMap<String, Any> =
+                                    doc.get("semestre") as HashMap<String, Any>
+                                var j: Int = 0
+                                for (i in 1..listaUsuarioSemestre.size) {
+                                        j = 0
+                                    (listaUsuarioSemestre.get(i.toString()) as List<Object>).map {
+                                        var mat = (it as HashMap<String, Any>)
+                                        semestres.get(i-1).materias.get(j).calificacion =
+                                            (it.get("calificacion") as String)
+                                        semestres.get(i-1).materias.get(j).evaluacion =
+                                            (it.get("evaluacion") as String)
+                                        semestres.get(i-1).materias.get(j).observaciones =
+                                            (it.get("observaciones") as String)
+                                        semestres.get(i-1).materias.get(j).regularizacion =
+                                            (it.get("regularizacion") as String)
+                                        j++
+                                    }
+                                }
+                                semestresRecycler(semestres)
+                            } else {
+                                Log.d("Error", "Error: No such document")
+                            }
                         }
                 } else
                     Log.d("Error", "Error: No such document")
             }
-        Log.d("tamanio: ", "tamano: ${materias1.size}")
-
-        return mutableListOf(Semestre("hola",materias1))*/
-
-
-
-        var materias1: MutableList<Materia> = mutableListOf<Materia>()
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias1.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-
-        var materias2: MutableList<Materia> = mutableListOf<Materia>()
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-        materias2.add(Materia("B1T1", "Calculo Diferencial", "5", 94,
-            "O1", "Curso Aprobado"))
-
-        var semestres: MutableList<Semestre> = mutableListOf<Semestre>()
-        semestres.add(Semestre("Semestre 1", materias1))
-        semestres.add(Semestre("Semestre 2", materias2))
-
-        return semestres
     }
 
     private fun semestresRecycler(semestres: MutableList<Semestre>){
@@ -102,6 +86,6 @@ class AvanceCurricular : AppCompatActivity() {
         var recycleAdapterSemestre: RecyclerAdapterAvanceSemestres = RecyclerAdapterAvanceSemestres(
             this@AvanceCurricular, semestres)
         binding.recyclerSemestres.adapter= recycleAdapterSemestre
-
+        recycleAdapterSemestre.notifyDataSetChanged()
     }
 }

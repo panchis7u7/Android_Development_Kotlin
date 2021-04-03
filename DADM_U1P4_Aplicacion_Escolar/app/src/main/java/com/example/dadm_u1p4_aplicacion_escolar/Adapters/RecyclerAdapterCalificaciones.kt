@@ -37,7 +37,7 @@ RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
     }
 
     private fun setCallItemRecycler(recyclerView: RecyclerView, registros: MutableList<Materia>){
-        var itemRecyclerAdapter: RecyclerAdapterCalificacionesItems = RecyclerAdapterCalificacionesItems(context, registros)
+        var itemRecyclerAdapter = RecyclerAdapterCalificacionesItems(context, registros)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = itemRecyclerAdapter
     }

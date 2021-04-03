@@ -26,31 +26,31 @@ class Calificaciones : AppCompatActivity() {
     private fun populateList(): MutableList<ReporteSemestral>{
         var reporte: MutableList<Materia> = mutableListOf()
 
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
         "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
 
         var reporte2 : MutableList<Materia> = mutableListOf()
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", 100,
+        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
             "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
 
         var reporteSemestral: MutableList<ReporteSemestral> = mutableListOf()

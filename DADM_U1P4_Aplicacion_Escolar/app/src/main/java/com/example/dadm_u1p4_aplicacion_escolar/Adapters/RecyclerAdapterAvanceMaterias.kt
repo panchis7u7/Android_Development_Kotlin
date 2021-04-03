@@ -29,8 +29,8 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         var materia: Materia = materias.get(position)
         holder.textViewClave.text = materia.clave
         holder.textViewMateria.text = materia.materia
-        holder.textViewCalificacion.text = materia.calificacion.toString()
-        holder.textViewRegularizacion.text = materia.evaluacion
+        holder.textViewCalificacion.text = materia.calificacion
+        holder.textViewRegularizacion.text = materia.regularizacion
     }
 
     override fun getItemCount(): Int {
