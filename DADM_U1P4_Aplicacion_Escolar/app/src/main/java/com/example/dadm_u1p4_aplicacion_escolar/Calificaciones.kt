@@ -42,19 +42,19 @@ class Calificaciones : AppCompatActivity() {
 
                         lista = (semestres.get(i.toString()) as List<Object>)
                         calificaciones = mutableListOf()
-                        //Log.d("Prueba", "Semestres : ${semestres.get(i.toString())}")
+                        Log.d("Prueba", "Semestres : ${semestres.get(i.toString())}")
 
                         lista.map {
                             var mat = (it as HashMap<String, Any>)
 
                             calificaciones.add(Materia(
-                                (mat.get("clave") as String),
-                                (mat.get("materia") as String),
-                                (mat.get("creditos") as String),
-                                (mat.get("calificacion") as String),
-                                (mat.get("evaluacion") as String),
-                                (mat.get("observaciones") as String),
-                                (mat.get("regularizacion") as String)
+                                clave = (mat.get("clave") as String),
+                                materia = (mat.get("materia") as String),
+                                creditos = (mat.get("creditos") as String),
+                                calificacion = (mat.get("calificacion") as String),
+                                evaluacion = (mat.get("evaluacion") as String),
+                                observaciones = (mat.get("observaciones") as String),
+                                regularizacion = (mat.get("regularizacion") as String)
                             ))
                         }
                         kardex.add(ReporteSemestral("Agosto - Junio 2018", calificaciones))
@@ -64,55 +64,13 @@ class Calificaciones : AppCompatActivity() {
                     Log.d("Error", "Error: No such document")
                 }
             }
-
-        //calificacionesRecycler(populateList())
     }
-
-    /*private fun populateList(): MutableList<ReporteSemestral>{
-        var reporte: MutableList<Materia> = mutableListOf()
-
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-        "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-
-        var reporte2 : MutableList<Materia> = mutableListOf()
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-        reporte2.add(Materia("B1T1", "Calculo Diferencial", "5", "100",
-            "Regularizacion Ordinaria Primera Vez", "Curso Aprobado"))
-
-        var reporteSemestral: MutableList<ReporteSemestral> = mutableListOf()
-        reporteSemestral.add(ReporteSemestral("Agosto - Diciembre", reporte))
-        reporteSemestral.add(ReporteSemestral("Enero - Junio", reporte2))
-
-
-        return reporteSemestral
-    }*/
 
     private fun calificacionesRecycler(registros: MutableList<ReporteSemestral>){
         binding.recyclerCalificaciones.layoutManager = LinearLayoutManager(this@Calificaciones,
         RecyclerView.VERTICAL, false)
-
-        var recycleAdapterCalificaciones: RecyclerAdapterCalificaciones = RecyclerAdapterCalificaciones(
+        var recycleAdapterCalificaciones = RecyclerAdapterCalificaciones(
             this@Calificaciones, registros)
-
         binding.recyclerCalificaciones.adapter = recycleAdapterCalificaciones
     }
 }

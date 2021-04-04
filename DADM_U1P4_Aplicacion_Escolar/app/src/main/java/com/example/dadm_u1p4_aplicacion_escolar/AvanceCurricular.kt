@@ -46,9 +46,10 @@ class AvanceCurricular : AppCompatActivity() {
                         lista.map {
                             var mat = (it as HashMap<String, Any>)
 
-                            materias.add(Materia((mat.get("clave") as String),
-                                (mat.get("materia") as String),
-                                (mat.get("creditos") as String)))
+                            materias.add(Materia(
+                                clave = (mat.get("clave") as String),
+                                materia = (mat.get("materia") as String),
+                                creditos = (mat.get("creditos") as String)))
                         }
                         semestres.add(Semestre("Semestre $i", materias))
                     }

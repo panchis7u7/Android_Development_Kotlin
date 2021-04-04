@@ -5,10 +5,8 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewHorario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cardViewDia"
         android:layout_margin="5dp">
 
         <LinearLayout
@@ -19,6 +17,7 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/textViewHorario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/icon_time"
@@ -29,6 +28,7 @@
                 android:text="8:00-9:00"/>
 
             <TextView
+                android:id="@+id/textViewMateria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -50,6 +50,7 @@
                     android:text="Aula: "/>
 
                 <TextView
+                    android:id="@+id/textViewAula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextWhite"
@@ -63,18 +64,44 @@
                     android:textColor="@color/colorTextWhite"
                     android:fontFamily="sans-serif"
                     android:textSize="22sp"
-                    android:text=" / Profesor: "/>
+                    android:text=" / Grupo: "/>
+
+                <TextView
+                    android:id="@+id/textViewGrupo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextWhite"
+                    android:fontFamily="sans-serif"
+                    android:textSize="22sp"
+                    android:text="A"/>
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextWhite"
-                android:fontFamily="sans-serif"
-                android:textSize="22sp"
-                android:text="Lara Barcenas Ruben"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextWhite"
+                    android:fontFamily="sans-serif"
+                    android:textSize="22sp"
+                    android:text="Profesor: "/>
+
+                <TextView
+                    android:id="@+id/textViewProfesor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextWhite"
+                    android:fontFamily="sans-serif"
+                    android:textSize="22sp"
+                    android:text="Lara Barcenas Ruben"/>
+
+            </LinearLayout>
 
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
+
 </RelativeLayout>

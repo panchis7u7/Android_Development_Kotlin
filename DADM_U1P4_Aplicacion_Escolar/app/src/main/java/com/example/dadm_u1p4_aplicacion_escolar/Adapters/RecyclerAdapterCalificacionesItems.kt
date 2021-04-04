@@ -36,7 +36,7 @@ class RecyclerAdapterCalificacionesItems(private var context: Context,
         holder.textViewClave.text = materia.clave
         holder.textViewMateria.text = materia.materia
         holder.textViewCreditos.text = materia.creditos
-        holder.textViewCalificacion.text = materia.calificacion.toString()
+        holder.textViewCalificacion.text = materia.calificacion
         holder.textViewEvaluacion.text = materia.evaluacion
         holder.textViewObservaciones.text = materia.observaciones
     }

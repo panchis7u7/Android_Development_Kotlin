@@ -16,8 +16,8 @@ class RecyclerAdapterAvanceSemestres(private var context: Context,
 RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textViewSemestre: TextView = itemView.findViewById<TextView>(R.id.textViewSemestre)
-        val recyclerViewMaterias: RecyclerView = itemView.findViewById<RecyclerView>(R.id.recyclerViewSemestre)
+        val textViewSemestre: TextView = itemView.findViewById(R.id.textViewSemestre)
+        val recyclerViewMaterias: RecyclerView = itemView.findViewById(R.id.recyclerViewSemestre)
         init {
 
         }
@@ -39,7 +39,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
     }
 
     private fun setCallItemRecycler(recyclerView: RecyclerView, materias: MutableList<Materia>){
-        var itemRecycleAdapter : RecyclerAdapterAvanceMaterias = RecyclerAdapterAvanceMaterias(context, materias)
+        var itemRecycleAdapter = RecyclerAdapterAvanceMaterias(context, materias)
         recyclerView.layoutManager = GridLayoutManager(context,2)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = itemRecycleAdapter

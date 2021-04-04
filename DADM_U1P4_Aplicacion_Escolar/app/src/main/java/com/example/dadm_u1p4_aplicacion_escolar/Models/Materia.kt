@@ -1,7 +1,11 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Models
 
-data class Materia (var clave: String? = "",
+data class Materia (var aula: String? = "",
+                    var clave: String? = "",
+                    var grupo: String? = "",
+                    var horario: String? = "",
                     var materia: String? = "",
+                    var profesor: String? = "",
                     var creditos: String? = "",
                     var calificacion: String? = "",
                     var evaluacion: String? = "",

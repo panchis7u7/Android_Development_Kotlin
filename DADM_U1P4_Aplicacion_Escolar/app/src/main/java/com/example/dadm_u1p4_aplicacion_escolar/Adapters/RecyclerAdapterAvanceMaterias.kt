@@ -14,10 +14,10 @@ class RecyclerAdapterAvanceMaterias (private var context: Context,
 RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewClave: TextView = itemView.findViewById<TextView>(R.id.textViewClave)
-        val textViewMateria: TextView = itemView.findViewById<TextView>(R.id.textViewMateria)
-        val textViewCalificacion: TextView = itemView.findViewById<TextView>(R.id.textViewCalificacion)
-        val textViewRegularizacion: TextView = itemView.findViewById<TextView>(R.id.textViewRegularizacion)
+        val textViewClave: TextView = itemView.findViewById(R.id.textViewClave)
+        val textViewMateria: TextView = itemView.findViewById(R.id.textViewMateria)
+        val textViewCalificacion: TextView = itemView.findViewById(R.id.textViewCalificacion)
+        val textViewRegularizacion: TextView = itemView.findViewById(R.id.textViewRegularizacion)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
