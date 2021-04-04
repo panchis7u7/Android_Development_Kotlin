@@ -34,10 +34,14 @@ class AvanceCurricular : AppCompatActivity() {
         db.collection("carreras/ITICs/reticula").document("semestre").get()
             .addOnSuccessListener { document ->
                 if(document != null) {
-                    for(i in 1 .. 2) {
-                        var lista: List<Object> = document.get(i.toString()) as List<Object>
 
-                        var materias: MutableList<Materia> = mutableListOf()
+                    var lista: List<Object>
+                    var materias: MutableList<Materia>
+
+                    for(i in 1 .. 2) {
+
+                        lista = document.get(i.toString()) as List<Object>
+                        materias = mutableListOf()
 
                         lista.map {
                             var mat = (it as HashMap<String, Any>)
