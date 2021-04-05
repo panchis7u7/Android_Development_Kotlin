@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
@@ -14,6 +15,8 @@ class RecyclerAdapterCalificaciones (private var context: Context,
                                      private var registros: MutableList<ReporteSemestral>) :
 RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val textViewPromedio: TextView = itemView.findViewById(R.id.textViewPromedio)
+        val textViewCreditos: TextView = itemView.findViewById(R.id.textViewCreditos)
         val recyclerView: RecyclerView = itemView.findViewById(R.id.recyclerCalificaciones)
         init {
 
@@ -29,6 +32,8 @@ RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         var reporte: ReporteSemestral = registros.get(position)
+        holder.textViewPromedio.text = String.format("%.2f", reporte.promedio)
+        holder.textViewCreditos.text = reporte.creditos.toString()
         setCallItemRecycler(holder.recyclerView, reporte.materias )
     }
 

@@ -16,97 +16,267 @@
         android:layout_width="match_parent"
         app:cardCornerRadius="14dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="20dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageViewAlumno"
-                android:layout_width="180dp"
-                android:layout_height="180dp"/>
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Nombre:"
-                android:fontFamily="@font/googlesans_bold"
-                android:textColor="@color/colorTextWhite"
-                android:textSize="18dp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp">
 
-            <EditText
-                android:id="@+id/alumnoNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Carlos Sebastian Madrigal Rodriguez"
-                android:textSize="18sp"
-                android:fontFamily="@font/googlesans_regular"
-                android:textColor="@color/colorTextWhite"/>
+                <ImageView
+                    android:id="@+id/imageViewAlumno"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="No. Control::"
-                android:fontFamily="@font/googlesans_bold"
-                android:textColor="@color/colorTextWhite"
-                android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Nombre:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
 
-            <EditText
-                android:id="@+id/alumnoControl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="18121699"
-                android:textSize="18sp"
-                android:fontFamily="@font/googlesans_regular"
-                android:textColor="@color/colorTextWhite"/>
+                <TextView
+                    android:id="@+id/textViewNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carlos Sebastian Madrigal Rodriguez"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Carrera:"
-                android:fontFamily="@font/googlesans_bold"
-                android:textColor="@color/colorTextWhite"
-                android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="No. Control:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
 
-            <EditText
-                android:id="@+id/alumnoCarrera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Carlos Sebastian Madrigal Rodriguez"
-                android:textSize="18sp"
-                android:fontFamily="@font/googlesans_regular"
-                android:textColor="@color/colorTextWhite"/>
+                <TextView
+                    android:id="@+id/textViewControl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="18121699"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Correo:"
-                android:fontFamily="@font/googlesans_bold"
-                android:textColor="@color/colorTextWhite"
-                android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Carrera:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
 
-            <EditText
-                android:id="@+id/alumnoCorreo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="l18121699@morelia.tecnm.mx"
-                android:textSize="18sp"
-                android:fontFamily="@font/googlesans_regular"
-                android:textColor="@color/colorTextWhite"/>
+                <TextView
+                    android:id="@+id/textViewCarrera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingenieria en Tecnologias de la informacion y comunicaciones"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Aplicar"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Correo Institucional:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
 
+                <TextView
+                    android:id="@+id/textViewCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="l18121699@morelia.tecnm.mx"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Curp:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/textViewCurp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MARC000614HMNDDRA5"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Fecha de Nacimiento:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/textViewNacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="14 de Junio del 2000"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Sexo:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/textViewSexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Masculino"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Calle y Numero:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCalleNumero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dalia 486"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Municipio:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextMunicipio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Morelia"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Estado:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Michoacan"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Colonia:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextColonia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Melchor Ocampo"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Codigo Postal:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCodigoPostal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="58160"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Telefono:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4434841125"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <Button
+                    android:id="@+id/buttonAlumno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Aplicar"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
     </com.google.android.material.card.MaterialCardView>
+
 </RelativeLayout>

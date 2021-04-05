@@ -1,5 +1,11 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Models
 
 data class ReporteSemestral(var periodo: String,
-                            var materias: MutableList<Materia>) {
+                            var materias: MutableList<Materia>,
+                            var promedio: Float? = 0f,
+                            var creditos: Int? = 0) {
+    /*constructor(periodo: String,
+                materias: MutableList<Materia>,
+                promedio: Int? = 0,
+                creditos: Int? = 0) : this(periodo, materias)*/
 }

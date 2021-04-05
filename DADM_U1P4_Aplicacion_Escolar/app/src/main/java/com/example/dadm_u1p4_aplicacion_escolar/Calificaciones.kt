@@ -37,16 +37,22 @@ class Calificaciones : AppCompatActivity() {
                     var semestres : HashMap<String, Object> = (document.get("semestre") as HashMap<String, Object>)
                     var lista: List<Object>
                     var calificaciones: MutableList<Materia>
+                    var promedio: Float
+                    var creditos: Int
+                    var noMaterias: Int
 
                     for(i in 1 .. 2){
 
+                        promedio = 0f
+                        creditos = 0
+                        noMaterias = 0
                         lista = (semestres.get(i.toString()) as List<Object>)
                         calificaciones = mutableListOf()
                         Log.d("Prueba", "Semestres : ${semestres.get(i.toString())}")
 
                         lista.map {
                             var mat = (it as HashMap<String, Any>)
-
+                            noMaterias++
                             calificaciones.add(Materia(
                                 clave = (mat.get("clave") as String),
                                 materia = (mat.get("materia") as String),
@@ -54,10 +60,14 @@ class Calificaciones : AppCompatActivity() {
                                 calificacion = (mat.get("calificacion") as String),
                                 evaluacion = (mat.get("evaluacion") as String),
                                 observaciones = (mat.get("observaciones") as String),
-                                regularizacion = (mat.get("regularizacion") as String)
+                                regularizacion = (mat.get("regularizacion") as String),
                             ))
+                            promedio += (mat.get("calificacion") as String).toInt()
+                            creditos += (mat.get("creditos") as String).toInt()
                         }
-                        kardex.add(ReporteSemestral("Agosto - Junio 2018", calificaciones))
+                        promedio /= noMaterias
+                        kardex.add(ReporteSemestral("Agosto - Junio 2018", calificaciones,
+                        promedio, creditos))
                         calificacionesRecycler(kardex)
                     }
                 } else {
