@@ -15,4 +15,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="SplashTheme" parent="Theme.DADM_U1P4_Aplicacion_Escolar">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
 </resources>

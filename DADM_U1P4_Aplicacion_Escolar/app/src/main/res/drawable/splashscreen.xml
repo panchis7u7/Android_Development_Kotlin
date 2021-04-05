@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/colorBlack"/>
+    <item>
+        <bitmap android:src="@drawable/built_with_firebase_logo_dark"
+            android:gravity="fill_horizontal"/>
+    </item>
+</layer-list>

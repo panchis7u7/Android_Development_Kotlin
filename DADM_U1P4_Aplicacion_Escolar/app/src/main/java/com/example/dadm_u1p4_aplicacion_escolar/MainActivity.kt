@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Thread.sleep(4000)
+
         val intent = Intent(this, Login::class.java)
         startActivity(intent)
     }
