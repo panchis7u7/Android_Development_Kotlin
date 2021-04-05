@@ -19,6 +19,7 @@
     <color name="colorButton">#0E68FF</color>
     <color name="colorTextPrimary">#0E68FF</color>
     <color name="colorNoCursado">#15AFCB</color>
+    <color name="colorCursando">#8805A1</color>
 
     <!-- Color borde de los botones en el dashboard. -->
     <color name="colorBorderDashboard">#3DDC84</color>
