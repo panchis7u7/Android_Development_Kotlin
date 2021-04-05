@@ -8,7 +8,7 @@ data class Materia (var aula: String? = "",
                     var profesor: String? = "",
                     var creditos: String? = "",
                     var calificacion: String? = "",
-                    var evaluacion: String? = "",
+                    var evaluacion: String? = "No cursada",
                     var observaciones: String? = "",
-                    var regularizacion: String? = ""){
+                    var regularizacion: String? = "No cursada"){
 }

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
+import com.google.android.material.card.MaterialCardView
 
 class RecyclerAdapterAvanceMaterias (private var context: Context,
                                      private var materias: MutableList<Materia>) :
@@ -18,6 +19,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         val textViewMateria: TextView = itemView.findViewById(R.id.textViewMateria)
         val textViewCalificacion: TextView = itemView.findViewById(R.id.textViewCalificacion)
         val textViewRegularizacion: TextView = itemView.findViewById(R.id.textViewRegularizacion)
+        val cardViewAvance: MaterialCardView = itemView.findViewById(R.id.cardViewAvance)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -31,6 +33,8 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         holder.textViewMateria.text = materia.materia
         holder.textViewCalificacion.text = materia.calificacion
         holder.textViewRegularizacion.text = materia.regularizacion
+        if (holder.textViewCalificacion.text == "")
+            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
     }
 
     override fun getItemCount(): Int {
