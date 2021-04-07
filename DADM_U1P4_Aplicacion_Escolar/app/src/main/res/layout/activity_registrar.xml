@@ -148,6 +148,54 @@
                     android:paddingRight="26dp"
                     android:textColor="@color/colorTextBlack" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:gravity="center">
+
+                    <Spinner
+                        android:id="@+id/spinnerGenero"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawableEnd="@drawable/icon_pass"
+                        android:drawableRight="@drawable/icon_pass"
+                        android:drawableTint="@color/colorBlack"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textAlignment="center"
+                        android:hint="Contraseña"
+                        android:inputType="numberPassword"
+                        android:paddingLeft="26dp"
+                        android:paddingRight="26dp"
+                        android:textColor="@color/colorTextBlack"
+                        android:entries="@array/generos"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:id="@+id/textViewNacimiento"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="52dp"
+                        android:layout_marginLeft="38dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawableTint="@color/colorBlack"
+                        android:fontFamily="@font/googlesans_medium"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:hint="Fecha de Nacimiento"
+                        android:textSize="10sp"
+                        android:inputType="text"
+                        android:paddingLeft="26dp"
+                        android:paddingRight="26dp"
+                        android:textColor="@color/colorTextBlack" />
+
+                </LinearLayout>
+
                 <EditText
                     android:id="@+id/textViewContra"
                     android:layout_width="match_parent"

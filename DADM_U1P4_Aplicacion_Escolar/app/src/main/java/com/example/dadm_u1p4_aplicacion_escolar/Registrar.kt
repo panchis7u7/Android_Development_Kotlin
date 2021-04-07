@@ -1,10 +1,17 @@
 package com.example.dadm_u1p4_aplicacion_escolar
 
+import android.R
+import android.app.DatePickerDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.widget.DatePicker
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityRegistrarBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -19,6 +26,9 @@ class Registrar : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var fStore: FirebaseFirestore
+    private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
+
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_registrar)
@@ -28,6 +38,25 @@ class Registrar : AppCompatActivity() {
         //Autenticacion de usuarios.
         auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
+
+        binding.textViewNacimiento.setOnClickListener{
+            var cal: Calendar = Calendar.getInstance()
+            var anio = cal.get(Calendar.YEAR)
+            var mes = cal.get(Calendar.MONTH)
+            var dia = cal.get(Calendar.DAY_OF_MONTH)
+
+            var dialog: DatePickerDialog = DatePickerDialog(
+            this@Registrar,
+            R.style.Theme_Material_Light_Dialog,
+            mDateSetListener, anio, mes, dia)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+            dialog.show()
+        }
+
+        mDateSetListener = DatePickerDialog.OnDateSetListener{ view: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
+            binding.textViewNacimiento.text = "${dayOfMonth}/${month}/${year}"
+        }
+
         register()
     }
 
@@ -38,9 +67,11 @@ class Registrar : AppCompatActivity() {
             var nocontrol: String = binding.textViewControl.text.toString().trim()
             var carrera: String = binding.textViewCarrera.text.toString().trim()
             var contrasena: String = binding.textViewContra.text.toString().trim()
+            var genero: String = binding.spinnerGenero.selectedItem.toString().trim()
+            var nacimiento: String = binding.textViewNacimiento.text.toString().trim()
 
             if(TextUtils.isEmpty(correo)) {
-                binding.textViewControl.setError("Porfavor ingresa el no. de control!")
+                binding.textViewCorreo.setError("Porfavor ingresa su correo electronico.")
                 return@setOnClickListener
             } else if(TextUtils.isEmpty(nombre)) {
                 binding.textViewNombre.setError("Porfavor ingrese su nombre.")
@@ -52,7 +83,10 @@ class Registrar : AppCompatActivity() {
                 binding.textViewContra.setError("Porfavor ingresa una contrasena.")
                 return@setOnClickListener
             } else if(TextUtils.isEmpty(nocontrol)) {
-                binding.textViewContra.setError("Porfavor ingresa una contrasena.")
+                binding.textViewControl.setError("Porfavor ingresa su numero de control.")
+                return@setOnClickListener
+            } else if(TextUtils.isEmpty(nacimiento)){
+                binding.textViewNacimiento.setError("Porfavor ingresa una fecha de nacimiento valida.")
                 return@setOnClickListener
         } else {
 
@@ -65,16 +99,16 @@ class Registrar : AppCompatActivity() {
                     alumno["carrera"] = carrera
                     alumno["correo"] = correo
                     alumno["noControl"] = nocontrol
-                    alumno["fotografia"] = " "
-                    alumno["curp"] = " "
-                    alumno["fechaNacimiento"] = " "
-                    alumno["sexo"] = " "
-                    alumno["calle"] = " "
-                    alumno["municipio"] = " "
-                    alumno["estado"] = " "
-                    alumno["colonia"] = " "
-                    alumno["codigoPostal"] = " "
-                    alumno["telefono"] = " "
+                    alumno["fotografia"] = ""
+                    alumno["curp"] = ""
+                    alumno["fechaNacimiento"] = nacimiento
+                    alumno["sexo"] = genero
+                    alumno["calle"] = ""
+                    alumno["municipio"] = ""
+                    alumno["estado"] = ""
+                    alumno["colonia"] = ""
+                    alumno["codigoPostal"] = ""
+                    alumno["telefono"] = ""
 
                     docRef.set(alumno).addOnSuccessListener {
                         Toast.makeText(this@Registrar, "Registro exitoso!", Toast.LENGTH_LONG).show()

@@ -128,24 +128,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="Curp:"
-                    android:fontFamily="@font/googlesans_bold"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="18dp"/>
-
-                <TextView
-                    android:id="@+id/textViewCurp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="MARC000614HMNDDRA5"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/googlesans_regular"
-                    android:textColor="@color/colorTextWhite"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:text="Fecha de Nacimiento:"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/colorTextWhite"
@@ -174,6 +156,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Masculino"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Curp:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCurp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MARC000614HMNDDRA5"
                     android:textSize="18sp"
                     android:fontFamily="@font/googlesans_regular"
                     android:textColor="@color/colorTextWhite"/>

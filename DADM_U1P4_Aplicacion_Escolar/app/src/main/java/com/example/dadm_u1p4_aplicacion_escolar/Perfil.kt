@@ -38,9 +38,9 @@ class Perfil : AppCompatActivity() {
                     binding.textViewControl.text = (document.get("noControl") as String)
                     binding.textViewCarrera.text = (document.get("carrera") as String)
                     binding.textViewCorreo.text = (document.get("correo") as String)
-                    binding.textViewCurp.text = (document.get("curp") as String)
                     binding.textViewNacimiento.text = (document.get("fechaNacimiento") as String)
                     binding.textViewSexo.text = (document.get("sexo") as String)
+                    binding.editTextCurp.setText((document.get("curp") as String))
                     binding.editTextCalleNumero.setText((document.get("calle") as String))
                     binding.editTextMunicipio.setText((document.get("municipio") as String))
                     binding.editTextEstado.setText((document.get("estado") as String))
@@ -55,6 +55,7 @@ class Perfil : AppCompatActivity() {
         binding.buttonAlumno.setOnClickListener{
             var alumno: MutableMap<String, Any> = hashMapOf()
             alumno.put("fotografia", binding.editTextImagen.getText().toString())
+            alumno.put("curp", binding.editTextCurp.getText().toString())
             alumno.put("calle", binding.editTextCalleNumero.text.toString())
             alumno.put("municipio", binding.editTextMunicipio.text.toString())
             alumno.put("estado", binding.editTextEstado.text.toString())
