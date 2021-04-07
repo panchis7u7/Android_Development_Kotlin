@@ -39,7 +39,7 @@ class AvanceCurricular : AppCompatActivity() {
                     var materias: MutableList<Materia>
                     var noSemestres: Int = 3
 
-                    for(i in 1 .. (noSemestres+1)) {
+                    for(i in 1 .. (noSemestres)) {
 
                         lista = document.get(i.toString()) as List<Object>
                         materias = mutableListOf()
