@@ -37,7 +37,7 @@ class AvanceCurricular : AppCompatActivity() {
 
                     var lista: List<Object>
                     var materias: MutableList<Materia>
-                    var noSemestres: Int = 2
+                    var noSemestres: Int = 3
 
                     for(i in 1 .. noSemestres) {
 
@@ -60,8 +60,8 @@ class AvanceCurricular : AppCompatActivity() {
                             if(doc != null) {
                                 var listaUsuarioSemestre: HashMap<String, Any> =
                                     doc.get("semestre") as HashMap<String, Any>
-                                var j: Int = 0
-                                for (i in 1..listaUsuarioSemestre.size) {
+                                var j: Int
+                                for (i in 1 .. listaUsuarioSemestre.size) {
                                         j = 0
                                     (listaUsuarioSemestre.get(i.toString()) as List<Object>).map {
                                         var mat = (it as HashMap<String, Any>)

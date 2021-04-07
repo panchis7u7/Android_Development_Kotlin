@@ -41,7 +41,7 @@ class Calificaciones : AppCompatActivity() {
                     var creditos: Int
                     var noMaterias: Int
 
-                    for(i in 1 .. 2){
+                    for(i in 1 .. 5){
 
                         promedio = 0f
                         creditos = 0
@@ -52,7 +52,6 @@ class Calificaciones : AppCompatActivity() {
 
                         lista.map {
                             var mat = (it as HashMap<String, Any>)
-                            noMaterias++
                             calificaciones.add(Materia(
                                 clave = (mat.get("clave") as String),
                                 materia = (mat.get("materia") as String),
@@ -62,7 +61,10 @@ class Calificaciones : AppCompatActivity() {
                                 observaciones = (mat.get("observaciones") as String),
                                 regularizacion = (mat.get("regularizacion") as String),
                             ))
-                            promedio += (mat.get("calificacion") as String).toInt()
+                            if(!((mat.get("calificacion") as String) == "ACA")) {
+                                promedio += (mat.get("calificacion") as String).toInt()
+                                noMaterias++
+                            }
                             creditos += (mat.get("creditos") as String).toInt()
                         }
                         promedio /= noMaterias

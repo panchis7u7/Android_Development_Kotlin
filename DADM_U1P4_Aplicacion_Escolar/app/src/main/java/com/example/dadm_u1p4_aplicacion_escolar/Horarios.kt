@@ -33,22 +33,19 @@ class Horarios : AppCompatActivity() {
         db.collection("alumnos/${auth.currentUser.uid}/cursando").document("horarios").get()
             .addOnSuccessListener { document ->
                 if (document != null){
-                    var dias: List<String> = listOf("lunes", "martes"/*, "Miercoles", "Jueves", "Viernes"*/)
+                    var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
                     var horarios: MutableList<Materia>
                     for(dia in dias) {
                         horarios = mutableListOf()
                         var horario: List<HashMap<String,Any>> = (document.get(dia) as List<HashMap<String,Any>>)
-                        //Log.d("Prueba", "Data: $horario")
                         horario.map {
-                            var mat = (it as HashMap<String, Any>)
-                            Log.d("prueba2", "Datos2: ${(mat)}")
                             horarios.add(Materia(
-                                aula = (mat.get("aula") as String),
-                                clave = (mat.get("clave") as String),
-                                grupo = (mat.get("grupo") as String),
-                                horario = (mat.get("horario") as String),
-                                materia = (mat.get("materia") as String),
-                                profesor = (mat.get("profesor") as String),
+                                aula = (it.get("aula") as String),
+                                clave = (it.get("clave") as String),
+                                grupo = (it.get("grupo") as String),
+                                horario = (it.get("horario") as String),
+                                materia = (it.get("materia") as String),
+                                profesor = (it.get("profesor") as String),
                             ))
                         }
                         semana.add(ReporteSemestral(dia, horarios))
