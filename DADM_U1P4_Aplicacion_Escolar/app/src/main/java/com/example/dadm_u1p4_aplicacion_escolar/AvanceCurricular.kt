@@ -39,7 +39,7 @@ class AvanceCurricular : AppCompatActivity() {
                     var materias: MutableList<Materia>
                     var noSemestres: Int = 3
 
-                    for(i in 1 .. noSemestres) {
+                    for(i in 1 .. (noSemestres+1)) {
 
                         lista = document.get(i.toString()) as List<Object>
                         materias = mutableListOf()
@@ -58,23 +58,55 @@ class AvanceCurricular : AppCompatActivity() {
                     db.collection("materias").document(auth.currentUser.uid).get()
                         .addOnSuccessListener { doc ->
                             if(doc != null) {
+                                var matExtraList: MutableList<Materia> = mutableListOf()
                                 var listaUsuarioSemestre: HashMap<String, Any> =
                                     doc.get("semestre") as HashMap<String, Any>
-                                var j: Int
-                                for (i in 1 .. listaUsuarioSemestre.size) {
+                                var j: Int  //listaUsuarioSemestre.size
+                                for (i in 1 .. 3) {
                                         j = 0
                                     (listaUsuarioSemestre.get(i.toString()) as List<Object>).map {
                                         var mat = (it as HashMap<String, Any>)
-                                        semestres.get(i-1).materias.get(j).calificacion =
-                                            (it.get("calificacion") as String)
-                                        semestres.get(i-1).materias.get(j).evaluacion =
-                                            (it.get("evaluacion") as String)
-                                        semestres.get(i-1).materias.get(j).observaciones =
-                                            (it.get("observaciones") as String)
-                                        semestres.get(i-1).materias.get(j).regularizacion =
-                                            (it.get("regularizacion") as String)
-                                        j++
+                                        if((it.get("semestre") as String).toInt() == i) {
+                                            semestres.get(i - 1).materias.get(j).calificacion =
+                                                (it.get("calificacion") as String)
+                                            semestres.get(i - 1).materias.get(j).evaluacion =
+                                                (it.get("evaluacion") as String)
+                                            semestres.get(i - 1).materias.get(j).observaciones =
+                                                (it.get("observaciones") as String)
+                                            semestres.get(i - 1).materias.get(j).regularizacion =
+                                                (it.get("regularizacion") as String)
+                                            j++
+                                        } else {
+                                            matExtraList.add(Materia(
+                                                calificacion = (it.get("calificacion") as String),
+                                                evaluacion = (it.get("evaluacion") as String),
+                                                observaciones = (it.get("observaciones") as String),
+                                                regularizacion = (it.get("regularizacion") as String),
+                                                semestre = (it.get("semestre") as String),
+                                                materia = (it.get("materia") as String),
+                                                clave = (it.get("clave") as String)
+                                            ))
+                                        }
                                     }
+
+                                    matExtraList.map {
+                                        var semestre: Int = ((it.semestre) as String).toInt()
+                                        var indice: Int = ((it.clave) as String).split("T")[1].toInt()
+                                        try {
+                                            Log.d("index", "indice ${indice}")
+                                            semestres.get(semestre - 1).materias.get(indice - 1).calificacion =
+                                                (it.calificacion)
+                                            semestres.get(semestre - 1).materias.get(indice - 1).evaluacion =
+                                                (it.evaluacion)
+                                            semestres.get(semestre - 1).materias.get(indice - 1).observaciones =
+                                                (it.observaciones)
+                                            semestres.get(semestre - 1).materias.get(indice - 1).regularizacion =
+                                                (it.regularizacion)
+                                        } catch (e: Exception){
+                                            Log.d("Invalid Pointer", "Error!")
+                                        }
+                                    }
+
                                 }
                                 semestresRecycler(semestres)
                             } else {
