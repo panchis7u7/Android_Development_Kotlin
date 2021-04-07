@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -33,7 +34,8 @@ class Registrar : AppCompatActivity() {
     private fun register(){
         binding.btnRegistrar.setOnClickListener {
             var nombre: String = binding.textViewNombre.text.toString().trim()
-            var correo: String = binding.textViewControl.text.toString().trim()
+            var correo: String = binding.textViewCorreo.text.toString().trim()
+            var nocontrol: String = binding.textViewControl.text.toString().trim()
             var carrera: String = binding.textViewCarrera.text.toString().trim()
             var contrasena: String = binding.textViewContra.text.toString().trim()
 
@@ -49,22 +51,45 @@ class Registrar : AppCompatActivity() {
             } else if(TextUtils.isEmpty(contrasena)){
                 binding.textViewContra.setError("Porfavor ingresa una contrasena.")
                 return@setOnClickListener
-            }
+            } else if(TextUtils.isEmpty(nocontrol)) {
+                binding.textViewContra.setError("Porfavor ingresa una contrasena.")
+                return@setOnClickListener
+        } else {
 
             auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener {
                 if(it.isSuccessful) {
                     val currentUser = auth.currentUser
                     val docRef: DocumentReference = fStore.collection("alumnos").document(currentUser.uid)
                     val alumno: HashMap<String, String> = HashMap()
-                    alumno["nombre"] = binding.textViewNombre.text.toString().trim()
-                    alumno["carrera"] = binding.textViewCarrera.text.toString().trim()
+                    alumno["nombre"] = nombre
+                    alumno["carrera"] = carrera
+                    alumno["correo"] = correo
+                    alumno["noControl"] = nocontrol
+                    alumno["fotografia"] = " "
+                    alumno["curp"] = " "
+                    alumno["fechaNacimiento"] = " "
+                    alumno["sexo"] = " "
+                    alumno["calle"] = " "
+                    alumno["municipio"] = " "
+                    alumno["estado"] = " "
+                    alumno["colonia"] = " "
+                    alumno["codigoPostal"] = " "
+                    alumno["telefono"] = " "
+
                     docRef.set(alumno).addOnSuccessListener {
                         Toast.makeText(this@Registrar, "Registro exitoso!", Toast.LENGTH_LONG).show()
                         finish()
                     }
-                } else
-                    Toast.makeText(this@Registrar, "Error al registrarse! Intente de nuevo!", Toast.LENGTH_LONG).show()
-                    Log.d("UserCreate", "Error al crear usuario: ${binding.textViewControl.toString().trim()}, ${contrasena} " + it.exception)
+                } else {
+                    Toast.makeText(this@Registrar,
+                        "Error al registrarse! Intente de nuevo!",
+                        Toast.LENGTH_LONG).show()
+                    Log.d("UserCreate",
+                        "Error al crear usuario: ${
+                            binding.textViewControl.toString().trim()
+                        }, ${contrasena} " + it.exception)
+                    }
+                }
             }
         }
     }

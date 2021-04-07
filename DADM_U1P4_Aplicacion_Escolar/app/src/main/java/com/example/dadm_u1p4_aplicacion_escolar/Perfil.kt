@@ -3,6 +3,7 @@ package com.example.dadm_u1p4_aplicacion_escolar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityPerfilBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +27,13 @@ class Perfil : AppCompatActivity() {
         db.collection("alumnos").document(auth.currentUser.uid).get()
             .addOnSuccessListener { document ->
                 if (document != null){
-                    Picasso.get().load((document.get("fotografia") as String)).into(binding.imageViewAlumno)
+                    binding.editTextImagen.setText((document.get("fotografia") as String))
+                    if((document.get("fotografia") as String).isNotEmpty())
+                    try {
+                        Picasso.get().load((document.get("fotografia") as String)).into(binding.imageViewAlumno)
+                    } catch (e: Exception){
+                        Toast.makeText(this, "Error con la imagen!", Toast.LENGTH_LONG).show()
+                    }
                     binding.textViewNombre.text = (document.get("nombre") as String)
                     binding.textViewControl.text = (document.get("noControl") as String)
                     binding.textViewCarrera.text = (document.get("carrera") as String)
@@ -47,7 +54,7 @@ class Perfil : AppCompatActivity() {
 
         binding.buttonAlumno.setOnClickListener{
             var alumno: MutableMap<String, Any> = hashMapOf()
-
+            alumno.put("fotografia", binding.editTextImagen.getText().toString())
             alumno.put("calle", binding.editTextCalleNumero.text.toString())
             alumno.put("municipio", binding.editTextMunicipio.text.toString())
             alumno.put("estado", binding.editTextEstado.text.toString())

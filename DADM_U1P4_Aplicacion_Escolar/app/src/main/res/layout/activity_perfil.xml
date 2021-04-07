@@ -36,6 +36,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:text="Imagen:"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/editTextImagen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese una URL."
+                    android:textColorHint="@color/white"
+                    android:textStyle="italic"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/googlesans_regular"
+                    android:textColor="@color/colorTextWhite"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Nombre:"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/colorTextWhite"
