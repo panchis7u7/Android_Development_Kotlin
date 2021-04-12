@@ -32,7 +32,7 @@ class Calificaciones : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         db.collection("materias").document(auth.currentUser.uid).get()
             .addOnSuccessListener { document ->
-                if(document != null){
+                if(document != null && document.data != null){
 
                     var semestres : HashMap<String, Object> = (document.get("semestre") as HashMap<String, Object>)
                     var lista: List<Object>

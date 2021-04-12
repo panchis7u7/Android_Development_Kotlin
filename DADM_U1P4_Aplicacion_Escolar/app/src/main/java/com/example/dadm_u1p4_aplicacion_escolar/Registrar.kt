@@ -12,6 +12,8 @@ import android.util.Log
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityRegistrarBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -25,7 +27,7 @@ import kotlin.collections.HashMap
 class Registrar : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var fStore: FirebaseFirestore
+    private lateinit var db: FirebaseFirestore
     private lateinit var mDateSetListener: DatePickerDialog.OnDateSetListener
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -37,7 +39,7 @@ class Registrar : AppCompatActivity() {
 
         //Autenticacion de usuarios.
         auth = FirebaseAuth.getInstance()
-        fStore = FirebaseFirestore.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         binding.textViewNacimiento.setOnClickListener{
             var cal: Calendar = Calendar.getInstance()
@@ -93,7 +95,7 @@ class Registrar : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener {
                 if(it.isSuccessful) {
                     val currentUser = auth.currentUser
-                    val docRef: DocumentReference = fStore.collection("alumnos").document(currentUser.uid)
+                    val docRef: DocumentReference = db.collection("alumnos").document(currentUser.uid)
                     val alumno: HashMap<String, String> = HashMap()
                     alumno["nombre"] = nombre
                     alumno["carrera"] = carrera

@@ -57,7 +57,7 @@ class AvanceCurricular : AppCompatActivity() {
 
                     db.collection("materias").document(auth.currentUser.uid).get()
                         .addOnSuccessListener { doc ->
-                            if(doc != null) {
+                            if(doc != null && doc.data != null) {
                                 var matExtraList: MutableList<Materia> = mutableListOf()
                                 var listaUsuarioSemestre: HashMap<String, Any> =
                                     doc.get("semestre") as HashMap<String, Any>
@@ -111,6 +111,7 @@ class AvanceCurricular : AppCompatActivity() {
                                 semestresRecycler(semestres)
                             } else {
                                 Log.d("Error", "Error: No such document")
+                                semestresRecycler(semestres)
                             }
                         }
                 } else
