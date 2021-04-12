@@ -35,7 +35,7 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if(auth.currentUser != null) {
+        if(FirebaseAuth.getInstance().currentUser != null) {
             val intent = Intent(this@Login, Dashboard::class.java)
             startActivity(intent)
         } else

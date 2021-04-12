@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var auth: FirebaseAuth
+    //private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         Thread.sleep(4000)
 
-        auth = FirebaseAuth.getInstance()
+        //auth = FirebaseAuth.getInstance()
+        Login.auth = FirebaseAuth.getInstance()
 
-        if(auth.currentUser == null)
+        if(Login.auth.currentUser == null)
             startActivity(Intent(this, Login::class.java))
         else
             startActivity(Intent(this, Dashboard::class.java))

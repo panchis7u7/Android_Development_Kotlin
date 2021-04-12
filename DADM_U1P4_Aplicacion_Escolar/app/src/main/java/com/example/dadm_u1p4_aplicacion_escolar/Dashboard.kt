@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterDashboard
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityDashboardBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Dashboard : AppCompatActivity() {
 
@@ -20,6 +21,8 @@ class Dashboard : AppCompatActivity() {
         //setContentView(R.layout.activity_dashboard)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Login.auth = FirebaseAuth.getInstance()
 
         gridLayoutManager = GridLayoutManager(applicationContext, 2, LinearLayoutManager.VERTICAL, false)
         binding.mainRecyclerView.layoutManager = gridLayoutManager
