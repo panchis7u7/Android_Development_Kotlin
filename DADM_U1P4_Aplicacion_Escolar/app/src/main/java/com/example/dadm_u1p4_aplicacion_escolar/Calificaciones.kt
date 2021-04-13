@@ -40,8 +40,9 @@ class Calificaciones : AppCompatActivity() {
                     var promedio: Float
                     var creditos: Int
                     var noMaterias: Int
+                    var i: Int = 1
 
-                    for(i in 1 .. 5){
+                    while(semestres.get(i.toString()) != null) {
 
                         promedio = 0f
                         creditos = 0
@@ -71,6 +72,7 @@ class Calificaciones : AppCompatActivity() {
                         kardex.add(ReporteSemestral("Agosto - Junio 2018", calificaciones,
                         promedio, creditos))
                         calificacionesRecycler(kardex)
+                        i++
                     }
                 } else {
                     Log.d("Error", "Error: No such document")

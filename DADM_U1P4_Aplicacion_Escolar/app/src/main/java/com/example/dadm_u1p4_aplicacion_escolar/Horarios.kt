@@ -32,7 +32,7 @@ class Horarios : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         db.collection("alumnos/${auth.currentUser.uid}/cursando").document("horarios").get()
             .addOnSuccessListener { document ->
-                if (document != null){
+                if (document != null && document.data != null){
                     var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
                     var horarios: MutableList<Materia>
                     for(dia in dias) {
@@ -55,43 +55,6 @@ class Horarios : AppCompatActivity() {
                     Log.d("Error", "Error: No such document")
                 }
             }
-    }
-
-    private fun populateList(): MutableList<ReporteSemestral>{
-        var horario1: MutableList<Materia> = mutableListOf()
-
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-        "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-            "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-            "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-            "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-            "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-        horario1.add(Materia("LRD", "B8T1", "A", "8:00=10:00",
-            "Administracion y Seguridad de Redes", "Lara Barcenas Ruben"))
-
-        var horario2: MutableList<Materia> = mutableListOf()
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-        horario2.add(Materia("LRD", "B4T1", "A", "11:00=10300",
-            "Redes de Computadoras", "Pacheco Pimentel Efren"))
-
-        var horarios: MutableList<ReporteSemestral> = mutableListOf()
-        horarios.add(ReporteSemestral("Lunes", horario1))
-        horarios.add(ReporteSemestral("Martes", horario2))
-
-        return horarios
     }
 
     private fun horariosRecycler(registros: MutableList<ReporteSemestral>){
