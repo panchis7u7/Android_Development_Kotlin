@@ -37,9 +37,9 @@ class AvanceCurricular : AppCompatActivity() {
 
                     var lista: List<Object>
                     var materias: MutableList<Materia>
-                    var noSemestres: Int = 3
+                    var i = 1
 
-                    for(i in 1 .. (noSemestres)) {
+                    while (document.get(i.toString()) != null) {
 
                         lista = document.get(i.toString()) as List<Object>
                         materias = mutableListOf()
@@ -53,6 +53,7 @@ class AvanceCurricular : AppCompatActivity() {
                                 creditos = (mat.get("creditos") as String)))
                         }
                         semestres.add(Semestre("Semestre $i", materias))
+                        i++
                     }
 
                     db.collection("materias").document(auth.currentUser.uid).get()
@@ -61,19 +62,21 @@ class AvanceCurricular : AppCompatActivity() {
                                 var matExtraList: MutableList<Materia> = mutableListOf()
                                 var listaUsuarioSemestre: HashMap<String, Any> =
                                     doc.get("semestre") as HashMap<String, Any>
-                                var j: Int  //listaUsuarioSemestre.size
-                                for (i in 1 .. 3) {
+                                var j: Int
+                                var semestreIndex: Int = 1
+                                while (listaUsuarioSemestre.get(semestreIndex.toString()) != null) {
+                                //for (i in 1 .. 3) {
                                         j = 0
-                                    (listaUsuarioSemestre.get(i.toString()) as List<Object>).map {
-                                        var mat = (it as HashMap<String, Any>)
-                                        if((it.get("semestre") as String).toInt() == i) {
-                                            semestres.get(i - 1).materias.get(j).calificacion =
+                                    (listaUsuarioSemestre.get(semestreIndex.toString()) as List<Object>).map {
+                                        (it as HashMap<String, Any>)
+                                        if((it.get("semestre") as String).toInt() == semestreIndex) {
+                                            semestres.get(semestreIndex - 1).materias.get(j).calificacion =
                                                 (it.get("calificacion") as String)
-                                            semestres.get(i - 1).materias.get(j).evaluacion =
+                                            semestres.get(semestreIndex - 1).materias.get(j).evaluacion =
                                                 (it.get("evaluacion") as String)
-                                            semestres.get(i - 1).materias.get(j).observaciones =
+                                            semestres.get(semestreIndex - 1).materias.get(j).observaciones =
                                                 (it.get("observaciones") as String)
-                                            semestres.get(i - 1).materias.get(j).regularizacion =
+                                            semestres.get(semestreIndex - 1).materias.get(j).regularizacion =
                                                 (it.get("regularizacion") as String)
                                             j++
                                         } else {
@@ -106,7 +109,7 @@ class AvanceCurricular : AppCompatActivity() {
                                             Log.d("Invalid Pointer", "Error!")
                                         }
                                     }
-
+                                    semestreIndex++
                                 }
                                 semestresRecycler(semestres)
                             } else {
