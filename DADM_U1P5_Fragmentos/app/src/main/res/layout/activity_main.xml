@@ -6,9 +6,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:hint="Mensaje"/>
+
+    <Button
+        android:id="@+id/buttonEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/softBlack"
+        android:textColor="@color/white"
+        android:text="Enviar"
+        android:layout_gravity="center"/>
+
     <fragment
+        android:id="@+id/mainFragmento"
+        android:name="com.example.dadm_u1p5_fragmentos.fragments.ActivityFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
