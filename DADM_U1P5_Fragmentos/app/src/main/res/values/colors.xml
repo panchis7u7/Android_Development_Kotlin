@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="softBlack">#323232</color>
     <color name="gray">#B0AEAE</color>
+    <color name="softRed">#B13333</color>
+    <color name="lavender">#E6E6FA</color>
 </resources>
