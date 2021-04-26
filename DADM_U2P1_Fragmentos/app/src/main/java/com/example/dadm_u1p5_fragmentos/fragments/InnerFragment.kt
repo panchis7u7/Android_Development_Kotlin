@@ -1,13 +1,11 @@
 package com.example.dadm_u1p5_fragmentos.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.setFragmentResultListener
 import com.example.dadm_u1p5_fragmentos.databinding.FragmentInnerBinding
 import com.example.dadm_u1p5_fragmentos.viewmodels.FragmentActivityMensajeViewModel
 

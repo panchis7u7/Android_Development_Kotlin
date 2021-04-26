@@ -3,14 +3,12 @@ package com.example.dadm_u1p5_fragmentos
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.dadm_u1p5_fragmentos.databinding.ActivityMainBinding
 import com.example.dadm_u1p5_fragmentos.fragments.ActivityFragment
 import com.example.dadm_u1p5_fragmentos.viewmodels.ActivityFragmentViewModel
 import com.example.dadm_u1p5_fragmentos.viewmodels.FragmentActivityMensajeViewModel
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
