@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-        val fragmento = supportFragmentManager.findFragmentById(R.id.mainFragmento) as ActivityFragment
+        supportFragmentManager.findFragmentById(R.id.mainFragmento) as ActivityFragment
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Al presionar el boton, se cambia el mensaje del viewmodel compartido.
