@@ -35,13 +35,13 @@ def populate_data_template(semestres, materias):
 
 def main():
     #populate_data_template(9, 6)
-    #cred = credentials.Certificate(CERTIFICATE)
-    #firebase_admin.initialize_app(cred)
-    #store = firestore.client()
-    #doc_ref = store.collection(u'Prueba')
-    #docs = doc_ref.get()
-    #item_data = load_json(DATA_PATH + '/' +"B1T1.json")
-    #doc_ref.add(item_data)
+    cred = credentials.Certificate(CERTIFICATE)
+    firebase_admin.initialize_app(cred)
+    store = firestore.client()
+    doc_ref = store.collection(u'Prueba')
+    docs = doc_ref.get()
+    item_data = load_json(DATA_PATH + '/' +"B1T1.json")
+    doc_ref.add(item_data)
 
 if __name__ == "__main__":
     main()
