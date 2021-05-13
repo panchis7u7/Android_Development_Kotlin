@@ -40,23 +40,23 @@ class Horarios : AppCompatActivity() {
                 var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
                 var horarios: MutableList<Materia> = mutableListOf()
                 for (dia in dias) {
-                documents.forEach { document ->
                     horarios = mutableListOf()
-                        Log.d("materia", "${document}")
-                        var horario: String? = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
-                            .get(dia)?.get("horario")?.toString()
-                        if (horario!!.isNotEmpty()) {
-                            horarios.add(Materia(
-                                horario = horario,
-                                aula = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
-                                    .get(dia)?.get("aula")?.toString(),
-                                grupo = (document.get("grupo") as String),
-                                profesor = (document.get("profesor") as String)
-                            ))
+                    documents.forEach { document ->
+                            var horario: String? = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                                .get(dia)?.get("horario")?.toString()
+                            if (horario!!.isNotEmpty()) {
+                                horarios.add(Materia(
+                                    horario = horario,
+                                    aula = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                                        .get(dia)?.get("aula")?.toString(),
+                                    materia = (document.get("materia") as String),
+                                    grupo = (document.get("grupo") as String),
+                                    profesor = (document.get("profesor") as String)
+                                ))
+                            }
                         }
+                        semana.add(ReporteSemestral(dia.capitalize(), horarios))
                     }
-                    semana.add(ReporteSemestral(dia, horarios))
-                }
                 horariosRecycler(semana)
             }
     }
