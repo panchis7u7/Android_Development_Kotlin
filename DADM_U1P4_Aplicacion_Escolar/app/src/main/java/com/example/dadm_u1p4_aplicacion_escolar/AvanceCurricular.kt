@@ -43,14 +43,13 @@ class AvanceCurricular : AppCompatActivity() {
                     var materias = mutableListOf<Materia>()
                     for (document in documents) {
                         materias.add(Materia(
-                            aula = (document.get("aula") as String),
                             clave = (document.get("clave") as String),
                             materia = (document.get("materia") as String),
                             calificacion = (document.get("calificacion") as String),
                             regularizacion = (document.get("regularizacion") as String)
                         ))
-                        semestres[i].materias = materias
-                        semestres[i].semestre = i.toString()
+                        semestres[i-1].materias = materias
+                        semestres[i-1].semestre = i.toString()
                     }
                     if(i == 9)
                         semestresRecycler(semestres)
