@@ -34,7 +34,7 @@ RecyclerView.Adapter<RecyclerAdapterCalificaciones.ItemHolder>(){
         var reporte: ReporteSemestral = registros.get(position)
         holder.textViewPromedio.text = String.format("%.2f", reporte.promedio)
         holder.textViewCreditos.text = reporte.creditos.toString()
-        setCallItemRecycler(holder.recyclerView, reporte.materias )
+        setCallItemRecycler(holder.recyclerView, reporte.materias!! )
     }
 
     override fun getItemCount(): Int {

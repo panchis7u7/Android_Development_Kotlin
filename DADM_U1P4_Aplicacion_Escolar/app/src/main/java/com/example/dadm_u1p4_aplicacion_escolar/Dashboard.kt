@@ -5,15 +5,18 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterDashboard
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.GridButton
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityDashboardBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var gridItemAdapter: RecyclerAdapterDashboard
+    private lateinit var db: FirebaseFirestore
     private var models: MutableList<GridButton> = mutableListOf<GridButton>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,11 @@ class Dashboard : AppCompatActivity() {
         setContentView(binding.root)
 
         Login.auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+        db.collection("alumnos").document("${Login.auth.currentUser.uid}")
+            .get().addOnSuccessListener { document ->
+                Alumno.semestre = (document.get("semestre") as Long).toInt()
+            }
 
         gridLayoutManager = GridLayoutManager(applicationContext, 2, LinearLayoutManager.VERTICAL, false)
         binding.mainRecyclerView.layoutManager = gridLayoutManager

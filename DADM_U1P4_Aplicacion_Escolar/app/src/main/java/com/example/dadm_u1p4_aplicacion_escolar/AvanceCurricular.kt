@@ -30,6 +30,7 @@ class AvanceCurricular : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         var semestres: MutableList<Semestre> = mutableListOf()
 
+        /*
         db = FirebaseFirestore.getInstance()
         db.collection("carreras/ITICs/reticula").document("semestre").get()
             .addOnSuccessListener { document ->
@@ -119,7 +120,7 @@ class AvanceCurricular : AppCompatActivity() {
                         }
                 } else
                     Log.d("Error", "Error: No such document")
-            }
+            }*/
     }
 
     private fun semestresRecycler(semestres: MutableList<Semestre>){

@@ -6,11 +6,13 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterCalificaciones
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteSemestral
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityCalificacionesBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -27,57 +29,44 @@ class Calificaciones : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        var kardex: MutableList<ReporteSemestral> = mutableListOf()
-
         db = FirebaseFirestore.getInstance()
-        db.collection("materias").document(auth.currentUser.uid).get()
-            .addOnSuccessListener { document ->
-                if(document != null && document.data != null){
 
-                    var semestres : HashMap<String, Object> = (document.get("semestre") as HashMap<String, Object>)
-                    var lista: List<Object>
-                    var calificaciones: MutableList<Materia>
-                    var promedio: Float
-                    var creditos: Int
-                    var noMaterias: Int
-                    var i: Int = 1
+        /** Preinitialize the list because of order issues. **/
+        var kardex: MutableList<ReporteSemestral> = MutableList(Alumno.semestre-1){
+                index -> ReporteSemestral("", null, 0f, 0)
+        }
 
-                    while(semestres.get(i.toString()) != null) {
-
-                        promedio = 0f
-                        creditos = 0
-                        noMaterias = 0
-                        lista = (semestres.get(i.toString()) as List<Object>)
-                        calificaciones = mutableListOf()
-                        Log.d("Prueba", "Semestres : ${semestres.get(i.toString())}")
-
-                        lista.map {
-                            var mat = (it as HashMap<String, Any>)
-                            calificaciones.add(Materia(
-                                clave = (mat.get("clave") as String),
-                                materia = (mat.get("materia") as String),
-                                creditos = (mat.get("creditos") as String),
-                                calificacion = (mat.get("calificacion") as String),
-                                evaluacion = (mat.get("evaluacion") as String),
-                                observaciones = (mat.get("observaciones") as String),
-                                regularizacion = (mat.get("regularizacion") as String),
-                            ))
-                            if(!((mat.get("calificacion") as String) == "ACA")) {
-                                promedio += (mat.get("calificacion") as String).toInt()
-                                noMaterias++
-                            }
-                            creditos += (mat.get("creditos") as String).toInt()
+        for (i in 1 .. Alumno.semestre-1) {
+            db.collection("alumnos/${auth.currentUser.uid}/materias")
+                .whereEqualTo("semestre_cursada", i)
+                .orderBy("clave", Query.Direction.ASCENDING).get()
+                .addOnSuccessListener { documents ->
+                    var calificaciones = mutableListOf<Materia>()
+                    var promedio: Float = 0f
+                    var creditos: Long = 0
+                    var noMaterias = documents.size()
+                    for (document in documents){
+                        calificaciones.add(Materia(
+                            clave = (document.get("clave") as String),
+                            materia = (document.get("materia") as String),
+                            creditos = (document.get("creditos") as Long),
+                            calificacion = (document.get("calificacion") as String),
+                            evaluacion = (document.get("evaluacion") as String),
+                            observaciones = (document.get("Observaciones") as String),
+                            regularizacion = (document.get("regularizacion") as String),
+                        ))
+                        if(!((document.get("calificacion") as String) == "ACA")) {
+                            promedio += (document.get("calificacion") as String).toInt()
                         }
-                        promedio /= noMaterias
-                        kardex.add(ReporteSemestral("Agosto - Junio 2018", calificaciones,
-                        promedio, creditos))
-                        calificacionesRecycler(kardex)
-                        i++
+                        creditos += (document.get("creditos") as Long)
                     }
-                } else {
-                    Log.d("Error", "Error: No such document")
+                    promedio /= noMaterias
+                    kardex.set(i-1, (ReporteSemestral("Agosto - Junio 2018", calificaciones,
+                        promedio, creditos)))
+                    if (i == 5)
+                        calificacionesRecycler(kardex)
                 }
-            }
+        }
     }
 
     private fun calificacionesRecycler(registros: MutableList<ReporteSemestral>){

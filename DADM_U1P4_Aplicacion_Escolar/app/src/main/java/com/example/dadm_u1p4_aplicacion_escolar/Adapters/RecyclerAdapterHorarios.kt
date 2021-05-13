@@ -33,7 +33,7 @@ RecyclerView.Adapter<RecyclerAdapterHorarios.ItemHolder>(){
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         var horarios: ReporteSemestral = registros.get(position)
         holder.textViewDia.text = horarios.periodo
-        setCallItemRecycler(holder.recyclerViewHorarios, horarios.materias)
+        setCallItemRecycler(holder.recyclerViewHorarios, horarios.materias!!)
     }
 
     override fun getItemCount(): Int {
