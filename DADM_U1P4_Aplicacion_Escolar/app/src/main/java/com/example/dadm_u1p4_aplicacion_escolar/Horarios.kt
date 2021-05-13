@@ -35,7 +35,7 @@ class Horarios : AppCompatActivity() {
 
         db.collection("alumnos/${auth.currentUser.uid}/materias")
             .whereEqualTo("semestre_cursada", Alumno.semestre)
-            /*.orderBy("lunes['horario']", Query.Direction.ASCENDING)*/
+            .orderBy("lunes.horario", Query.Direction.ASCENDING)
             .get().addOnSuccessListener { documents ->
                 var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
                 var horarios: MutableList<Materia> = mutableListOf()

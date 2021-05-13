@@ -47,7 +47,8 @@ class AvanceCurricular : AppCompatActivity() {
                             clave = (document.get("clave") as String),
                             materia = (document.get("materia") as String),
                             calificacion = (document.get("calificacion") as String),
-                            regularizacion = (document.get("regularizacion") as String)
+                            regularizacion = (document.get("regularizacion") as String),
+                            profesor = (document.get("profesor") as String)
                         ))
                         semestres[i-1].materias = materias
                         semestres[i-1].semestre = i.toString()

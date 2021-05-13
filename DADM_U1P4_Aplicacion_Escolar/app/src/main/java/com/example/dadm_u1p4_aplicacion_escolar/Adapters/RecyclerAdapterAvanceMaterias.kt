@@ -33,8 +33,14 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         holder.textViewMateria.text = materia.materia
         holder.textViewCalificacion.text = materia.calificacion
         holder.textViewRegularizacion.text = materia.regularizacion
-        if (holder.textViewCalificacion.text == "")
+
+        if(holder.textViewCalificacion.text == "" && materia.profesor!!.isNotEmpty()) {
+            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursandoMateria))
+            holder.textViewCalificacion.text = "Cursando"
+        } else if (holder.textViewCalificacion.text == "") {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
+            holder.textViewCalificacion.text = "No Cursada"
+        }
     }
 
     override fun getItemCount(): Int {
