@@ -9,5 +9,27 @@
     "calificacion": "86",
     "evaluacion": "Evaluacion Regularizacion Primera Vez",
     "regularizacion": "R1",
-    "Observaciones": "Curso Aprobado"
+    "observaciones": "Curso Aprobado",
+    "clases": {
+        "lunes": {
+            "horario": "14:00-15:00",
+            "aula": "F6"
+        },
+        "martes": {
+            "horario": "14:00-15:00",
+            "aula": "F6"
+        },
+        "miercoles": {
+            "horario": "14:00-15:00",
+            "aula": "F6"
+        },
+        "jueves": {
+            "horario": "14:00-15:00",
+            "aula": "F6"
+        },
+        "viernes": {
+            "horario": "",
+            "aula": ""
+        }
+    }
 }

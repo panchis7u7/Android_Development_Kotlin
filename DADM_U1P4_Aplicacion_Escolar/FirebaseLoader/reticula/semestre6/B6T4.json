@@ -9,5 +9,27 @@
     "calificacion": "",
     "evaluacion": "",
     "regularizacion": "",
-    "Observaciones": ""
+    "observaciones": "",
+    "clases": {
+        "lunes": {
+            "horario": "12:00-13:00",
+            "aula": "F5"
+        },
+        "martes": {
+            "horario": "12:00-13:00",
+            "aula": "F5"
+        },
+        "miercoles": {
+            "horario": "12:00-13:00",
+            "aula": "F5"
+        },
+        "jueves": {
+            "horario": "12:00-13:00",
+            "aula": "F5"
+        },
+        "viernes": {
+            "horario": "",
+            "aula": ""
+        }
+    }
 }

@@ -9,5 +9,27 @@
     "calificacion": "",
     "evaluacion": "",
     "regularizacion": "",
-    "Observaciones": ""
+    "observaciones": "",
+    "clases": {
+        "lunes": {
+            "horario": "18:00-19:00",
+            "aula": "LIS"
+        },
+        "martes": {
+            "horario": "18:00-20:00",
+            "aula": "LIS"
+        },
+        "miercoles": {
+            "horario": "",
+            "aula": ""
+        },
+        "jueves": {
+            "horario": "18:00-20:00",
+            "aula": "LIS"
+        },
+        "viernes": {
+            "horario": "",
+            "aula": ""
+        }
+    }
 }

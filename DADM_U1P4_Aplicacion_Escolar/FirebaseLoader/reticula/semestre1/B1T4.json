@@ -9,5 +9,27 @@
     "calificacion": "83",
     "evaluacion": "Evaluacion Ordinaria Primera Vez",
     "regularizacion": "O1",
-    "Observaciones": "Curso Aprobado"
+    "observaciones": "Curso Aprobado",
+    "clases": {
+        "lunes": {
+            "horario": "19:00-20:00",
+            "aula": "F6"
+        },
+        "martes": {
+            "horario": "19:00-20:00",
+            "aula": "F6"
+        },
+        "miercoles": {
+            "horario": "19:00-20:00",
+            "aula": "F6"
+        },
+        "jueves": {
+            "horario": "",
+            "aula": ""
+        },
+        "viernes": {
+            "horario": "",
+            "aula": ""
+        }
+    }
 }
