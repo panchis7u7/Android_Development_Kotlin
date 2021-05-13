@@ -32,6 +32,11 @@ class Dashboard : AppCompatActivity() {
                 Alumno.semestre = (document.get("semestre") as Long).toInt()
             }
 
+        db.collection("carreras").document("ITICs").get()
+            .addOnSuccessListener { document ->
+                Alumno.semestresCarrera = (document.get("semestres")as Long).toInt()
+            }
+
         gridLayoutManager = GridLayoutManager(applicationContext, 2, LinearLayoutManager.VERTICAL, false)
         binding.mainRecyclerView.layoutManager = gridLayoutManager
         binding.mainRecyclerView.setHasFixedSize(true)

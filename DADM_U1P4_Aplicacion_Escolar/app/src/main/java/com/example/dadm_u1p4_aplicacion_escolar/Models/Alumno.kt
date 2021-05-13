@@ -17,5 +17,6 @@ data class Alumno(var nombre: String? = "",
 
     companion object {
         var semestre: Int = -1
+        var semestresCarrera: Int = -1
     }
 }

@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterCalificaciones
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterHorarios
+import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.ReporteSemestral
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityHorariosBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.core.Repo
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class Horarios : AppCompatActivity() {
 
@@ -30,30 +32,32 @@ class Horarios : AppCompatActivity() {
         var semana: MutableList<ReporteSemestral> = mutableListOf()
 
         db = FirebaseFirestore.getInstance()
-        db.collection("alumnos/${auth.currentUser.uid}/cursando").document("horarios").get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.data != null){
-                    var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
-                    var horarios: MutableList<Materia>
-                    for(dia in dias) {
-                        horarios = mutableListOf()
-                        var horario: List<HashMap<String,Any>> = (document.get(dia) as List<HashMap<String,Any>>)
-                        horario.map {
+
+        db.collection("alumnos/${auth.currentUser.uid}/materias")
+            .whereEqualTo("semestre_cursada", Alumno.semestre)
+            /*.orderBy("lunes['horario']", Query.Direction.ASCENDING)*/
+            .get().addOnSuccessListener { documents ->
+                var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
+                var horarios: MutableList<Materia> = mutableListOf()
+                for (dia in dias) {
+                documents.forEach { document ->
+                    horarios = mutableListOf()
+                        Log.d("materia", "${document}")
+                        var horario: String? = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                            .get(dia)?.get("horario")?.toString()
+                        if (horario!!.isNotEmpty()) {
                             horarios.add(Materia(
-                                aula = (it.get("aula") as String),
-                                clave = (it.get("clave") as String),
-                                grupo = (it.get("grupo") as String),
-                                horario = (it.get("horario") as String),
-                                materia = (it.get("materia") as String),
-                                profesor = (it.get("profesor") as String),
+                                horario = horario,
+                                aula = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                                    .get(dia)?.get("aula")?.toString(),
+                                grupo = (document.get("grupo") as String),
+                                profesor = (document.get("profesor") as String)
                             ))
                         }
-                        semana.add(ReporteSemestral(dia, horarios))
-                        horariosRecycler(semana)
                     }
-                } else {
-                    Log.d("Error", "Error: No such document")
+                    semana.add(ReporteSemestral(dia, horarios))
                 }
+                horariosRecycler(semana)
             }
     }
 

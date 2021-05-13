@@ -52,7 +52,7 @@ class Calificaciones : AppCompatActivity() {
                             creditos = (document.get("creditos") as Long),
                             calificacion = (document.get("calificacion") as String),
                             evaluacion = (document.get("evaluacion") as String),
-                            observaciones = (document.get("Observaciones") as String),
+                            observaciones = (document.get("observaciones") as String),
                             regularizacion = (document.get("regularizacion") as String),
                         ))
                         if(!((document.get("calificacion") as String) == "ACA")) {
@@ -67,7 +67,7 @@ class Calificaciones : AppCompatActivity() {
                     kardex[i-1].creditos = creditos
                     /*kardex.set(i-1, (ReporteSemestral("Agosto - Junio 2018", calificaciones,
                         promedio, creditos)))*/
-                    if (i == 5)
+                    if (i == Alumno.semestre-1)
                         calificacionesRecycler(kardex)
                 }
         }
