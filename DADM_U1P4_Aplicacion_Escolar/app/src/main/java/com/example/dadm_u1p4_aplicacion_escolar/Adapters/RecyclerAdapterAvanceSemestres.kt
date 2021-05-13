@@ -31,7 +31,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         var semestre: Semestre = semestres.get(position)
         holder.textViewSemestre.text = semestre.semestre
-        setCallItemRecycler(holder.recyclerViewMaterias, semestre.materias)
+        setCallItemRecycler(holder.recyclerViewMaterias, semestre.materias!!)
     }
 
     override fun getItemCount(): Int {

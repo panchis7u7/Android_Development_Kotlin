@@ -11,6 +11,7 @@ import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurricularBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -28,7 +29,33 @@ class AvanceCurricular : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        var semestres: MutableList<Semestre> = mutableListOf()
+        db = FirebaseFirestore.getInstance()
+
+        var semestres: MutableList<Semestre> = MutableList(9){
+                index -> Semestre("",null)
+        }
+
+        for (i in 1 .. 10) {
+            db.collection("alumnos/${auth.currentUser.uid}/materias")
+                .whereEqualTo("semestre", i)
+                .orderBy("clave", Query.Direction.ASCENDING)
+                .get().addOnSuccessListener { documents ->
+                    var materias = mutableListOf<Materia>()
+                    for (document in documents) {
+                        materias.add(Materia(
+                            aula = (document.get("aula") as String),
+                            clave = (document.get("clave") as String),
+                            materia = (document.get("materia") as String),
+                            calificacion = (document.get("calificacion") as String),
+                            regularizacion = (document.get("regularizacion") as String)
+                        ))
+                        semestres[i].materias = materias
+                        semestres[i].semestre = i.toString()
+                    }
+                    if(i == 9)
+                        semestresRecycler(semestres)
+                }
+        }
 
         /*
         db = FirebaseFirestore.getInstance()

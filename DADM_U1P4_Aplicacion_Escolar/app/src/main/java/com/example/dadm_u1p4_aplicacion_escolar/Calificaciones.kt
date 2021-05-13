@@ -61,8 +61,12 @@ class Calificaciones : AppCompatActivity() {
                         creditos += (document.get("creditos") as Long)
                     }
                     promedio /= noMaterias
-                    kardex.set(i-1, (ReporteSemestral("Agosto - Junio 2018", calificaciones,
-                        promedio, creditos)))
+                    kardex[i-1].materias = calificaciones
+                    kardex[i-1].periodo = "Agosto - Junio 2018"
+                    kardex[i-1].promedio = promedio
+                    kardex[i-1].creditos = creditos
+                    /*kardex.set(i-1, (ReporteSemestral("Agosto - Junio 2018", calificaciones,
+                        promedio, creditos)))*/
                     if (i == 5)
                         calificacionesRecycler(kardex)
                 }
