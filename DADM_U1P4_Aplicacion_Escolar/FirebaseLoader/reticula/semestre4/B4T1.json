@@ -9,5 +9,6 @@
     "calificacion": "95",
     "evaluacion": "Evaluacion Regularizacion Primera Vez",
     "regularizacion": "R1",
-    "observaciones": "Curso Aprobado"
+    "observaciones": "Curso Aprobado",
+    "dependencia": "B2T1"
 }

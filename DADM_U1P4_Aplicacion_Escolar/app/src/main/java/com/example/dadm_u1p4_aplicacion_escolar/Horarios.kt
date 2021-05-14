@@ -29,34 +29,35 @@ class Horarios : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        var semana: MutableList<ReporteSemestral> = mutableListOf()
-
         db = FirebaseFirestore.getInstance()
+
+        var semana: MutableList<ReporteSemestral> = mutableListOf()
 
         db.collection("alumnos/${auth.currentUser.uid}/materias")
             .whereEqualTo("semestre_cursada", Alumno.semestre)
-            .orderBy("lunes.horario", Query.Direction.ASCENDING)
+            /*.orderBy("clases", Query.Direction.ASCENDING)*/
             .get().addOnSuccessListener { documents ->
                 var dias: List<String> = listOf("lunes", "martes", "miercoles", "jueves", "viernes")
                 var horarios: MutableList<Materia> = mutableListOf()
                 for (dia in dias) {
                     horarios = mutableListOf()
                     documents.forEach { document ->
-                            var horario: String? = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                        var horario: String? =
+                            (document.get("clases") as HashMap<String, HashMap<String, Any>>)
                                 .get(dia)?.get("horario")?.toString()
-                            if (horario!!.isNotEmpty()) {
-                                horarios.add(Materia(
-                                    horario = horario,
-                                    aula = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
-                                        .get(dia)?.get("aula")?.toString(),
-                                    materia = (document.get("materia") as String),
-                                    grupo = (document.get("grupo") as String),
-                                    profesor = (document.get("profesor") as String)
-                                ))
-                            }
+                        if (horario!!.isNotEmpty()) {
+                            horarios.add(Materia(
+                                horario = horario,
+                                aula = (document.get("clases") as HashMap<String, HashMap<String, Any>>)
+                                    .get(dia)?.get("aula")?.toString(),
+                                materia = (document.get("materia") as String),
+                                grupo = (document.get("grupo") as String),
+                                profesor = (document.get("profesor") as String)
+                            ))
                         }
-                        semana.add(ReporteSemestral(dia.capitalize(), horarios))
                     }
+                    semana.add(ReporteSemestral(dia.capitalize(), horarios))
+                }
                 horariosRecycler(semana)
             }
     }
