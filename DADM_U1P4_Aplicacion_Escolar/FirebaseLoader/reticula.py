@@ -24,7 +24,7 @@ def load_json(file_path):
     with open(file_path, 'r') as f:
         return json.load(f)
 
-# Create all school subjects in a semester directory.
+# Create all school subjects in a directory.
 def populate_data_template(semestres, materias):
     for x in range(1, semestres+1):
         dir_path = DATA_PATH + '/semestre' + str(x) 
@@ -50,5 +50,5 @@ def main():
             doc_ref.add(data)
             print("File added: " + materia)
 
-if __name__ == "__main__":
+if __name__ == "__reticula__":
     main()
