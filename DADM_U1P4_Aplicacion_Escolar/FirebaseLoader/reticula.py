@@ -50,5 +50,5 @@ def main():
             doc_ref.add(data)
             print("File added: " + materia)
 
-if __name__ == "__reticula__":
+if __name__ == "__main__":
     main()

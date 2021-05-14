@@ -25,17 +25,17 @@ def load_json(file_path):
         return json.load(f)
 
 # Create all reinscription school subjects schedules in a directory.
-def populate_data_template(semestres, materias):
-    for x in range(1, semestres+1):
-        dir_path = DATA_PATH + '/semestre' + str(x) 
+def populate_data_template():
+    for dir in listdir("reticula"):
+        dir_path = DATA_PATH + '/' + dir
         os.mkdir(dir_path)
-        for y in range(1, materias+1):
-            open(dir_path + '/' + 'B'+str(x)+'T'+str(y)+".json", 'w+')
+        for materia in listdir("reticula" + '/' + dir):
+            open(dir_path + '/' + materia, 'w+')
 
 ###################################################################################
 
 def main():
-    populate_data_template(9, 6)
+    populate_data_template()
     #cred = credentials.Certificate(CERTIFICATE)
     #app = firebase_admin.initialize_app(cred)
     #store = firestore.client()
@@ -50,5 +50,5 @@ def main():
     #        doc_ref.add(data)
     #        print("File added: " + materia)
 
-if __name__ == "__reinscripcion__":
+if __name__ == "__main__":
     main()
