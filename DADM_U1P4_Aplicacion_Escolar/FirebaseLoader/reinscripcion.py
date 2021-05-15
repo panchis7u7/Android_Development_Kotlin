@@ -4,6 +4,7 @@
 import json
 import os
 import firebase_admin
+import random
 from os import listdir
 from firebase_admin import credentials, firestore, auth
 
@@ -30,8 +31,13 @@ def populate_data_template():
         dir_path = DATA_PATH + '/' + dir
         os.mkdir(dir_path)
         for materia in listdir("reticula" + '/' + dir):
-            open(dir_path + '/' + materia, 'w+')
-
+            mat = materia.split('.')
+            randnum = random.randint(1,3)
+            for num in range(1,randnum+1):
+                if(num == 1):
+                    open(dir_path + '/' + materia, 'w+')
+                elif (num == 2):
+                    open(dir_path + '/' + mat[0] + 'B' + '.json', 'w+')
 ###################################################################################
 
 def main():
