@@ -38,6 +38,7 @@ def populate_data_template():
                     open(dir_path + '/' + materia, 'w+')
                 elif (num == 2):
                     open(dir_path + '/' + mat[0] + 'B' + '.json', 'w+')
+                    
 ###################################################################################
 
 def main():
