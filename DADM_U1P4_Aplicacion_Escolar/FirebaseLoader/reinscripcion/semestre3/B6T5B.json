@@ -1,0 +1,9 @@
+{
+    "clave": "B6T5",
+    "materia": "Desarrollo Sustentable",
+    "profesor": "Chavez Jacobo Victor Manuel",
+    "semestre": 3,
+    "grupo": "B",
+    "clases": ["15:00-16:00", "15:00-16:00", "15:00-16:00", "", "15:00-16:00"],
+    "aula": ["K5", "K5", "K5", "", "K5"]
+}

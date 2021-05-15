@@ -1,0 +1,9 @@
+{
+    "clave": "B3TA",
+    "materia": "Electricidad y Magnetismo",
+    "profesor": "Calderon Cortez Javier",
+    "semestre": 3,
+    "grupo": "AA",
+    "clases": ["", "", "17:00-19:00", "", ""],
+    "aula": ["", "", "LF2", "", ""]
+}

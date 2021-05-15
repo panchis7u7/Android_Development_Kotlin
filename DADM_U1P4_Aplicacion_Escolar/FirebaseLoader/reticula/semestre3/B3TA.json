@@ -1,14 +1,14 @@
 {
-    "clave": "B3T5",
+    "clave": "B3TA",
     "materia": "Electricidad y Magnetismo",
-    "profesor": "Flores Tinoco Alma Lilia Deni",
+    "profesor": "Calderon Cortez Javier",
     "semestre": 3,
     "semestre_cursada": 2,
-    "grupo": "A",
-    "creditos": 4,
+    "grupo": "AB",
+    "creditos": 0,
     "calificacion": "100",
     "evaluacion": "Evaluacion Ordinaria Primera Vez",
     "regularizacion": "O1",
     "observaciones": "Curso Aprobado",
-    "clave_laboratorio": "B3TA"
+    "laboratorio": true
 }

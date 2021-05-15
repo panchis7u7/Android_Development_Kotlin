@@ -1,0 +1,9 @@
+{
+    "clave": "B3T3",
+    "materia": "Matematicas para la Toma de Desiciones",
+    "profesor": "Rios Ponce Juan",
+    "semestre": 3,
+    "grupo": "A",
+    "clases": ["15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00"],
+    "aula": ["F5", "F5", "F5", "F5", "F5"]
+}

@@ -1,0 +1,9 @@
+{
+    "clave": "B3T2",
+    "materia": "Estructura y Organizacion de Datos",
+    "profesor": "Alcaraz Chaves Jesus Eduardo",
+    "semestre": 3,
+    "grupo": "A",
+    "clases": ["14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00"],
+    "aula": ["LC2", "LC2", "LC2", "LC2", "F2"]
+}

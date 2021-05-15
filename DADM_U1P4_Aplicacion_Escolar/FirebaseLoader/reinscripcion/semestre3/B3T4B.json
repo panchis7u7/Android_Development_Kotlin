@@ -1,0 +1,9 @@
+{
+    "clave": "B3T4",
+    "materia": "Fundamentos de Base de Datos",
+    "profesor": "Villagomez Cardenas Salvador Jonathan",
+    "semestre": 3,
+    "grupo": "B",
+    "clases": ["11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00"],
+    "aula": ["LTW", "LTW", "LTW", "LTW", "F3"]
+}

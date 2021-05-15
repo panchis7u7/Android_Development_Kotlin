@@ -1,0 +1,9 @@
+{
+    "clave": "B3T5",
+    "materia": "Electricidad y Magnetismo",
+    "profesor": "Flores Tinoco Alma Lilia Deni",
+    "semestre": 3,
+    "grupo": "A",
+    "clases": ["18:00-19:00", "18:00-19:00", "", "", ""],
+    "aula": ["F5", "F5", "", "", ""]
+}

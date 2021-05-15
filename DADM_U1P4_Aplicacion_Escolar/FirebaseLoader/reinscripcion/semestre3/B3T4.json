@@ -1,0 +1,9 @@
+{
+    "clave": "B3T4",
+    "materia": "Fundamentos de Base de Datos",
+    "profesor": "Gallegos Perez Joxim",
+    "semestre": 3,
+    "grupo": "A",
+    "clases": ["16:00-17:00", "16:00-17:00", "16:00-17:00", "16:00-17:00", "16:00-17:00"],
+    "aula": ["LTW", "LTW", "F1", "LTW", "LTW"]
+}
