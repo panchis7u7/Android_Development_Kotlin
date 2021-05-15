@@ -10,26 +10,6 @@
     "evaluacion": "",
     "regularizacion": "",
     "observaciones": "",
-    "clases": {
-        "lunes": {
-            "horario": "11:00-12:00",
-            "aula": "F4"
-        },
-        "martes": {
-            "horario": "11:00-12:00",
-            "aula": "F4"
-        },
-        "miercoles": {
-            "horario": "11:00-12:00",
-            "aula": "F4"
-        },
-        "jueves": {
-            "horario": "11:00-12:00",
-            "aula": "F4"
-        },
-        "viernes": {
-            "horario": "11:00-12:00",
-            "aula": "LRD"
-        }
-    }
+    "horarios": ["11:00-12:00","11:00-12:00","11:00-12:00","11:00-12:00","11:00-12:00"],
+    "aulas": ["F4","F4","F4","F4","LRD"]
 }

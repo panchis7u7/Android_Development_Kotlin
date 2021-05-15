@@ -10,26 +10,6 @@
     "evaluacion": "Evaluacion Ordinaria Primera Vez",
     "regularizacion": "O1",
     "observaciones": "Curso Aprobado",
-    "clases": {
-        "lunes": {
-            "horario": "18:00-19:00",
-            "aula": "LC3"
-        },
-        "martes": {
-            "horario": "18:00-19:00",
-            "aula": "F6"
-        },
-        "miercoles": {
-            "horario": "18:00-19:00",
-            "aula": "F6"
-        },
-        "jueves": {
-            "horario": "18:00-19:00",
-            "aula": "LC3"
-        },
-        "viernes": {
-            "horario": "",
-            "aula": ""
-        }
-    }
+    "horarios": ["18:00-19:00","18:00-19:00","18:00-19:00","18:00-19:00",""],
+    "aulas": ["LC3", "F6", "F6", "LC3", ""]
 }

@@ -10,26 +10,6 @@
     "evaluacion": "Evaluacion Regularizacion Primera Vez",
     "regularizacion": "R1",
     "observaciones": "Curso Aprobado",
-    "clases": {
-        "lunes": {
-            "horario": "14:00-15:00",
-            "aula": "F6"
-        },
-        "martes": {
-            "horario": "14:00-15:00",
-            "aula": "F6"
-        },
-        "miercoles": {
-            "horario": "14:00-15:00",
-            "aula": "F6"
-        },
-        "jueves": {
-            "horario": "14:00-15:00",
-            "aula": "F6"
-        },
-        "viernes": {
-            "horario": "",
-            "aula": ""
-        }
-    }
+    "horarios": ["14:00-15:00","14:00-15:00","14:00-15:00","14:00-15:00",""],
+    "aulas": ["F6","F6","F6","F6",""]
 }

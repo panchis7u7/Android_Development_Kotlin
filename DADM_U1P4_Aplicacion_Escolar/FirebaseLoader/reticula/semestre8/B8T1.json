@@ -11,26 +11,6 @@
     "regularizacion": "",
     "observaciones": "",
     "dependencia": "B5T3",
-    "clases": {
-        "lunes": {
-            "horario": "8:00-10:00",
-            "aula": "LRD"
-        },
-        "martes": {
-            "horario": "8:00-9:00",
-            "aula": "F3"
-        },
-        "miercoles": {
-            "horario": "8:00-9:00",
-            "aula": "F3"
-        },
-        "jueves": {
-            "horario": "",
-            "aula": ""
-        },
-        "viernes": {
-            "horario": "8:00-9:00",
-            "aula": "F3"
-        }
-    }
+    "horarios": ["8:00-10:00","8:00-10:00","8:00-10:00","","8:00-10:00"],
+    "aulas": ["LRD","F3","F3","","F3"]
 }
