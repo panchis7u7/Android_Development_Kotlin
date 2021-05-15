@@ -4,6 +4,6 @@
     "profesor": "Villagomez Cardenas Salvador Jonathan",
     "semestre": 3,
     "grupo": "B",
-    "clases": ["11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00"],
-    "aula": ["LTW", "LTW", "LTW", "LTW", "F3"]
+    "horarios": ["11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00"],
+    "aulas": ["LTW", "LTW", "LTW", "LTW", "F3"]
 }

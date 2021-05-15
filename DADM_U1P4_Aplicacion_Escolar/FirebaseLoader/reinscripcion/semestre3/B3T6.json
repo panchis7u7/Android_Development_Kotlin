@@ -1,0 +1,9 @@
+{
+    "clave": "B3T6",
+    "materia": "Administracion Gerencial",
+    "profesor": "Lopez Torres Joel",
+    "semestre": 3,
+    "grupo": "A",
+    "horarios": ["17:00-18:00", "17:00-18:00", "17:00-18:00", "17:00-18:00", ""],
+    "aulas": ["F5", "F5", "F5", "F5", ""]
+}

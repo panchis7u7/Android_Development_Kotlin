@@ -4,6 +4,6 @@
     "profesor": "Calderon Cortez Javier",
     "semestre": 3,
     "grupo": "AA",
-    "clases": ["", "", "17:00-19:00", "", ""],
-    "aula": ["", "", "LF2", "", ""]
+    "horarios": ["", "", "17:00-19:00", "", ""],
+    "aulas": ["", "", "LF2", "", ""]
 }

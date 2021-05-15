@@ -4,6 +4,6 @@
     "profesor": "Flores Tinoco Alma Lilia Deni",
     "semestre": 3,
     "grupo": "A",
-    "clases": ["18:00-19:00", "18:00-19:00", "", "", ""],
-    "aula": ["F5", "F5", "", "", ""]
+    "horarios": ["18:00-19:00", "18:00-19:00", "", "", ""],
+    "aulas": ["F5", "F5", "", "", ""]
 }
