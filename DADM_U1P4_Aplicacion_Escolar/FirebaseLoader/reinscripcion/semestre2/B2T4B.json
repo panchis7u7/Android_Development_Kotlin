@@ -1,0 +1,9 @@
+{
+    "clave": "B2T4",
+    "materia": "Algebra Lineal",
+    "profesor": "Felix Escalona Samuel",
+    "semestre": 2,
+    "grupo": "B",
+    "clases": ["8:00-9:00", "8:00-9:00", "8:00-9:00", "8:00-9:00", "8:00-9:00"],
+    "aula": ["F5", "F5", "F5", "F5", "F5"]
+}

@@ -1,0 +1,9 @@
+{
+    "clave": "B2T1",
+    "materia": "Calculo Integral",
+    "profesor": "Robledo Torrecilla Eva Maria",
+    "semestre": 2,
+    "grupo": "B",
+    "clases": ["7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00"],
+    "aula": ["F5", "F5", "F5", "F5", "F5"]
+}

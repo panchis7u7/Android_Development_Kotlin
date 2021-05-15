@@ -1,0 +1,9 @@
+{
+    "clave": "B1T6",
+    "materia": "Fundamentos de Investigacion",
+    "profesor": "Blancas Martinez Monica Adriana",
+    "semestre": 1,
+    "grupo": "A",
+    "clases": ["14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00", ""],
+    "aula": ["F6", "F6", "F6", "F6", ""]
+}

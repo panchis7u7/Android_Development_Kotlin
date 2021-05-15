@@ -1,0 +1,9 @@
+{
+    "clave": "B2T4",
+    "materia": "Algebra Lineal",
+    "profesor": "Manzo Mora Reynaldo",
+    "semestre": 2,
+    "grupo": "A",
+    "clases": ["9:00-10:00", "9:00-10:00", "9:00-10:00", "9:00-10:00", "9:00-10:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}

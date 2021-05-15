@@ -1,0 +1,9 @@
+{
+    "clave": "B8T5",
+    "profesor": "Martinez Rosiles Carol Aidee",
+    "materia": "Negocios Electronicos II",
+    "semestre": 8,
+    "grupo": "A",
+    "clases": ["16:00-17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00"],
+    "aula": ["F3", "F3", "F3", "F3", "F3"]
+}

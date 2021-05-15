@@ -1,0 +1,9 @@
+{
+    "clave": "B1T5",
+    "materia": "Taller de Etica",
+    "profesor": "Hernandez Esquivel Jose Omar",
+    "semestre": 1,
+    "grupo": "A",
+    "clases": ["15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00", ""],
+    "aula": ["F6", "F6", "F6", "F6", ""]
+}

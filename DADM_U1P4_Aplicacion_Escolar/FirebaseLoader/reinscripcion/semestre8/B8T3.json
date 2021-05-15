@@ -1,0 +1,9 @@
+{
+    "clave": "B8T3",
+    "profesor": "Ortiz Ortiz Octavio Salud",
+    "materia": "Taller de Investigacion II",
+    "semestre": 8,
+    "grupo": "A",
+    "clases": ["15:00-16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00"],
+    "aula": ["F3", "F3", "F3", "F3", "F3"]
+}

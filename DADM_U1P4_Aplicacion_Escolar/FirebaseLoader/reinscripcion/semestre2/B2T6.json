@@ -1,0 +1,9 @@
+{
+    "clave": "B2T6",
+    "materia": "Contabilidad y Costos",
+    "profesor": "Duran Ibarra Miguel Alberto",
+    "semestre": 2,
+    "grupo": "A",
+    "clases": ["7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}

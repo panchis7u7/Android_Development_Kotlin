@@ -1,0 +1,9 @@
+{
+    "clave": "B1T4",
+    "materia": "Introduccion a las TIC's",
+    "profesor": "Hernandez Esquivel Jose Omar",
+    "semestre": 1,
+    "grupo": "A",
+    "clases": ["19:00-20:00", "19:00-20:00", "19:00-20:00", "", ""],
+    "aula": ["F6", "F6", "F6", "", ""]
+}

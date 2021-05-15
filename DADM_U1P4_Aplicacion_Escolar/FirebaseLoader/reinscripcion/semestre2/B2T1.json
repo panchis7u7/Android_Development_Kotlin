@@ -1,0 +1,9 @@
+{
+    "clave": "B2T1",
+    "materia": "Calculo Integral",
+    "profesor": "Atienzo de la Cruz Mora Lizeth",
+    "semestre": 2,
+    "grupo": "A",
+    "clases": ["8:00-9:00", "8:00-9:00", "8:00-9:00", "8:00-9:00", "8:00-9:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}

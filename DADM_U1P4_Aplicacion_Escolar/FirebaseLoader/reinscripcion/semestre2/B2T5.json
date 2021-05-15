@@ -1,0 +1,9 @@
+{
+    "clave": "B2T5",
+    "materia": "Probabilidad y Estadistica",
+    "profesor": "Rodriguez Baltazar Margarita",
+    "semestre": 2,
+    "grupo": "A",
+    "clases": ["10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}

@@ -1,0 +1,9 @@
+{
+    "clave": "B8T2",
+    "profesor": "Vaca Astorga Jordi",
+    "materia": "Auditoria en Tecnologias de la Informacion",
+    "semestre": 8,
+    "grupo": "A",
+    "clases": ["14:00-15:00", "14:00:15:00", "14:00:15:00", "14:00:15:00", "14:00:15:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}

@@ -1,0 +1,9 @@
+{
+    "clave": "B2T2",
+    "materia": "Programacion Orientada a Objetos",
+    "profesor": "Guzman Marines Raymundo",
+    "semestre": 2,
+    "grupo": "A",
+    "clases": ["11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00", "11:00-12:00"],
+    "aula": ["LC2", "LC2", "F6", "LC2", "LC3"]
+}

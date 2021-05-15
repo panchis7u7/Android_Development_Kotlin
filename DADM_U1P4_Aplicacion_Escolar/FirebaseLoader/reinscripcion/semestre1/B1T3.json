@@ -1,0 +1,9 @@
+{
+    "clave": "B1T3",
+    "materia": "Matematicas Discretas I",
+    "profesor": "Jimenez Murillo Jose Alfredo",
+    "semestre": 1,
+    "grupo": "A",
+    "clases": ["16:00-17:00", "16:00-17:00", "16:00-17:00", "16:00-17:00", "16:00-17:00"],
+    "aula": ["F6", "F6", "F6", "F6", "F6"]
+}
