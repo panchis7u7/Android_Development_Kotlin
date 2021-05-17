@@ -22,6 +22,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.xerial:sqlite-jdbc:3.34.0")
 }
 
 tasks.withType<KotlinCompile> {
