@@ -1,2 +1,1 @@
--- @BLOCK
-DELETE FROM alumnos WHERE id_alumno == 2;
+select * from alumnos;

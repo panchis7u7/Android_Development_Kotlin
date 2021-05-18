@@ -14,14 +14,14 @@ CREATE TABLE IF NOT EXISTS alumnos (
 
 CREATE TABLE IF NOT EXISTS estados(
     id_estado INTEGER PRIMARY KEY,
-    estado VARCHAR(20),
+    estado VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS municipios(
     id_municipio INTEGER PRIMARY KEY,
     municipio VARCHAR(30),
     id_estado INTEGER,
-    FOREIGN KEY id_estado REFERENCES estados(id_estado) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS colonias(
@@ -29,19 +29,24 @@ CREATE TABLE IF NOT EXISTS colonias(
     colonia VARCHAR(25),
     id_municipio INTEGER,
     codigo_postal CHAR(8),
-    FOREIGN KEY id_municipio REFERENCES municipios(id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS domicilios(
     id_domicilio INTEGER NOT NULL,
     domicilio VARCHAR(30),
     id_colonia INTEGER,
-    FOREIGN KEY id_colonia REFERENCES colonias(id_colonia) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (id_colonia) REFERENCES colonias (id_colonia) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS profesores(
+    id_profesor INTEGER PRIMARY KEY,
+    nombre VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas(
     id_asignatura INTEGER PRIMARY KEY,
-    asignatura VARCHAR(50)
+    asignatura VARCHAR(50),
     clave CHAR(6) UNIQUE NOT NULL,
     grupo CHAR(2) NOT NULL,
     creditos INTEGER NOT NULL,
@@ -52,33 +57,37 @@ CREATE TABLE IF NOT EXISTS asignaturas(
     horario_miercoles CHAR(14),
     horario_jueves CHAR(14),
     horario_viernes CHAR(14),
-    id_calificacion INTEGER PRIMARY KEY,
     calificacion INTEGER,
     regularizacion CHAR(4),
-    evaluacion CHAR(35)
+    evaluacion CHAR(35),
     observaciones CHAR(20),
-    FOREIGN KEY id_profesor REFERENCES profesores(id_profesor) ON UPDATE CASCADE ON DELETE CASCADE    
-);
-
-CREATE TABLE IF NOT EXISTS profesores(
-    id_profesor INTEGER PRIMARY KEY,
-    profesor VARCHAR(50),
+    id_profesor INTEGER,
+    FOREIGN KEY (id_profesor) REFERENCES profesores (id_profesor) ON UPDATE CASCADE ON DELETE CASCADE    
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas_alumnos(
     id_asignatura INTEGER,
     id_alumno INTEGER,
-    FOREIGN KEY id_asignatura REFERENCES asignaturas(id_asignatura) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY id_alumno REFERENCES alumnos(id_alumno) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_asignatura) REFERENCES asignaturas (id_asignatura) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_alumno) REFERENCES alumnos (id_alumno) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_asignatura, id_alumno)
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas_profesores(
     id_asignatura INTEGER,
     id_profesor INTEGER,
-    FOREIGN KEY id_asignatura REFERENCES asignaturas(id_asignatura) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY id_profesor REFERENCES profesores(id_profesor) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_asignatura) REFERENCES asignaturas (id_asignatura) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_profesor) REFERENCES profesores (id_profesor) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (id_asignatura, id_profesor)
 );
 
 -- @BLOCK
+DROP TABLE IF EXISTS domicilios;
+DROP TABLE IF EXISTS colonias;
+DROP TABLE IF EXISTS municipios;
+DROP TABLE IF EXISTS estados;
+DROP TABLE IF EXISTS asignaturas_alumnos;
+DROP TABLE IF EXISTS asignaturas_profesores;
+DROP TABLE IF EXISTS asignaturas;
+DROP TABLE IF EXISTS profesores;
+DROP TABLE IF EXISTS alumnos;
