@@ -11,6 +11,6 @@ import com.scholar.SGE.model.Alumnos
 class AlumnosController(private val service: AlumnosService){
 
     @GetMapping
-    fun getAlumnos(): Collection<Alumnos> = service.alumnos
+    fun getAlumnos(): Collection<Alumnos> = service.getAlumnos()
 
 }
