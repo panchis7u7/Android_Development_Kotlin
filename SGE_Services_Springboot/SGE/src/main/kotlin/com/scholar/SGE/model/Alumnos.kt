@@ -1,5 +1,10 @@
 package com.scholar.SGE.model
 
+import javax.persistence.Entity
+import javax.persistence.Table
+
+@Entity
+@Table(name = "alumnos")
 data class Alumnos(
     val id_alumno: Int,
     val no_control: String,
