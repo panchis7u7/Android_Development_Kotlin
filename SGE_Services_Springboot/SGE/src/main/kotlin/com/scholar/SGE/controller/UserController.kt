@@ -1,4 +1,4 @@
-package com.scholar.SGE.Controllers
+package com.scholar.SGE.controller
 
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.GetMapping
