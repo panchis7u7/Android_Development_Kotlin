@@ -1,3 +1,4 @@
+-- @BLOCK
 CREATE TABLE IF NOT EXISTS alumnos (
     id_alumno INTEGER UNIQUE NOT NULL,
     no_control CHAR(10) UNIQUE NOT NULL,
@@ -51,20 +52,17 @@ CREATE TABLE IF NOT EXISTS asignaturas(
     horario_miercoles CHAR(14),
     horario_jueves CHAR(14),
     horario_viernes CHAR(14),
+    id_calificacion INTEGER PRIMARY KEY,
+    calificacion INTEGER,
+    regularizacion CHAR(4),
+    evaluacion CHAR(35)
+    observaciones CHAR(20),
     FOREIGN KEY id_profesor REFERENCES profesores(id_profesor) ON UPDATE CASCADE ON DELETE CASCADE    
 );
 
 CREATE TABLE IF NOT EXISTS profesores(
     id_profesor INTEGER PRIMARY KEY,
     profesor VARCHAR(50),
-);
-
-CREATE TABLE IF NOT EXISTS calificaciones(
-    id_calificacion INTEGER PRIMARY KEY,
-    calificacion INTEGER,
-    regularizacion CHAR(4),
-    evaluacion CHAR(35)
-    observaciones CHAR(20),
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas_alumnos(
@@ -83,10 +81,4 @@ CREATE TABLE IF NOT EXISTS asignaturas_profesores(
     PRIMARY KEY (id_asignatura, id_profesor)
 );
 
-INSERT INTO alumnos VALUES(
-        1,"18121699",
-        "l18121699@morelia.tecnm.mx",
-        "MARC000614HMNDDRA5",
-        "2000-06-14","4464841125","M",
-        "www.google.com"
-    );
+-- @BLOCK

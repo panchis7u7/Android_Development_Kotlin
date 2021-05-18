@@ -15,3 +15,6 @@
 local.properties
 key.json
 google-services.json
+prueba.db
+Scholar.session.sql
+inserts-scholar.sql
