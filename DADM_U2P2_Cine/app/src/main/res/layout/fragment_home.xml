@@ -12,4 +12,11 @@
             android:orientation="horizontal"
             tools:listitem="@layout/recycler_categoria_layout"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_pelicula_vertical_layout"/>
+
 </LinearLayout>

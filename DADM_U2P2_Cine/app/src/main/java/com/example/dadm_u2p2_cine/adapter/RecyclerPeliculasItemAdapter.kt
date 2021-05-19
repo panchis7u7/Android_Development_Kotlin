@@ -13,7 +13,7 @@ import com.example.dadm_u2p2_cine.module.GlideApp
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 
-class RecyclerPeliculasItemAdapter(val context: Context, val peliculas: List<Pelicula>):
+class RecyclerPeliculasItemAdapter(val context: Context, val peliculas: List<Pelicula>, val layout: Int):
 RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
 
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -27,7 +27,7 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_pelicula_horizontal_layout, parent, false))
+        return ItemHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false))
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {

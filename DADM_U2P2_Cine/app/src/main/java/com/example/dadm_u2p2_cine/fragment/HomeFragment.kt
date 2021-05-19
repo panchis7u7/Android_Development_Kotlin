@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentHomeBinding
 import com.example.dadm_u2p2_cine.model.Categoria
@@ -24,10 +25,12 @@ class HomeFragment: Fragment() {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.HORIZONTAL)
+        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(
+            requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout)
 
-        binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.VERTICAL)
+        binding.recyclerViewRecommended.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(
+            requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout)
 
         return  binding.root
     }
