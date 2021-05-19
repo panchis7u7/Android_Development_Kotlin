@@ -21,8 +21,12 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
         val textViewTitulo: TextView = itemView.findViewById(R.id.textViewTitulo)
         val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
 
-        init {
 
+
+        init {
+            itemView.setOnClickListener {
+                val position: Int = bindingAdapterPosition
+            }
         }
     }
 
