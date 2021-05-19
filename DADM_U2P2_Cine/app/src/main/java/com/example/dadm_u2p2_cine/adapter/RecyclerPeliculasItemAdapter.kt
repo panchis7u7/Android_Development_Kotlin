@@ -1,11 +1,9 @@
 package com.example.dadm_u2p2_cine.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +12,6 @@ import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.module.GlideApp
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
-import com.squareup.picasso.Picasso
 
 class RecyclerPeliculasItemAdapter(val context: Context, val peliculas: List<Pelicula>):
 RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
@@ -30,7 +27,7 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_pelicula_layout, parent, false))
+        return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_pelicula_horizontal_layout, parent, false))
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {

@@ -26,6 +26,9 @@ class HomeFragment: Fragment() {
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.HORIZONTAL)
 
+        binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.VERTICAL)
+
         return  binding.root
     }
 

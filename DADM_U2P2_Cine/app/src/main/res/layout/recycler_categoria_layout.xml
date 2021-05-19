@@ -37,6 +37,6 @@
         android:id="@+id/recyclerViewItemPeliculas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_pelicula_layout"/>
+        tools:listitem="@layout/item_pelicula_horizontal_layout"/>
 
 </LinearLayout>
