@@ -11,7 +11,7 @@ import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.model.Categoria
 import com.example.dadm_u2p2_cine.model.Pelicula
 
-class RecyclerPeliculasAdapter(val context: Context, val categorias: List<Categoria>):
+class RecyclerPeliculasAdapter(val context: Context, val categorias: List<Categoria>, val orientation: Int):
 RecyclerView.Adapter<RecyclerPeliculasAdapter.ItemHolder>(){
 
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -36,7 +36,7 @@ RecyclerView.Adapter<RecyclerPeliculasAdapter.ItemHolder>(){
     override fun getItemCount(): Int = categorias.size
 
     private fun setCallItemsRecycler(recyclerView: RecyclerView, peliculas: List<Pelicula>){
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(context, orientation, false)
         recyclerView.adapter = RecyclerPeliculasItemAdapter(context, peliculas)
     }
 

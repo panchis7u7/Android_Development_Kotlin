@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
@@ -21,6 +22,7 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ShapeableImageView = itemView.findViewById(R.id.imageViewPelicula)
         val textViewTitulo: TextView = itemView.findViewById(R.id.textViewTitulo)
+        val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
 
         init {
 
@@ -42,6 +44,7 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
             .setAllCorners(CornerFamily.ROUNDED, 20f)
             .build()
         holder.textViewTitulo.text = pelicula.titulo
+        holder.ratingBar.rating = pelicula.rating!!
     }
 
     override fun getItemCount(): Int = peliculas.size
