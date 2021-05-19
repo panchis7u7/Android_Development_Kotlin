@@ -7,6 +7,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -20,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center|left">
+        android:paddingLeft="20dp"
+        android:gravity="left">
 
         <com.google.android.material.button.MaterialButton
             style="@style/AppTheme.RoundedCornerMaterialButton"
@@ -53,7 +54,8 @@
             android:isIndicator="false"
             android:numStars="5"
             android:rating="3.5"
-            android:stepSize="0.5"/>
+            android:stepSize="0.5"
+            android:isScrollContainer="false"/>
 
     </LinearLayout>
 
