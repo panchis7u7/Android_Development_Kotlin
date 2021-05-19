@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasItemAdapter
 import com.example.dadm_u2p2_cine.databinding.ActivityMainBinding
+import com.example.dadm_u2p2_cine.fragment.HomeFragment
 import com.example.dadm_u2p2_cine.model.Categoria
 import com.example.dadm_u2p2_cine.model.Pelicula
 
@@ -19,22 +20,10 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         //setContentView(R.layout.activity_main)
         setContentView(binding.root)
+        supportFragmentManager.findFragmentById(R.id.fragmentHome) as HomeFragment
+
         binding.bottomNavigationView.background = null
         binding.bottomAppBar.background = null
-
-        binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(this, populateList())
-    }
-
-    private fun populateList(): MutableList<Categoria>{
-        var peliculas: MutableList<Pelicula> = mutableListOf()
-        peliculas.add(Pelicula("Godzilla vs Kong", "https://m.media-amazon.com/images/M/MV5BZmYzMzU4NjctNDI0Mi00MGExLWI3ZDQtYzQzYThmYzc2ZmNjXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"))
-        peliculas.add(Pelicula("John Wick 3", "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/John_Wick_Chapter_3_Parabellum.png/220px-John_Wick_Chapter_3_Parabellum.png"))
-        peliculas.add(Pelicula("a", "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"))
-
-        var categorias: MutableList<Categoria> = mutableListOf()
-        categorias.add(Categoria("Popular", peliculas))
-        return categorias
     }
 
     override fun onDestroy() {
