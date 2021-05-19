@@ -12,6 +12,7 @@ import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.module.GlideApp
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.shape.CornerFamily
 import com.squareup.picasso.Picasso
 
 class RecyclerPeliculasItemAdapter(val context: Context, val peliculas: List<Pelicula>):
@@ -32,10 +33,14 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val pelicula: Pelicula = peliculas.get(position)
-        Log.d("url", "${pelicula.imagen}------------------------------------------------")
         GlideApp.with(holder.itemView)
             .load(pelicula.imagen)
+            .dontAnimate()
             .into(holder.imageView)
+        holder.imageView.shapeAppearanceModel = holder.imageView.shapeAppearanceModel
+            .toBuilder()
+            .setAllCorners(CornerFamily.ROUNDED, 20f)
+            .build()
         holder.textViewTitulo.text = pelicula.titulo
     }
 
