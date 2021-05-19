@@ -1,0 +1,2 @@
+rootProject.name = "DADM_U2P2_Cine"
+include ':app'
