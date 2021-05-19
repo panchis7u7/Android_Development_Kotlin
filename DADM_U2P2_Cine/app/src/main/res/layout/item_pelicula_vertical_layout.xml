@@ -25,14 +25,14 @@
         android:gravity="left">
 
         <com.google.android.material.button.MaterialButton
-            style="@style/AppTheme.RoundedCornerMaterialButton"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            app:cornerRadius="18dp"
+            android:backgroundTint="@color/category"
+            android:layout_width="105dp"
+            android:layout_height="45dp"
             android:padding="0dp"
             android:text="Drama"
             android:textSize="14sp"
-            android:textAllCaps="false"
-            app:strokeColor="@color/category"/>
+            android:textAllCaps="false"/>
 
         <TextView
             android:id="@+id/textViewTitulo"

@@ -54,9 +54,9 @@ class HomeFragment: Fragment() {
     private fun populateCategorias(): MutableList<String>{
         var categorias: MutableList<String> = mutableListOf()
 
-        categorias.add("Action")
-        categorias.add("Adventure")
-        categorias.add("Drama")
+        categorias.add(String(Character.toChars(0x1F60E)) + " Accion")
+        categorias.add(String(Character.toChars(0x1F920)) + " Aventura")
+        categorias.add(String(Character.toChars(0x263A)) + " Drama")
         return categorias
     }
 }
