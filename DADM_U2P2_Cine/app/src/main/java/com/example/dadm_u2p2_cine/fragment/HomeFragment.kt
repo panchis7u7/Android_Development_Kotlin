@@ -41,10 +41,18 @@ class HomeFragment: Fragment() {
 
     private fun populateList(): MutableList<Categoria>{
         var peliculas: MutableList<Pelicula> = mutableListOf()
-        peliculas.add(Pelicula("Godzilla vs Kong", "https://m.media-amazon.com/images/M/MV5BZmYzMzU4NjctNDI0Mi00MGExLWI3ZDQtYzQzYThmYzc2ZmNjXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg", 3f))
-        peliculas.add(Pelicula("John Wick 3", "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/John_Wick_Chapter_3_Parabellum.png/220px-John_Wick_Chapter_3_Parabellum.png", 2.5f))
-        peliculas.add(Pelicula("Avenges: Endgame", "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&path-prefix=es", 4f))
-        peliculas.add(Pelicula("Spiderman 3", "https://static.wikia.nocookie.net/spiderman/images/2/2c/Spider-Man_3_Poster.png/revision/latest?cb=20200612203333&path-prefix=es", 4.5f))
+        peliculas.add(Pelicula("Godzilla vs Kong",
+            "https://m.media-amazon.com/images/M/MV5BZmYzMzU4NjctNDI0Mi00MGExLWI3ZDQtYzQzYThmYzc2ZmNjXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+            "https://i.blogs.es/3a35be/godzilla-kong/1366_2000.jpeg",3f))
+        peliculas.add(Pelicula("John Wick 3",
+            "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/John_Wick_Chapter_3_Parabellum.png/220px-John_Wick_Chapter_3_Parabellum.png",
+            "https://cinergiaonline.com/wp-content/uploads/2019/05/John-Wick-3-Parabellum.jpg",2.5f))
+        peliculas.add(Pelicula("Avenges: Endgame",
+            "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&path-prefix=es",
+            "https://i0.wp.com/hipertextual.com/wp-content/uploads/2019/04/hipertextual-mejores-trailers-semana-avengers-endgame-rey-leon-godzilla-2-2019907932.jpg?fit=1600%2C900&ssl=1",4f))
+        peliculas.add(Pelicula("Spiderman 3",
+            "https://static.wikia.nocookie.net/spiderman/images/2/2c/Spider-Man_3_Poster.png/revision/latest?cb=20200612203333&path-prefix=es",
+            "https://pbs.twimg.com/media/E0zwjEAXEAE71G2.jpg",4.5f))
 
         var categorias: MutableList<Categoria> = mutableListOf()
         categorias.add(Categoria("Popular", peliculas))

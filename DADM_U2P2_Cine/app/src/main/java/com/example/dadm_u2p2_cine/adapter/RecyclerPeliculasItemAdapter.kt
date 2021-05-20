@@ -2,6 +2,7 @@ package com.example.dadm_u2p2_cine.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,13 +24,10 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
         val textViewTitulo: TextView = itemView.findViewById(R.id.textViewTitulo)
         val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
 
-
-
         init {
             itemView.setOnClickListener {
-                val position: Int = bindingAdapterPosition
                 itemView.context.startActivity(Intent(context, PeliculaActivity::class.java)
-                    .putExtra("titulo", "${peliculas.get(position).titulo}"))
+                    .putExtra("pelicula", peliculas.get(bindingAdapterPosition)))
             }
         }
     }
@@ -42,7 +40,6 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
         val pelicula: Pelicula = peliculas.get(position)
         GlideApp.with(holder.itemView)
             .load(pelicula.imagen)
-            .dontAnimate()
             .into(holder.imageView)
         holder.imageView.shapeAppearanceModel = holder.imageView.shapeAppearanceModel
             .toBuilder()
