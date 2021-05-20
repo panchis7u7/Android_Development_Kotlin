@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,8 +14,8 @@
             android:id="@+id/imageViewCover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:scaleType="centerCrop"
+            android:layout_weight="1"
             android:adjustViewBounds="true"
             android:src="@drawable/avengers" />
 
@@ -60,6 +60,7 @@
                 android:layout_height="45dp"
                 android:fontFamily="@font/googlesans_bold"
                 android:text="Drama"
+                android:textColor="@color/white"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:backgroundTint="@color/category"
@@ -84,6 +85,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textViewTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Avengers Endgame"
@@ -101,7 +103,7 @@
                     android:textSize="16sp"/>
 
                 <RatingBar
-                    android:id="@+id/ratingBar"
+                    android:id="@+id/ratingBarPelicula"
                     android:layout_marginTop="5dp"
                     style="@android:style/Widget.Material.RatingBar.Small"
                     android:layout_width="wrap_content"
@@ -143,11 +145,12 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonReservar"
                     android:layout_width="wrap_content"
-                    android:layout_height="75dp"
+                    android:layout_height="65dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/googlesans_bold"
+                    android:textColor="@color/white"
                     android:text="Reservacion"
                     android:backgroundTint="@color/category"
                     android:paddingLeft="30dp"

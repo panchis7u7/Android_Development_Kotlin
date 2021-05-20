@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
-import com.example.dadm_u2p2_cine.`interface`.IOnItemClick
+import com.example.dadm_u2p2_cine.`interface`.IMovieClick
 import com.example.dadm_u2p2_cine.model.Categoria
 import com.example.dadm_u2p2_cine.model.Pelicula
 
@@ -16,7 +16,7 @@ open class RecyclerPeliculasAdapter(val context: Context,
                                     val categorias: List<Categoria>,
                                     val orientation: Int,
                                     val layout: Int,
-                                    val clickListener: IOnItemClick):
+                                    val clickListener: IMovieClick):
 RecyclerView.Adapter<RecyclerPeliculasAdapter.ItemHolder>(){
 
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
