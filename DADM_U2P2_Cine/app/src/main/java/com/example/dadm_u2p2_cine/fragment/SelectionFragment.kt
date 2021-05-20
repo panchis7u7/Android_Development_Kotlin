@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
+import com.example.dadm_u2p2_cine.adapter.RecyclerCategoriasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerSeatAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentSeatSelectionBinding
+import com.example.dadm_u2p2_cine.model.Categoria
 import com.example.dadm_u2p2_cine.model.SeatRow
 
 class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
@@ -27,12 +29,40 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter = RecyclerSeatAdapter(requireContext(), populate())
 
+        binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.recyclerViewDates.adapter = RecyclerCategoriasAdapter(requireContext(), populateDates())
+
+        binding.recyclerViewTimes.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.recyclerViewTimes.adapter = RecyclerCategoriasAdapter(requireContext(), populateTimes())
+
         return binding.root
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun populateDates(): MutableList<String> {
+        var dates: MutableList<String> = mutableListOf()
+
+        dates.add("11 Marzo")
+        dates.add("12 Marzo")
+        dates.add("13 Marzo")
+        dates.add("14 Marzo")
+
+        return dates
+    }
+
+    private fun populateTimes(): MutableList<String> {
+        var times: MutableList<String> = mutableListOf()
+
+        times.add("12:30")
+        times.add("15:00")
+        times.add("17:30")
+        times.add("20:00")
+
+        return times
     }
 
     private fun populate(): MutableList<SeatRow>{
