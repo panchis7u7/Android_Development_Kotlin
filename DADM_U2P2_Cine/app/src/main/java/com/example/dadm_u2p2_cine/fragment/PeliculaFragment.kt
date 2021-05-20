@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.databinding.FragmentPeliculaBinding
 import com.example.dadm_u2p2_cine.module.GlideApp
@@ -40,6 +41,10 @@ class PeliculaFragment: Fragment(R.layout.fragment_pelicula) {
                     }
                 }
             }
+        }
+
+        binding.buttonReservar.setOnClickListener {
+            findNavController().navigate(R.id.action_peliculaFragment_to_selectionFragment)
         }
 
         return binding.root

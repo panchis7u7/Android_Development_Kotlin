@@ -23,5 +23,16 @@
         <action
             android:id="@+id/action_peliculaFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_peliculaFragment_to_selectionFragment"
+            app:destination="@id/selectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectionFragment"
+        android:name="com.example.dadm_u2p2_cine.fragment.SelectionFragment"
+        android:label="SelectionFragment" >
+        <action
+            android:id="@+id/action_selectionFragment_to_peliculaFragment"
+            app:destination="@id/peliculaFragment" />
     </fragment>
 </navigation>
