@@ -43,12 +43,13 @@
                 app:menu="@menu/menu_bottom_navigation"
                 app:itemIconSize="18sp"
                 android:layout_marginEnd="16dp"
+                app:itemIconTint="@color/bottom_nav_color"
+                app:itemTextColor="@color/bottom_nav_color"
                 android:background="@android:color/transparent"
                 app:labelVisibilityMode="unlabeled"/>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

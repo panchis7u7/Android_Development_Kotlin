@@ -35,7 +35,8 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         binding.recyclerViewCategorias.adapter = RecyclerCategoriasAdapter(requireContext(), populateCategorias())
 
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout,
+        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(
+            requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout,
             object : IMovieClick {
                 override fun onItemClick(pelicula: Pelicula) {
                     stateFlow.setMovie(pelicula)
@@ -44,7 +45,8 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
             })
 
         binding.recyclerViewRecommended.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout,
+        binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(
+            requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout,
             object : IMovieClick {
                 override fun onItemClick(pelicula: Pelicula) {
                     stateFlow.setMovie(pelicula)
