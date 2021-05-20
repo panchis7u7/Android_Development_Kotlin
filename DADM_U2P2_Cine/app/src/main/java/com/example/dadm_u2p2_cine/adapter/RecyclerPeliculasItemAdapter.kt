@@ -8,15 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.PeliculaActivity
 import com.example.dadm_u2p2_cine.R
+import com.example.dadm_u2p2_cine.`interface`.IOnItemClick
 import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.module.GlideApp
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 
-class RecyclerPeliculasItemAdapter(val context: Context, val peliculas: List<Pelicula>, val layout: Int):
+class RecyclerPeliculasItemAdapter(val context: Context,
+                                            val peliculas: List<Pelicula>,
+                                            val layout: Int,
+                                            val clickListener: IOnItemClick):
 RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
 
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -25,9 +30,10 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
         val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
 
         init {
-            itemView.setOnClickListener {
-                itemView.context.startActivity(Intent(context, PeliculaActivity::class.java)
-                    .putExtra("pelicula", peliculas.get(bindingAdapterPosition)))
+            itemView.setOnClickListener() {
+                /*itemView.context.startActivity(Intent(context, PeliculaActivity::class.java)
+                    .putExtra("pelicula", peliculas.get(bindingAdapterPosition)))*/
+                clickListener.onItemClick(bindingAdapterPosition)
             }
         }
     }
@@ -50,5 +56,4 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
     }
 
     override fun getItemCount(): Int = peliculas.size
-
 }

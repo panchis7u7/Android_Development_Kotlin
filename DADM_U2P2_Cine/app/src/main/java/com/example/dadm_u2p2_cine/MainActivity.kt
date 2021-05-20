@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         //setContentView(R.layout.activity_main)
         setContentView(binding.root)
-        supportFragmentManager.findFragmentById(R.id.fragmentHome) as HomeFragment
+        //supportFragmentManager.findFragmentById(R.id.fragmentHome) as HomeFragment
 
         binding.bottomNavigationView.background = null
         binding.bottomAppBar.background = null

@@ -27,6 +27,9 @@ class PeliculaActivity : AppCompatActivity() {
             .dontAnimate()
             .into(binding.imageViewCover)
         binding.ratingBarPelicula.rating = pelicula?.rating!!
+        binding.buttonReservar.setOnClickListener {
+
+        }
     }
 
     override fun onDestroy() {

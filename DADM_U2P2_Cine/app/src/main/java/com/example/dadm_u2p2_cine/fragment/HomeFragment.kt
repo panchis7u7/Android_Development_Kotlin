@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
+import com.example.dadm_u2p2_cine.`interface`.IOnItemClick
 import com.example.dadm_u2p2_cine.adapter.RecyclerCategoriasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentHomeBinding
 import com.example.dadm_u2p2_cine.model.Categoria
 import com.example.dadm_u2p2_cine.model.Pelicula
 
-class HomeFragment: Fragment() {
+class HomeFragment: Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -29,12 +31,20 @@ class HomeFragment: Fragment() {
         binding.recyclerViewCategorias.adapter = RecyclerCategoriasAdapter(requireContext(), populateCategorias())
 
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(
-            requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout)
+        binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout,
+            object : IOnItemClick {
+                override fun onItemClick(position: Int) {
+                    findNavController().navigate(R.id.action_homeFragment_to_peliculaFragment)
+                }
+            })
 
         binding.recyclerViewRecommended.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(
-            requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout)
+        binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout,
+            object : IOnItemClick {
+                override fun onItemClick(position: Int) {
+                    findNavController().navigate(R.id.action_homeFragment_to_peliculaFragment)
+                }
+            })
 
         return  binding.root
     }

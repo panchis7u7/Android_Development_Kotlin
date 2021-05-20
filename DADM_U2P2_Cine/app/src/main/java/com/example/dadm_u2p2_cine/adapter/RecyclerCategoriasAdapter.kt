@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
 import com.google.android.material.button.MaterialButton
 
-class RecyclerCategoriasAdapter(val context: Context, val categorias: List<String>):
+open class RecyclerCategoriasAdapter(val context: Context, val categorias: List<String>):
 RecyclerView.Adapter<RecyclerCategoriasAdapter.ItemHolder>(){
 
     inner class ItemHolder(var itemView: View): RecyclerView.ViewHolder(itemView){
