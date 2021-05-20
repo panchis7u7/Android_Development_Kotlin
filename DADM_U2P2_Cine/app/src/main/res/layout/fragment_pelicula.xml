@@ -18,8 +18,7 @@
             android:adjustViewBounds="true"
             android:layout_weight="1"
             android:background="@color/white"
-            android:src="@drawable/avengers"
-            />
+            android:src="@drawable/avengers" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,15 +34,28 @@
         android:background="@drawable/pelicula_description_background"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="bottom">
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:borderWidth="0dp"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/icon_play"
+                android:tint="@color/white"
+                android:backgroundTint="@color/grey"
+                android:layout_centerVertical="true"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
@@ -54,10 +66,11 @@
                 android:paddingRight="20dp"
                 android:backgroundTint="@color/category"
                 android:textAllCaps="false"
-                android:textSize="16dp"
+                android:textSize="16sp"
+                android:layout_alignParentBottom="true"
                 app:cornerRadius="22dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,7 +82,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -89,11 +103,24 @@
                     android:textColor="@color/grey"
                     android:textSize="16sp"/>
 
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_marginTop="5dp"
+                    style="@android:style/Widget.Material.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:progressTint="#ffd700"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:rating="3.5"
+                    android:stepSize="0.5"
+                    android:isScrollContainer="false"/>
+
                 <TextView
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Synopsis"
+                    android:text="Sinopsis"
                     android:textSize="22sp"
                     android:fontFamily="@font/googlesans_bold"
                     android:textColor="@color/white"/>
@@ -103,14 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
                     android:fontFamily="@font/googlesans_medium"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
-pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus.
-Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-in pretium orci vestibulum eget. Class aptent taciti sociosqu ad litora torquent
-per conubia nostra, per inceptos himenaeos. Duis pharetra luctus lacus ut
-vestibulum. Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar vitae dolor.
-Integer eu nibh at nisi ullamcorper sagittis id vel leo. Integer feugiat
-faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc."
+                    android:text="@string/loremIpsum"
                     android:textColor="#787878"
                     android:lineSpacingExtra="4dp"
                     android:textSize="17sp"/>
@@ -136,7 +156,7 @@ faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc."
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
                     android:textAllCaps="false"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     app:cornerRadius="22dp" />
 
             </RelativeLayout>
