@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
         //supportFragmentManager.findFragmentById(R.id.fragmentHome) as HomeFragment
 
-        setFullScreen()
+        //setFullScreen()
         binding.bottomNavigationView.background = null
         binding.bottomAppBar.background = null
     }
