@@ -1,12 +1,14 @@
 package com.example.dadm_u2p2_cine.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dadm_u2p2_cine.PeliculaActivity
 import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.module.GlideApp
@@ -26,6 +28,8 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
         init {
             itemView.setOnClickListener {
                 val position: Int = bindingAdapterPosition
+                itemView.context.startActivity(Intent(context, PeliculaActivity::class.java)
+                    .putExtra("titulo", "${peliculas.get(position).titulo}"))
             }
         }
     }
