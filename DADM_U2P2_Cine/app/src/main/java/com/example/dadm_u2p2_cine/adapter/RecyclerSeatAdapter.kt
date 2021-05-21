@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.model.SeatRow
 
-class RecyclerSeatAdapter(val context: Context, var filas: List<SeatRow>):
+abstract class RecyclerSeatAdapter(val context: Context, var filas: List<SeatRow>):
 RecyclerView.Adapter<RecyclerSeatAdapter.ItemHolder>(){
 
     inner class ItemHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -26,13 +26,19 @@ RecyclerView.Adapter<RecyclerSeatAdapter.ItemHolder>(){
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val seat: SeatRow = filas.get(position)
-        setCallItemsRecycler(holder.recyclerViewSeatItems, seat.row)
+        setCallItemsRecycler(holder.recyclerViewSeatItems, seat.row, seat.rowID)
     }
 
     override fun getItemCount(): Int = filas.size
 
-    private fun setCallItemsRecycler(recyclerView: RecyclerView, seats: List<AppCompatButton>){
+    private fun setCallItemsRecycler(recyclerView: RecyclerView, seats: List<String>, row: Int){
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        recyclerView.adapter = RecyclerSeatItemAdapter(context, seats)
+        recyclerView.adapter = object : RecyclerSeatItemAdapter(context, seats, row) {
+            override fun selectedSeats(row: Int, asiento: String, seatPos: Int) {
+                selectedRow(row, asiento, seatPos)
+            }
+        }
     }
+
+    abstract fun selectedRow(row: Int, seat: String, seatPos: Int)
 }

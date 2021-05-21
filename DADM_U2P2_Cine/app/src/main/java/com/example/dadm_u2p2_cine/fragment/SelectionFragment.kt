@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.example.dadm_u2p2_cine.model.SeatRow
 class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var _binding: FragmentSeatSelectionBinding? = null
     private val binding get() = _binding!!
+    private var boletos: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +29,13 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         _binding = FragmentSeatSelectionBinding.inflate(layoutInflater)
 
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.recyclerViewSelection.adapter = RecyclerSeatAdapter(requireContext(), populate())
+        binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
+            override fun selectedRow(row: Int, seat: String, seatPos: Int) {
+                boletos++
+                binding.textViewCantidad.text = "${boletos} asientos"
+                binding.textViewPrecio.text = "$${boletos*100}.00"
+            }
+        }
 
         binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         binding.recyclerViewDates.adapter = RecyclerCategoriasAdapter(requireContext(), populateDates())
@@ -68,54 +76,54 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private fun populate(): MutableList<SeatRow>{
         var seats: MutableList<SeatRow> = mutableListOf()
 
-        var row1: MutableList<AppCompatButton> = mutableListOf()
-        row1.add(AppCompatButton(requireContext()))
-        row1.add(AppCompatButton(requireContext()))
-        row1.add(AppCompatButton(requireContext()))
-        row1.add(AppCompatButton(requireContext()))
-        row1.add(AppCompatButton(requireContext()))
+        var row1: MutableList<String> = mutableListOf()
+        row1.add("1")
+        row1.add("2")
+        row1.add("3")
+        row1.add("4")
+        row1.add("5")
 
-        var row2: MutableList<AppCompatButton> = mutableListOf()
-        row2.add(AppCompatButton(requireContext()))
-        row2.add(AppCompatButton(requireContext()))
-        row2.add(AppCompatButton(requireContext()))
-        row2.add(AppCompatButton(requireContext()))
-        row2.add(AppCompatButton(requireContext()))
-        row2.add(AppCompatButton(requireContext()))
+        var row2: MutableList<String> = mutableListOf()
+        row2.add("1")
+        row2.add("2")
+        row2.add("3")
+        row2.add("4")
+        row2.add("5")
+        row2.add("6")
 
-        var row3: MutableList<AppCompatButton> = mutableListOf()
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
-        row3.add(AppCompatButton(requireContext()))
+        var row3: MutableList<String> = mutableListOf()
+        row3.add("1")
+        row3.add("2")
+        row3.add("3")
+        row3.add("4")
+        row3.add("5")
+        row3.add("5")
+        row3.add("7")
 
-        var row4: MutableList<AppCompatButton> = mutableListOf()
-        row4.add(AppCompatButton(requireContext()))
-        row4.add(AppCompatButton(requireContext()))
-        row4.add(AppCompatButton(requireContext()))
-        row4.add(AppCompatButton(requireContext()))
-        row4.add(AppCompatButton(requireContext()))
-        row4.add(AppCompatButton(requireContext()))
+        var row4: MutableList<String> = mutableListOf()
+        row4.add("1")
+        row4.add("2")
+        row4.add("3")
+        row4.add("4")
+        row4.add("5")
+        row4.add("6")
 
-        var row5: MutableList<AppCompatButton> = mutableListOf()
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
-        row5.add(AppCompatButton(requireContext()))
+        var row5: MutableList<String> = mutableListOf()
+        row5.add("1")
+        row5.add("2")
+        row5.add("3")
+        row5.add("4")
+        row5.add("5")
+        row5.add("6")
+        row5.add("7")
 
-        var row6: MutableList<AppCompatButton> = mutableListOf()
-        row6.add(AppCompatButton(requireContext()))
-        row6.add(AppCompatButton(requireContext()))
-        row6.add(AppCompatButton(requireContext()))
-        row6.add(AppCompatButton(requireContext()))
-        row6.add(AppCompatButton(requireContext()))
-        row6.add(AppCompatButton(requireContext()))
+        var row6: MutableList<String> = mutableListOf()
+        row6.add("1")
+        row6.add("2")
+        row6.add("3")
+        row6.add("4")
+        row6.add("5")
+        row6.add("6")
 
         seats.add(SeatRow(1, row1))
         seats.add(SeatRow(2, row2))

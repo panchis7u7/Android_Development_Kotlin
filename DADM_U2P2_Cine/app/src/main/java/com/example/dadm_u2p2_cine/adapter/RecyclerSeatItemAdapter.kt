@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
 
 
-class RecyclerSeatItemAdapter(val context: Context, val seats: List<AppCompatButton>) :
+abstract class RecyclerSeatItemAdapter(val context: Context, val seats: List<String>, val row: Int) :
 RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -18,6 +18,7 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
         init {
             itemView.setOnClickListener {
                 it.background.setTint(context.getColor(R.color.category))
+                selectedSeats(row, seats.get(bindingAdapterPosition), bindingAdapterPosition)
             }
         }
     }
@@ -32,4 +33,5 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
 
     override fun getItemCount(): Int = seats.size
 
+    abstract fun selectedSeats(row: Int, asiento: String, seatPos: Int)
 }
