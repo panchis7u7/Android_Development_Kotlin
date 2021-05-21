@@ -20,6 +20,9 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var _binding: FragmentSeatSelectionBinding? = null
     private val binding get() = _binding!!
     private var boletos: Int = 0
+    private var price: Int = 0
+    private var date: String? = ""
+    private var time: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,24 +38,47 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
                 if(seatStates[row-1][seat] == 0) {
                     boletos++
                     binding.textViewCantidad.text = "${boletos} asientos"
-                    binding.textViewPrecio.text = "$${boletos * 100}.00"
+                    price = boletos * 100
+                    binding.textViewPrecio.text = "$${price}.00"
                 } else {
                     boletos--
                     binding.textViewCantidad.text = "${boletos} asientos"
-                    binding.textViewPrecio.text = "$${boletos * 100}.00"
+                    price = boletos * 100
+                    binding.textViewPrecio.text = "$${price}.00"
                 }
+                if(boletos > 0 && date != "" && time != "")
+                    binding.buttonComprar.isEnabled = true
             }
         }
 
-        binding.buttonComprar.setOnClickListener {
+        binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.recyclerViewDates.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateDates()){
+            override fun onButtonSelected(content: String) {
+                date = content
+                if(boletos > 0 && date != "" && time != "")
+                    binding.buttonComprar.isEnabled = true
+            }
 
         }
 
-        binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewDates.adapter = RecyclerCategoriasAdapter(requireContext(), populateDates())
-
         binding.recyclerViewTimes.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewTimes.adapter = RecyclerCategoriasAdapter(requireContext(), populateTimes())
+        binding.recyclerViewTimes.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateTimes()){
+            override fun onButtonSelected(content: String) {
+                time = content
+                if(boletos > 0 && date != "" && time != "")
+                    binding.buttonComprar.isEnabled = true
+            }
+
+        }
+
+        binding.buttonComprar.setOnClickListener {
+            Toast.makeText(requireContext(), """
+                Boletos: ${boletos},
+                Horario: ${date},
+                Hora: ${time},
+                Precio: ${price}
+            """.trimIndent(), Toast.LENGTH_LONG).show()
+        }
 
         return binding.root
     }

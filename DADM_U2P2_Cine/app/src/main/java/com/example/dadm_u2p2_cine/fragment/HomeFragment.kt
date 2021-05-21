@@ -32,7 +32,12 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
         binding.recyclerViewCategorias.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewCategorias.adapter = RecyclerCategoriasAdapter(requireContext(), populateCategorias())
+        binding.recyclerViewCategorias.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateCategorias()){
+            override fun onButtonSelected(content: String) {
+
+            }
+
+        }
 
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(
