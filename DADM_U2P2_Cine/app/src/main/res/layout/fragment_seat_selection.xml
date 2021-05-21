@@ -136,6 +136,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:textAllCaps="false"
+                android:enabled="false"
                 android:textSize="14sp"
                 app:cornerRadius="22dp" />
 

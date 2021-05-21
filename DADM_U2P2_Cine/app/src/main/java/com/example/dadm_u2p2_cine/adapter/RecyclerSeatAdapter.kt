@@ -31,14 +31,14 @@ RecyclerView.Adapter<RecyclerSeatAdapter.ItemHolder>(){
 
     override fun getItemCount(): Int = filas.size
 
-    private fun setCallItemsRecycler(recyclerView: RecyclerView, seats: List<String>, row: Int){
+    private fun setCallItemsRecycler(recyclerView: RecyclerView, seats: List<Int>, row: Int){
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = object : RecyclerSeatItemAdapter(context, seats, row) {
-            override fun selectedSeats(row: Int, asiento: String, seatPos: Int) {
-                selectedRow(row, asiento, seatPos)
+            override fun selectedSeats(row: Int, seat: Int, seatStates: Array<IntArray>) {
+                selectedRow(row, seat, seatStates)
             }
         }
     }
 
-    abstract fun selectedRow(row: Int, seat: String, seatPos: Int)
+    abstract fun selectedRow(row: Int, seat: Int, seatStates: Array<IntArray>)
 }

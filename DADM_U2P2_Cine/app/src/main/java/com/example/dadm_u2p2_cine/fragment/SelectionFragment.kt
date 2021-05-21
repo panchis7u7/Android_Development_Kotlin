@@ -30,11 +30,22 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
 
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
-            override fun selectedRow(row: Int, seat: String, seatPos: Int) {
-                boletos++
-                binding.textViewCantidad.text = "${boletos} asientos"
-                binding.textViewPrecio.text = "$${boletos*100}.00"
+            override fun selectedRow(row: Int, seat: Int, seatStates: Array<IntArray>) {
+                //Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_LONG).show()
+                if(seatStates[row-1][seat] == 0) {
+                    boletos++
+                    binding.textViewCantidad.text = "${boletos} asientos"
+                    binding.textViewPrecio.text = "$${boletos * 100}.00"
+                } else {
+                    boletos--
+                    binding.textViewCantidad.text = "${boletos} asientos"
+                    binding.textViewPrecio.text = "$${boletos * 100}.00"
+                }
             }
+        }
+
+        binding.buttonComprar.setOnClickListener {
+
         }
 
         binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -76,54 +87,54 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private fun populate(): MutableList<SeatRow>{
         var seats: MutableList<SeatRow> = mutableListOf()
 
-        var row1: MutableList<String> = mutableListOf()
-        row1.add("1")
-        row1.add("2")
-        row1.add("3")
-        row1.add("4")
-        row1.add("5")
+        var row1: MutableList<Int> = mutableListOf()
+        row1.add(1)
+        row1.add(2)
+        row1.add(3)
+        row1.add(4)
+        row1.add(5)
 
-        var row2: MutableList<String> = mutableListOf()
-        row2.add("1")
-        row2.add("2")
-        row2.add("3")
-        row2.add("4")
-        row2.add("5")
-        row2.add("6")
+        var row2: MutableList<Int> = mutableListOf()
+        row2.add(1)
+        row2.add(2)
+        row2.add(3)
+        row2.add(4)
+        row2.add(5)
+        row2.add(6)
 
-        var row3: MutableList<String> = mutableListOf()
-        row3.add("1")
-        row3.add("2")
-        row3.add("3")
-        row3.add("4")
-        row3.add("5")
-        row3.add("5")
-        row3.add("7")
+        var row3: MutableList<Int> = mutableListOf()
+        row3.add(1)
+        row3.add(2)
+        row3.add(3)
+        row3.add(4)
+        row3.add(5)
+        row3.add(6)
+        row3.add(7)
 
-        var row4: MutableList<String> = mutableListOf()
-        row4.add("1")
-        row4.add("2")
-        row4.add("3")
-        row4.add("4")
-        row4.add("5")
-        row4.add("6")
+        var row4: MutableList<Int> = mutableListOf()
+        row4.add(1)
+        row4.add(2)
+        row4.add(3)
+        row4.add(4)
+        row4.add(5)
+        row4.add(6)
 
-        var row5: MutableList<String> = mutableListOf()
-        row5.add("1")
-        row5.add("2")
-        row5.add("3")
-        row5.add("4")
-        row5.add("5")
-        row5.add("6")
-        row5.add("7")
+        var row5: MutableList<Int> = mutableListOf()
+        row5.add(1)
+        row5.add(2)
+        row5.add(3)
+        row5.add(4)
+        row5.add(5)
+        row5.add(6)
+        row5.add(7)
 
-        var row6: MutableList<String> = mutableListOf()
-        row6.add("1")
-        row6.add("2")
-        row6.add("3")
-        row6.add("4")
-        row6.add("5")
-        row6.add("6")
+        var row6: MutableList<Int> = mutableListOf()
+        row6.add(1)
+        row6.add(2)
+        row6.add(3)
+        row6.add(4)
+        row6.add(5)
+        row6.add(6)
 
         seats.add(SeatRow(1, row1))
         seats.add(SeatRow(2, row2))
