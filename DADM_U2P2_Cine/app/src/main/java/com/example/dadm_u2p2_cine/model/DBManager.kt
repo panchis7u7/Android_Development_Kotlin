@@ -30,16 +30,31 @@ class DBManager(context: Context,
                 titulo TEXT NOT NULL, 
                 imagen TEXT NOT NULL, 
                 cover TEXT NOT NULL, 
-                rating INT NOT NULL
+                rating INT NOT NULL,
+                director TEXT NOT NULL,
+                duracion TEXT NOT NULL,
+                genero TEXT NOT NULL,
+                sinopsis TEXT NOT NULL
             );
             
             CREATE TABLE fechaspeliculas (
-                id_pelicula INTEGER, 
-                id_fecha INTEGER, 
+                id_pelicula INTEGER NOT NULL, 
+                id_fecha INTEGER NOT NULL, 
                 PRIMARY KEY (id_pelicula, id_fecha), 
                 FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE, 
                 FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE
             );
+            
+            CREATE TABLE compras (
+                id_compra INTEGER PRIMARY KEY NOT NULL,
+                total REAL NOT NULL,
+                noAsientos INTEGER,
+                asientos TEXT,
+                departamento TEXT NOT NULL,
+                id_pelicula INTEGER,
+                FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE
+            );
+            
             """.trimIndent()
 
         db?.let {
@@ -52,14 +67,17 @@ class DBManager(context: Context,
     @Throws
     fun agregar(pelicula: Pelicula, horarios: List<List<String>>){
         val db = writableDatabase
-        var values = ContentValues()
-        values.put()
-        db.insert("""INSERT INTO peliculas VALUES (
-            |'${pelicula.titulo}', 
-            |'${pelicula.imagen}', 
-            |'${pelicula.cover}', 
-            |${pelicula.rating})""".trimMargin())
-        db.close()
-        val cursor: Cursor =
+        var peliculaValues = ContentValues()
+        peliculaValues.put("titulo", pelicula.titulo)
+        peliculaValues.put("imagen", pelicula.imagen)
+        peliculaValues.put("cover", pelicula.cover)
+        peliculaValues.put("rating", pelicula.rating)
+        peliculaValues.put("director", pelicula.director)
+        peliculaValues.put("duracion", pelicula.duracion)
+        peliculaValues.put("genero", pelicula.genero)
+        peliculaValues.put("sinopsis", pelicula.sinopsis)
+        val id = db.insert("peliculas", "", peliculaValues)
+
+        var horariosValues = ContentValues()
     }
 }

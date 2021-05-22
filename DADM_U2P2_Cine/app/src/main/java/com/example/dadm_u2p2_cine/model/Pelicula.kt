@@ -7,5 +7,9 @@ data class Pelicula(val titulo: String? = "",
                     val imagen: String? = "",
                     val cover: String? = "",
                     val rating: Float? = 0f,
+                    val director: String? ="",
+                    val duracion: String? = "",
+                    val genero: String? = "",
+                    val sinopsis: String? = "",
                     val fechas: Array<Array<String>>? = null) {
 }
