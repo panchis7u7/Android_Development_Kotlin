@@ -140,8 +140,41 @@ class DBManager(context: Context,
     }
 
     @Throws
-    fun getHorariosPelicula(idPelicula: Int): List<List<String>>{
+    fun getMovieDates(idPelicula: Int): List<String> {
         val db = readableDatabase
+        val result: MutableList<String> = mutableListOf()
 
+        val sql = """
+            SELECT fecha FROM peliculas AS p 
+            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
+            INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha 
+            WHERE p.id_pelicula = ${idPelicula};
+        """.trimIndent()
+
+        val cursor = db.rawQuery(sql, null)
+        while (cursor.moveToNext()) {
+            result.add(cursor.getString(0))
+        }
+
+        return result
+    }
+
+    @Throws
+    fun getMovieSchedulesOnDate(idPelicula: Int, date: String): List<String> {
+        val db = readableDatabase
+        val result: HashMap<String, List<String>> = hashMapOf()
+
+        val sql = """
+            SELECT fecha, horario FROM peliculas AS p 
+            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula}  
+            INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha 
+            INNER JOIN fechashorarios as fh ON fh.id_fecha =f.id_fecha 
+            INNER JOIN horarios as h ON h.id_horario = fh.id_horario 
+            WHERE p.id_pelicula = ${idPelicula};
+        """.trimIndent()
+        val cursor = db.rawQuery(sql, null)
+        while (cursor.moveToNext()) {
+            result.put(cursor.getString(0), )
+        }
     }
 }
