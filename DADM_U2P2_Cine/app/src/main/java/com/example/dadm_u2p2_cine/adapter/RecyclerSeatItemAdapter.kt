@@ -25,7 +25,7 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
                 } else {
                     it.background.setTint(context.getColor(R.color.buttonCategory))
                     selectedSeats(row, bindingAdapterPosition, seatStates)
-                    seatStates[row - 1][bindingAdapterPosition] = 1
+                    seatStates[row - 1][bindingAdapterPosition] = 0
                 }
             }
         }
@@ -36,7 +36,6 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.buttonSeat.background.setTint(context.getColor(R.color.buttonCategory))
     }
 
     override fun getItemCount(): Int = seats.size
