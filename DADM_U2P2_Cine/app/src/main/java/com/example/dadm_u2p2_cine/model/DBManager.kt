@@ -11,15 +11,13 @@ class DBManager(context: Context,
     override fun onCreate(db: SQLiteDatabase?) {
         val sql = """
             CREATE TABLE compras (
-            id_pelicula INTEGER PRIMARY KEY NOT NULL,
-            asientos TEXT NOT NULL,
-            fecha TEXT NOT NULL,
-            hora TEXT NOT NULL,
+            id_pelicula INTEGER PRIMARY KEY NOT NULL, 
+            asientos TEXT NOT NULL, 
+            fecha TEXT NOT NULL, 
+            hora TEXT NOT NULL, 
             precio INT NOT NULL
             )""".trimIndent()
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
-    }
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 }
