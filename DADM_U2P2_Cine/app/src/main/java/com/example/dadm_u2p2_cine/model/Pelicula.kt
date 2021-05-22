@@ -3,7 +3,8 @@ package com.example.dadm_u2p2_cine.model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Pelicula(val titulo: String? = "",
+data class Pelicula(val id_pelicula: Int? = 0,
+                    val titulo: String? = "",
                     val imagen: String? = "",
                     val cover: String? = "",
                     val rating: Float? = 0f,

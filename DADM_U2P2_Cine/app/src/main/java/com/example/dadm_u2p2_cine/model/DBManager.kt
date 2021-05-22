@@ -55,6 +55,19 @@ class DBManager(context: Context,
                 FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE
             );
             
+            INSERT INTO horarios VALUES ("9:00")
+            INSERT INTO horarios VALUES ("10:00")
+            INSERT INTO horarios VALUES ("11:00")
+            INSERT INTO horarios VALUES ("12:00")
+            INSERT INTO horarios VALUES ("13:00")
+            INSERT INTO horarios VALUES ("14:00")
+            INSERT INTO horarios VALUES ("15:00")
+            INSERT INTO horarios VALUES ("16:00")
+            INSERT INTO horarios VALUES ("17:00")
+            INSERT INTO horarios VALUES ("18:00")
+            INSERT INTO horarios VALUES ("19:00")
+            INSERT INTO horarios VALUES ("20:00")
+            
             """.trimIndent()
 
         db?.let {
@@ -77,7 +90,33 @@ class DBManager(context: Context,
         peliculaValues.put("genero", pelicula.genero)
         peliculaValues.put("sinopsis", pelicula.sinopsis)
         val id = db.insert("peliculas", "", peliculaValues)
+    }
 
-        var horariosValues = ContentValues()
+    @Throws
+    fun getPeliculas(): List<Pelicula> {
+        val db = readableDatabase
+        val result: MutableList<Pelicula> = mutableListOf()
+
+        val cursor = db.rawQuery("SELECT * FROM peliculas", null)
+        while (cursor.moveToNext()) {
+            result.add(Pelicula(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getFloat(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(7),
+                    null))
+        }
+        return result
+    }
+
+    @Throws
+    fun getHorariosPelicula(idPelicula: Int): List<List<String>>{
+        val db = readableDatabase
+
     }
 }
