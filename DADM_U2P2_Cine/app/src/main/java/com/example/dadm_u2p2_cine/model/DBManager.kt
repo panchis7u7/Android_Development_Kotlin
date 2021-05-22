@@ -103,21 +103,6 @@ class DBManager(context: Context,
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 
     @Throws
-    fun agregar(pelicula: Pelicula, horarios: List<List<String>>){
-        val db = writableDatabase
-        var peliculaValues = ContentValues()
-        peliculaValues.put("titulo", pelicula.titulo)
-        peliculaValues.put("imagen", pelicula.imagen)
-        peliculaValues.put("cover", pelicula.cover)
-        peliculaValues.put("rating", pelicula.rating)
-        peliculaValues.put("director", pelicula.director)
-        peliculaValues.put("duracion", pelicula.duracion)
-        peliculaValues.put("genero", pelicula.genero)
-        peliculaValues.put("sinopsis", pelicula.sinopsis)
-        val id = db.insert("peliculas", "", peliculaValues)
-    }
-
-    @Throws
     fun getPeliculas(): List<Pelicula> {
         val db = readableDatabase
         val result: MutableList<Pelicula> = mutableListOf()
@@ -162,19 +147,22 @@ class DBManager(context: Context,
     @Throws
     fun getMovieSchedulesOnDate(idPelicula: Int, date: String): List<String> {
         val db = readableDatabase
-        val result: HashMap<String, List<String>> = hashMapOf()
+        val result: MutableList<String> = mutableListOf()
 
         val sql = """
-            SELECT fecha, horario FROM peliculas AS p 
-            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula}  
+            SELECT horario FROM peliculas AS p 
+            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
             INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha 
             INNER JOIN fechashorarios as fh ON fh.id_fecha =f.id_fecha 
             INNER JOIN horarios as h ON h.id_horario = fh.id_horario 
-            WHERE p.id_pelicula = ${idPelicula};
+            WHERE p.id_pelicula = ${idPelicula} AND f.fecha IN ("${date}");
         """.trimIndent()
+
         val cursor = db.rawQuery(sql, null)
         while (cursor.moveToNext()) {
-            result.put(cursor.getString(0), )
+            result.add(cursor.getString(0))
         }
+
+        return result
     }
 }

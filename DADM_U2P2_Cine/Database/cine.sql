@@ -108,6 +108,12 @@ use cine;
             INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha
             WHERE p.id_pelicula = 1;
             
+            SELECT horario FROM peliculas AS p
+            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
+            INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha
+            INNER JOIN fechashorarios as fh ON fh.id_fecha =f.id_fecha
+            INNER JOIN horarios as h ON h.id_horario = fh.id_horario
+            WHERE p.id_pelicula = 1 AND f.fecha IN ("12 Marzo");
             
             SELECT p.id_pelicula, titulo, imagen, cover, rating, director, duracion, genero, sinopsis, fecha, horario FROM peliculas AS p
             INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = p.id_pelicula
