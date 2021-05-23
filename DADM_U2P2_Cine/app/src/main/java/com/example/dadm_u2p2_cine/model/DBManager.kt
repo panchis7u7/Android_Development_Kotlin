@@ -159,7 +159,7 @@ class DBManager(val context: Context,
         val result: MutableList<String> = mutableListOf()
 
         val sql = """
-            SELECT fecha FROM peliculas AS p 
+            SELECT DISTINCT fecha FROM peliculas AS p 
             INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
             INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario 
             INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha 

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
@@ -14,7 +16,12 @@ import com.example.dadm_u2p2_cine.adapter.RecyclerCategoriasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerSeatAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentSeatSelectionBinding
 import com.example.dadm_u2p2_cine.model.Categoria
+import com.example.dadm_u2p2_cine.model.DBManager
+import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.model.SeatRow
+import com.example.dadm_u2p2_cine.module.GlideApp
+import com.example.dadm_u2p2_cine.stateflow.MovieStateFlow
+import kotlinx.coroutines.flow.collect
 
 class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var _binding: FragmentSeatSelectionBinding? = null
@@ -23,6 +30,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var price: Int = 0
     private var date: String? = ""
     private var time: String? = ""
+    private var idPelicula: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +38,9 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSeatSelectionBinding.inflate(layoutInflater)
+
+        val db = DBManager(requireContext(), "cine", null, 1)
+        idPelicula = arguments?.getInt("id")
 
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
@@ -52,24 +63,16 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         }
 
         binding.recyclerViewDates.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewDates.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateDates()){
+        binding.recyclerViewDates.adapter = object : RecyclerCategoriasAdapter(requireContext(), db.getMovieDates(idPelicula!!)){
             override fun onButtonSelected(content: String) {
                 date = content
                 if(boletos > 0 && date != "" && time != "")
                     binding.buttonComprar.isEnabled = true
+                getSchedules(db, idPelicula!!, content)
             }
 
         }
 
-        binding.recyclerViewTimes.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        binding.recyclerViewTimes.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateTimes()){
-            override fun onButtonSelected(content: String) {
-                time = content
-                if(boletos > 0 && date != "" && time != "")
-                    binding.buttonComprar.isEnabled = true
-            }
-
-        }
 
         binding.buttonComprar.setOnClickListener {
             Toast.makeText(requireContext(), """
@@ -170,5 +173,17 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         seats.add(SeatRow(6, row6))
 
         return seats
+    }
+
+    private fun getSchedules(db: DBManager, id: Int, date: String){
+        binding.recyclerViewTimes.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        binding.recyclerViewTimes.adapter = object : RecyclerCategoriasAdapter(requireContext(), db.getMovieSchedulesOnDate(id, date)){
+            override fun onButtonSelected(content: String) {
+                time = content
+                if(boletos > 0 && date != "" && time != "")
+                    binding.buttonComprar.isEnabled = true
+            }
+
+        }
     }
 }

@@ -63,7 +63,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         binding.recyclerViewRecommended.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewRecommended.adapter = RecyclerPeliculasAdapter(
-            requireContext(), populateList(), RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout,
+            requireContext(), categorias, RecyclerView.VERTICAL, R.layout.item_pelicula_vertical_layout,
             object : IMovieClick {
                 override fun onItemClick(pelicula: Pelicula) {
                     stateFlow.setMovie(pelicula)
