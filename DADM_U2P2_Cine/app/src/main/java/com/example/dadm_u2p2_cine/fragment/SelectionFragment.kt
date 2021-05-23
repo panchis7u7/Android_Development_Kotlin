@@ -91,28 +91,6 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         _binding = null
     }
 
-    private fun populateDates(): MutableList<String> {
-        var dates: MutableList<String> = mutableListOf()
-
-        dates.add("11 Marzo")
-        dates.add("12 Marzo")
-        dates.add("13 Marzo")
-        dates.add("14 Marzo")
-
-        return dates
-    }
-
-    private fun populateTimes(): MutableList<String> {
-        var times: MutableList<String> = mutableListOf()
-
-        times.add("12:30")
-        times.add("15:00")
-        times.add("17:30")
-        times.add("20:00")
-
-        return times
-    }
-
     private fun populate(): MutableList<SeatRow>{
         var seats: MutableList<SeatRow> = mutableListOf()
 
