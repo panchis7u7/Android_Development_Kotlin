@@ -16,6 +16,7 @@ import com.example.dadm_u2p2_cine.adapter.RecyclerCategoriasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentHomeBinding
 import com.example.dadm_u2p2_cine.model.Categoria
+import com.example.dadm_u2p2_cine.model.DBManager
 import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.stateflow.MovieStateFlow
 
@@ -31,6 +32,8 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
     ): View? {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
 
+        val db = DBManager(requireContext(), "cine", null, 1)
+
         binding.recyclerViewCategorias.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         binding.recyclerViewCategorias.adapter = object : RecyclerCategoriasAdapter(requireContext(), populateCategorias()){
             override fun onButtonSelected(content: String) {
@@ -39,9 +42,18 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
         }
 
+        val categorias: MutableList<Categoria> = mutableListOf()
+
+        try {
+            categorias.add(Categoria("Popular", db.getPeliculas()))
+            //db.deleteDatabase(requireContext(), "cine")
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
+
         binding.recyclerViewPeliculas.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewPeliculas.adapter = RecyclerPeliculasAdapter(
-            requireContext(), populateList(), RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout,
+            requireContext(), categorias, RecyclerView.HORIZONTAL, R.layout.item_pelicula_horizontal_layout,
             object : IMovieClick {
                 override fun onItemClick(pelicula: Pelicula) {
                     stateFlow.setMovie(pelicula)
