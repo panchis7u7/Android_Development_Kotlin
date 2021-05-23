@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.dadm_u2p2_cine.R
 import kotlin.jvm.Throws
 
@@ -75,7 +76,7 @@ class DBManager(val context: Context,
 
         val pelicula1 = """
             INSERT INTO peliculas VALUES (1,"Godzilla vs Kong",
-            "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png",
+            "https://m.media-amazon.com/images/M/MV5BZmYzMzU4NjctNDI0Mi00MGExLWI3ZDQtYzQzYThmYzc2ZmNjXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
             "https://i.blogs.es/3a35be/godzilla-kong/1366_2000.jpeg",
             3.5, "Adam Wingard", "1h 53", "Accion",
             "Kong y sus protectores emprenden un peligroso viaje para encontrar su verdadero hogar. Junto al viaje está Jia, una niña huérfana
@@ -93,8 +94,8 @@ class DBManager(val context: Context,
 
         val pelicula3 = """
             INSERT INTO peliculas VALUES (3,"Avengers Endgame",
-            "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&amp;path-prefix=es",
-            "https://i0.wp.com/hipertextual.com/wp-content/uploads/2019/04/hipertextual-mejores-trailers-semana-avengers-endgame-rey-leon-godzilla-2-2019907932.jpg?fit=1600%2C900&amp;ssl=1",
+            "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&path-prefix=es",
+            "https://i0.wp.com/hipertextual.com/wp-content/uploads/2019/04/hipertextual-mejores-trailers-semana-avengers-endgame-rey-leon-godzilla-2-2019907932.jpg?fit=1600%2C900&ssl=1",
             4.0, "Joe Russo, Anthony Russo", "3h 2m", "Accion",
             "Después de que Thanos, un señor de la guerra intergaláctico, desintegra la mitad del universo, los Vengadores deben reunirse y reunirse
             nuevamente para revitalizar a sus aliados derrotados y restablecer el equilibrio.");
@@ -119,13 +120,13 @@ class DBManager(val context: Context,
             it.execSQL(pelicula2)
             it.execSQL(pelicula3)
             it.execSQL(pelicula4)
-        }
 
-        /*context.getString(R.string.initDatabase).lines().forEach { linea ->
-            db?.let {
+            val lineas = context.getString(R.string.inserts).lines()
+            lineas.forEach { linea ->
+                Log.d("Lineas", linea)
                 it.execSQL(linea)
             }
-        }*/
+        }
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
