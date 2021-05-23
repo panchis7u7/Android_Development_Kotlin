@@ -11,6 +11,7 @@ import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.`interface`.IMovieClick
 import com.example.dadm_u2p2_cine.model.Pelicula
 import com.example.dadm_u2p2_cine.module.GlideApp
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.CornerFamily
 
@@ -27,8 +28,6 @@ RecyclerView.Adapter<RecyclerPeliculasItemAdapter.ItemHolder>(){
 
         init {
             itemView.setOnClickListener() {
-                /*itemView.context.startActivity(Intent(context, PeliculaActivity::class.java)
-                    .putExtra("pelicula", peliculas.get(bindingAdapterPosition)))*/
                 clickListener.onItemClick(peliculas.get(bindingAdapterPosition))
             }
         }
