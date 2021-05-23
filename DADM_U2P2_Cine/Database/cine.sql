@@ -224,12 +224,14 @@ INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
 INNER JOIN horarios as h ON h.id_horario = fh.id_horario
 WHERE p.id_pelicula = 1;
 
+#Obtener fechas de una pelicula.
 SELECT fecha FROM peliculas AS p
 INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
 INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario
 INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
 WHERE p.id_pelicula = 1;
 
+#Obtener los horarios de una pelicula dada una fecha en particular.
 SELECT horario FROM peliculas AS p
 INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
 INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario

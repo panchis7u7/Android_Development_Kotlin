@@ -5,102 +5,16 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.dadm_u2p2_cine.R
 import kotlin.jvm.Throws
 
-class DBManager(context: Context,
-                name: String,
-                factory: SQLiteDatabase.CursorFactory,
-                version: Int) : SQLiteOpenHelper(context, name, factory, version) {
+class DBManager(val context: Context,
+                val name: String,
+                val factory: SQLiteDatabase.CursorFactory,
+                val version: Int) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
-        val sql = """
-            CREATE TABLE horarios (
-                id_horario INTEGER PRIMARY KEY auto_increment, 
-                horario TEXT NOT NULL 
-            );
-            
-            CREATE TABLE fechas (
-                id_fecha INTEGER PRIMARY KEY NOT NULL auto_increment, 
-                fecha TEXT NOT NULL
-            );
-            
-            CREATE TABLE fechashorarios (
-				id_fecha INTEGER NOT NULL, 
-                id_horario INTEGER NOT NULL, 
-                PRIMARY KEY (id_fecha, id_horario), 
-                FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE, 
-                FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
-            );
-            
-            CREATE TABLE peliculas (
-                id_pelicula INTEGER PRIMARY KEY auto_increment, 
-                titulo TEXT NOT NULL, 
-                imagen TEXT NOT NULL, 
-                cover TEXT NOT NULL, 
-                rating INT NOT NULL,
-                director TEXT NOT NULL,
-                duracion TEXT NOT NULL,
-                genero TEXT NOT NULL,
-                sinopsis TEXT NOT NULL
-            );
-            
-            CREATE TABLE fechaspeliculas (
-                id_pelicula INTEGER NOT NULL, 
-                id_fecha INTEGER NOT NULL, 
-                PRIMARY KEY (id_pelicula, id_fecha), 
-                FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE, 
-                FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE
-            );
-            
-            CREATE TABLE compras (
-                id_compra INTEGER PRIMARY KEY auto_increment,
-                total REAL NOT NULL,
-                noAsientos INTEGER,
-                asientos TEXT,
-                departamento TEXT NOT NULL,
-                id_pelicula INTEGER,
-                FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE
-            );
-            
-            INSERT INTO horarios (horario) VALUES ('9:00');
-            INSERT INTO horarios (horario) VALUES ("10:00");
-            INSERT INTO horarios (horario) VALUES ("11:00");
-            INSERT INTO horarios (horario) VALUES ("12:00");
-            INSERT INTO horarios (horario) VALUES ("13:00");
-            INSERT INTO horarios (horario) VALUES ("14:00");
-            INSERT INTO horarios (horario) VALUES ("15:00");
-            INSERT INTO horarios (horario) VALUES ("16:00");
-            INSERT INTO horarios (horario) VALUES ("17:00");
-            INSERT INTO horarios (horario) VALUES ("18:00");
-            INSERT INTO horarios (horario) VALUES ("19:00");
-            INSERT INTO horarios (horario) VALUES ("20:00");
-            
-            INSERT INTO fechas (fecha) VALUES ('24 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('25 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('26 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('27 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('28 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('29 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('30 Marzo');
-            
-            INSERT INTO fechashorarios VALUES (1,1);
-            INSERT INTO fechashorarios VALUES (1,4);
-            INSERT INTO fechashorarios VALUES (1,8);
-            INSERT INTO fechashorarios VALUES (1,12);
-            
-            INSERT INTO fechashorarios VALUES (3,2);
-            INSERT INTO fechashorarios VALUES (3,5);
-            INSERT INTO fechashorarios VALUES (3,7);
-            INSERT INTO fechashorarios VALUES (3,11);
-            
-            INSERT INTO fechashorarios VALUES (6,3);
-            INSERT INTO fechashorarios VALUES (6,6);
-            INSERT INTO fechashorarios VALUES (6,9);
-            INSERT INTO fechashorarios VALUES (6,10);
-            
-            """.trimIndent()
-
         db?.let {
-            it.execSQL(sql)
+            it.execSQL(context.getString(R.string.initDatabase))
         }
     }
 
@@ -136,7 +50,8 @@ class DBManager(context: Context,
         val sql = """
             SELECT fecha FROM peliculas AS p 
             INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
-            INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha 
+            INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario 
+            INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha 
             WHERE p.id_pelicula = ${idPelicula};
         """.trimIndent()
 
@@ -156,9 +71,9 @@ class DBManager(context: Context,
         val sql = """
             SELECT horario FROM peliculas AS p 
             INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
-            INNER JOIN fechas as f ON f.id_fecha = fp.id_fecha 
-            INNER JOIN fechashorarios as fh ON fh.id_fecha =f.id_fecha 
+            INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario 
             INNER JOIN horarios as h ON h.id_horario = fh.id_horario 
+            INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha 
             WHERE p.id_pelicula = ${idPelicula} AND f.fecha IN ("${date}");
         """.trimIndent()
 
