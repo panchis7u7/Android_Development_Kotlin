@@ -74,24 +74,28 @@ class DBManager(context: Context,
             INSERT INTO horarios (horario) VALUES ("19:00");
             INSERT INTO horarios (horario) VALUES ("20:00");
             
-            INSERT INTO fechas (fecha) VALUES ('11 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('12 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('13 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('14 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('15 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('16 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('17 Marzo');
-            INSERT INTO fechas (fecha) VALUES ('18 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('24 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('25 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('26 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('27 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('28 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('29 Marzo');
+            INSERT INTO fechas (fecha) VALUES ('30 Marzo');
             
             INSERT INTO fechashorarios VALUES (1,1);
-            INSERT INTO fechashorarios VALUES (1,2);
-            INSERT INTO fechashorarios VALUES (1,3);
-            INSERT INTO fechashorarios VALUES (2,5);
-            INSERT INTO fechashorarios VALUES (2,6);
-            INSERT INTO fechashorarios VALUES (2,1);
-            INSERT INTO fechashorarios VALUES (5,1);
-            INSERT INTO fechashorarios VALUES (5,2);
-            INSERT INTO fechashorarios VALUES (4,4);
+            INSERT INTO fechashorarios VALUES (1,4);
+            INSERT INTO fechashorarios VALUES (1,8);
+            INSERT INTO fechashorarios VALUES (1,12);
+            
+            INSERT INTO fechashorarios VALUES (3,2);
+            INSERT INTO fechashorarios VALUES (3,5);
+            INSERT INTO fechashorarios VALUES (3,7);
+            INSERT INTO fechashorarios VALUES (3,11);
+            
+            INSERT INTO fechashorarios VALUES (6,3);
+            INSERT INTO fechashorarios VALUES (6,6);
+            INSERT INTO fechashorarios VALUES (6,9);
+            INSERT INTO fechashorarios VALUES (6,10);
             
             """.trimIndent()
 
