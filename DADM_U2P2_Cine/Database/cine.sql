@@ -41,8 +41,13 @@ CREATE TABLE compras (
 	asientos TEXT,
 	departamento TEXT NOT NULL,
 	id_pelicula INTEGER,
-	FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE
+    id_fecha INTEGER NOT NULL,
+	id_horario INTEGER NOT NULL,
+	FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
 
 INSERT INTO horarios (horario) VALUES ('9:00');
 INSERT INTO horarios (horario) VALUES ("10:00");
@@ -181,4 +186,11 @@ WHERE p.id_pelicula = 1 AND f.fecha IN ("24 Marzo");
 SELECT p.id_pelicula, titulo, imagen, cover, rating, director, duracion, genero, sinopsis, fecha, horario FROM peliculas AS p
 INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = p.id_pelicula
 INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
-INNER JOIN horarios as h ON h.id_horario = cp.id_horario
+INNER JOIN horarios as h ON h.id_horario = cp.id_horario;
+
+INSERT INTO compras VALUES (1, 310.10, 3, "F1, F2, F3", "Peliculas", 1, 2, 3);
+
+SELECT p.id_pelicula, titulo, cover, duracion, fecha, horario, total, asientos FROM peliculas AS p
+INNER JOIN compras AS c ON c.id_pelicula = p.id_pelicula
+INNER JOIN fechas AS f ON f.id_fecha = c.id_fecha
+INNER JOIN horarios AS h ON h.id_horario = c.id_horario; 

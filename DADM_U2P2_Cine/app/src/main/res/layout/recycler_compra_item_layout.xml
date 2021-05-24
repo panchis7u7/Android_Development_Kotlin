@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="20dp"
+    android:elevation="20dp"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="140dp"
+            android:layout_height="160dp"
+            android:src="@drawable/avengers"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Avengers Endgame"
+                android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_bold"
+                android:layout_marginBottom="8dp"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/textViewHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="14:00 - 16:30"
+                android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_regular"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/textViewTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$300.00"
+                android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_regular"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/textViewAsientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[11], [31]"
+                android:textColor="@color/black"
+                android:fontFamily="@font/googlesans_regular"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

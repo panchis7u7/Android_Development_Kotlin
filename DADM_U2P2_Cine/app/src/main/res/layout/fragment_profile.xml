@@ -47,13 +47,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayoutUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
+            android:backgroundTint="@color/appBlack"
             app:tabTextColor="@color/white"
             app:tabIndicatorColor="@color/white"/>
 

@@ -186,6 +186,26 @@ class DBManager(val context: Context,
     }
 
     @Throws
+    fun getCompras(): List<Compra> {
+        val db = readableDatabase
+        val result: MutableList<Compra> = mutableListOf()
+
+        val sql = """
+            
+        """.trimIndent()
+
+        val cursor = db.rawQuery(sql, null)
+        while (cursor.moveToNext()) {
+            result.add(Compra(
+                cursor.getFloat(0),
+
+            ))
+        }
+
+        return result
+    }
+
+    @Throws
     fun deleteDatabase(context: Context, nombreDB: String){
         context.deleteDatabase(nombreDB)
     }
