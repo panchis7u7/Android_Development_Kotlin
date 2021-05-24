@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,6 +24,7 @@ import com.example.dadm_u2p2_cine.model.Pelicula
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +36,21 @@ class MainActivity : AppCompatActivity() {
             it.setDefaultDisplayHomeAsUpEnabled(true)
             it.setDisplayHomeAsUpEnabled(true)
         }
-        //supportFragmentManager.findFragmentById(R.id.fragmentHome) as HomeFragment
 
-        //setFullScreen()
+        navController = findNavController(R.id.fragmentHome)
+        setupActionBarWithNavController(navController, AppBarConfiguration(setOf(
+            R.id.homeFragment, R.id.profileFragment
+        )))
+
+        binding.bottomNavigationView.setupWithNavController(navController)
         binding.bottomNavigationView.background = null
         binding.bottomAppBar.background = null
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
-                R.id.navHome -> {findNavController(R.id.fragmentHome).navigate(R.id.homeFragment)
+                R.id.navHome -> {navController.navigate(R.id.homeFragment)
                                 return@setOnNavigationItemSelectedListener true}
-                R.id.navProfile -> {findNavController(R.id.fragmentHome).navigate(R.id.profileFragment)
+                R.id.navProfile -> {navController.navigate(R.id.profileFragment)
                                 return@setOnNavigationItemSelectedListener true}
                 else -> {return@setOnNavigationItemSelectedListener false}
             }
