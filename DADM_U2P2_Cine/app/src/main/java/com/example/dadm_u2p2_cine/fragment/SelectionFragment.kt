@@ -10,25 +10,24 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.adapter.RecyclerCategoriasAdapter
 import com.example.dadm_u2p2_cine.adapter.RecyclerSeatAdapter
 import com.example.dadm_u2p2_cine.databinding.FragmentSeatSelectionBinding
-import com.example.dadm_u2p2_cine.model.Categoria
-import com.example.dadm_u2p2_cine.model.DBManager
-import com.example.dadm_u2p2_cine.model.Pelicula
-import com.example.dadm_u2p2_cine.model.SeatRow
+import com.example.dadm_u2p2_cine.model.*
 import com.example.dadm_u2p2_cine.module.GlideApp
 import com.example.dadm_u2p2_cine.stateflow.MovieStateFlow
 import kotlinx.coroutines.flow.collect
+import java.lang.Exception
 
 class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var _binding: FragmentSeatSelectionBinding? = null
     private val binding get() = _binding!!
     private var boletos: Int = 0
-    private var price: Int = 0
+    private var price: Float = 0f
     private var date: String? = ""
     private var time: String? = ""
     private var idPelicula: Int? = 0
@@ -54,12 +53,12 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
                 if(seatStates[row-1][seat] == 0) {
                     boletos++
                     binding.textViewCantidad.text = "${boletos} asientos"
-                    price = boletos * 100
+                    price = boletos * 100f
                     binding.textViewPrecio.text = "$${price}.00"
                 } else {
                     boletos--
                     binding.textViewCantidad.text = "${boletos} asientos"
-                    price = boletos * 100
+                    price = boletos * 100f
                     binding.textViewPrecio.text = "$${price}.00"
                 }
                 if(boletos > 0 && date != "" && time != "")
@@ -80,7 +79,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
 
         binding.buttonComprar.setOnClickListener {
             var seatsIds = ""
-            logMatrix(SelectionFragment.seatStates!!)
+            //logMatrix(SelectionFragment.seatStates!!)
             for (i in 0 .. SelectionFragment.seatStates?.size!!-1){
                 for (j in 0 .. SelectionFragment.seatStates!![i].size-1){
                     if(SelectionFragment.seatStates!![i][j] == 1)
@@ -95,6 +94,16 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
                 Hora: ${time},
                 Precio: ${price}
             """.trimIndent(), Toast.LENGTH_LONG).show()
+
+            println(idPelicula!!)
+
+            var compra = Compra(db.getPelicula(idPelicula!!), price, date!!, time!!, boletos, seatsIds, "Peliculas")
+            try {
+                db.insertCompra(compra)
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+            findNavController().navigate(R.id.action_selectionFragment_to_compraStatusFragment)
         }
 
         return binding.root

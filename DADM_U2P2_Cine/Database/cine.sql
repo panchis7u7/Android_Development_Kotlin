@@ -194,3 +194,6 @@ SELECT p.id_pelicula, titulo, cover, duracion, total, fecha, horario, asientos F
 INNER JOIN compras AS c ON c.id_pelicula = p.id_pelicula
 INNER JOIN fechas AS f ON f.id_fecha = c.id_fecha
 INNER JOIN horarios AS h ON h.id_horario = c.id_horario; 
+
+SELECT id_fecha FROM fechas WHERE fecha = "24 Marzo";
+SELECT id_horario FROM horarios WHERE horario = "11:00";

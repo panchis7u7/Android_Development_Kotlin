@@ -38,9 +38,24 @@
         <action
             android:id="@+id/action_selectionFragment_to_peliculaFragment"
             app:destination="@id/peliculaFragment" />
+        <action
+            android:id="@+id/action_selectionFragment_to_compraStatusFragment"
+            app:destination="@id/compraStatusFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.dadm_u2p2_cine.fragment.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/compraStatusFragment"
+        android:name="com.example.dadm_u2p2_cine.fragment.CompraStatusFragment"
+        android:label="CompraStatusFragment" >
+        <action
+            android:id="@+id/action_compraStatusFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

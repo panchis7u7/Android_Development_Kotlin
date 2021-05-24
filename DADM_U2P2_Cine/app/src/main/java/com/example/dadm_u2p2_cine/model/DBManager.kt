@@ -56,7 +56,7 @@ class DBManager(val context: Context,
 
         val compras = """
             CREATE TABLE compras (
-        	    id_compra INTEGER PRIMARY KEY auto_increment,
+        	    id_compra INTEGER PRIMARY KEY NOT NULL,
 	            total REAL NOT NULL,
 	            noAsientos INTEGER,
 	            asientos TEXT,
@@ -149,6 +149,25 @@ class DBManager(val context: Context,
     }
 
     @Throws
+    fun getPelicula(id_pelicula: Int): Pelicula {
+        val db = readableDatabase
+
+        val cursor = db.rawQuery("SELECT * FROM peliculas WHERE id_pelicula = ${id_pelicula}", null)
+        cursor.moveToNext()
+        return Pelicula(
+            cursor.getInt(0),
+            cursor.getString(1),
+            cursor.getString(2),
+            cursor.getString(3),
+            cursor.getFloat(4),
+            cursor.getString(5),
+            cursor.getString(6),
+            cursor.getString(7),
+            cursor.getString(8),
+            null)
+    }
+
+    @Throws
     fun getMovieDates(idPelicula: Int): List<String> {
         val db = readableDatabase
         val result: MutableList<String> = mutableListOf()
@@ -195,7 +214,7 @@ class DBManager(val context: Context,
         val result: MutableList<Compra> = mutableListOf()
 
         val sql = """
-            SELECT p.id_pelicula, titulo, cover, duracion, fecha, horario, total, asientos FROM peliculas AS p
+            SELECT p.id_pelicula, titulo, cover, duracion, total, fecha, horario, noAsientos, asientos, departamento FROM peliculas AS p
             INNER JOIN compras AS c ON c.id_pelicula = p.id_pelicula
             INNER JOIN fechas AS f ON f.id_fecha = c.id_fecha
             INNER JOIN horarios AS h ON h.id_horario = c.id_horario;
@@ -210,11 +229,40 @@ class DBManager(val context: Context,
                 duracion = cursor.getString(3)),
                 cursor.getFloat(4),
                 cursor.getString(5),
-                cursor.getString(6)
+                cursor.getString(6),
+                cursor.getInt(7),
+                cursor.getString(8),
+                cursor.getString(9)
             ))
         }
 
         return result
+    }
+
+    @Throws
+    fun insertCompra(compra: Compra): Long {
+        val db = readableDatabase
+
+        val date_index_sql = "SELECT id_fecha FROM fechas WHERE fecha = '${compra.fecha}';"
+        val cursor1 = db.rawQuery(date_index_sql, null)
+        cursor1.moveToNext()
+        val id_fecha = cursor1.getInt(0)
+
+        val schedule_index_sql = "SELECT id_horario FROM horarios WHERE horario = '${compra.hora}';"
+        val cursor2 = db.rawQuery(schedule_index_sql, null)
+        cursor2.moveToNext()
+        val id_horario = cursor2.getInt(0)
+
+        var values = ContentValues()
+        values.put("total", compra.total)
+        values.put("noAsientos", compra.noAsientos)
+        values.put("asientos", compra.asientos)
+        values.put("departamento", compra.departamento)
+        values.put("id_pelicula", compra.pelicula.id_pelicula)
+        values.put("id_fecha", id_fecha)
+        values.put("id_horario", id_horario)
+
+        return db.insert("compras", "", values)
     }
 
     @Throws
