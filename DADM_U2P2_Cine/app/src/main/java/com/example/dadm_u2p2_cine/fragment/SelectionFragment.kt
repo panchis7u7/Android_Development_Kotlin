@@ -1,6 +1,7 @@
 package com.example.dadm_u2p2_cine.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,13 +33,16 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
     private var time: String? = ""
     private var idPelicula: Int? = 0
 
+    companion object {
+        val seatStates = Array(6, {IntArray(7)})
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSeatSelectionBinding.inflate(layoutInflater)
-        var seats: Array<IntArray>? = null
 
         val db = DBManager(requireContext(), "cine", null, 1)
         idPelicula = arguments?.getInt("id")
@@ -46,8 +50,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
             override fun selectedRow(row: Int, seat: Int, seatStates: Array<IntArray>) {
-                //Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_LONG).show()
-                seats = seatStates
+                Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_SHORT).show()
                 if(seatStates[row-1][seat] == 0) {
                     boletos++
                     binding.textViewCantidad.text = "${boletos} asientos"
@@ -77,15 +80,18 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
 
         binding.buttonComprar.setOnClickListener {
             var seatsIds = ""
-            for (i in 0 .. seats?.size!!-1){
-                for (j in 0 .. seats!![i].size-1){
-                      seatsIds += "[$i,${seats!![i][j]}] "
+            logMatrix(SelectionFragment.seatStates!!)
+            for (i in 0 .. SelectionFragment.seatStates?.size!!-1){
+                for (j in 0 .. SelectionFragment.seatStates!![i].size-1){
+                    if(SelectionFragment.seatStates!![i][j] == 1)
+                      seatsIds = seatsIds.plus("[${i+1},${j}] ")
                 }
             }
 
             Toast.makeText(requireContext(), """
                 Boletos: ${boletos},
                 Horario: ${date},
+                Asientos: ${seatsIds},
                 Hora: ${time},
                 Precio: ${price}
             """.trimIndent(), Toast.LENGTH_LONG).show()
@@ -159,6 +165,15 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         seats.add(SeatRow(6, row6))
 
         return seats
+    }
+
+    private fun logMatrix(seats: Array<IntArray>){
+        for(i in 0..seatStates.size-1){
+            for(j in 0 .. seatStates[i].size-1){
+                print("[$i,$j]: " + seats[i][j]+ ", ")
+            }
+            println()
+        }
     }
 
     private fun getSchedules(db: DBManager, id: Int, date: String){
