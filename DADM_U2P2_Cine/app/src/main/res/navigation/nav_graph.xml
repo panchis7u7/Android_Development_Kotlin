@@ -39,4 +39,8 @@
             android:id="@+id/action_selectionFragment_to_peliculaFragment"
             app:destination="@id/peliculaFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.dadm_u2p2_cine.fragment.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

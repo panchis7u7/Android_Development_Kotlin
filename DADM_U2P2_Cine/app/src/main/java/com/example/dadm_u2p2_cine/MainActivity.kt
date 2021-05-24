@@ -7,6 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u2p2_cine.adapter.RecyclerPeliculasAdapter
@@ -35,6 +39,17 @@ class MainActivity : AppCompatActivity() {
         //setFullScreen()
         binding.bottomNavigationView.background = null
         binding.bottomAppBar.background = null
+
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.navHome -> {findNavController(R.id.fragmentHome).navigate(R.id.homeFragment)
+                                return@setOnNavigationItemSelectedListener true}
+                R.id.navProfile -> {findNavController(R.id.fragmentHome).navigate(R.id.profileFragment)
+                                return@setOnNavigationItemSelectedListener true}
+                else -> {return@setOnNavigationItemSelectedListener false}
+            }
+        }
+
     }
 
     override fun onDestroy() {
