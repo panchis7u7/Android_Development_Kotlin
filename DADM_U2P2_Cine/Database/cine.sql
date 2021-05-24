@@ -40,7 +40,7 @@ CREATE TABLE compras (
 	noAsientos INTEGER,
 	asientos TEXT,
 	departamento TEXT NOT NULL,
-	id_pelicula INTEGER,
+	id_pelicula INTEGER NOT NULL,
     id_fecha INTEGER NOT NULL,
 	id_horario INTEGER NOT NULL,
 	FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
