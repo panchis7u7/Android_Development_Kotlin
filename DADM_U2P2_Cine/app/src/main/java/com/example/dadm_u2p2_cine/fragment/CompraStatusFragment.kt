@@ -20,8 +20,14 @@ class CompraStatusFragment: Fragment(R.layout.fragment_compra_status_layout) {
     ): View? {
         _binding = FragmentCompraStatusLayoutBinding.inflate(layoutInflater)
 
+        val status = arguments?.getString("status")
+        val image = arguments?.getInt("imagen")
+
+        binding.imageViewStatus.setImageResource(image!!)
+        binding.textViewStatusPurchase.text = status
+
         //Thread.sleep(4000)
-        findNavController().navigate(R.id.action_compraStatusFragment_to_homeFragment)
+        //findNavController().navigate(R.id.action_compraStatusFragment_to_homeFragment)
 
         return binding.root
     }

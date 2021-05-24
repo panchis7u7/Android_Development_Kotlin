@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -100,10 +101,13 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
             var compra = Compra(db.getPelicula(idPelicula!!), price, date!!, time!!, boletos, seatsIds, "Peliculas")
             try {
                 db.insertCompra(compra)
+                findNavController().navigate(R.id.action_selectionFragment_to_compraStatusFragment,
+                    bundleOf("status" to "Compra Exitosa!", "imagen" to R.drawable.icon_success))
             } catch (e: Exception){
                 e.printStackTrace()
+                findNavController().navigate(R.id.action_selectionFragment_to_compraStatusFragment,
+                    bundleOf("status" to "Error al realizar la Compra!", "imagen" to R.drawable.icon_error))
             }
-            findNavController().navigate(R.id.action_selectionFragment_to_compraStatusFragment)
         }
 
         return binding.root
