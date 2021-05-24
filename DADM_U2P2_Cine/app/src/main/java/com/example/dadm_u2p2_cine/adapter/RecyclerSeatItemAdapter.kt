@@ -36,6 +36,7 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.buttonSeat.background.setTint(context.getColor(R.color.buttonCategory))
     }
 
     override fun getItemCount(): Int = seats.size

@@ -4,13 +4,13 @@
         android:title="Home"
         android:icon="@drawable/icon_home"/>
 
-    <!--<item android:id="@+id/navCompass"
+    <item android:id="@+id/navCompass"
         android:title="Search"
         android:icon="@drawable/icon_compass"/>
 
     <item android:id="@+id/navHeart"
         android:title="Favorites"
-        android:icon="@drawable/icon_heart"/>-->
+        android:icon="@drawable/icon_heart"/>
 
     <item android:id="@+id/navProfile"
         android:title="Profile"
