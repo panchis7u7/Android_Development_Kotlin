@@ -28,16 +28,6 @@ class DBManager(val context: Context,
             );
         """.trimIndent()
 
-        val fechashorarios = """
-            CREATE TABLE fechashorarios (
-        	    id_calendario INTEGER PRIMARY KEY NOT NULL,
-        	    id_fecha INTEGER NOT NULL,
-        	    id_horario INTEGER NOT NULL,
-        	    FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
-        	    FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
-            );
-        """.trimIndent()
-
         val peliculas = """
             CREATE TABLE peliculas (
         	    id_pelicula INTEGER PRIMARY KEY NOT NULL,
@@ -52,13 +42,15 @@ class DBManager(val context: Context,
             );
         """.trimIndent()
 
-        val fechaspeliculas = """
-            CREATE TABLE fechaspeliculas (
-        	    id_pelicula INTEGER NOT NULL,
-        	    id_calendario INTEGER NOT NULL,
-        	    PRIMARY KEY (id_pelicula, id_calendario),
-        	    FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
-        	    FOREIGN KEY (id_calendario) REFERENCES fechashorarios(id_calendario) ON UPDATE CASCADE ON DELETE CASCADE
+        val calendarioPeliculas = """
+            CREATE TABLE calendarioPeliculas (
+            	id_pelicula INTEGER NOT NULL,
+            	id_fecha INTEGER NOT NULL,
+            	id_horario INTEGER NOT NULL,
+                PRIMARY KEY (id_pelicula, id_fecha, id_horario),
+                FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
+            	FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
+            	FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
             );
         """.trimIndent()
 
@@ -112,9 +104,8 @@ class DBManager(val context: Context,
         db?.let {
             it.execSQL(horarios)
             it.execSQL(fechas)
-            it.execSQL(fechashorarios)
+            it.execSQL(calendarioPeliculas)
             it.execSQL(peliculas)
-            it.execSQL(fechaspeliculas)
             it.execSQL(compras)
             it.execSQL(pelicula1)
             it.execSQL(pelicula2)
@@ -159,10 +150,9 @@ class DBManager(val context: Context,
         val result: MutableList<String> = mutableListOf()
 
         val sql = """
-            SELECT DISTINCT fecha FROM peliculas AS p 
-            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
-            INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario 
-            INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha 
+            SELECT DISTINCT fecha FROM peliculas AS p
+            INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = ${idPelicula}
+            INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
             WHERE p.id_pelicula = ${idPelicula};
         """.trimIndent()
 
@@ -180,11 +170,10 @@ class DBManager(val context: Context,
         val result: MutableList<String> = mutableListOf()
 
         val sql = """
-            SELECT horario FROM peliculas AS p 
-            INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = ${idPelicula} 
-            INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario 
-            INNER JOIN horarios as h ON h.id_horario = fh.id_horario 
-            INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha 
+            SELECT horario FROM peliculas AS p
+            INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = ${idPelicula}
+            INNER JOIN horarios as h ON h.id_horario = cp.id_horario
+            INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
             WHERE p.id_pelicula = ${idPelicula} AND f.fecha IN ("${date}");
         """.trimIndent()
 

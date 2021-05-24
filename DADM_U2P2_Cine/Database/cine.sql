@@ -12,14 +12,6 @@ CREATE TABLE fechas (
 	fecha TEXT NOT NULL
 );
 
-CREATE TABLE fechashorarios (
-	id_calendario INTEGER PRIMARY KEY auto_increment,
-	id_fecha INTEGER NOT NULL,
-	id_horario INTEGER NOT NULL,
-	FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 CREATE TABLE peliculas (
 	id_pelicula INTEGER PRIMARY KEY auto_increment,
 	titulo TEXT NOT NULL,
@@ -32,12 +24,14 @@ CREATE TABLE peliculas (
 	sinopsis TEXT NOT NULL
 );
 
-CREATE TABLE fechaspeliculas (
+CREATE TABLE calendarioPeliculas (
 	id_pelicula INTEGER NOT NULL,
-	id_calendario INTEGER NOT NULL,
-	PRIMARY KEY (id_pelicula, id_calendario),
-	FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (id_calendario) REFERENCES fechashorarios(id_calendario) ON UPDATE CASCADE ON DELETE CASCADE
+	id_fecha INTEGER NOT NULL,
+	id_horario INTEGER NOT NULL,
+    PRIMARY KEY (id_pelicula, id_fecha, id_horario),
+    FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE compras (
@@ -72,70 +66,6 @@ INSERT INTO fechas (fecha) VALUES ('29 Marzo');
 INSERT INTO fechas (fecha) VALUES ('30 Marzo');
 INSERT INTO fechas (fecha) VALUES ('31 Marzo');
 
-#Pelicula 1.
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,1);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,4);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,8);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,12);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,2);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,5);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,7);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,11);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,3);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,6);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,9);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,10);
-
-#Pelicula 2.
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,1);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,4);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,8);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,12);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,2);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,5);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,7);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,11);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (7,3);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (7,6);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (7,9);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (7,10);
-
-#Pelicula 3.
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (5,1);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (5,4);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (5,8);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (5,12);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,2);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,5);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,7);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (2,11);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,3);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,6);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,9);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (4,10);
-
-#Pelicula 4.
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,1);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,4);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,8);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (6,12);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,2);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,5);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,7);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (1,11);
-
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,3);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,6);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,9);
-INSERT INTO fechashorarios (id_fecha, id_horario) VALUES (3,10);
-
 INSERT INTO peliculas VALUES (1,"Godzilla vs Kong",
 "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png",
 "https://i.blogs.es/3a35be/godzilla-kong/1366_2000.jpeg",
@@ -163,84 +93,92 @@ INSERT INTO peliculas VALUES (4,"Avengers Endgame",
 "Mientras intenta derribar a Carlton, el director ejecutivo de Life Foundation, Eddie, un periodista, investiga experimentos de ensayos en humanos. 
 Sin saberlo, se fusiona con un alienígena simbiótico con habilidades letales.");
 
-INSERT INTO fechaspeliculas VALUES (1,1);
-INSERT INTO fechaspeliculas VALUES (1,2);
-INSERT INTO fechaspeliculas VALUES (1,3);
-INSERT INTO fechaspeliculas VALUES (1,4);
-INSERT INTO fechaspeliculas VALUES (1,5);
-INSERT INTO fechaspeliculas VALUES (1,6);
-INSERT INTO fechaspeliculas VALUES (1,7);
-INSERT INTO fechaspeliculas VALUES (1,8);
-INSERT INTO fechaspeliculas VALUES (1,9);
-INSERT INTO fechaspeliculas VALUES (1,10);
-INSERT INTO fechaspeliculas VALUES (1,11);
-INSERT INTO fechaspeliculas VALUES (1,12);
+#Pelicula 1.
+INSERT INTO calendarioPeliculas VALUES (1,1,1);
+INSERT INTO calendarioPeliculas VALUES (1,1,4);
+INSERT INTO calendarioPeliculas VALUES (1,1,8);
+INSERT INTO calendarioPeliculas VALUES (1,1,12);
 
-INSERT INTO fechaspeliculas VALUES (2,13);
-INSERT INTO fechaspeliculas VALUES (2,14);
-INSERT INTO fechaspeliculas VALUES (2,15);
-INSERT INTO fechaspeliculas VALUES (2,16);
-INSERT INTO fechaspeliculas VALUES (2,17);
-INSERT INTO fechaspeliculas VALUES (2,18);
-INSERT INTO fechaspeliculas VALUES (2,19);
-INSERT INTO fechaspeliculas VALUES (2,20);
-INSERT INTO fechaspeliculas VALUES (2,21);
-INSERT INTO fechaspeliculas VALUES (2,22);
-INSERT INTO fechaspeliculas VALUES (2,23);
-INSERT INTO fechaspeliculas VALUES (2,24);
+INSERT INTO calendarioPeliculas VALUES (1,3,2);
+INSERT INTO calendarioPeliculas VALUES (1,3,5);
+INSERT INTO calendarioPeliculas VALUES (1,3,7);
+INSERT INTO calendarioPeliculas VALUES (1,3,11);
 
-INSERT INTO fechaspeliculas VALUES (3,25);
-INSERT INTO fechaspeliculas VALUES (3,26);
-INSERT INTO fechaspeliculas VALUES (3,27);
-INSERT INTO fechaspeliculas VALUES (3,28);
-INSERT INTO fechaspeliculas VALUES (3,29);
-INSERT INTO fechaspeliculas VALUES (3,30);
-INSERT INTO fechaspeliculas VALUES (3,31);
-INSERT INTO fechaspeliculas VALUES (3,32);
-INSERT INTO fechaspeliculas VALUES (3,33);
-INSERT INTO fechaspeliculas VALUES (3,34);
-INSERT INTO fechaspeliculas VALUES (3,35);
-INSERT INTO fechaspeliculas VALUES (3,36);
+INSERT INTO calendarioPeliculas VALUES (1,6,3);
+INSERT INTO calendarioPeliculas VALUES (1,6,6);
+INSERT INTO calendarioPeliculas VALUES (1,6,9);
+INSERT INTO calendarioPeliculas VALUES (1,6,10);
 
-INSERT INTO fechaspeliculas VALUES (4,37);
-INSERT INTO fechaspeliculas VALUES (4,38);
-INSERT INTO fechaspeliculas VALUES (4,39);
-INSERT INTO fechaspeliculas VALUES (4,40);
-INSERT INTO fechaspeliculas VALUES (4,41);
-INSERT INTO fechaspeliculas VALUES (4,42);
-INSERT INTO fechaspeliculas VALUES (4,43);
-INSERT INTO fechaspeliculas VALUES (4,44);
-INSERT INTO fechaspeliculas VALUES (4,45);
-INSERT INTO fechaspeliculas VALUES (4,46);
-INSERT INTO fechaspeliculas VALUES (4,47);
-INSERT INTO fechaspeliculas VALUES (4,48);
+#Pelicula 2.
+INSERT INTO calendarioPeliculas VALUES (2,2,1);
+INSERT INTO calendarioPeliculas VALUES (2,2,4);
+INSERT INTO calendarioPeliculas VALUES (2,2,8);
+INSERT INTO calendarioPeliculas VALUES (2,2,12);
+
+INSERT INTO calendarioPeliculas VALUES (2,4,2);
+INSERT INTO calendarioPeliculas VALUES (2,4,5);
+INSERT INTO calendarioPeliculas VALUES (2,4,7);
+INSERT INTO calendarioPeliculas VALUES (2,4,11);
+
+INSERT INTO calendarioPeliculas VALUES (2,7,3);
+INSERT INTO calendarioPeliculas VALUES (2,7,6);
+INSERT INTO calendarioPeliculas VALUES (2,7,9);
+INSERT INTO calendarioPeliculas VALUES (2,7,10);
+
+#Pelicula 3.
+INSERT INTO calendarioPeliculas VALUES (3,5,1);
+INSERT INTO calendarioPeliculas VALUES (3,5,4);
+INSERT INTO calendarioPeliculas VALUES (3,5,8);
+INSERT INTO calendarioPeliculas VALUES (3,5,12);
+
+INSERT INTO calendarioPeliculas VALUES (3,2,2);
+INSERT INTO calendarioPeliculas VALUES (3,2,5);
+INSERT INTO calendarioPeliculas VALUES (3,2,7);
+INSERT INTO calendarioPeliculas VALUES (3,2,11);
+
+INSERT INTO calendarioPeliculas VALUES (3,4,3);
+INSERT INTO calendarioPeliculas VALUES (3,4,6);
+INSERT INTO calendarioPeliculas VALUES (3,4,9);
+INSERT INTO calendarioPeliculas VALUES (3,4,10);
+
+#Pelicula 4.
+INSERT INTO calendarioPeliculas VALUES (4,6,1);
+INSERT INTO calendarioPeliculas VALUES (4,6,4);
+INSERT INTO calendarioPeliculas VALUES (4,6,8);
+INSERT INTO calendarioPeliculas VALUES (4,6,12);
+
+INSERT INTO calendarioPeliculas VALUES (4,1,2);
+INSERT INTO calendarioPeliculas VALUES (4,1,5);
+INSERT INTO calendarioPeliculas VALUES (4,1,7);
+INSERT INTO calendarioPeliculas VALUES (4,1,11);
+
+INSERT INTO calendarioPeliculas VALUES (4,3,3);
+INSERT INTO calendarioPeliculas VALUES (4,3,6);
+INSERT INTO calendarioPeliculas VALUES (4,3,9);
+INSERT INTO calendarioPeliculas VALUES (4,3,10);
 
 SELECT * FROM peliculas;
 
 SELECT fecha, horario FROM peliculas AS p
-INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
-INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario
-INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
-INNER JOIN horarios as h ON h.id_horario = fh.id_horario
+INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = p.id_pelicula
+INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
+INNER JOIN horarios as h ON h.id_horario = cp.id_horario
 WHERE p.id_pelicula = 1;
 
 #Obtener fechas de una pelicula.
-SELECT fecha FROM peliculas AS p
-INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
-INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario
-INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
+SELECT DISTINCT fecha FROM peliculas AS p
+INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = p.id_pelicula
+INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
 WHERE p.id_pelicula = 1;
 
 #Obtener los horarios de una pelicula dada una fecha en particular.
 SELECT horario FROM peliculas AS p
-INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = 1
-INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario
-INNER JOIN horarios as h ON h.id_horario = fh.id_horario
-INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
-WHERE p.id_pelicula = 1 AND f.fecha IN ("16 Marzo");
+INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = p.id_pelicula
+INNER JOIN horarios as h ON h.id_horario = cp.id_horario
+INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
+WHERE p.id_pelicula = 1 AND f.fecha IN ("24 Marzo");
 
 SELECT p.id_pelicula, titulo, imagen, cover, rating, director, duracion, genero, sinopsis, fecha, horario FROM peliculas AS p
-INNER JOIN fechaspeliculas AS fp ON fp.id_pelicula = p.id_pelicula
-INNER JOIN fechashorarios as fh ON fh.id_calendario = fp.id_calendario
-INNER JOIN fechas as f ON f.id_fecha = fh.id_fecha
-INNER JOIN horarios as h ON h.id_horario = fh.id_horario
+INNER JOIN calendarioPeliculas as cp ON cp.id_pelicula = p.id_pelicula
+INNER JOIN fechas as f ON f.id_fecha = cp.id_fecha
+INNER JOIN horarios as h ON h.id_horario = cp.id_horario
