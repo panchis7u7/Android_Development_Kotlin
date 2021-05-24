@@ -21,7 +21,7 @@ class ProfileFragment: Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(layoutInflater)
 
-        binding.viewPagerUser.adapter = TabFragmentAdapter(parentFragmentManager, lifecycle)
+        binding.viewPagerUser.adapter = TabFragmentAdapter(requireFragmentManager(), lifecycle)
         binding.tabLayoutUser.addTab(binding.tabLayoutUser.newTab().setText("Datos"))
         binding.tabLayoutUser.addTab(binding.tabLayoutUser.newTab().setText("Compras"))
         binding.tabLayoutUser.addTab(binding.tabLayoutUser.newTab().setText("Favoritos"))
@@ -36,10 +36,16 @@ class ProfileFragment: Fragment() {
 
         binding.viewPagerUser.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
+                println(position)
                 binding.tabLayoutUser.selectTab(binding.tabLayoutUser.getTabAt(position))
+                super.onPageSelected(position)
             }
         })
 
        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

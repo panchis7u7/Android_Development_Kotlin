@@ -50,7 +50,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         binding.recyclerViewSelection.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
             override fun selectedRow(row: Int, seat: Int, seatStates: Array<IntArray>) {
-                Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_SHORT).show()
                 if(seatStates[row-1][seat] == 0) {
                     boletos++
                     binding.textViewCantidad.text = "${boletos} asientos"
@@ -197,7 +197,6 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
                 if(boletos > 0 && date != "" && time != "")
                     binding.buttonComprar.isEnabled = true
             }
-
         }
     }
 }

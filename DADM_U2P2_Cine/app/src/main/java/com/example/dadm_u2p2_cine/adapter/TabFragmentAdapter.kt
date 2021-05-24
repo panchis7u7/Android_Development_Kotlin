@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.dadm_u2p2_cine.fragment.ComprasFragment
+import com.example.dadm_u2p2_cine.fragment.UsuarioFragment
 
 class TabFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -12,9 +13,9 @@ class TabFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
 
     override fun createFragment(position: Int): Fragment {
         when(position){
-            1 -> ComprasFragment()
-            2 -> ComprasFragment()
+            1 -> return ComprasFragment()
+            2 -> return ComprasFragment()
         }
-        return ComprasFragment()
+        return UsuarioFragment()
     }
 }

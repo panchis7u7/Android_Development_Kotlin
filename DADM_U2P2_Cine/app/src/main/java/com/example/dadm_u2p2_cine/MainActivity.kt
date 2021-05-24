@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
                 else -> {return@setOnNavigationItemSelectedListener false}
             }
         }
-
     }
 
     override fun onDestroy() {

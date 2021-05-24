@@ -38,7 +38,7 @@ RecyclerView.Adapter<RecyclerComprasAdapter.ItemHolder>(){
             .load(pelicula.pelicula.cover)
             .into(holder.imageViewCover)
         holder.textViewHora.text = pelicula.hora
-        holder.textViewTotal.text = pelicula.total.toString()
+        holder.textViewTotal.text = "$" + pelicula.total.toString() + "0 MXN"
         holder.textViewAsientos.text = pelicula.asientos
     }
 
