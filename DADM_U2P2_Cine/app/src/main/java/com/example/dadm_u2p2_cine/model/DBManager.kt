@@ -56,13 +56,17 @@ class DBManager(val context: Context,
 
         val compras = """
             CREATE TABLE compras (
-        	    id_compra INTEGER PRIMARY KEY NOT NULL,
-        	    total REAL NOT NULL,
-        	    noAsientos INTEGER,
-        	    asientos TEXT,
-        	    departamento TEXT NOT NULL,
-        	    id_pelicula INTEGER,
-        	    FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE
+        	    id_compra INTEGER PRIMARY KEY auto_increment,
+	            total REAL NOT NULL,
+	            noAsientos INTEGER,
+	            asientos TEXT,
+	            departamento TEXT NOT NULL,
+	            id_pelicula INTEGER NOT NULL,
+                id_fecha INTEGER NOT NULL,
+	            id_horario INTEGER NOT NULL,
+	            FOREIGN KEY (id_pelicula) REFERENCES peliculas(id_pelicula) ON UPDATE CASCADE ON DELETE CASCADE,
+                FOREIGN KEY (id_fecha) REFERENCES fechas(id_fecha) ON UPDATE CASCADE ON DELETE CASCADE,
+	            FOREIGN KEY (id_horario) REFERENCES horarios(id_horario) ON UPDATE CASCADE ON DELETE CASCADE
             );
         """.trimIndent()
 
@@ -191,14 +195,22 @@ class DBManager(val context: Context,
         val result: MutableList<Compra> = mutableListOf()
 
         val sql = """
-            
+            SELECT p.id_pelicula, titulo, cover, duracion, fecha, horario, total, asientos FROM peliculas AS p
+            INNER JOIN compras AS c ON c.id_pelicula = p.id_pelicula
+            INNER JOIN fechas AS f ON f.id_fecha = c.id_fecha
+            INNER JOIN horarios AS h ON h.id_horario = c.id_horario;
         """.trimIndent()
 
         val cursor = db.rawQuery(sql, null)
         while (cursor.moveToNext()) {
-            result.add(Compra(
-                cursor.getFloat(0),
-
+            result.add(Compra(Pelicula(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cover = cursor.getString(2),
+                duracion = cursor.getString(3)),
+                cursor.getFloat(4),
+                cursor.getString(5),
+                cursor.getString(6)
             ))
         }
 

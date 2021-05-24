@@ -190,7 +190,7 @@ INNER JOIN horarios as h ON h.id_horario = cp.id_horario;
 
 INSERT INTO compras VALUES (1, 310.10, 3, "F1, F2, F3", "Peliculas", 1, 2, 3);
 
-SELECT p.id_pelicula, titulo, cover, duracion, fecha, horario, total, asientos FROM peliculas AS p
+SELECT p.id_pelicula, titulo, cover, duracion, total, fecha, horario, asientos FROM peliculas AS p
 INNER JOIN compras AS c ON c.id_pelicula = p.id_pelicula
 INNER JOIN fechas AS f ON f.id_fecha = c.id_fecha
 INNER JOIN horarios AS h ON h.id_horario = c.id_horario; 

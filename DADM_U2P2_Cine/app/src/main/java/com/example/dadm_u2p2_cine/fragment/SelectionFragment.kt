@@ -38,6 +38,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSeatSelectionBinding.inflate(layoutInflater)
+        var seats: Array<IntArray>? = null
 
         val db = DBManager(requireContext(), "cine", null, 1)
         idPelicula = arguments?.getInt("id")
@@ -46,6 +47,7 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
         binding.recyclerViewSelection.adapter = object : RecyclerSeatAdapter(requireContext(), populate()) {
             override fun selectedRow(row: Int, seat: Int, seatStates: Array<IntArray>) {
                 //Toast.makeText(requireContext(), "Asiento: ${row}${seat}.", Toast.LENGTH_LONG).show()
+                seats = seatStates
                 if(seatStates[row-1][seat] == 0) {
                     boletos++
                     binding.textViewCantidad.text = "${boletos} asientos"
@@ -73,8 +75,14 @@ class SelectionFragment: Fragment(R.layout.fragment_seat_selection) {
 
         }
 
-
         binding.buttonComprar.setOnClickListener {
+            var seatsIds = ""
+            for (i in 0 .. seats?.size!!-1){
+                for (j in 0 .. seats!![i].size-1){
+                      seatsIds += "[$i,${seats!![i][j]}] "
+                }
+            }
+
             Toast.makeText(requireContext(), """
                 Boletos: ${boletos},
                 Horario: ${date},
