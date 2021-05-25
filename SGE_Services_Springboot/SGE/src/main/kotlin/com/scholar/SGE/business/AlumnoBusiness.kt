@@ -60,7 +60,7 @@ class AlumnaBusiness: IAlumnoBusiness{
             throw NotFoundException("No se encontro el alumno con id $idAlumno!")
         else{
             try {
-            alumnoRepository.deleteById(idAlumno)
+            alumnoRepository!!.deleteById(idAlumno)
             } catch(e: Exception) {
                 throw BusinessException(e.message)
             }
