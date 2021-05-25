@@ -22,5 +22,5 @@ data class Alumno(
     ) { 
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE)
-        var id_alumno: Int = 0
+        var id_alumno: Long = 0
     }
