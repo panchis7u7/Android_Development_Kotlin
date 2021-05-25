@@ -1,4 +1,7 @@
 -- @BLOCK
+-- CREATE DATABASE scholar;
+-- USE scholar;
+
 CREATE TABLE IF NOT EXISTS alumnos (
     id_alumno INTEGER UNIQUE NOT NULL,
     no_control CHAR(10) UNIQUE NOT NULL,
@@ -82,12 +85,12 @@ CREATE TABLE IF NOT EXISTS asignaturas_profesores(
 );
 
 -- @BLOCK
-DROP TABLE IF EXISTS domicilios;
-DROP TABLE IF EXISTS colonias;
-DROP TABLE IF EXISTS municipios;
-DROP TABLE IF EXISTS estados;
-DROP TABLE IF EXISTS asignaturas_alumnos;
-DROP TABLE IF EXISTS asignaturas_profesores;
-DROP TABLE IF EXISTS asignaturas;
-DROP TABLE IF EXISTS profesores;
-DROP TABLE IF EXISTS alumnos;
+-- DROP TABLE IF EXISTS domicilios;
+-- DROP TABLE IF EXISTS colonias;
+-- DROP TABLE IF EXISTS municipios;
+-- DROP TABLE IF EXISTS estados;
+-- DROP TABLE IF EXISTS asignaturas_alumnos;
+-- DROP TABLE IF EXISTS asignaturas_profesores;
+-- DROP TABLE IF EXISTS asignaturas;
+-- DROP TABLE IF EXISTS profesores;
+-- DROP TABLE IF EXISTS alumnos;
