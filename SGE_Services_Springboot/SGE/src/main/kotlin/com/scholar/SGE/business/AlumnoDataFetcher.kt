@@ -1,5 +1,7 @@
 package com.scholar.SGE.business
+class AlumnoDataFetcher {}
 
+/*
 import graphql.schema.DataFetcher
 import org.springframework.beans.factory.annotation.Autowired
 import com.scholar.SGE.model.Alumno
@@ -30,4 +32,4 @@ class AlumnoDataFetcher {
         }
     }
 
-} 
+} */

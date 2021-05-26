@@ -28,16 +28,16 @@ class AlumnoController {
     @GetMapping("")
     fun list(): ResponseEntity<List<Alumno>> {
         return try {
-            ResponseEntity(alumnoBusiness!!.list(), HttpStatus.OK)
+            ResponseEntity(alumnoBusiness!!.listAlumnos(), HttpStatus.OK)
         } catch(e: Exception) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
 
     @GetMapping("/{id}")
-    fun load(@PathVariable("id") idAlumno: Long): ResponseEntity<Alumno> {
+    fun load(@PathVariable("id") idAlumno: String): ResponseEntity<Alumno> {
         return try {
-            ResponseEntity(alumnoBusiness!!.load(idAlumno), HttpStatus.OK)
+            ResponseEntity(alumnoBusiness!!.loadAlumno(idAlumno), HttpStatus.OK)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         } catch(e: NotFoundException) {
@@ -68,7 +68,7 @@ class AlumnoController {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable("id") idAlumno: Long): ResponseEntity<Any> {
+    fun delete(@PathVariable("id") idAlumno: String): ResponseEntity<Any> {
         return try {
             alumnoBusiness!!.remove(idAlumno)
             ResponseEntity(HttpStatus.OK)

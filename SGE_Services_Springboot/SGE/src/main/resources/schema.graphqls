@@ -11,10 +11,6 @@ type Alumno {
 }
 
 type Query {
-    list:[Alumno]
-    load(id_alumno:ID):Alumno
-}
-
-type Mutation {
-    delete(id_alumno:ID):Alumno
+    listAlumnos:[Alumno]
+    loadAlumno(id_alumno:ID):Alumno
 }

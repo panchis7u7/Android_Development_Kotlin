@@ -1,0 +1,35 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/scholar
+    username: postgres
+    password: password
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          jdbc:
+            lob:
+              non_contextual_creation: true
+
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+    cors:
+      allowed-origins: true
+      allow-credentials: true
+  tools:
+    schema-location-pattern: "**/*.graphqls"
+
+graphiql:
+  enabled: true
+  mapping: /graphiql

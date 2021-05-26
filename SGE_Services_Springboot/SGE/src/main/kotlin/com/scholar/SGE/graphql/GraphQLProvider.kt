@@ -1,5 +1,7 @@
 package com.scholar.SGE.graphql
 
+class GraphQLProvider {}
+/*
 import com.scholar.SGE.business.AlumnoBusiness
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
@@ -56,4 +58,4 @@ class GraphQLProvider {
             .dataFetcher("getAllAlumnos", alumnoDataFetcher!!.getAllAlumnos())
             .dataFetcher("getAlumnoByID", alumnoDataFetcher!!.getAlumnoByID())
     }
-}
+}*/
