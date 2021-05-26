@@ -1,0 +1,20 @@
+type Alumno {
+    id_alumno: ID!,
+    no_control: String,
+    correo: String,
+    curp: String,
+    nombre: String,
+    fecha_nacimiento: String,
+    telefono: String,
+    sexo: String,
+    fotografia: String
+}
+
+type Query {
+    list:[Alumno]
+    load(id_alumno:ID):Alumno
+}
+
+type Mutation {
+    delete(id_alumno:ID):Alumno
+}

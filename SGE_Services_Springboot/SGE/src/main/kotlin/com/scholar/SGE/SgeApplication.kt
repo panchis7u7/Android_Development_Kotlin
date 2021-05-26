@@ -8,10 +8,11 @@ import com.scholar.SGE.dao.AlumnoRepository
 import com.scholar.SGE.model.Alumno
 import java.time.format.DateTimeFormatter
 import java.time.LocalDate
+import java.util.UUID
 
 @SpringBootApplication
-class SgeApplication: CommandLineRunner {
-	
+class SgeApplication /* :CommandLineRunner*/ {
+/* 	
 	@Autowired
 	val alumnoRepository: AlumnoRepository? = null
 
@@ -19,6 +20,7 @@ class SgeApplication: CommandLineRunner {
 
 		val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 		val alumno = Alumno(
+			UUID.randomUUID(),
 			"568734", 
 			"sebastian.prueba@gmail.com", 
 			"MICA82378DS872",
@@ -29,7 +31,7 @@ class SgeApplication: CommandLineRunner {
 			"foto")
 
 		alumnoRepository!!.save(alumno)
-	}
+	} */
 }
 
 fun main(args: Array<String>) {

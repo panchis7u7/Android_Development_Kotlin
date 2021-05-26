@@ -22,12 +22,20 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	implementation("org.postgresql:postgresql")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+	//Postgres and hibernate ORM.
 	implementation("org.hibernate:hibernate-core:5.4.31.Final")
+	implementation("org.postgresql:postgresql")
 	implementation("org.xerial:sqlite-jdbc:3.34.0")
 	runtimeOnly("com.h2database:h2")
+
+	//Graphql.
+	implementation ("com.graphql-java:graphql-spring-boot-starter:5.0.2")
+    implementation ("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
+    implementation ("com.graphql-java:voyager-spring-boot-starter:5.0.2")
+    implementation ("com.graphql-java:graphql-java-tools:5.2.4")
 }
 
 tasks.withType<KotlinCompile> {

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.data.DataFetcher
 import com.example.dadm_u2p2_cine.R
 import com.example.dadm_u2p2_cine.fragment.SelectionFragment
 
@@ -42,4 +43,5 @@ RecyclerView.Adapter<RecyclerSeatItemAdapter.ViewHolder>(){
     override fun getItemCount(): Int = seats.size
 
     abstract fun selectedSeats(row: Int, seat: Int, seatStates: Array<IntArray>)
+    
 }

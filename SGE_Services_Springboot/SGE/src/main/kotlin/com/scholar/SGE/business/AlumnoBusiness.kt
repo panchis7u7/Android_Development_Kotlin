@@ -6,10 +6,11 @@ import com.scholar.SGE.model.Alumno
 import com.scholar.SGE.dao.AlumnoRepository
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
+import graphql.schema.DataFetcher
 import java.util.Optional
 
 @Service
-class AlumnaBusiness: IAlumnoBusiness{
+class AlumnoBusiness: IAlumnoBusiness{
 
     @Autowired
     val alumnoRepository: AlumnoRepository? = null

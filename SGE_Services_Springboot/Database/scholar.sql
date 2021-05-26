@@ -2,8 +2,35 @@
 -- CREATE DATABASE scholar;
 -- USE scholar;
 
+CREATE TABLE IF NOT EXISTS estados(
+    id_estado SERIAL PRIMARY KEY,
+    estado VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS municipios(
+    id_municipio SERIAL PRIMARY KEY,
+    municipio VARCHAR(30),
+    id_estado INTEGER,
+    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS colonias(
+    id_colonia SERIAL PRIMARY KEY,
+    colonia VARCHAR(25),
+    id_municipio INTEGER,
+    codigo_postal CHAR(8),
+    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS domicilios(
+    id_domicilio SERIAL PRIMARY KEY,
+    domicilio VARCHAR(30),
+    id_colonia INTEGER,
+    FOREIGN KEY (id_colonia) REFERENCES colonias (id_colonia) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS alumnos (
-    id_alumno INTEGER UNIQUE NOT NULL,
+    id_alumno UUID PRIMARY KEY NOT NULL,
     no_control CHAR(10) UNIQUE NOT NULL,
     correo CHAR(35) UNIQUE NOT NULL,
     curp CHAR(20) UNIQUE NOT NULL,
@@ -12,43 +39,17 @@ CREATE TABLE IF NOT EXISTS alumnos (
     telefono CHAR(12),
     sexo CHAR(1),
     fotografia VARCHAR(200),
-    PRIMARY KEY (id_alumno, no_control, correo, curp)
-);
-
-CREATE TABLE IF NOT EXISTS estados(
-    id_estado INTEGER PRIMARY KEY,
-    estado VARCHAR(20)
-);
-
-CREATE TABLE IF NOT EXISTS municipios(
-    id_municipio INTEGER PRIMARY KEY,
-    municipio VARCHAR(30),
-    id_estado INTEGER,
-    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS colonias(
-    id_colonia INTEGER PRIMARY KEY,
-    colonia VARCHAR(25),
-    id_municipio INTEGER,
-    codigo_postal CHAR(8),
-    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS domicilios(
-    id_domicilio INTEGER NOT NULL,
-    domicilio VARCHAR(30),
-    id_colonia INTEGER,
-    FOREIGN KEY (id_colonia) REFERENCES colonias (id_colonia) ON UPDATE CASCADE ON DELETE CASCADE
+    id_domicilio INTEGER,
+    FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS profesores(
-    id_profesor INTEGER PRIMARY KEY,
+    id_profesor SERIAL PRIMARY KEY,
     nombre VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas(
-    id_asignatura INTEGER PRIMARY KEY,
+    id_asignatura SERIAL PRIMARY KEY,
     asignatura VARCHAR(50),
     clave CHAR(6) UNIQUE NOT NULL,
     grupo CHAR(2) NOT NULL,
@@ -70,10 +71,10 @@ CREATE TABLE IF NOT EXISTS asignaturas(
 
 CREATE TABLE IF NOT EXISTS asignaturas_alumnos(
     id_asignatura INTEGER,
-    id_alumno INTEGER,
+    id_alumno UUID,
+    PRIMARY KEY (id_asignatura, id_alumno),
     FOREIGN KEY (id_asignatura) REFERENCES asignaturas (id_asignatura) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (id_alumno) REFERENCES alumnos (id_alumno) ON UPDATE CASCADE ON DELETE CASCADE,
-    PRIMARY KEY (id_asignatura, id_alumno)
+    FOREIGN KEY (id_alumno) REFERENCES alumnos (id_alumno) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas_profesores(
