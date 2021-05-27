@@ -1,3 +1,15 @@
+input CreateAlumnoInput {
+    id_alumno: ID,
+    no_control: String,
+    correo: String,
+    curp: String,
+    nombre: String,
+    fecha_nacimiento: String,
+    telefono: String,
+    sexo: String,
+    fotografia: String
+}
+
 type Alumno {
     id_alumno: ID!,
     no_control: String,
@@ -13,4 +25,9 @@ type Alumno {
 type Query {
     listAlumnos:[Alumno]
     loadAlumno(id_alumno:ID):Alumno
+}
+
+type Mutation {
+    saveAlumnoQL(input: CreateAlumnoInput): Alumno
+    removeAlumno(id_alumno:ID): Boolean!
 }

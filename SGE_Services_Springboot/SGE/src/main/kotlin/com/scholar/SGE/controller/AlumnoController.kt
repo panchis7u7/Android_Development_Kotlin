@@ -48,7 +48,7 @@ class AlumnoController {
     @PostMapping("")
     fun insert(@RequestBody alumno: Alumno): ResponseEntity<Any> {
         return try {
-            alumnoBusiness!!.save(alumno)
+            alumnoBusiness!!.saveAlumno(alumno)
             val response = HttpHeaders()
             response.set("location", Constants.URL_ALUMNOS + "/" + alumno.id_alumno)
             ResponseEntity(response, HttpStatus.CREATED)
@@ -60,7 +60,7 @@ class AlumnoController {
     @PutMapping("")
     fun update(@RequestBody alumno: Alumno): ResponseEntity<Any> {
         return try {
-            alumnoBusiness!!.save(alumno)
+            alumnoBusiness!!.saveAlumno(alumno)
             ResponseEntity(HttpStatus.OK)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -70,7 +70,7 @@ class AlumnoController {
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") idAlumno: String): ResponseEntity<Any> {
         return try {
-            alumnoBusiness!!.remove(idAlumno)
+            alumnoBusiness!!.removeAlumno(idAlumno)
             ResponseEntity(HttpStatus.OK)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
