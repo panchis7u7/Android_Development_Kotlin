@@ -6,7 +6,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "asignaturas")
 data class Asignatura(
-   @Id @GeneratedValue(strategy = GenerationType.AUTO) @JsonProperty("id_asignatura") val id: Long,
+   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id_asignatura") @JsonProperty("id") val id: Long,
    @JsonProperty("asignatura") val asignatura: String,
    @JsonProperty("clave") val clave: String,
    @JsonProperty("grupo") val grupo: String,
@@ -27,4 +27,10 @@ data class Asignatura(
    @JsonProperty("regularizacion") val regularizacion: String?,
    @JsonProperty("evaluacion") val evaluacion: String?,
    @JsonProperty("observaciones") val observaciones: String?,
+
+   @ManyToMany(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
+   @JoinTable(name = "asignaturas_profesores",
+      joinColumns = arrayOf(JoinColumn(name = "id_asignatura")),
+      inverseJoinColumns = arrayOf(JoinColumn(name = "id_profesor")))
+   var profesores: List<Profesor> = mutableListOf()
 ) {}
