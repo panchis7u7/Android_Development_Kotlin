@@ -1,4 +1,4 @@
-package com.scholar.SGE.business
+package com.scholar.SGE.graphql
 class AlumnoDataFetcher {}
 
 /*

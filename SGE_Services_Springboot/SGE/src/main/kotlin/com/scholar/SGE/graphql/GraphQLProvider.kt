@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
 import com.google.common.io.Resources
-import com.scholar.SGE.business.AlumnoDataFetcher
+import com.scholar.SGE.graphql.AlumnoDataFetcher
 import graphql.schema.idl.*
 import graphql.GraphQL
 import graphql.schema.GraphQLSchema

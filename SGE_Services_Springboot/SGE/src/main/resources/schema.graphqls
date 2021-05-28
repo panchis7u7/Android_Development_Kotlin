@@ -48,6 +48,12 @@ type Asignatura {
 
 }
 
+input CreateDomicilioInput {
+    id: ID!,
+    domicilio: String,
+    id_colonia: Int
+}
+
 type Domicilio {
     id: ID!,
     domicilio: String,
@@ -65,5 +71,6 @@ type Query {
 
 type Mutation {
     saveAlumnoQL(input: CreateAlumnoInput): Alumno
+    updateAlumno(id: ID, telefono: String, domicilio: CreateDomicilioInput): Alumno
     removeAlumno(id_alumno:ID): Boolean
 }

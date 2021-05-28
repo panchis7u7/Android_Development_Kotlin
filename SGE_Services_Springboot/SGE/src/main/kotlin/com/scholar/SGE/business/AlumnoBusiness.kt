@@ -9,6 +9,7 @@ import com.scholar.SGE.dao.AlumnoRepository
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.model.AlumnoGraphQL
+import com.scholar.SGE.model.Domicilio
 import org.hibernate.SessionFactory
 import org.hibernate.Transaction
 import org.hibernate.cfg.Configuration
@@ -72,6 +73,35 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
         }
     }
 
+    @Throws(BusinessException::class)
+    override fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno {
+        val optional: Optional<Alumno>
+        try{
+            optional = alumnoRepository!!.findById(UUID.fromString(idAlumno))
+        } catch(e: Exception){
+            throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
+        }
+
+        if(!optional.isPresent)
+            throw NotFoundException("No se encontro el alumno con id ${idAlumno}!")
+
+        optional.get().telefono = telefono
+        optional.get().domicilio = domicilio
+
+        try{
+           alumnoRepository!!.save(optional.get())
+        } catch(e: Exception){
+            throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
+        }
+
+        return  optional.get()
+    }
+
+    @Throws(BusinessException::class)
     override fun saveAlumnoQL(alumno: AlumnoGraphQL): Alumno {
         try {
             print(alumno)
