@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "alumnos")
 data class Alumno(
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @JsonProperty("id_alumno") val id_alumno: UUID = UUID.randomUUID(),
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id_alumno") @JsonProperty("id") val id: UUID = UUID.randomUUID(),
     @JsonProperty("no_control") var no_control: String,
     @JsonProperty("correo") var correo: String,
     @JsonProperty("curp") var curp: String,

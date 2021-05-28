@@ -1,5 +1,5 @@
 input CreateAlumnoInput {
-    id_alumno: ID,
+    id: ID,
     no_control: String,
     correo: String,
     curp: String,
@@ -7,11 +7,12 @@ input CreateAlumnoInput {
     fecha_nacimiento: String,
     telefono: String,
     sexo: String,
-    fotografia: String
+    fotografia: String,
+    domicilio: CreateDomicilioInput
 }
 
 type Alumno {
-    id_alumno: ID!,
+    id: ID!,
     no_control: String,
     correo: String,
     curp: String,

@@ -6,9 +6,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "profesores")
 data class Profesor(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_profesor") @JsonProperty("id") var id: Long,
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id_profesor") @JsonProperty("id") var id: Long,
     @Column(name = "nombre") var nombre: String,
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))

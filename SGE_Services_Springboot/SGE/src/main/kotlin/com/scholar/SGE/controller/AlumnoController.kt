@@ -50,7 +50,7 @@ class AlumnoController {
         return try {
             alumnoBusiness!!.saveAlumno(alumno)
             val response = HttpHeaders()
-            response.set("location", Constants.URL_ALUMNOS + "/" + alumno.id_alumno)
+            response.set("location", Constants.URL_ALUMNOS + "/" + alumno.id)
             ResponseEntity(response, HttpStatus.CREATED)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
