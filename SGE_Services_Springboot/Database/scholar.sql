@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS alumnos (
     no_control CHAR(10) UNIQUE NOT NULL,
     correo CHAR(35) UNIQUE NOT NULL,
     curp CHAR(20) UNIQUE NOT NULL,
-    nombre VARCHAR(50),
+    nombre VARCHAR(50) NOT NULL,
     fecha_nacimiento date,
     telefono CHAR(12),
     sexo CHAR(1),
@@ -45,12 +45,12 @@ CREATE TABLE IF NOT EXISTS alumnos (
 
 CREATE TABLE IF NOT EXISTS profesores(
     id_profesor SERIAL PRIMARY KEY,
-    nombre VARCHAR(50)
+    nombre VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas(
     id_asignatura SERIAL PRIMARY KEY,
-    asignatura VARCHAR(50),
+    asignatura VARCHAR(50) NOT NULL,
     clave CHAR(6) UNIQUE NOT NULL,
     grupo CHAR(2) NOT NULL,
     creditos INTEGER NOT NULL,
@@ -61,6 +61,11 @@ CREATE TABLE IF NOT EXISTS asignaturas(
     horario_miercoles CHAR(14),
     horario_jueves CHAR(14),
     horario_viernes CHAR(14),
+    aula_lunes CHAR(14),
+    aula_martes CHAR(14),
+    aula_miercoles CHAR(14),
+    aula_jueves CHAR(14),
+    aula_viernes CHAR(14),
     calificacion INTEGER,
     regularizacion CHAR(4),
     evaluacion CHAR(35),
