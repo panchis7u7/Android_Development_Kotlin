@@ -9,15 +9,29 @@ import com.scholar.SGE.dao.AlumnoRepository
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.model.AlumnoGraphQL
-import graphql.schema.DataFetcher
+import org.hibernate.SessionFactory
+import org.hibernate.Transaction
+import org.hibernate.cfg.Configuration
 import java.time.LocalDate
 import java.util.*
 
 @Service
 class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusiness{
 
+    companion object {
+        //private var factory: SessionFactory? = null
+    }
     @Autowired
     val alumnoRepository: AlumnoRepository? = null
+
+    /*init {
+        try {
+            factory = Configuration().configure().buildSessionFactory()
+        } catch (e: ExceptionInInitializerError) {
+            throw ExceptionInInitializerError(e.message)
+            print("Failed to create a sessionFactory Object: ${e.message}")
+        }
+    }*/
 
     @Throws(BusinessException::class)
     override fun listAlumnos(): List<Alumno>{
@@ -33,8 +47,10 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
         val optional: Optional<Alumno>
         try{
             optional = alumnoRepository!!.findById(UUID.fromString(idAlumno))
-        }catch(e: Exception){
+        } catch(e: Exception){
             throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
         }
 
         if(!optional.isPresent)
@@ -45,7 +61,11 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
 
     @Throws(BusinessException::class)
     override fun saveAlumno(alumno: Alumno): Alumno{
+        //var session = factory?.openSession()
+        //var tx: Transaction? = null
+
         try {
+            //tx = session?.beginTransaction()
             return alumnoRepository!!.save(alumno)
         } catch(e: Exception) {
             throw BusinessException(e.message)
@@ -64,7 +84,8 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
                 LocalDate.parse(alumno.fecha_nacimiento),
                 alumno.telefono,
                 alumno.sexo,
-                alumno.fotografia
+                alumno.fotografia,
+                alumno.domicilio
             ))
         } catch(e: Exception) {
             throw BusinessException(e.message)

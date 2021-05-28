@@ -1,14 +1,10 @@
 package com.scholar.SGE.model
 
-import javax.persistence.Entity
-import javax.persistence.Table
-import javax.persistence.Id
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import org.hibernate.annotations.GeneratorType
 import java.time.LocalDate
 import java.util.UUID
 import com.fasterxml.jackson.annotation.JsonProperty
+import javax.persistence.*
 
 @Entity
 @Table(name = "alumnos")
@@ -21,5 +17,9 @@ data class AlumnoGraphQL (
     @JsonProperty("fecha_nacimiento") val fecha_nacimiento: String? = "",
     @JsonProperty("telefono") val telefono: String?,
     @JsonProperty("sexo") val sexo: Char? = Char.MIN_VALUE,
-    @JsonProperty("fotografia") val fotografia: String? = ""
+    @JsonProperty("fotografia") val fotografia: String? = "",
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_domicilio")
+    val domicilio: Domicilio? = null
 ) {}

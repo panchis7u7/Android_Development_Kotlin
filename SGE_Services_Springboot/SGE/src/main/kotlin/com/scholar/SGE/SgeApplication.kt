@@ -2,13 +2,6 @@ package com.scholar.SGE
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.boot.CommandLineRunner
-import org.springframework.beans.factory.annotation.Autowired
-import com.scholar.SGE.dao.AlumnoRepository
-import com.scholar.SGE.model.Alumno
-import java.time.format.DateTimeFormatter
-import java.time.LocalDate
-import java.util.UUID
 
 @SpringBootApplication
 class SgeApplication /* :CommandLineRunner*/ {
