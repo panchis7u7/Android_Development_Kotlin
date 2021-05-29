@@ -36,6 +36,9 @@ dependencies {
     implementation ("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
     implementation ("com.graphql-java:voyager-spring-boot-starter:5.0.2")
     implementation ("com.graphql-java:graphql-java-tools:5.2.4")
+
+	//Encryption.
+	implementation ("org.mindrot:jbcrypt:0.4")
 }
 
 tasks.withType<KotlinCompile> {

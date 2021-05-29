@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS alumnos (
     id_alumno UUID PRIMARY KEY NOT NULL,
     no_control CHAR(10) UNIQUE NOT NULL,
     correo CHAR(35) UNIQUE NOT NULL,
+    contrasena VARCHAR(130) NOT NULL,
     curp CHAR(20) UNIQUE NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     fecha_nacimiento date,

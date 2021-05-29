@@ -8,16 +8,19 @@ import com.scholar.SGE.model.Alumno
 import com.scholar.SGE.dao.AlumnoRepository
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
+import com.scholar.SGE.exception.AuthException
 import com.scholar.SGE.model.AlumnoGraphQL
 import com.scholar.SGE.model.Domicilio
 import org.hibernate.SessionFactory
 import org.hibernate.Transaction
 import org.hibernate.cfg.Configuration
+import org.postgresql.shaded.com.ongres.scram.common.util.CryptoUtil
 import java.time.LocalDate
 import java.util.*
+import java.util.regex.Pattern
 
 @Service
-class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusiness{
+class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusiness{
 
     companion object {
         //private var factory: SessionFactory? = null
@@ -33,6 +36,20 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
             print("Failed to create a sessionFactory Object: ${e.message}")
         }
     }*/
+
+    override fun validateUser(email: String, password: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun registerUser(alumno: Alumno): Alumno {
+        var pattern = Pattern.compile("^(.+)@(.+)$")
+        if (!pattern.matcher(alumno.correo).matches())
+            throw AuthException("Formato de correo invalido!")
+        val count = alumnoRepository!!.getCountByAlumnoCorreo(alumno.correo)
+        if (count > 0)
+            throw AuthException("Account alredy in use!")
+        return alumnoRepository!!.save(alumno)
+    }
 
     @Throws(BusinessException::class)
     override fun listAlumnos(): List<Alumno>{
@@ -60,7 +77,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
         return optional.get()
     }
 
-    @Throws(BusinessException::class)
+    /*@Throws(BusinessException::class)
     override fun saveAlumno(alumno: Alumno): Alumno{
         //var session = factory?.openSession()
         //var tx: Transaction? = null
@@ -71,7 +88,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
         } catch(e: Exception) {
             throw BusinessException(e.message)
         }
-    }
+    }*/
 
     @Throws(BusinessException::class)
     override fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno {
@@ -115,6 +132,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver,IAlumnoBusin
                 alumno.telefono,
                 alumno.sexo,
                 alumno.fotografia,
+                alumno.contrasena,
                 alumno.domicilio
             ))
         } catch(e: Exception) {

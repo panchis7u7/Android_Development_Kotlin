@@ -17,6 +17,7 @@ data class Alumno(
     @JsonProperty("telefono") var telefono: String?,
     @JsonProperty("sexo") var sexo: Char? = Char.MIN_VALUE,
     @JsonProperty("fotografia") var fotografia: String? = "",
+    @Column(name = "contrasena") var contrasena: String,
 
     @OneToOne(cascade = arrayOf(CascadeType.ALL))
     @JoinColumn(name = "id_domicilio", referencedColumnName = "id_domicilio")

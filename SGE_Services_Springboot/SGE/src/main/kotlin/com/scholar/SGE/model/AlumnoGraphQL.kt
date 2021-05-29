@@ -18,6 +18,7 @@ data class AlumnoGraphQL (
     @JsonProperty("telefono") val telefono: String?,
     @JsonProperty("sexo") val sexo: Char? = Char.MIN_VALUE,
     @JsonProperty("fotografia") val fotografia: String? = "",
+    var contrasena: String,
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_domicilio")
