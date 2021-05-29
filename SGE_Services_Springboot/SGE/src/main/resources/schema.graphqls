@@ -8,6 +8,7 @@ input CreateAlumnoInput {
     telefono: String,
     sexo: String,
     fotografia: String,
+    contrasena: String,
     domicilio: CreateDomicilioInput
 }
 
@@ -21,6 +22,7 @@ type Alumno {
     telefono: String,
     sexo: String,
     fotografia: String,
+    contrasena: String,
     domicilio: Domicilio
 }
 
@@ -71,7 +73,7 @@ type Query {
 }
 
 type Mutation {
-    saveAlumnoQL(input: CreateAlumnoInput): Alumno
+    registerUser(input: CreateAlumnoInput): Alumno
     updateAlumno(id: ID, telefono: String, domicilio: CreateDomicilioInput): Alumno
     removeAlumno(id_alumno:ID): Boolean
 }

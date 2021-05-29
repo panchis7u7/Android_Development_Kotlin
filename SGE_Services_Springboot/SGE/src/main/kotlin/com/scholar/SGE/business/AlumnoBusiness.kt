@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory
 import org.hibernate.Transaction
 import org.hibernate.cfg.Configuration
 import org.postgresql.shaded.com.ongres.scram.common.util.CryptoUtil
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import java.time.LocalDate
 import java.util.*
 import java.util.regex.Pattern
@@ -41,13 +42,28 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         TODO("Not yet implemented")
     }
 
-    override fun registerUser(alumno: Alumno): Alumno {
+    override fun registerUser(alumno: AlumnoGraphQL): Alumno {
         var pattern = Pattern.compile("^(.+)@(.+)$")
+        alumno.contrasena = BCryptPasswordEncoder().encode(alumno.contrasena)
         if (!pattern.matcher(alumno.correo).matches())
             throw AuthException("Formato de correo invalido!")
         val count = alumnoRepository!!.getCountByAlumnoCorreo(alumno.correo)
         if (count > 0)
             throw AuthException("Account alredy in use!")
+        val alumno =  Alumno(
+            alumno.id_alumno,
+            alumno.no_control,
+            alumno.correo,
+            alumno.curp,
+            alumno.nombre,
+            LocalDate.parse(alumno.fecha_nacimiento),
+            alumno.telefono?.replace("s/\\x00//g;", ""),
+            alumno.sexo,
+            alumno.fotografia?.replace("s/\\x00//g;", ""),
+            alumno.contrasena,
+            alumno.domicilio
+        )
+        print(alumno)
         return alumnoRepository!!.save(alumno)
     }
 
@@ -77,7 +93,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         return optional.get()
     }
 
-    /*@Throws(BusinessException::class)
+    @Throws(BusinessException::class)
     override fun saveAlumno(alumno: Alumno): Alumno{
         //var session = factory?.openSession()
         //var tx: Transaction? = null
@@ -88,7 +104,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         } catch(e: Exception) {
             throw BusinessException(e.message)
         }
-    }*/
+    }
 
     @Throws(BusinessException::class)
     override fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno {
