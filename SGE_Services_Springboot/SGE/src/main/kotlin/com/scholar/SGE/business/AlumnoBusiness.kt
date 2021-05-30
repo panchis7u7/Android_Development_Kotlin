@@ -38,8 +38,22 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         }
     }*/
 
-    override fun validateUser(email: String, password: String) {
-        TODO("Not yet implemented")
+    @Throws(NotFoundException::class, AuthException::class)
+    override fun validateUser(email: String, password: String): Alumno {
+        val optional: Optional<Alumno>
+        try{
+            optional = alumnoRepository!!.findByEmail(email)
+            if(!optional.isPresent)
+                throw NotFoundException("No se encontro el alumno con el correo: $email!")
+            var alumno = optional.get()
+            if(!BCryptPasswordEncoder().matches(password, alumno.contrasena.trim()))
+                throw AuthException("Usuario o contraseña incorrecto!")
+            return alumno
+        } catch(e: Exception){
+            throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
+        }
     }
 
     override fun registerUser(alumno: AlumnoGraphQL): Alumno {

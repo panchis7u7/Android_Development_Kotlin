@@ -14,4 +14,7 @@ interface AlumnoRepository: JpaRepository<Alumno, UUID> {
 
     @Query("SELECT a FROM Alumno a WHERE a.correo IN (:email) AND a.contrasena IN (:password)")
     fun findByEmailAndPassword(@Param("email") email: String, @Param("password")password: String): Alumno
+
+    @Query("SELECT a FROM Alumno a WHERE a.correo IN (:email)")
+    fun findByEmail(@Param("email") email: String): Optional<Alumno>
 }

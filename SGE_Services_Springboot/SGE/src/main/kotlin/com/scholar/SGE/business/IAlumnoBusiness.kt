@@ -9,7 +9,7 @@ interface IAlumnoBusiness {
     fun loadAlumno(idAlumno: String): Alumno
     fun saveAlumno(alumno: Alumno): Alumno
 
-    fun validateUser(email: String, password: String)
+    fun validateUser(email: String, password: String): Alumno
     fun registerUser(alumno: AlumnoGraphQL): Alumno
 
     fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno

@@ -74,6 +74,7 @@ input CreateDomicilioInput {
 }
 
 type Query {
+    validateUser(email: String, password: String): Alumno
     listAlumnos:[Alumno]
     loadAlumno(id_alumno:ID):Alumno
     listProfesores:[Profesor]
