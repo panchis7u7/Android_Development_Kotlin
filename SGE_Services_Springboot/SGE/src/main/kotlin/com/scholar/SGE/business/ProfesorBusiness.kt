@@ -1,21 +1,25 @@
 package com.scholar.SGE.business
 
+import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.dao.ProfesorRepository
 import com.scholar.SGE.model.Alumno
 import com.scholar.SGE.model.Profesor
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 import java.util.*
 import kotlin.jvm.Throws
 
-class ProfesorBusiness: IProfesorBusiness {
+@Service
+class ProfesorBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IProfesorBusiness {
 
     @Autowired
     val profesorRepository: ProfesorRepository? = null
 
     @Throws(BusinessException::class)
-    override fun listProfesors(): List<Profesor> {
+    override fun listProfesores(): List<Profesor> {
         try{
             return profesorRepository!!.findAll()
         }catch(e: Exception){

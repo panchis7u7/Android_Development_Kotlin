@@ -176,19 +176,3 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         }
     }
 }
-
-/*
-mutation {
-  saveAlumno(input: {nombre: "Prueba", no_control:"18121700", correo:"sebastian.mad@gmail.com", curp:"prueba", fecha_nacimiento:"1999-07-14", telefono: "4434548761", sexo: "M", fotografia:"prueba1"}){
-    id_alumno
-    no_control
-    correo
-    curp
-    nombre
-    fecha_nacimiento
-    telefono
-    sexo
-    fotografia
-  }
-}
- */

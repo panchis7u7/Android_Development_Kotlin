@@ -1,17 +1,3 @@
-input CreateAlumnoInput {
-    id: ID,
-    no_control: String,
-    correo: String,
-    curp: String,
-    nombre: String,
-    fecha_nacimiento: String,
-    telefono: String,
-    sexo: String,
-    fotografia: String,
-    contrasena: String,
-    domicilio: CreateDomicilioInput
-}
-
 type Alumno {
     id: ID!,
     no_control: String,
@@ -51,10 +37,9 @@ type Asignatura {
 
 }
 
-input CreateDomicilioInput {
-    id: ID!,
-    domicilio: String,
-    id_colonia: Int
+type Profesor {
+    id: ID!
+    nombre: String
 }
 
 type Domicilio {
@@ -63,13 +48,40 @@ type Domicilio {
     id_colonia: Int
 }
 
+input CreateAlumnoInput {
+    id: ID,
+    no_control: String,
+    correo: String,
+    curp: String,
+    nombre: String,
+    fecha_nacimiento: String,
+    telefono: String,
+    sexo: String,
+    fotografia: String,
+    contrasena: String,
+    domicilio: CreateDomicilioInput
+}
+
+input CreateProfesorInput {
+    id:ID,
+    nombre: String
+}
+
+input CreateDomicilioInput {
+    id: ID!,
+    domicilio: String,
+    id_colonia: Int
+}
+
 type Query {
     listAlumnos:[Alumno]
     loadAlumno(id_alumno:ID):Alumno
-    listDomicilios:[Domicilio]
-    loadDomicilio(id_domicilio:ID):Domicilio
+    listProfesores:[Profesor]
+    loadProfesor(id_profesor:ID):Profesor
     listAsignaturas:[Asignatura]
     loadAsignatura(id_asignatura:ID):Asignatura
+    listDomicilios:[Domicilio]
+    loadDomicilio(id_domicilio:ID):Domicilio
 }
 
 type Mutation {
