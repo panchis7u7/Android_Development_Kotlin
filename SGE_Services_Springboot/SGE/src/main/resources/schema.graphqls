@@ -34,7 +34,6 @@ type Asignatura {
     regularizacion: String,
     evaluacion: String,
     observaciones: String
-
 }
 
 type Profesor {
@@ -49,7 +48,7 @@ type Domicilio {
 }
 
 input CreateAlumnoInput {
-    id: ID,
+    id: ID!,
     no_control: String,
     correo: String,
     curp: String,

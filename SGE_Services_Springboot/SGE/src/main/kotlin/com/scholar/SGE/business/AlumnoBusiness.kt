@@ -82,7 +82,6 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             alumno.contrasena,
             alumno.domicilio
         )
-        print(alumno)
         return alumnoRepository!!.save(alumno)
     }
 
