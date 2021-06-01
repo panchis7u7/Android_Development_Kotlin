@@ -37,6 +37,9 @@ dependencies {
     implementation ("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
     implementation ("com.graphql-java:voyager-spring-boot-starter:5.0.2")
     implementation ("com.graphql-java:graphql-java-tools:5.2.4")
+
+	//JWT
+	implementation ("io.jsonwebtoken:jjwt:0.9.1")
 }
 
 tasks.withType<KotlinCompile> {

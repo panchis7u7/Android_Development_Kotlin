@@ -11,14 +11,19 @@ import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.exception.AuthException
 import com.scholar.SGE.model.AlumnoGraphQL
 import com.scholar.SGE.model.Domicilio
+import com.scholar.SGE.util.Constants
+import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.SignatureAlgorithm
 import org.hibernate.SessionFactory
 import org.hibernate.Transaction
 import org.hibernate.cfg.Configuration
 import org.postgresql.shaded.com.ongres.scram.common.util.CryptoUtil
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import java.time.LocalDate
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.HashMap
 
 @Service
 class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusiness{
@@ -42,7 +47,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
     override fun validateUser(email: String, password: String): Alumno {
         val optional: Optional<Alumno>
         try{
-            optional = alumnoRepository!!.findByEmail(email)
+            optional = alumnoRepository!!.findByEmail(email.trim())
             if(!optional.isPresent)
                 throw NotFoundException("No se encontro el alumno con el correo: $email!")
             var alumno = optional.get()
@@ -79,6 +84,21 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         )
         print(alumno)
         return alumnoRepository!!.save(alumno)
+    }
+
+     override fun generateJWTToken(alumno: Alumno): Map<String, String> {
+        var timeStamp = System.currentTimeMillis()
+        val token = Jwts.builder().signWith(SignatureAlgorithm.HS512, Constants.API_SECRET_KEY)
+            .setIssuedAt(Date(timeStamp))
+            .setExpiration(Date(timeStamp + Constants.TOKEN_VALIDITY))
+            .claim("idAlumno", alumno.id)
+            .claim("correo", alumno.correo)
+            .claim("nombre", alumno.nombre)
+            .claim("noControl", alumno.no_control)
+            .compact()
+        val map = HashMap<String, String>()
+        map.put("token", token)
+        return map
     }
 
     @Throws(BusinessException::class)

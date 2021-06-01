@@ -11,6 +11,7 @@ interface IAlumnoBusiness {
 
     fun validateUser(email: String, password: String): Alumno
     fun registerUser(alumno: AlumnoGraphQL): Alumno
+    fun generateJWTToken(alumno: Alumno): Map<String, String>
 
     fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno
     fun saveAlumnoQL(alumno: AlumnoGraphQL): Alumno
