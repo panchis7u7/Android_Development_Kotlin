@@ -1,7 +1,10 @@
 package com.scholar.SGE
 
+import com.scholar.SGE.business.AuthFilter
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.boot.web.servlet.FilterRegistrationBean
+import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 class SgeApplication /* :CommandLineRunner*/ {
@@ -25,6 +28,17 @@ class SgeApplication /* :CommandLineRunner*/ {
 
 		alumnoRepository!!.save(alumno)
 	} */
+	@Bean
+	fun filterRegistrationBean(): FilterRegistrationBean<AuthFilter> {
+		val registrationBean = FilterRegistrationBean<AuthFilter>()
+		registrationBean.filter = AuthFilter()
+		registrationBean.addUrlPatterns("/alumnos")
+		registrationBean.addUrlPatterns("/graphql/*")
+		registrationBean.addUrlPatterns("/profesores/*")
+		registrationBean.addUrlPatterns("/domicilios/*")
+		registrationBean.addUrlPatterns("/asignaturas/*")
+		return registrationBean
+	}
 }
 
 fun main(args: Array<String>) {

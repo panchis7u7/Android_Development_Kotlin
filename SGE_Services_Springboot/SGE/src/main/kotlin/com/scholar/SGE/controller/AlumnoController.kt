@@ -26,7 +26,7 @@ class AlumnoController {
     val alumnoBusiness: IAlumnoBusiness? = null
 
     @PostMapping("/login")
-    fun loginAlumno(@RequestBody user: Map<String, String>): ResponseEntity<Any> {
+    fun loginAlumno(@RequestBody user: Map<String, String>): ResponseEntity<Map<String, String>> {
         return try {
             val usuario = alumnoBusiness!!.validateUser(user.get("correo") as String, user.get("contrasena") as String)
             return ResponseEntity(alumnoBusiness!!.generateJWTToken(usuario), HttpStatus.CREATED)
@@ -45,11 +45,11 @@ class AlumnoController {
     fun registerAlumno(@RequestBody alumno: Alumno): ResponseEntity<Any> {
         return try {
             alumnoBusiness!!.saveAlumno(alumno)
-            val response = HttpHeaders()
-            response.set("status", "Alumno registrado satisfactoriamente!")
-            ResponseEntity(response, HttpStatus.CREATED)
+            ResponseEntity(alumnoBusiness!!.generateJWTToken(alumno), HttpStatus.CREATED)
         } catch(e: BusinessException) {
-            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+            val response: HashMap<String, String> = hashMapOf()
+            response.put("status", e.message!!)
+            return ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
 
