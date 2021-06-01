@@ -8,5 +8,8 @@ import javax.persistence.*
 data class Domicilio(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name ="id_domicilio") @JsonProperty("id") val id: Long,
     @JsonProperty("domicilio") val domicilio: String,
-    @JsonProperty("id_colonia") val id_colonia: Long?
+
+    @ManyToOne
+    @JoinColumn(name = "id_colonia", nullable = true)
+    @JsonProperty("id_colonia") val colonia: Colonia?
 ) {}

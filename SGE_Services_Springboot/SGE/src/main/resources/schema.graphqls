@@ -44,7 +44,24 @@ type Profesor {
 type Domicilio {
     id: ID!,
     domicilio: String,
-    id_colonia: Int
+    colonia: Colonia
+}
+
+type Colonia {
+    id: ID!,
+    colonia: String,
+    municipio: Municipio
+}
+
+type Municipio {
+    id: ID!,
+    municipio: String,
+    estado: Estado
+}
+
+type Estado {
+    id: ID!,
+    estado: String
 }
 
 input CreateAlumnoInput {
