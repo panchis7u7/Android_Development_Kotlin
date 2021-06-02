@@ -3,6 +3,9 @@ package com.scholar.SGE.controller
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.business.IResidenciaBusiness
+import com.scholar.SGE.model.Colonia
+import com.scholar.SGE.model.Estado
+import com.scholar.SGE.model.Municipio
 import com.scholar.SGE.model.Residencia
 import com.scholar.SGE.util.Constants
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,6 +24,33 @@ class ResidenciaController {
     fun list(): ResponseEntity<List<Residencia>> {
         return try {
             ResponseEntity(residenciaBusiness!!.listResidencias(), HttpStatus.OK)
+        } catch(e: Exception) {
+            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    @GetMapping("/colonias")
+    fun listColonia(): ResponseEntity<List<Colonia>> {
+        return try {
+            ResponseEntity(residenciaBusiness!!.listColonias(), HttpStatus.OK)
+        } catch(e: Exception) {
+            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    @GetMapping("/municipios")
+    fun listMunicipios(): ResponseEntity<List<Municipio>> {
+        return try {
+            ResponseEntity(residenciaBusiness!!.listMunicipios(), HttpStatus.OK)
+        } catch(e: Exception) {
+            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    @GetMapping("/estados")
+    fun listEstados(): ResponseEntity<List<Estado>> {
+        return try {
+            ResponseEntity(residenciaBusiness!!.listEstados(), HttpStatus.OK)
         } catch(e: Exception) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }

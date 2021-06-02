@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS municipios(
 
 CREATE TABLE IF NOT EXISTS colonias(
     id_colonia SERIAL PRIMARY KEY,
-    colonia VARCHAR(25) NOT NULL,
+    colonia VARCHAR(35) NOT NULL,
     codigo_postal CHAR(8),
     id_municipio INTEGER,
     FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE

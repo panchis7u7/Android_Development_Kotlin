@@ -3,7 +3,13 @@ package com.scholar.SGE.business
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
+import com.scholar.SGE.dao.ColoniaRepository
+import com.scholar.SGE.dao.EstadoRepository
+import com.scholar.SGE.dao.MunicipioRepository
 import com.scholar.SGE.dao.ResidenciaRepository
+import com.scholar.SGE.model.Colonia
+import com.scholar.SGE.model.Estado
+import com.scholar.SGE.model.Municipio
 import com.scholar.SGE.model.Residencia
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -16,6 +22,12 @@ class ResidenciaBusiness: GraphQLQueryResolver, IResidenciaBusiness {
     }
     @Autowired
     val residenciaRepository: ResidenciaRepository? = null
+    @Autowired
+    val coloniaRepository: ColoniaRepository? = null
+    @Autowired
+    val municipioRepository: MunicipioRepository? = null
+    @Autowired
+    val estadoRepository: EstadoRepository? = null
 
     /*init {
         try {
@@ -82,6 +94,30 @@ class ResidenciaBusiness: GraphQLQueryResolver, IResidenciaBusiness {
             } catch(e: Exception) {
                 throw BusinessException(e.message)
             }
+        }
+    }
+
+    override fun listColonias(): List<Colonia> {
+        try{
+            return coloniaRepository!!.findAll()
+        }catch(e: Exception){
+            throw BusinessException(e.message)
+        }
+    }
+
+    override fun listMunicipios(): List<Municipio> {
+        try{
+            return municipioRepository!!.findAll()
+        }catch(e: Exception){
+            throw BusinessException(e.message)
+        }
+    }
+
+    override fun listEstados(): List<Estado> {
+        try{
+            return estadoRepository!!.findAll()
+        }catch(e: Exception){
+            throw BusinessException(e.message)
         }
     }
 }

@@ -27,7 +27,11 @@ data class Residencia (
 data class Colonia (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_colonia") @JsonProperty("id") val id: Long,
     @Column(name = "colonia") @JsonProperty("colonia") var colonia: String,
-    @Column(name = "codigo_postal") @JsonProperty("codigo_postal") var codigo_postal: String
+    @Column(name = "codigo_postal") @JsonProperty("codigo_postal") var codigo_postal: String,
+
+    @ManyToOne
+    @JoinColumn(name = "id_municipio", nullable = true)
+    @JsonProperty("municipio") var municipio: Municipio?
 ) {}
 
 @Entity
@@ -35,6 +39,13 @@ data class Colonia (
 data class Municipio (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_municipio") @JsonProperty("id") val id: Long,
     @Column(name = "municipio") @JsonProperty("municipio") var municipio: String,
+
+    /*@OneToMany(mappedBy = "municipio")
+    var colonias: List<Colonia>,*/
+
+    @ManyToOne
+    @JoinColumn(name = "id_estado", nullable = true)
+    @JsonProperty("estado") var estado: Estado?
 ) {}
 
 @Entity
@@ -42,4 +53,7 @@ data class Municipio (
 data class Estado (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_estado") @JsonProperty("id") val id: Long,
     @Column(name = "estado") @JsonProperty("estado") var estado: String,
+
+    /*@OneToMany(mappedBy = "estado")
+    var municipio: List<Municipio>?,*/
 ) {}
