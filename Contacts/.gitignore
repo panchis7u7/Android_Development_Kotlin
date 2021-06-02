@@ -13,6 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-google-services.json
-inserts.sql
-inserts2.sql

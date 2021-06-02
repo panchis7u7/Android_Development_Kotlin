@@ -6,10 +6,10 @@ from os import listdir
 ###################################################################################
 #SQL definitions.
 
-INSERTS_FILE = "./inserts.sql"
+INSERTS_FILE = "./inserts2.sql"
 TABLE_SUBJETCS = "asignaturas"
 TABLE_PROFESORS = "profesores"
-DATA_PATH = "reticula"
+DATA_PATH = "reinscripcion"
 
 ###################################################################################
 
