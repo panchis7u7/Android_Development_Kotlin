@@ -1,0 +1,16 @@
+{
+    "clave": "B7T1",
+    "profesor": "Mora Garcia Jorge",
+    "materia": "Redes Emergentes",
+    "semestre": 7,
+    "semestre_cursada": 6,
+    "grupo": "A",
+    "calificacion": "",
+    "creditos": 5,
+    "evaluacion": "",
+    "regularizacion": "",
+    "observaciones": "",
+    "dependencia": "B5T3",
+    "horarios": ["16:00-17:00","16:00-17:00","16:00-17:00","16:00-17:00","16:00-17:00"],
+    "aulas": ["F1","F1","LRD","F1","LRD"]
+}

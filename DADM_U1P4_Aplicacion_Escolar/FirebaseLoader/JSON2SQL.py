@@ -6,11 +6,11 @@ from os import listdir
 ###################################################################################
 #SQL definitions.
 
-INSERTS_FILE = "./inserts2.sql"
+INSERTS_FILE = "insertsReinscripcion.sql"
 TABLE_SUBJETCS = "asignaturas"
 TABLE_PROFESORS = "profesores"
 TABLE_SUBJECTS_PROFESORS = "asignaturas_profesores"
-DATA_PATH = "reticula"
+DATA_PATH = "reinscripcion"
 
 ###################################################################################
 
@@ -84,5 +84,42 @@ def main():
     f.close()
 
 
+def reinscripcion():
+    materias = 0
+    profesores = 0
+    open(INSERTS_FILE, "w+")
+    f = open(INSERTS_FILE, 'a')
+    for dir in listdir(DATA_PATH):
+        for materia in listdir(DATA_PATH + '/' + dir):
+            data = load_json(DATA_PATH + '/' + dir + '/' + materia)
+            horarios = ["","","","",""]
+            aulas = ["","","","",""]
+            if(not(data.get('horarios') is None)):
+                for index, horario in enumerate(data['horarios']):
+                    horarios[index] = horario
+
+            if(not(data.get('aulas') is None)):
+                for index, aula in enumerate(data['aulas']):
+                    aulas[index] = aula
+
+            materias += 1
+            f.write("INSERT INTO {} VALUES ({}, '{}', '{}', '{}', {}, {}, {}, {}, '{}', '{}', '{}');\n"
+            .format(
+                TABLE_SUBJETCS,
+                materias,
+                data['materia'],
+                data['clave'],
+                data['grupo'],
+                data['creditos'],
+                data['semestre'],
+                data['semestre_cursada'],
+                'null' if (data['calificacion'] == '') else data['calificacion'],
+                data['regularizacion'],
+                data['evaluacion'],
+                data['observaciones']
+                ))
+
+    f.close()
+
 if __name__ == "__main__":
-    main()
+    reinscripcion()

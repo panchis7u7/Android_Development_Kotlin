@@ -1,0 +1,15 @@
+{
+    "clave": "B6T1",
+    "materia": "Telecomunicaciones",
+    "profesor": "Rojas Prospero Ireri Tsipekua",
+    "semestre": 6,
+    "semestre_cursada": 6,
+    "grupo": "B",
+    "creditos": 5,
+    "calificacion": "",
+    "evaluacion": "",
+    "regularizacion": "",
+    "observaciones": "",
+    "horarios": ["11:00-12:00","11:00-12:00","11:00-12:00","11:00-12:00","11:00-12:00"],
+    "aulas": ["F4","F4","F4","F4","LRD"]
+}

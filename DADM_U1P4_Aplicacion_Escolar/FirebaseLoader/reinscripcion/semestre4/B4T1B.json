@@ -1,0 +1,14 @@
+{
+    "clave": "B4T1",
+    "materia": "Matematicas Aplicadas a Comunicaciones",
+    "profesor": "Casimiro Linares Edgar",
+    "semestre": 4,
+    "semestre_cursada": 3,
+    "grupo": "B",
+    "creditos": 5,
+    "calificacion": "95",
+    "evaluacion": "Evaluacion Regularizacion Primera Vez",
+    "regularizacion": "R1",
+    "observaciones": "Curso Aprobado",
+    "dependencia": "B2T1"
+}

@@ -1,0 +1,14 @@
+{
+    "clave": "B5T5",
+    "materia": "Arquitectura de Computadoras",
+    "profesor": "Mora Garcia Jorge",
+    "semestre": 5,
+    "semestre_cursada": 4,
+    "grupo": "B",
+    "creditos": 4,
+    "calificacion": "100",
+    "evaluacion": "Evaluacion Ordinaria Primera Vez",
+    "regularizacion": "O1",
+    "observaciones": "Curso Aprobado",
+    "dependencia": "B4T5"
+}
