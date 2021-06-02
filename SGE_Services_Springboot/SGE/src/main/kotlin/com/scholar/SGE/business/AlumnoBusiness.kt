@@ -51,7 +51,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             optional = alumnoRepository!!.findByEmail(email.trim())
             if(!optional.isPresent)
                 throw NotFoundException("No se encontro el alumno con el correo: $email!")
-            var alumno = optional.get()
+            val alumno = optional.get()
             if(!BCryptPasswordEncoder().matches(password, alumno.contrasena.trim()))
                 throw AuthException("Usuario o contraseña incorrecto!")
             return alumno
@@ -63,14 +63,14 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
     }
 
     override fun registerUser(alumno: AlumnoGraphQL): Alumno {
-        var pattern = Pattern.compile("^(.+)@(.+)$")
+        val pattern = Pattern.compile("^(.+)@(.+)$")
         alumno.contrasena = BCryptPasswordEncoder().encode(alumno.contrasena)
         if (!pattern.matcher(alumno.correo).matches())
             throw AuthException("Formato de correo invalido!")
         val count = alumnoRepository!!.getCountByAlumnoCorreo(alumno.correo)
         if (count > 0)
             throw AuthException("Account alredy in use!")
-        val alumno =  Alumno(
+        val alumno = Alumno(
             alumno.id_alumno,
             alumno.no_control,
             alumno.correo,

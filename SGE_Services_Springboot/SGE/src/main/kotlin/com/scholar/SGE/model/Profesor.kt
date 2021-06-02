@@ -9,9 +9,9 @@ data class Profesor(
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id_profesor") @JsonProperty("id") var id: Long,
     @Column(name = "nombre") var nombre: String,
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
+    /*@ManyToMany(fetch = FetchType.EAGER, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_profesores",
     joinColumns = arrayOf(JoinColumn(name = "id_profesor")),
     inverseJoinColumns = arrayOf(JoinColumn(name = "id_asignatura")))
-    var asignaturas: List<Asignatura> = mutableListOf()
+    var asignaturas: List<Asignatura> = mutableListOf()*/
 ) {}

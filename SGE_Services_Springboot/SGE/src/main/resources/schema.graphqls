@@ -33,7 +33,8 @@ type Asignatura {
     calificacion: Int,
     regularizacion: String,
     evaluacion: String,
-    observaciones: String
+    observaciones: String,
+    profesores: [Profesor]
 }
 
 type Profesor {
@@ -52,12 +53,14 @@ type Residencia {
 type Colonia {
     id: ID!,
     colonia: String,
-    codigo_postal: String
+    codigo_postal: String,
+    municipio: Municipio
 }
 
 type Municipio {
     id: ID!,
     municipio: String,
+    estado: Estado
 }
 
 type Estado {
@@ -113,6 +116,9 @@ type Query {
     listResidencias:[Residencia]
     loadResidencia(id_residencia:ID):Residencia
     getResidencia(id_alumno: String): Residencia
+    listColonias:[Colonia]
+    listMunicipios:[Municipio]
+    listEstados:[Estado]
 }
 
 type Mutation {

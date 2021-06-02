@@ -9,7 +9,8 @@ from os import listdir
 INSERTS_FILE = "./inserts2.sql"
 TABLE_SUBJETCS = "asignaturas"
 TABLE_PROFESORS = "profesores"
-DATA_PATH = "reinscripcion"
+TABLE_SUBJECTS_PROFESORS = "asignaturas_profesores"
+DATA_PATH = "reticula"
 
 ###################################################################################
 
@@ -43,6 +44,7 @@ def main():
                     profesores,
                     data['profesor']
                 ))
+
             
             materias += 1
             f.write("INSERT INTO {} VALUES ({}, '{}', '{}', '{}', {}, {}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {}, '{}', '{}', '{}', {});\n"
@@ -70,6 +72,13 @@ def main():
                 data['evaluacion'],
                 data['observaciones'],
                 'null' if data['profesor'] == '' else profesores
+                ))
+
+            if(data['profesor'] != ''):
+                f.write("INSERT INTO {} VALUES ({}, {});\n".format(
+                    TABLE_SUBJECTS_PROFESORS,
+                    materias,
+                    profesores
                 ))
 
     f.close()
