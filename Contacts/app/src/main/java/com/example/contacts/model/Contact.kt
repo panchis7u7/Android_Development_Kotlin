@@ -5,5 +5,5 @@ data class Contact(
     val name: String,
     val celphone: String,
     val favorite: Boolean?,
-    val photo: ByteArray
+    val photo: ByteArray?
 ) {}
