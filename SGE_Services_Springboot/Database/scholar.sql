@@ -4,18 +4,22 @@
 
 CREATE TABLE IF NOT EXISTS estados(
     id_estado SERIAL PRIMARY KEY,
-    estado VARCHAR(20)
+    estado VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS municipios(
     id_municipio SERIAL PRIMARY KEY,
-    municipio VARCHAR(30)
+    municipio VARCHAR(30) NOT NULL,
+    id_estado INTEGER,
+    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS colonias(
     id_colonia SERIAL PRIMARY KEY,
-    colonia VARCHAR(25),
-    codigo_postal CHAR(8)
+    colonia VARCHAR(25) NOT NULL,
+    codigo_postal CHAR(8),
+    id_municipio INTEGER,
+    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS residencias(
