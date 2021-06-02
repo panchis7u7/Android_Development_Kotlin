@@ -11,15 +11,15 @@ data class Residencia (
 
     @ManyToOne
     @JoinColumn(name = "id_colonia", nullable = true)
-    @JsonProperty("id_colonia") val colonia: Colonia?,
+    @JsonProperty("colonia") val colonia: Colonia?,
 
     @ManyToOne
     @JoinColumn(name = "id_municipio", nullable = true)
-    @JsonProperty("id_municipio") val municipio: Municipio?,
+    @JsonProperty("municipio") val municipio: Municipio?,
 
     @ManyToOne
     @JoinColumn(name = "id_estado", nullable = true)
-    @JsonProperty("id_estado") val estado: Estado?
+    @JsonProperty("estado") val estado: Estado?
 ){}
 
 @Entity
@@ -27,7 +27,7 @@ data class Residencia (
 data class Colonia (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_colonia") @JsonProperty("id") val id: Long,
     @Column(name = "colonia") @JsonProperty("colonia") var colonia: String,
-    @Column(name = "codigo_postal") @JsonProperty("codigo_postal") var codigoPostal: String
+    @Column(name = "codigo_postal") @JsonProperty("codigo_postal") var codigo_postal: String
 ) {}
 
 @Entity
