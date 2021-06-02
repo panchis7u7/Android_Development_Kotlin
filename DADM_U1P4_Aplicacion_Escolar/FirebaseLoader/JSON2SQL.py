@@ -18,6 +18,8 @@ def load_json(file_path):
         return json.load(f)
         
 def main():
+    materias = 0
+    profesores = 0
     open(INSERTS_FILE, "w+")
     f = open(INSERTS_FILE, 'a')
     for dir in listdir(DATA_PATH):
@@ -32,21 +34,45 @@ def main():
             if(not(data.get('aulas') is None)):
                 for index, aula in enumerate(data['aulas']):
                     aulas[index] = aula
-                
-            print("INSERT INTO {} VALUES ('{}', '{}', '{}', {}, {}, {}, '{}', '{}', '{}', {});"
+            
+            if(data['profesor'] != ""):
+                profesores += 1
+                f.write("INSERT INTO {} VALUES ({}, '{}');\n"
+                .format(
+                    TABLE_PROFESORS,
+                    profesores,
+                    data['profesor']
+                ))
+            
+            materias += 1
+            f.write("INSERT INTO {} VALUES ({}, '{}', '{}', '{}', {}, {}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {}, '{}', '{}', '{}', {});\n"
             .format(
                 TABLE_SUBJETCS,
+                materias,
                 data['materia'],
                 data['clave'],
                 data['grupo'],
                 data['creditos'],
                 data['semestre'],
                 data['semestre_cursada'],
-                data['calificacion'],
+                horarios[0],
+                horarios[1],
+                horarios[2],
+                horarios[3],
+                horarios[4],
+                aulas[0],
+                aulas[1],
+                aulas[2],
+                aulas[3],
+                aulas[4],
+                'null' if (data['calificacion'] == '') else data['calificacion'],
                 data['regularizacion'],
                 data['evaluacion'],
-                data['observaciones']
+                data['observaciones'],
+                'null' if data['profesor'] == '' else profesores
                 ))
+
+    f.close()
 
 
 if __name__ == "__main__":

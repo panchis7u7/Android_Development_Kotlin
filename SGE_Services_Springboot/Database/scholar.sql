@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS alumnos (
 
 CREATE TABLE IF NOT EXISTS profesores(
     id_profesor SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL
+    nombre VARCHAR(55) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS asignaturas(
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS asignaturas(
     aula_viernes CHAR(14),
     calificacion INTEGER,
     regularizacion CHAR(4),
-    evaluacion CHAR(35),
+    evaluacion CHAR(40),
     observaciones CHAR(20),
     id_profesor INTEGER,
     FOREIGN KEY (id_profesor) REFERENCES profesores (id_profesor) ON UPDATE CASCADE ON DELETE CASCADE    
