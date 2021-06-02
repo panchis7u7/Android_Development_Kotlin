@@ -9,7 +9,7 @@ type Alumno {
     sexo: String,
     fotografia: String,
     contrasena: String,
-    domicilio: Domicilio
+    residencia: Residencia
 }
 
 type Asignatura {
@@ -41,22 +41,23 @@ type Profesor {
     nombre: String
 }
 
-type Domicilio {
+type Residencia {
     id: ID!,
     domicilio: String,
-    colonia: Colonia
+    colonia: Colonia,
+    municipio: Municipio,
+    estado: Estado
 }
 
 type Colonia {
     id: ID!,
     colonia: String,
-    municipio: Municipio
+    codigo_postal: String
 }
 
 type Municipio {
     id: ID!,
     municipio: String,
-    estado: Estado
 }
 
 type Estado {
@@ -75,7 +76,7 @@ input CreateAlumnoInput {
     sexo: String,
     fotografia: String,
     contrasena: String,
-    domicilio: CreateDomicilioInput
+    residencia: CreateResidenciaInput
 }
 
 input CreateProfesorInput {
@@ -83,10 +84,28 @@ input CreateProfesorInput {
     nombre: String
 }
 
-input CreateDomicilioInput {
+input CreateColoniaInput {
+    id: ID!,
+    colonia: String,
+    codigo_postal: String
+}
+
+input CreateMunicipioInput {
+    id: ID!,
+    municipio: String,
+}
+
+input CreateEstadoInput {
+    id: ID!,
+    estado: String
+}
+
+input CreateResidenciaInput {
     id: ID!,
     domicilio: String,
-    id_colonia: Int
+    colonia: CreateColoniaInput,
+    municipio: CreateMunicipioInput,
+    estado: CreateEstadoInput
 }
 
 type Query {
@@ -97,12 +116,13 @@ type Query {
     loadProfesor(id_profesor:ID):Profesor
     listAsignaturas:[Asignatura]
     loadAsignatura(id_asignatura:ID):Asignatura
-    listDomicilios:[Domicilio]
-    loadDomicilio(id_domicilio:ID):Domicilio
+    listResidencias:[Residencia]
+    loadResidencia(id_residencia:ID):Residencia
+    getResidencia(id_alumno: String): Residencia
 }
 
 type Mutation {
     registerUser(input: CreateAlumnoInput): Alumno
-    updateAlumno(id: ID, telefono: String, domicilio: CreateDomicilioInput): Alumno
+    updateAlumno(id: ID, telefono: String, residencia: CreateResidenciaInput): Alumno
     removeAlumno(id_alumno:ID): Boolean
 }

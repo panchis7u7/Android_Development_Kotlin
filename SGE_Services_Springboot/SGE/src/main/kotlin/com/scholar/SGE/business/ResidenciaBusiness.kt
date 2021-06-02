@@ -3,23 +3,19 @@ package com.scholar.SGE.business
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.scholar.SGE.Exception.BusinessException
 import com.scholar.SGE.Exception.NotFoundException
-import com.scholar.SGE.dao.DomicilioRepository
-import com.scholar.SGE.model.Domicilio
-import org.hibernate.SessionFactory
-import org.hibernate.Transaction
-import org.hibernate.cfg.Configuration
+import com.scholar.SGE.dao.ResidenciaRepository
+import com.scholar.SGE.model.Residencia
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class DomicilioBusiness: GraphQLQueryResolver, IDomicilioBusiness {
+class ResidenciaBusiness: GraphQLQueryResolver, IResidenciaBusiness {
     companion object {
         //private var factory: SessionFactory? = null
     }
     @Autowired
-    val domicilioRepository: DomicilioRepository? = null
+    val residenciaRepository: ResidenciaRepository? = null
 
     /*init {
         try {
@@ -31,19 +27,19 @@ class DomicilioBusiness: GraphQLQueryResolver, IDomicilioBusiness {
     }*/
 
     @Throws(BusinessException::class)
-    override fun listDomicilios(): List<Domicilio>{
+    override fun listResidencias(): List<Residencia>{
         try{
-            return domicilioRepository!!.findAll()
+            return residenciaRepository!!.findAll()
         }catch(e: Exception){
             throw BusinessException(e.message)
         }
     }
 
     @Throws(BusinessException::class, NotFoundException::class)
-    override fun loadDomicilio(idDomicilio: Long): Domicilio {
-        val optional: Optional<Domicilio>
+    override fun loadResidencia(idResidencia: Long): Residencia {
+        val optional: Optional<Residencia>
         try{
-            optional = domicilioRepository!!.findById(idDomicilio)
+            optional = residenciaRepository!!.findById(idResidencia)
         } catch(e: Exception){
             throw BusinessException(e.message)
         } catch (e2: IllegalArgumentException){
@@ -51,38 +47,38 @@ class DomicilioBusiness: GraphQLQueryResolver, IDomicilioBusiness {
         }
 
         if(!optional.isPresent)
-            throw NotFoundException("No se encontro el Domicilio con id $idDomicilio!")
+            throw NotFoundException("No se encontro la Residencia con id $idResidencia!")
 
         return optional.get()
     }
 
     @Throws(BusinessException::class)
-    override fun saveDomicilio(Domicilio: Domicilio): Domicilio {
+    override fun saveResidencia(Residencia: Residencia): Residencia {
         //val session = factory?.openSession()
         //var tx: Transaction? = null
 
         try {
             //tx = session?.beginTransaction()
-            return domicilioRepository!!.save(Domicilio)
+            return residenciaRepository!!.save(Residencia)
         } catch(e: Exception) {
             throw BusinessException(e.message)
         }
     }
 
     @Throws(BusinessException::class, NotFoundException::class)
-    override fun removeDomicilio(idDomicilio: Long){
-        val optional: Optional<Domicilio>
+    override fun removeResidencia(idResidencia: Long){
+        val optional: Optional<Residencia>
         try {
-            optional = domicilioRepository!!.findById(idDomicilio)
+            optional = residenciaRepository!!.findById(idResidencia)
         } catch(e: Exception) {
             throw BusinessException(e.message)
         }
 
         if(!optional.isPresent)
-            throw NotFoundException("No se encontro el Domicilio con id $idDomicilio!")
+            throw NotFoundException("No se encontro el Residencia con id $idResidencia!")
         else{
             try {
-                domicilioRepository!!.deleteById(idDomicilio)
+                residenciaRepository!!.deleteById(idResidencia)
             } catch(e: Exception) {
                 throw BusinessException(e.message)
             }

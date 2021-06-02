@@ -11,6 +11,7 @@ import com.scholar.SGE.Exception.NotFoundException
 import com.scholar.SGE.exception.AuthException
 import com.scholar.SGE.model.AlumnoGraphQL
 import com.scholar.SGE.model.Domicilio
+import com.scholar.SGE.model.Residencia
 import com.scholar.SGE.util.Constants
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -80,7 +81,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             alumno.sexo,
             alumno.fotografia?.replace("s/\\x00//g;", ""),
             alumno.contrasena,
-            alumno.domicilio
+            alumno.residencia
         )
         return alumnoRepository!!.save(alumno)
     }
@@ -140,7 +141,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
     }
 
     @Throws(BusinessException::class)
-    override fun updateAlumno(idAlumno: String, telefono: String?, domicilio: Domicilio?): Alumno {
+    override fun updateAlumno(idAlumno: String, telefono: String?, residencia: Residencia?): Alumno {
         val optional: Optional<Alumno>
         try{
             optional = alumnoRepository!!.findById(UUID.fromString(idAlumno))
@@ -154,7 +155,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             throw NotFoundException("No se encontro el alumno con id ${idAlumno}!")
 
         optional.get().telefono = telefono
-        optional.get().domicilio = domicilio
+        optional.get().residencia = residencia
 
         try{
            alumnoRepository!!.save(optional.get())
@@ -182,7 +183,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
                 alumno.sexo,
                 alumno.fotografia,
                 alumno.contrasena,
-                alumno.domicilio
+                alumno.residencia
             ))
         } catch(e: Exception) {
             throw BusinessException(e.message)
@@ -206,6 +207,21 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             } catch(e: Exception) {
                 throw BusinessException(e.message)
             }
+        }
+    }
+
+    @Throws(BusinessException::class, NotFoundException::class)
+    override fun getResidencia(idAlumno: String): Residencia {
+        val optional: Optional<Alumno>
+        try{
+            optional =  alumnoRepository!!.findById(UUID.fromString(idAlumno))
+
+            if (!optional.isPresent)
+                throw NotFoundException("No se encontro el alumno con id $idAlumno!")
+
+            return optional.get().residencia!!
+        }catch(e: Exception){
+            throw BusinessException(e.message)
         }
     }
 }

@@ -9,24 +9,24 @@ CREATE TABLE IF NOT EXISTS estados(
 
 CREATE TABLE IF NOT EXISTS municipios(
     id_municipio SERIAL PRIMARY KEY,
-    municipio VARCHAR(30),
-    id_estado INTEGER,
-    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
+    municipio VARCHAR(30)
 );
 
 CREATE TABLE IF NOT EXISTS colonias(
     id_colonia SERIAL PRIMARY KEY,
     colonia VARCHAR(25),
-    id_municipio INTEGER,
-    codigo_postal CHAR(8),
-    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
+    codigo_postal CHAR(8)
 );
 
-CREATE TABLE IF NOT EXISTS domicilios(
-    id_domicilio SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS residencias(
+    id_residencia SERIAL PRIMARY KEY,
     domicilio VARCHAR(30),
     id_colonia INTEGER,
-    FOREIGN KEY (id_colonia) REFERENCES colonias (id_colonia) ON UPDATE CASCADE ON DELETE CASCADE
+    id_municipio INTEGER,
+    id_estado INTEGER,
+    FOREIGN KEY (id_colonia) REFERENCES colonias (id_colonia) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS alumnos (
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS alumnos (
     telefono CHAR(12),
     sexo CHAR(1),
     fotografia VARCHAR(200),
-    id_domicilio INTEGER,
-    FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio) ON UPDATE CASCADE ON DELETE CASCADE
+    id_residencia INTEGER,
+    FOREIGN KEY (id_residencia) REFERENCES residencias(id_residencia) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS profesores(

@@ -21,6 +21,6 @@ data class AlumnoGraphQL (
     var contrasena: String,
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_domicilio")
-    val domicilio: Domicilio? = null
+    @JoinColumn(name = "id_residencia")
+    val residencia: Residencia? = null
 ) {}

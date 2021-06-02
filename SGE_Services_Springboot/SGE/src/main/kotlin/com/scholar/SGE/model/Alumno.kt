@@ -20,6 +20,6 @@ data class Alumno(
     @JsonProperty("contrasena") @Column(name = "contrasena") var contrasena: String,
 
     @OneToOne(cascade = arrayOf(CascadeType.ALL))
-    @JoinColumn(name = "id_domicilio", referencedColumnName = "id_domicilio")
-    var domicilio: Domicilio? = null
+    @JoinColumn(name = "id_residencia", referencedColumnName = "id_residencia")
+    var residencia: Residencia? = null
     ) {}
