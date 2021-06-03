@@ -1,6 +1,5 @@
 package com.scholar.SGE.dao
 
-import com.scholar.SGE.model.Alumno
 import com.scholar.SGE.model.Grupo
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query

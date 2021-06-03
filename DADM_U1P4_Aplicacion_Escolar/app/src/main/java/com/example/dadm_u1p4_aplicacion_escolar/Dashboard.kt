@@ -53,7 +53,7 @@ class Dashboard : AppCompatActivity() {
         items.add(GridButton("Avance reticular", R.drawable.icon_avance))
         items.add(GridButton("Datos", R.drawable.icon_datos))
         items.add(GridButton("Cerrar Sesion", R.drawable.icon_logout))
-        items.add(GridButton("Relleno", R.drawable.ic_launcher_foreground))
+        items.add(GridButton("Seleccion de Materias", R.drawable.icon_edit))
         items.add(GridButton("Relleno", R.drawable.ic_launcher_foreground))
         items.add(GridButton("Relleno", R.drawable.ic_launcher_foreground))
         //items.add(GridButton("Hola8", "https://cdn1.iconfinder.com/data/icons/logotypes/32/android-512.png"))

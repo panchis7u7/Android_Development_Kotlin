@@ -31,6 +31,7 @@ RecyclerView.Adapter<RecyclerAdapterDashboard.ItemHolder>(){
                         Login.auth.signOut()
                         itemView.context.startActivity(Intent(it.context, Login::class.java))
                         }
+                    5 -> {itemView.context.startActivity(Intent(it.context, SeleccionActivity::class.java))}
                     }
                 }
             }

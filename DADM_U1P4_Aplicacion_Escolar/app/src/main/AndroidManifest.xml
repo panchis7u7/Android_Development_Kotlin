@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/firebase_logo_logomark"
         android:supportsRtl="true"
         android:theme="@style/Theme.DADM_U1P4_Aplicacion_Escolar">
-        <activity android:name=".Horarios"></activity>
+        <activity android:name=".SeleccionActivity"></activity>
+        <activity android:name=".Horarios" />
         <activity android:name=".Perfil" />
         <activity android:name=".AvanceCurricular" />
         <activity android:name=".Registrar" />
         <activity android:name=".Calificaciones" />
         <activity android:name=".Login" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
