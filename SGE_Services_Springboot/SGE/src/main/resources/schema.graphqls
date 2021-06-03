@@ -16,10 +16,18 @@ type Asignatura {
     id: ID!,
     asignatura: String,
     clave: String,
-    grupo: String,
     creditos: String,
     semestre: Int,
     semestre_cursada: Int,
+    calificacion: Int,
+    regularizacion: String,
+    evaluacion: String,
+    observaciones: String
+}
+
+type Grupo {
+    id:ID!,
+    grupo: String,
     horario_lunes: String,
     horario_martes: String,
     horario_miercoles: String,
@@ -30,11 +38,8 @@ type Asignatura {
     aula_miercoles: String,
     aula_jueves: String,
     aula_viernes: String,
-    calificacion: Int,
-    regularizacion: String,
-    evaluacion: String,
-    observaciones: String,
-    profesores: [Profesor]
+    asignatura: Asignatura,
+    profesor: Profesor
 }
 
 type Profesor {
@@ -119,6 +124,8 @@ type Query {
     listColonias:[Colonia]
     listMunicipios:[Municipio]
     listEstados:[Estado]
+    listGrupos:[Grupo]
+    loadGrupo(idGrupo: Int):Grupo
 }
 
 type Mutation {
