@@ -1,5 +1,4 @@
 import json
-import os
 from os import path
 from os import listdir
 
@@ -9,6 +8,7 @@ from os import listdir
 INSERTS_FILE = "insertsReinscripcion.sql"
 TABLE_SUBJETCS = "asignaturas"
 TABLE_PROFESORS = "profesores"
+TABLE_GRUPOS = "grupos"
 TABLE_SUBJECTS_PROFESORS = "asignaturas_profesores"
 DATA_PATH = "reinscripcion"
 
@@ -85,11 +85,13 @@ def main():
 
 
 def reinscripcion():
-    materias = 0
-    profesores = 0
+    grupos = 0
+    materias = 1
+    profesores = 1
     open(INSERTS_FILE, "w+")
     f = open(INSERTS_FILE, 'a')
     for dir in listdir(DATA_PATH):
+        print(dir)
         for materia in listdir(DATA_PATH + '/' + dir):
             data = load_json(DATA_PATH + '/' + dir + '/' + materia)
             horarios = ["","","","",""]
@@ -102,21 +104,30 @@ def reinscripcion():
                 for index, aula in enumerate(data['aulas']):
                     aulas[index] = aula
 
-            materias += 1
-            f.write("INSERT INTO {} VALUES ({}, '{}', '{}', '{}', {}, {}, {}, {}, '{}', '{}', '{}');\n"
+            if(data['grupo'] != 'B'):
+                materias += 1
+                profesores += 1
+
+            #materias += 1
+            grupos += 1
+            f.write("INSERT INTO {} VALUES ('{}', {}, {}, {}, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');\n"
             .format(
-                TABLE_SUBJETCS,
+                TABLE_GRUPOS,
+                materia.split('.')[0],
+                grupos,
                 materias,
-                data['materia'],
-                data['clave'],
+                profesores,
                 data['grupo'],
-                data['creditos'],
-                data['semestre'],
-                data['semestre_cursada'],
-                'null' if (data['calificacion'] == '') else data['calificacion'],
-                data['regularizacion'],
-                data['evaluacion'],
-                data['observaciones']
+                horarios[0],
+                horarios[1],
+                horarios[2],
+                horarios[3],
+                horarios[4],
+                aulas[0],
+                aulas[1],
+                aulas[2],
+                aulas[3],
+                aulas[4]
                 ))
 
     f.close()
