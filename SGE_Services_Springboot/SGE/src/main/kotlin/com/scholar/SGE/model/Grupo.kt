@@ -26,6 +26,10 @@ data class Grupo (
     @JsonProperty("asignatura") var asignatura: Asignatura,
 
     @ManyToOne @JoinColumn(name = "id_profesor", nullable = false)
-    @JsonProperty("profesor") var profesor: Profesor
+    @JsonProperty("profesor") var profesor: Profesor,
+
+    /*@OneToMany(mappedBy = "grupo", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("asignaturas")
+    var alumno: List<Alumno>*/
 
     ) {}

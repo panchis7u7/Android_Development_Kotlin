@@ -1,0 +1,1 @@
+docker exec -i postgres-alpine psql -U postgres scholar -c "SELECT id_grupo, a.id_asignatura, grupo, nombre, asignatura FROM grupos INNER JOIN asignaturas a ON a.id_asignatura = grupos.id_asignatura INNER JOIN profesores p ON p.id_profesor = grupos.id_profesor;"

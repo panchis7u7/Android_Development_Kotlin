@@ -10,7 +10,7 @@ data class Profesor(
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id_profesor") @JsonProperty("id") var id: Long,
     @Column(name = "nombre") var nombre: String,
 
-    @OneToMany(mappedBy = "profesor")
+    @OneToMany(mappedBy = "profesor", fetch = FetchType.EAGER)
     @JsonIgnoreProperties("profesor")
     var grupos: List<Grupo>
 ) {}

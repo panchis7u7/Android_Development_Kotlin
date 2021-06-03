@@ -70,7 +70,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         val count = alumnoRepository!!.getCountByAlumnoCorreo(alumno.correo)
         if (count > 0)
             throw AuthException("Account alredy in use!")
-        val alumno = Alumno(
+        val al = Alumno(
             alumno.id_alumno,
             alumno.no_control,
             alumno.correo,
@@ -81,9 +81,11 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             alumno.sexo,
             alumno.fotografia?.replace("s/\\x00//g;", ""),
             alumno.contrasena,
-            alumno.residencia
+            alumno.residencia,
+            alumno.asignaturas,
+            alumno.grupo
         )
-        return alumnoRepository!!.save(alumno)
+        return alumnoRepository!!.save(al)
     }
 
      override fun generateJWTToken(alumno: Alumno): Map<String, String> {
@@ -190,7 +192,9 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
                 alumno.sexo,
                 alumno.fotografia,
                 alumno.contrasena,
-                alumno.residencia
+                alumno.residencia,
+                alumno.asignaturas,
+                alumno.grupo
             ))
         } catch(e: Exception) {
             throw BusinessException(e.message)
