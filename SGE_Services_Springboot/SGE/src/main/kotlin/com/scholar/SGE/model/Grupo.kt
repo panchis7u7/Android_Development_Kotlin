@@ -22,6 +22,7 @@ data class Grupo (
     @JsonProperty("aula_viernes")val aula_viernes: String?,
 
     @ManyToOne @JoinColumn(name = "id_asignatura", nullable = false)
+    @JsonIgnoreProperties("asignatura", "grupos")
     @JsonProperty("asignatura") var asignatura: Asignatura,
 
     @ManyToOne @JoinColumn(name = "id_profesor", nullable = false)

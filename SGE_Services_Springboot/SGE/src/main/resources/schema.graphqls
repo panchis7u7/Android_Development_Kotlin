@@ -22,7 +22,8 @@ type Asignatura {
     calificacion: Int,
     regularizacion: String,
     evaluacion: String,
-    observaciones: String
+    observaciones: String,
+    grupos: [Grupo]
 }
 
 type Grupo {

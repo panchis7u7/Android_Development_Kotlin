@@ -2,7 +2,6 @@ package com.scholar.SGE.business
 
 import com.scholar.SGE.model.Alumno
 import com.scholar.SGE.model.AlumnoGraphQL
-import com.scholar.SGE.model.Domicilio
 import com.scholar.SGE.model.Residencia
 
 interface IAlumnoBusiness {

@@ -127,13 +127,20 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         return optional.get()
     }
 
-    @Throws(BusinessException::class)
+    @Throws(BusinessException::class, AuthException::class)
     override fun saveAlumno(alumno: Alumno): Alumno{
         //var session = factory?.openSession()
         //var tx: Transaction? = null
 
         try {
             //tx = session?.beginTransaction()
+            val pattern = Pattern.compile("^(.+)@(.+)$")
+            alumno.contrasena = BCryptPasswordEncoder().encode(alumno.contrasena)
+            if (!pattern.matcher(alumno.correo).matches())
+                throw AuthException("Formato de correo invalido!")
+            val count = alumnoRepository!!.getCountByAlumnoCorreo(alumno.correo)
+            if (count > 0)
+                throw AuthException("Account alredy in use!")
             return alumnoRepository!!.save(alumno)
         } catch(e: Exception) {
             throw BusinessException(e.message)

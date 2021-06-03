@@ -1,5 +1,6 @@
 package com.scholar.SGE.model
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 
@@ -16,5 +17,9 @@ data class Asignatura(
    @JsonProperty("regularizacion") val regularizacion: String?,
    @JsonProperty("evaluacion") val evaluacion: String?,
    @JsonProperty("observaciones") val observaciones: String?,
+
+   @OneToMany(mappedBy = "asignatura")
+   @JsonIgnoreProperties("asignatura")
+   var grupos: List<Grupo>
 
 ) {}
