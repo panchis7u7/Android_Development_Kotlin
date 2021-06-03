@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS municipios(
 
 CREATE TABLE IF NOT EXISTS colonias(
     id_colonia SERIAL PRIMARY KEY,
-    colonia VARCHAR(40) NOT NULL,
+    colonia VARCHAR(50) NOT NULL,
     codigo_postal CHAR(8),
     id_municipio INTEGER,
     FOREIGN KEY (id_municipio) REFERENCES municipios (id_municipio) ON UPDATE CASCADE ON DELETE CASCADE
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS profesores(
 
 CREATE TABLE IF NOT EXISTS asignaturas(
     id_asignatura SERIAL PRIMARY KEY,
-    asignatura VARCHAR(50) UNIQUE NOT NULL,
+    asignatura VARCHAR(55) UNIQUE NOT NULL,
     clave CHAR(6) UNIQUE NOT NULL,
     creditos INTEGER NOT NULL,
     semestre INTEGER NOT NULL,
