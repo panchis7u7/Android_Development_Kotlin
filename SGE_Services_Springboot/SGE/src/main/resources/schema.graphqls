@@ -45,7 +45,8 @@ type Grupo {
 
 type Profesor {
     id: ID!
-    nombre: String
+    nombre: String,
+    grupos: [Grupo]
 }
 
 type Residencia {
