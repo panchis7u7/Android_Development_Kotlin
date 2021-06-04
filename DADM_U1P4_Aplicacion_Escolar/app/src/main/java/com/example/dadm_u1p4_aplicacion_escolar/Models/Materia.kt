@@ -11,5 +11,7 @@ data class Materia (var aula: String? = "",
                     var calificacion: String? = "",
                     var evaluacion: String? = "No cursada",
                     var observaciones: String? = "",
-                    var regularizacion: String? = "No cursada"){
+                    var regularizacion: String? = "No cursada",
+                    val horarios: List<String>? = null,
+                    val aulas: List<String>? = null ){
 }

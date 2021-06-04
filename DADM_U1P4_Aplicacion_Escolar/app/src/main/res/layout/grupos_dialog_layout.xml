@@ -52,73 +52,77 @@
         android:textSize="18sp"
         android:fontFamily="sans-serif"/>
 
-    <TableLayout
-        android:id="@+id/tableLayoutGrupos"
-        android:layout_marginTop="20sp"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <TableRow>
+        <TableLayout
+            android:id="@+id/tableLayoutGrupos"
+            android:layout_marginTop="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grupo"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+            <TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lunes"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grupo"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Martes"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lunes"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Miercoles"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Martes"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jueves"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Miercoles"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Viernes"
-                android:textSize="16sp"
-                android:textColor="@color/gray"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jueves"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                android:text="Remover"
-                android:textAllCaps="false"
-                android:backgroundTint="@color/red"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Viernes"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_weight="1"/>
 
-        </TableRow>
+            </TableRow>
 
-    </TableLayout>
+        </TableLayout>
+
+    </HorizontalScrollView>
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Build
 import android.transition.Slide
@@ -8,21 +7,30 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.PopupWindow
+import android.widget.*
 import android.widget.TableLayout
-import android.widget.TextView
-import androidx.core.app.DialogCompat
+import androidx.core.view.marginEnd
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
-class RecyclerAdapterAvanceMaterias (private val context: Context,
-                                     private val materias: List<Materia>,
-                                     private val seleccion: Boolean) :
+
+class RecyclerAdapterAvanceMaterias(
+    private val context: Context,
+    private val materias: List<Materia>,
+    private val seleccion: Boolean,
+) :
 RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -88,6 +96,50 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         view.findViewById<FloatingActionButton>(R.id.fabCloseSelection).setOnClickListener {
             popupWindow.dismiss()
         }
-        //tableLayout.addView(holder.textViewClave)
+
+        val document = Firebase.firestore.collection("carreras/ITICs/reinscripcion")
+            .whereEqualTo("clave", materia.clave)
+            .orderBy("grupo", Query.Direction.ASCENDING)
+        GlobalScope.launch(Dispatchers.IO) {
+            val materia = document.get().await()
+            val materias = mutableListOf<Materia>()
+            //val tableItems: MutableList<TextView> = MutableList(materia.documents.size) { TextView(context) }
+            var index: Int = 0
+            materia.documents.forEach { document ->
+                index++
+                materias.add(Materia(
+                    clave = (document.get("clave") as String),
+                    grupo = (document.get("grupo") as String),
+                    materia = (document.get("materia") as String),
+                    profesor = (document.get("profesor") as String),
+                    horarios = (document.get("horarios") as List<String>),
+                    aulas =  (document.get("horarios") as List<String>)
+                ))
+
+                withContext(Dispatchers.Main) {
+                    val row = TableRow(context)
+                    val trParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
+                        TableLayout.LayoutParams.WRAP_CONTENT)
+                    trParams.setMargins(0, 0, 0, 0)
+                    row.setPadding(0, 0, 0, 0)
+                    row.setLayoutParams(trParams)
+
+                    val textViewGrupo = TextView(context)
+                    textViewGrupo.setPadding(5, 10, 0, 10)
+                    textViewGrupo.text = materias[index-1].grupo
+                    textViewGrupo.setTextColor(context.resources.getColor(R.color.black))
+                    row.addView(textViewGrupo)
+
+                    for (i in 0 .. 4) {
+                        val textViewHorarios = TextView(context)
+                        textViewHorarios.setPadding(5, 10, 0, 10)
+                        textViewHorarios.text = materias[index-1].horarios?.get(i) + "/" + materias[index-1].aulas?.get(i)
+                        textViewHorarios.setTextColor(context.resources.getColor(R.color.black))
+                        row.addView(textViewHorarios)
+                    }
+                    tableLayout.addView(row)
+                }
+            }
+        }
     }
 }
