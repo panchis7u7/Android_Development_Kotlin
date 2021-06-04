@@ -8,10 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-class RecyclerAdapterAvanceMaterias (private var context: Context,
-                                     private var materias: MutableList<Materia>) :
+class RecyclerAdapterAvanceMaterias (private val context: Context,
+                                     private val materias: List<Materia>,
+                                     private val seleccion: Boolean) :
 RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,6 +22,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         val textViewCalificacion: TextView = itemView.findViewById(R.id.textViewCalificacion)
         val textViewRegularizacion: TextView = itemView.findViewById(R.id.textViewRegularizacion)
         val cardViewAvance: MaterialCardView = itemView.findViewById(R.id.cardViewAvance)
+        val buttonSeleccionar: MaterialButton = itemView.findViewById(R.id.buttonSeleccionar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -40,6 +43,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         } else if (holder.textViewCalificacion.text == "") {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
             holder.textViewCalificacion.text = "No Cursada"
+            if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
         }
     }
 

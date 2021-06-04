@@ -11,16 +11,14 @@ import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
-class RecyclerAdapterAvanceSemestres(private var context: Context,
-                                     private var semestres: MutableList<Semestre>) :
+class RecyclerAdapterAvanceSemestres(private val context: Context,
+                                     private val semestres: List<Semestre>,
+                                     private val seleccion: Boolean) :
 RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val textViewSemestre: TextView = itemView.findViewById(R.id.textViewSemestre)
         val recyclerViewMaterias: RecyclerView = itemView.findViewById(R.id.recyclerViewSemestre)
-        init {
-
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -29,17 +27,17 @@ RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var semestre: Semestre = semestres.get(position)
+        val semestre: Semestre = semestres.get(position)
         holder.textViewSemestre.text = semestre.semestre
-        setCallItemRecycler(holder.recyclerViewMaterias, semestre.materias!!)
+        setCallItemRecycler(holder.recyclerViewMaterias, semestre.materias!!, seleccion)
     }
 
     override fun getItemCount(): Int {
         return semestres.size
     }
 
-    private fun setCallItemRecycler(recyclerView: RecyclerView, materias: MutableList<Materia>){
-        var itemRecycleAdapter = RecyclerAdapterAvanceMaterias(context, materias)
+    private fun setCallItemRecycler(recyclerView: RecyclerView, materias: List<Materia>, seleccion: Boolean){
+        val itemRecycleAdapter = RecyclerAdapterAvanceMaterias(context, materias, seleccion)
         recyclerView.layoutManager = GridLayoutManager(context,2)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = itemRecycleAdapter
