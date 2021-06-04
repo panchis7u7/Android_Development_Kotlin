@@ -1,6 +1,6 @@
 package com.scholar.SGE.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDate
 import java.util.UUID
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -26,15 +26,7 @@ data class Alumno(
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_alumnos",
-    joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
-    inverseJoinColumns = arrayOf(JoinColumn(name = "id_asignatura")))
-    @JsonIgnoreProperties("alumnos", "asignatura", "grupos")
-    var asignaturas: List<Asignatura> = mutableListOf(),
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
-    @JoinTable(name = "asignaturas_alumnos",
         joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "id_grupo")))
-    @JsonIgnoreProperties("alumnos", "asignatura", "grupos")
     var grupos: List<Grupo> = mutableListOf()
     ) {}

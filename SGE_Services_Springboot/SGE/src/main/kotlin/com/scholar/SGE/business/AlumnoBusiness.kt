@@ -82,8 +82,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             alumno.fotografia?.replace("s/\\x00//g;", ""),
             alumno.contrasena,
             alumno.residencia,
-            alumno.asignaturas,
-            alumno.grupo
+            alumno.grupos
         )
         return alumnoRepository!!.save(al)
     }
@@ -193,8 +192,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
                 alumno.fotografia,
                 alumno.contrasena,
                 alumno.residencia,
-                alumno.asignaturas,
-                alumno.grupo
+                alumno.grupos
             ))
         } catch(e: Exception) {
             throw BusinessException(e.message)

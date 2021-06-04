@@ -10,7 +10,7 @@ type Alumno {
     fotografia: String,
     contrasena: String,
     residencia: Residencia,
-    asignaturas: [Asignatura]
+    grupos: [Grupo]
 }
 
 type Asignatura {
@@ -24,8 +24,7 @@ type Asignatura {
     regularizacion: String,
     evaluacion: String,
     observaciones: String,
-    grupos: [Grupo],
-    alumnos: [Alumno]
+    grupos: [Grupo]
 }
 
 type Grupo {
@@ -42,7 +41,8 @@ type Grupo {
     aula_jueves: String,
     aula_viernes: String,
     asignatura: Asignatura,
-    profesor: Profesor
+    profesor: Profesor,
+    alumnos: [Alumno]
 }
 
 type Profesor {

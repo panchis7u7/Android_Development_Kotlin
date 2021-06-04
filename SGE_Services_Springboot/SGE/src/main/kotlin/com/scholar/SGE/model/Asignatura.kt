@@ -1,8 +1,7 @@
 package com.scholar.SGE.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.springframework.transaction.annotation.Transactional
 import javax.persistence.*
 
 @Entity
@@ -19,15 +18,8 @@ data class Asignatura(
    @JsonProperty("evaluacion") val evaluacion: String?,
    @JsonProperty("observaciones") val observaciones: String?,
 
-   @OneToMany(mappedBy = "asignatura", fetch = FetchType.EAGER)
-   @JsonIgnoreProperties("asignatura")
+   @OneToMany(mappedBy = "asignatura", fetch = FetchType.LAZY)
+   @JsonIgnore
    var grupos: List<Grupo>,
-
-   @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
-   @JoinTable(name = "asignaturas_alumnos",
-      joinColumns = arrayOf(JoinColumn(name = "id_asignatura")),
-      inverseJoinColumns = arrayOf(JoinColumn(name = "id_alumno")))
-   @JsonIgnoreProperties("asignatura", "grupos")
-   var alumnos: List<Alumno> = mutableListOf()
 
 ) {}

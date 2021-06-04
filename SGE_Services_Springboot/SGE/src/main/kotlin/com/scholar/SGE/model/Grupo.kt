@@ -1,7 +1,6 @@
 package com.scholar.SGE.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.*
 import javax.persistence.*
 
 @Entity
@@ -22,14 +21,16 @@ data class Grupo (
     @JsonProperty("aula_viernes")val aula_viernes: String?,
 
     @ManyToOne @JoinColumn(name = "id_asignatura", nullable = false)
-    @JsonIgnoreProperties("asignatura", "grupos")
     @JsonProperty("asignatura") var asignatura: Asignatura,
 
     @ManyToOne @JoinColumn(name = "id_profesor", nullable = false)
     @JsonProperty("profesor") var profesor: Profesor,
 
-    /*@OneToMany(mappedBy = "grupo", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("asignaturas")
-    var alumno: List<Alumno>*/
+    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    @JoinTable(name = "asignaturas_alumnos",
+        joinColumns = arrayOf(JoinColumn(name = "id_grupo")),
+        inverseJoinColumns = arrayOf(JoinColumn(name = "id_alumno")))
+    @JsonIgnore
+    var alumnos: List<Alumno> = mutableListOf()
 
     ) {}

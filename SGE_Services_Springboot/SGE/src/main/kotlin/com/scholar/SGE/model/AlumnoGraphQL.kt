@@ -1,6 +1,8 @@
 package com.scholar.SGE.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.hibernate.annotations.GeneratorType
 import java.time.LocalDate
 import java.util.UUID
@@ -25,20 +27,13 @@ data class AlumnoGraphQL (
     @JoinColumn(name = "id_residencia")
     val residencia: Residencia? = null,
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
-    @JoinTable(name = "asignaturas_alumnos",
-    joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
-    inverseJoinColumns = arrayOf(JoinColumn(name = "id_asignatura")))
-    @JsonIgnoreProperties("alumnos", "asignatura", "grupos")
-    var asignaturas: List<Asignatura> = mutableListOf(),
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_asignatura")
+    val asignatura: Asignatura,
 
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_alumnos",
         joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "id_grupo")))
-    @JsonIgnoreProperties("alumnos", "asignatura", "grupos")
-    var grupos: List<Grupo> = mutableListOf()*/
-
-    @ManyToOne @JoinColumn(name = "id_grupo", nullable = false)
-    @JsonProperty("grupo") var grupo: Grupo
+    var grupos: List<Grupo> = mutableListOf()
 ) {}
