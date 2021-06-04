@@ -3,11 +3,8 @@
     "materia": "Tecnologias Inalambricas",
     "profesor": "Rojas Prospero Ireri Tsipekua",
     "semestre": 6,
-    "semestre_cursada": 5,
     "grupo": "A",
     "creditos": 4,
-    "calificacion": "94",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["", "9:00-11:00", "", "9:00-11:00", ""],
+    "aulas": ["", "F4", "", "F4", ""]
 }

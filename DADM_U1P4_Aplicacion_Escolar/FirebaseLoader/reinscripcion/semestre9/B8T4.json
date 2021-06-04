@@ -3,11 +3,8 @@
     "materia": "Ingenieria del Conocimiento",
     "profesor": "Florian Ernesto Claudio Ernesto",
     "semestre": 9,
-    "semestre_cursada": 0,
-    "grupo": "",
+    "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": ""
+    "horarios": ["14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00"],
+    "aulas": ["F1", "F1", "F1", "F1", "F1"]
 }

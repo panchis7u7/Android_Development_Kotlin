@@ -1,16 +1,10 @@
 {
     "clave": "B7T1",
-    "profesor": "Mora Garcia Jorge",
     "materia": "Redes Emergentes",
+    "profesor": "Mora Garcia Jorge",
     "semestre": 7,
-    "semestre_cursada": 6,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B5T3",
-    "horarios": ["16:00-17:00","16:00-17:00","16:00-17:00","16:00-17:00","16:00-17:00"],
-    "aulas": ["F1","F1","LRD","F1","LRD"]
+    "horarios": ["15:00-16:00","15:00-16:00","15:00-16:00","15:00-16:00","15:00-16:00"],
+    "aulas": ["LRD","K5","LRD","K5","K5"]
 }

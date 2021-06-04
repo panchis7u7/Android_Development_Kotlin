@@ -1,14 +1,10 @@
 {
     "clave": "B8T9",
-    "materia": "Seguridad en Sistemas Operativos",
     "profesor": "Lara Barcenas Ruben",
+    "materia": "Seguridad en Sistemas Operativos",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B7T7"
+    "horarios": ["13:00-14:00", "13:00-14:00", "13:00-14:00", "13:00-14:00", "13:00-14:00"],
+    "aulas": ["LC2", "LC2", "LC2", "LC2", "F1"]
 }

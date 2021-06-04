@@ -3,12 +3,8 @@
     "materia": "Matematicas Aplicadas a Comunicaciones",
     "profesor": "Casimiro Linares Edgar",
     "semestre": 4,
-    "semestre_cursada": 3,
-    "grupo": "B",
+    "grupo": "A",
     "creditos": 5,
-    "calificacion": "95",
-    "evaluacion": "Evaluacion Regularizacion Primera Vez",
-    "regularizacion": "R1",
-    "observaciones": "Curso Aprobado",
-    "dependencia": "B2T1"
+    "horarios": ["12:00-13:00", "12:00-13:00", "12:00-13:00", "12:00-13:00", ""],
+    "aulas": ["F6", "F6", "F6", "F6", ""]
 }

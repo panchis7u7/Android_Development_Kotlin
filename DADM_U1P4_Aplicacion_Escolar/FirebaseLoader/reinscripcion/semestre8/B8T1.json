@@ -1,16 +1,10 @@
 {
     "clave": "B8T1",
-    "profesor": "Lara Barcenas Ruben",
     "materia": "Administracion y Seguridad de Redes",
+    "profesor": "Lara Barcenas Ruben",
     "semestre": 8,
-    "semestre_cursada": 6,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B5T3",
     "horarios": ["8:00-10:00","8:00-10:00","8:00-10:00","","8:00-10:00"],
     "aulas": ["LRD","F3","F3","","F3"]
 }

@@ -3,11 +3,8 @@
     "materia": "Desarrollo de Emprendedores",
     "profesor": "Viacava Breiding Fernando Pedro",
     "semestre": 6,
-    "semestre_cursada": 4,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "88",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "01",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00", "7:00-8:00"],
+    "aulas": ["F4", "F4", "F4", "F4", "F4"]
 }

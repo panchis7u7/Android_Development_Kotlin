@@ -1,13 +1,10 @@
 {
     "clave": "B7T5",
-    "materia": "Negocios Electronicos I",
     "profesor": "Florian Arenas Claudio Ernesto",
+    "materia": "Negocios Electronicos I",
     "semestre": 7,
-    "semestre_cursada": 5,
     "grupo": "A",
     "creditos": 4,
-    "calificacion": "100",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "01",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["17:00-18:00", "17:00-18:00", "", "17:00-18:00", "17:00-18:00"],
+    "aulas": ["F1", "P1", "", "F1", "F3"]
 }

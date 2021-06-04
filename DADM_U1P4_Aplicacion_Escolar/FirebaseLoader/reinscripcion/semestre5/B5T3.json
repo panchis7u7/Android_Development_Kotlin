@@ -3,12 +3,8 @@
     "materia": "Redes de Computadoras",
     "profesor": "Pacheco Pimentel Efren de Jesus",
     "semestre": 5,
-    "semestre_cursada": 4,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "100",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado",
-    "dependencia": "B4T3"
+    "horarios": ["", "11:00-13:00", "14:00-15:00", "14:00-15:00", "14:00-15:00"],
+    "aulas": ["", "LRD", "F3", "F3", "F3"]
 }

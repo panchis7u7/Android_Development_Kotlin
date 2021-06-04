@@ -3,12 +3,8 @@
     "materia": "Analisis de Señales y Sistemas de Comunicacion",
     "profesor": "Huerta Cortes Andres Ivan",
     "semestre": 5,
-    "semestre_cursada": 5,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "97",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado",
-    "dependencia": "B4T1"
+    "horarios": ["", "13:00-14:00", "13:00-14:00", "13:00-14:00", ""],
+    "aulas": ["", "F4", "F4", "F4", ""]
 }

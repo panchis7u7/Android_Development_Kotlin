@@ -3,13 +3,8 @@
     "materia": "Introduccion a la Seguridad de la Informacion",
     "profesor": "Antolino Hernandez Anastacio",
     "semestre": 7,
-    "semestre_cursada": 6,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
     "horarios": ["13:00-14:00","13:00-14:00","13:00-14:00","13:00-14:00","13:00-14:00"],
     "aulas": ["F6","F6","F6","F6","F6"]
 }

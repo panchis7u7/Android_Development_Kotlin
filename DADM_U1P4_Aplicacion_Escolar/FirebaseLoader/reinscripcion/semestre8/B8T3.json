@@ -1,16 +1,10 @@
 {
     "clave": "B8T3",
-    "profesor": "Ortiz Ortiz Octavio Salud",
     "materia": "Taller de Investigacion II",
+    "profesor": "Ortiz Ortiz Octavio Salud",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B7T3",
-    "clases": ["15:00-16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00"],
+    "horarios": ["15:00-16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00", "15:00:16:00"],
     "aula": ["F3", "F3", "F3", "F3", "F3"]
 }

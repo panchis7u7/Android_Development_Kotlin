@@ -1,15 +1,10 @@
 {
     "clave": "B7T3",
-    "profesor": "Ortiz Ortiz Octavio Salud",
     "materia": "Taller de Investigacion I",
+    "profesor": "Ortiz Ortiz Octavio Salud",
     "semestre": 7,
-    "semestre_cursada": 6,
     "grupo": "A",
     "creditos": 4,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
     "horarios": ["14:00-15:00","14:00-15:00","14:00-15:00","14:00-15:00",""],
     "aulas": ["F1","F1","F1","F1",""]
 }

@@ -3,11 +3,6 @@
     "materia": "Servicio Social",
     "profesor": "",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "",
-    "creditos": 10,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": ""
+    "creditos": 10
 }

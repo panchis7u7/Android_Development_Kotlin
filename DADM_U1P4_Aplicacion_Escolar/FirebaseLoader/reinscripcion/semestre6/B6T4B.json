@@ -3,13 +3,8 @@
     "materia": "Sistemas Operativos I",
     "profesor": "Hernandez Esquivel Jose Omar",
     "semestre": 6,
-    "semestre_cursada": 6,
     "grupo": "B",
     "creditos": 4,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "horarios": ["12:00-13:00","12:00-13:00","12:00-13:00","12:00-13:00",""],
-    "aulas": ["F5","F5","F5","F5",""]
+    "horarios": ["11:00-12:00","11:00-12:00","11:00-12:00","11:00-12:00",""],
+    "aulas": ["F2","F2","F2","F2",""]
 }

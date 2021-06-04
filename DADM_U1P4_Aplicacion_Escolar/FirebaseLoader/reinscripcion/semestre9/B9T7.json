@@ -3,12 +3,8 @@
     "materia": "Seguridad en Redes",
     "profesor": "Vasconcelos Duarte Jose Raul",
     "semestre": 9,
-    "semestre_cursada": 0,
-    "grupo": "",
+    "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B8T8"
+    "horarios": ["14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00", "14:00-15:00"],
+    "aulas": ["LSI", "LSI", "LSI", "LRD", "LRD"]
 }

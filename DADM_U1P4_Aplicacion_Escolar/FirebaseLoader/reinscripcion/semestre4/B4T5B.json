@@ -3,11 +3,7 @@
     "materia": "Circuitos Electricos y Electronicos",
     "profesor": "Garcia Ramirez Maria del Carmen",
     "semestre": 4,
-    "semestre_cursada": 3,
     "grupo": "B",
-    "creditos": 5,
-    "calificacion": "100",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["7:00-8:00", "", "7:00-8:00", "7:00-8:00", ""],
+    "aulas": ["F4", "", "F4", "F4", ""]
 }

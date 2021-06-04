@@ -1,16 +1,10 @@
 {
     "clave": "B8T8",
-    "profesor": "Solis Robles Juan Javier",
     "materia": "Computo en la Nube",
+    "profesor": "Solis Robles Juan Javier",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B8T9",
-    "clases": ["13:00-14:00", "13:00:14:00", "13:00:14:00", "", "13:00:14:00"],
-    "aula": ["F6", "F6", "F6", "", "F6"]
+    "horarios": ["14:00-15:00", "14:00:15:00", "14:00:15:00", "", "14:00:15:00"],
+    "aula": ["K1", "K1", "K1", "", "K1"]
 }

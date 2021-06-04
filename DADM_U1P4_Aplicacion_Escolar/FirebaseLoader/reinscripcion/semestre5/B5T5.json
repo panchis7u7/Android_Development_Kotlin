@@ -3,12 +3,8 @@
     "materia": "Arquitectura de Computadoras",
     "profesor": "Mora Tenorio Sandra",
     "semestre": 5,
-    "semestre_cursada": 4,
     "grupo": "A",
     "creditos": 4,
-    "calificacion": "100",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado",
-    "dependencia": "B4T5"
+    "horarios": ["", "16:00-17:00", "", "16:00-17:00", ""],
+    "aulas": ["", "F3", "", "F3", ""]
 }

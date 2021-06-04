@@ -3,11 +3,8 @@
     "materia": "Fundamentos de Redes",
     "profesor": "Hernandez Lopez Hugo Fernando",
     "semestre": 4,
-    "semestre_cursada": 3,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "98",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00"],
+    "aulas": ["LRD", "F5", "F5", "F5", "LRD"]
 }

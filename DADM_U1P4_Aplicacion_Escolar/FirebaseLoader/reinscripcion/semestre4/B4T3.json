@@ -3,11 +3,8 @@
     "materia": "Fundamentos de Redes",
     "profesor": "Lara Barcenas Ruben",
     "semestre": 4,
-    "semestre_cursada": 3,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "98",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado"
+    "horarios": ["9:00-10:00", "9:00-10:00", "9:00-10:00", "9:00-10:00", "9:00-10:00"],
+    "aulas": ["F5", "F5", "LRD", "F5", "LRD"]
 }

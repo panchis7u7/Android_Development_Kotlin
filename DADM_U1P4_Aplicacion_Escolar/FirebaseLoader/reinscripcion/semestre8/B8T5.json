@@ -1,16 +1,10 @@
 {
     "clave": "B8T5",
-    "profesor": "Martinez Rosiles Carol Aidee",
     "materia": "Negocios Electronicos II",
+    "profesor": "Martinez Rosiles Carol Aidee",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B7T5",
-    "clases": ["16:00-17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00"],
+    "horarios": ["16:00-17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00", "16:00:17:00"],
     "aula": ["F3", "F3", "F3", "F3", "F3"]
 }

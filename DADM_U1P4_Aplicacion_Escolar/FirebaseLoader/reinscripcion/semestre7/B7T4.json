@@ -1,14 +1,10 @@
 {
     "clave": "B7T4",
     "materia": "Sistemas Operativos II",
-    "profesor": "",
+    "profesor": "Vargas Lua Gabriela",
     "semestre": 7,
-    "semestre_cursada": null,
-    "grupo": "",
+    "grupo": "A",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B6T4"
+    "horarios": ["15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00", "15:00-16:00"],
+    "aulas": ["F1", "F1", "F1", "F1", "F1"]
 }

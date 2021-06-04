@@ -3,12 +3,8 @@
     "materia": "Sistemas de Gestion de la Seguridad Informatica",
     "profesor": "Lara Barcenas Ruben",
     "semestre": 9,
-    "semestre_cursada": 0,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "dependencia": "B8T9"
+    "horarios": ["10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00"],
+    "aulas": ["K2", "LSI", "LSI", "LSI", "LRD"]
 }

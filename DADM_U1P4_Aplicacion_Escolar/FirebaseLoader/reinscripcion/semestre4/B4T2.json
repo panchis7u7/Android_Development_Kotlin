@@ -3,12 +3,8 @@
     "materia": "Programacion II",
     "profesor": "Ramos Diaz J. Guadalupe",
     "semestre": 4,
-    "semestre_cursada": 4,
     "grupo": "A",
     "creditos": 5,
-    "calificacion": "98",
-    "evaluacion": "Evaluacion Ordinaria Primera Vez",
-    "regularizacion": "O1",
-    "observaciones": "Curso Aprobado",
-    "dependencia": "B3T2"
+    "horarios": ["10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00", "10:00-11:00"],
+    "aulas": ["LC1", "LC1", "F5", "LC1", "LC1"]
 }

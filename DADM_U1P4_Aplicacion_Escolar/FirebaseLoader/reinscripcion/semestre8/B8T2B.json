@@ -1,15 +1,10 @@
 {
     "clave": "B8T2",
-    "profesor": "Vaca Astorga Jordi",
     "materia": "Auditoria en Tecnologias de la Informacion",
+    "profesor": "Vaca Astorga Jordi",
     "semestre": 8,
-    "semestre_cursada": 0,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
-    "clases": ["13:00-14:00", "13:00:14:00", "13:00:14:00", "13:00:14:00", "13:00:14:00"],
+    "horarios": ["13:00-14:00", "13:00:14:00", "13:00:14:00", "13:00:14:00", "13:00:14:00"],
     "aula": ["F5", "F5", "F5", "F5", "F5"]
 }
