@@ -1,15 +1,24 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.os.Build
+import android.transition.Slide
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.TableLayout
 import android.widget.TextView
+import androidx.core.app.DialogCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class RecyclerAdapterAvanceMaterias (private val context: Context,
                                      private val materias: List<Materia>,
@@ -44,10 +53,41 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
             holder.textViewCalificacion.text = "No Cursada"
             if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
+
+            holder.buttonSeleccionar.setOnClickListener {
+                handleSelection(materia, holder)
+            }
         }
     }
 
-    override fun getItemCount(): Int {
-        return materias.size
+    override fun getItemCount(): Int = materias.size
+
+    fun handleSelection(materia: Materia, holder: ItemHolder) {
+        val view = LayoutInflater.from(context).inflate(R.layout.grupos_dialog_layout, null)
+        val tableLayout: TableLayout = view.findViewById(R.id.tableLayoutGrupos)
+        //val alertDialog = AlertDialog.Builder(context).setView(view).setTitle("Cali").show()
+        val popupWindow = PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        popupWindow.width = 1000
+        popupWindow.height = 1200
+        popupWindow.showAtLocation(view , Gravity.CENTER, 0, 0);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            popupWindow.elevation = 30.0F
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            val slideIn = Slide()
+            slideIn.slideEdge = Gravity.TOP
+            popupWindow.enterTransition = slideIn
+
+            val slideOut = Slide()
+            slideOut.slideEdge = Gravity.BOTTOM
+            popupWindow.exitTransition = slideOut
+        }
+
+        view.findViewById<FloatingActionButton>(R.id.fabCloseSelection).setOnClickListener {
+            popupWindow.dismiss()
+        }
+        //tableLayout.addView(holder.textViewClave)
     }
 }
