@@ -4,5 +4,7 @@
     "profesor": "",
     "semestre": 8,
     "grupo": "",
-    "creditos": 10
+    "creditos": 10,
+    "horarios": ["", "", "", "", ""],
+    "aulas": ["", "", "", "", ""]
 }

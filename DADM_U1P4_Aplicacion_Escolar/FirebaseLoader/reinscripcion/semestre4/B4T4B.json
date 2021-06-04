@@ -3,7 +3,7 @@
     "materia": "Taller de Base de Datos",
     "profesor": "Amauri Cortes Coria",
     "semestre": 4,
-    "grupo": "A",
+    "grupo": "B",
     "creditos": 5,
     "horarios": ["15:00-14:00", "15:00-14:00", "15:00-14:00", "15:00-14:00", ""],
     "aulas": ["LC1", "LC1", "LC1", "LC1", ""]
