@@ -50,7 +50,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewClave.text = materia.first.clave
             textViewClave.textSize = 16f
             textViewClave.layoutParams = textViewParams
-            textViewClave.setTextColor(requireContext().resources.getColor(R.color.black))
+            textViewClave.setTextColor(requireContext().resources.getColor(R.color.white))
             row.addView(textViewClave)
 
             val textViewMateria = TextView(context)
@@ -58,7 +58,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewMateria.text = materia.first.materia
             textViewMateria.textSize = 16f
             textViewMateria.layoutParams = textViewParams
-            textViewMateria.setTextColor(requireContext().resources.getColor(R.color.black))
+            textViewMateria.setTextColor(requireContext().resources.getColor(R.color.white))
             row.addView(textViewMateria)
 
             val textViewCreditos = TextView(context)
@@ -66,7 +66,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewCreditos.text = materia.first.creditos.toString()
             textViewCreditos.textSize = 16f
             textViewCreditos.layoutParams = textViewParams
-            textViewCreditos.setTextColor(requireContext().resources.getColor(R.color.black))
+            textViewCreditos.setTextColor(requireContext().resources.getColor(R.color.white))
             row.addView(textViewCreditos)
 
             val textViewGrupo = TextView(context)
@@ -74,7 +74,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewGrupo.text = (materia.second.getChildAt(0) as TextView).text
             textViewGrupo.textSize = 16f
             textViewGrupo.layoutParams = textViewParams
-            textViewGrupo.setTextColor(requireContext().resources.getColor(R.color.black))
+            textViewGrupo.setTextColor(requireContext().resources.getColor(R.color.white))
             row.addView(textViewGrupo)
 
             for (i in 1..5) {
@@ -83,7 +83,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
                 textViewHorarios.layoutParams = textViewParams
                 textViewHorarios.textSize = 16f
                 textViewHorarios.text = (materia.second.getChildAt(i) as TextView).text
-                textViewHorarios.setTextColor(requireContext().resources.getColor(R.color.black))
+                textViewHorarios.setTextColor(requireContext().resources.getColor(R.color.white))
                 row.addView(textViewHorarios)
             }
 
