@@ -36,7 +36,6 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
     private var auth: FirebaseAuth? = null
     private val materiasViewModel: MateriaViewModel by activityViewModels()
     private lateinit var parentActivity: SeleccionActivity
-    private var materiaCreditosCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
