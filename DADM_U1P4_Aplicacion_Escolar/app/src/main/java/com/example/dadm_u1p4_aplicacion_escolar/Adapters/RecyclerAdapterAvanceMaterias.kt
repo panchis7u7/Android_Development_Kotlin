@@ -76,6 +76,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         val tableLayout: TableLayout = view.findViewById(R.id.tableLayoutGrupos)
         val textViewClave: TextView = view.findViewById(R.id.textViewClave)
         val textViewMateria: TextView = view.findViewById(R.id.textViewMateria)
+        val textViewCreditos: TextView = view.findViewById(R.id.textViewCreditos)
 
         val popupWindow = PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -110,6 +111,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                 materias.add(Materia(
                     clave = (document.get("clave") as String),
                     grupo = (document.get("grupo") as String),
+                    creditos = (document.get("creditos") as Long),
                     materia = (document.get("materia") as String),
                     profesor = (document.get("profesor") as String),
                     horarios = (document.get("horarios") as List<String>),
@@ -119,6 +121,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                 withContext(Dispatchers.Main) {
                     textViewClave.text = materia.clave
                     textViewMateria.text = materia.materia
+                    textViewCreditos.text = "Creditos: ${materia.creditos.toString()}"
                     val row = TableRow(context)
                     val tableRowParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.WRAP_CONTENT)

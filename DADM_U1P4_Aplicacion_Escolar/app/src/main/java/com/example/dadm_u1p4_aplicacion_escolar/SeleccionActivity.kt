@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayout
 class SeleccionActivity : AppCompatActivity() {
     private var _binding: ActivitySeleccionBinding? = null
     private val binding get() = _binding!!
+    var noCreditos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

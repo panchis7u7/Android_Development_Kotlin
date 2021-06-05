@@ -61,6 +61,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/textViewCreditos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Creditos: "
+        android:textColor="#888888"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/grupos_placeholder"

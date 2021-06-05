@@ -58,6 +58,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Creditos"
+                    android:paddingRight="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Grupo"
                     android:paddingRight="10dp"
                     android:textSize="18sp"
@@ -131,15 +141,36 @@
 
     </HorizontalScrollView>
 
-    <TextView
-        android:id="@+id/textViewMateria"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:text="Creditos Totales: "
-        android:textSize="20sp"
-        android:textColor="@color/gray"
-        android:paddingLeft="20dp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:text="Creditos Totales: "
+            android:textSize="20sp"
+            android:textColor="@color/gray"
+            android:paddingLeft="20dp" />
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/textViewCreditosSeleccionados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="@color/gray"
+            android:paddingLeft="20dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"

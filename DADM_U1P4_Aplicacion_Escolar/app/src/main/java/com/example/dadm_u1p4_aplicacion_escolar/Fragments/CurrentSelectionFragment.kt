@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.dadm_u1p4_aplicacion_escolar.R
+import com.example.dadm_u1p4_aplicacion_escolar.SeleccionActivity
 import com.example.dadm_u1p4_aplicacion_escolar.Viewmodels.MateriaViewModel
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.FragmentCurrentSelectionBinding
 import com.google.android.material.button.MaterialButton
@@ -18,6 +20,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
     private var _binding: FragmentCurrentSelectionBinding? = null
     private val binding get() = _binding!!
     private val materiasViewModel: MateriaViewModel by activityViewModels()
+    private lateinit var parentActivity: SeleccionActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +28,8 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCurrentSelectionBinding.inflate(layoutInflater)
+
+        parentActivity = (requireActivity() as SeleccionActivity)
 
         materiasViewModel.materia.observe(viewLifecycleOwner) { materia ->
 
@@ -55,6 +60,14 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewMateria.layoutParams = textViewParams
             textViewMateria.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewMateria)
+
+            val textViewCreditos = TextView(context)
+            textViewCreditos.setPadding(5, 10, 0, 10)
+            textViewCreditos.text = materia.first.creditos.toString()
+            textViewCreditos.textSize = 16f
+            textViewCreditos.layoutParams = textViewParams
+            textViewCreditos.setTextColor(requireContext().resources.getColor(R.color.black))
+            row.addView(textViewCreditos)
 
             val textViewGrupo = TextView(context)
             textViewGrupo.setPadding(5, 10, 0, 10)
@@ -87,6 +100,15 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
 
             row.addView(materialButton)
             binding.tableLayoutGrupos.addView(row)
+
+            materialButton.setOnClickListener {
+                binding.tableLayoutGrupos.removeView(it.parent as TableRow)
+                Toast.makeText(requireContext(), "Creditos: ${materia.first.creditos!!}", Toast.LENGTH_LONG).show()
+                (requireActivity() as SeleccionActivity).noCreditos -= materia.first.creditos!!.toInt()
+                binding.textViewCreditosSeleccionados.text = parentActivity.noCreditos.toString()
+            }
+
+            binding.textViewCreditosSeleccionados.text = parentActivity.noCreditos.toString()
         }
 
         return binding.root
