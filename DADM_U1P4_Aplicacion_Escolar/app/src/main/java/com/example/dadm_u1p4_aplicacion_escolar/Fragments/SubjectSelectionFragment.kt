@@ -60,7 +60,10 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
                         materias.add(Materia(
                             clave = (document.get("clave") as String),
                             materia = (document.get("materia") as String),
-                            creditos = (document.get("creditos") as Long)
+                            creditos = (document.get("creditos") as Long),
+                            calificacion = (document.get("calificacion") as String),
+                            regularizacion = (document.get("regularizacion") as String),
+                            profesor = (document.get("profesor") as String)
                         ))
                         semestres[i-1].materias = materias
                         semestres[i-1].semestre = i.toString()

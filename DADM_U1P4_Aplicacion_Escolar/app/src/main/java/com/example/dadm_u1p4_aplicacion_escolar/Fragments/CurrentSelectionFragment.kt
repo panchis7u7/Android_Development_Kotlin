@@ -37,12 +37,13 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             textViewParams.setMargins(0, 5, 15, 5)
 
             tableRowParams.setMargins(0, 0, 0, 0)
-            row.setPadding(0, 0, 0, 0)
+            row.setPadding(30, 0, 30, 0)
             row.layoutParams = tableRowParams
 
             val textViewClave = TextView(context)
             textViewClave.setPadding(5, 10, 0, 10)
             textViewClave.text = materia.first.clave
+            textViewClave.textSize = 16f
             textViewClave.layoutParams = textViewParams
             textViewClave.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewClave)
@@ -50,6 +51,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             val textViewMateria = TextView(context)
             textViewMateria.setPadding(5, 10, 0, 10)
             textViewMateria.text = materia.first.materia
+            textViewMateria.textSize = 16f
             textViewMateria.layoutParams = textViewParams
             textViewMateria.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewMateria)
@@ -57,6 +59,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             val textViewGrupo = TextView(context)
             textViewGrupo.setPadding(5, 10, 0, 10)
             textViewGrupo.text = (materia.second.getChildAt(0) as TextView).text
+            textViewGrupo.textSize = 16f
             textViewGrupo.layoutParams = textViewParams
             textViewGrupo.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewGrupo)
@@ -65,6 +68,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
                 val textViewHorarios = TextView(context)
                 textViewHorarios.setPadding(5, 10, 0, 10)
                 textViewHorarios.layoutParams = textViewParams
+                textViewHorarios.textSize = 16f
                 textViewHorarios.text = (materia.second.getChildAt(i) as TextView).text
                 textViewHorarios.setTextColor(requireContext().resources.getColor(R.color.black))
                 row.addView(textViewHorarios)

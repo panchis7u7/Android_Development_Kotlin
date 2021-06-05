@@ -3,13 +3,8 @@
     "materia": "Desarrollo de Aplicaciones para Dispositivos Moviles",
     "profesor": "Amaro Flores Alejandro",
     "semestre": 7,
-    "semestre_cursada": 6,
     "grupo": "B",
     "creditos": 5,
-    "calificacion": "",
-    "evaluacion": "",
-    "regularizacion": "",
-    "observaciones": "",
     "horarios": ["","17:00-18:00","18:00-20:00","","18:00-20:00"],
     "aulas": ["","LIS","LIS","","LIS"]
 }
