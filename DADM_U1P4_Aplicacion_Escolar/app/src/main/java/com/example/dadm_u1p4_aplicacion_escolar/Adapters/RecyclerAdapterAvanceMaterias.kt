@@ -145,7 +145,18 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                         row.addView(textViewHorarios)
                     }
 
+                    val buttonParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+                        100)
 
+                    val materialButton = MaterialButton(context)
+                    materialButton.text = "Seleccionar"
+                    materialButton.setBackgroundColor(context.resources.getColor(R.color.red))
+                    materialButton.setTextColor(context.resources.getColor(R.color.white))
+                    materialButton.isAllCaps = false
+                    materialButton.setPadding(5,0,5,0)
+                    materialButton.layoutParams = buttonParams
+                    materialButton.textSize = 12f
+                    row.addView(materialButton)
 
                     tableLayout.addView(row)
                 }
