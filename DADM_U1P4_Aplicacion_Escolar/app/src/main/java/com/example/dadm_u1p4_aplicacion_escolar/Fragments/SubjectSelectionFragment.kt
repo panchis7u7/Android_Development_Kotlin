@@ -35,6 +35,7 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
     private val binding get() = _binding!!
     private var auth: FirebaseAuth? = null
     private val materiasViewModel: MateriaViewModel by activityViewModels()
+    private lateinit var parentActivity: SeleccionActivity
     private var materiaCreditosCount = 0
 
     override fun onCreateView(
@@ -44,8 +45,8 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
     ): View? {
         _binding = FragmentSubjectSelectionBinding.inflate(layoutInflater)
 
+        parentActivity = (requireActivity() as SeleccionActivity)
         auth = FirebaseAuth.getInstance()
-
         val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
                 index -> Semestre("",null)
         }
@@ -86,16 +87,15 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
             requireContext(), semestres, true, object : IOnClickSelection {
 
                 override fun onSelectionClick(materia: Materia, row: TableRow) {
-                    materiaCreditosCount += materia.creditos!!.toInt()
-                    if ((requireActivity() as SeleccionActivity).noCreditos <= 36){
-                        (requireActivity() as SeleccionActivity).noCreditos += materia.creditos!!.toInt()
+                    parentActivity.noCreditos += materia.creditos!!.toInt()
+                    if (parentActivity.noCreditos <= 36){
                         materiasViewModel.setMateria(Pair(materia, row))
                     Toast.makeText(requireContext(),
                         (row.getChildAt(0) as TextView).text,
                         Toast.LENGTH_LONG).show()
                     } else{
                         Toast.makeText(requireContext(), "Se arrebaso el numero de creditos maximo!.", Toast.LENGTH_LONG).show()
-                        (requireActivity() as SeleccionActivity).noCreditos -= materia.creditos!!.toInt()
+                        parentActivity.noCreditos -= materia.creditos!!.toInt()
                     }
                 }
 
