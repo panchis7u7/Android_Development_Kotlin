@@ -16,15 +16,13 @@ import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.R
-import com.example.dadm_u1p4_aplicacion_escolar.Stateflows.MateriasStateFlow
+import com.example.dadm_u1p4_aplicacion_escolar.Viewmodels.MateriaViewModel
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.FragmentSubjectSelectionBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -33,8 +31,7 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
     private var _binding: FragmentSubjectSelectionBinding? = null
     private val binding get() = _binding!!
     private var auth: FirebaseAuth? = null
-    private val stateFlow: MateriasStateFlow by activityViewModels()
-    private val materiasSeleccionadas: MutableList<Materia> = mutableListOf()
+    private val materiasViewModel: MateriaViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,8 +81,7 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
             requireContext(), semestres, true, object : IOnClickSelection {
                 override fun onSelectionClick(materia: Materia) {
                     Toast.makeText(requireContext(), materia.materia, Toast.LENGTH_LONG).show()
-                    materiasSeleccionadas.add(materia)
-                    stateFlow.setMaterias(materiasSeleccionadas)
+                    materiasViewModel.setMateria(materia)
                 }
             })
     }

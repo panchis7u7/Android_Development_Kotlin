@@ -1,13 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Hola1"/>
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="20dp">
 
+    <TableLayout
+    android:id="@+id/tableLayoutGrupos"
+    android:layout_marginTop="20sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:stretchColumns="*">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clave"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Materia"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grupo"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Martes"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miercoles"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jueves"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viernes"
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:paddingRight="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_weight="1"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</HorizontalScrollView>
 </LinearLayout>

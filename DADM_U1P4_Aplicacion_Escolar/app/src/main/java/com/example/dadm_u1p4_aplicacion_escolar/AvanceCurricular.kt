@@ -32,7 +32,7 @@ class AvanceCurricular : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        var semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
+        val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
                 index -> Semestre("",null)
         }
 
@@ -62,7 +62,7 @@ class AvanceCurricular : AppCompatActivity() {
     private fun semestresRecycler(semestres: MutableList<Semestre>){
         binding.recyclerSemestres.layoutManager = LinearLayoutManager(this@AvanceCurricular,
         RecyclerView.VERTICAL, false)
-        var recycleAdapterSemestre: RecyclerAdapterAvanceSemestres = RecyclerAdapterAvanceSemestres(
+        val recycleAdapterSemestre: RecyclerAdapterAvanceSemestres = RecyclerAdapterAvanceSemestres(
             this@AvanceCurricular, semestres, false, null)
         binding.recyclerSemestres.adapter= recycleAdapterSemestre
         recycleAdapterSemestre.notifyDataSetChanged()
