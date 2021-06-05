@@ -27,47 +27,51 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
         _binding = FragmentCurrentSelectionBinding.inflate(layoutInflater)
 
         materiasViewModel.materia.observe(viewLifecycleOwner) { materia ->
+
             val row = TableRow(context)
             val tableRowParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT)
+
+            val textViewParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+                TableLayout.LayoutParams.WRAP_CONTENT)
+            textViewParams.setMargins(0, 5, 15, 5)
+
             tableRowParams.setMargins(0, 0, 0, 0)
             row.setPadding(0, 0, 0, 0)
             row.layoutParams = tableRowParams
 
             val textViewClave = TextView(context)
             textViewClave.setPadding(5, 10, 0, 10)
-            textViewClave.text = materia.clave
+            textViewClave.text = materia.first.clave
+            textViewClave.layoutParams = textViewParams
             textViewClave.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewClave)
 
             val textViewMateria = TextView(context)
             textViewMateria.setPadding(5, 10, 0, 10)
-            textViewMateria.text = materia.materia
+            textViewMateria.text = materia.first.materia
+            textViewMateria.layoutParams = textViewParams
             textViewMateria.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewMateria)
 
             val textViewGrupo = TextView(context)
             textViewGrupo.setPadding(5, 10, 0, 10)
-            textViewGrupo.text = materia.grupo
+            textViewGrupo.text = (materia.second.getChildAt(0) as TextView).text
+            textViewGrupo.layoutParams = textViewParams
             textViewGrupo.setTextColor(requireContext().resources.getColor(R.color.black))
             row.addView(textViewGrupo)
 
-            val textViewParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
-                TableLayout.LayoutParams.WRAP_CONTENT)
-            textViewParams.setMargins(0, 5, 15, 5)
-
-            for (i in 0..4) {
+            for (i in 1..5) {
                 val textViewHorarios = TextView(context)
                 textViewHorarios.setPadding(5, 10, 0, 10)
                 textViewHorarios.layoutParams = textViewParams
-                textViewHorarios.text = materia.horarios?.get(i) + "/" + materia.aulas?.get(i)
+                textViewHorarios.text = (materia.second.getChildAt(i) as TextView).text
                 textViewHorarios.setTextColor(requireContext().resources.getColor(R.color.black))
                 row.addView(textViewHorarios)
             }
 
-            val buttonParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
-                100)
-
+            val buttonParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, 100)
+            buttonParams.setMargins(0, 5, 15, 5)
             val materialButton = MaterialButton(requireContext())
             materialButton.text = "Remover"
             materialButton.setBackgroundColor(requireContext().resources.getColor(R.color.red))
@@ -78,7 +82,6 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             materialButton.textSize = 12f
 
             row.addView(materialButton)
-
             binding.tableLayoutGrupos.addView(row)
         }
 

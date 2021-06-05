@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableRow
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -58,9 +60,7 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
                         materias.add(Materia(
                             clave = (document.get("clave") as String),
                             materia = (document.get("materia") as String),
-                            calificacion = (document.get("calificacion") as String),
-                            regularizacion = (document.get("regularizacion") as String),
-                            profesor = (document.get("profesor") as String)
+                            creditos = (document.get("creditos") as Long)
                         ))
                         semestres[i-1].materias = materias
                         semestres[i-1].semestre = i.toString()
@@ -79,9 +79,9 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
             RecyclerView.VERTICAL, false)
         binding.recyclerViewSelection.adapter= RecyclerAdapterAvanceSemestres(
             requireContext(), semestres, true, object : IOnClickSelection {
-                override fun onSelectionClick(materia: Materia) {
-                    Toast.makeText(requireContext(), materia.materia, Toast.LENGTH_LONG).show()
-                    materiasViewModel.setMateria(materia)
+                override fun onSelectionClick(materia: Materia, row: TableRow) {
+                    Toast.makeText(requireContext(), (row.getChildAt(0) as TextView).text, Toast.LENGTH_LONG).show()
+                    materiasViewModel.setMateria(Pair(materia, row))
                 }
             })
     }

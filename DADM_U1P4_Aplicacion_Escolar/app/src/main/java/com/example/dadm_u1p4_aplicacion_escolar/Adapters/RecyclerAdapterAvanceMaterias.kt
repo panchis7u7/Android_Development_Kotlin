@@ -1,8 +1,6 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.transition.Slide
 import android.view.Gravity
@@ -32,7 +30,7 @@ class RecyclerAdapterAvanceMaterias(
     private val context: Context,
     private val materias: List<Materia>,
     private val seleccion: Boolean,
-    private val onCLick: IOnClickSelection?
+    private val onCLick: IOnClickSelection?,
 ) :
 RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
@@ -158,13 +156,14 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     materialButton.setPadding(5,0,5,0)
                     materialButton.layoutParams = buttonParams
                     materialButton.textSize = 12f
+                    row.addView(materialButton)
+                    tableLayout.addView(row)
+
                     materialButton.setOnClickListener {
-                        onCLick?.onSelectionClick(materia)
+                        val rowSelected = it.getParent() as TableRow
+                        onCLick?.onSelectionClick(materia, rowSelected)
                     }
 
-                    row.addView(materialButton)
-
-                    tableLayout.addView(row)
                 }
             }
         }
