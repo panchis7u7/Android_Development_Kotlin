@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dadm_u1p4_aplicacion_escolar.Interfaces.IOnClickSelection
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.R
 
-class RecyclerAdapterAvanceSemestres(private val context: Context,
-                                     private val semestres: List<Semestre>,
-                                     private val seleccion: Boolean) :
+class RecyclerAdapterAvanceSemestres(
+    private val context: Context,
+    private val semestres: List<Semestre>,
+    private val seleccion: Boolean,
+    private val onCLick: IOnClickSelection?) :
 RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -37,9 +40,9 @@ RecyclerView.Adapter<RecyclerAdapterAvanceSemestres.ItemHolder>(){
     }
 
     private fun setCallItemRecycler(recyclerView: RecyclerView, materias: List<Materia>, seleccion: Boolean){
-        val itemRecycleAdapter = RecyclerAdapterAvanceMaterias(context, materias, seleccion)
-        recyclerView.layoutManager = GridLayoutManager(context,2)
+        val itemRecycleAdapter = RecyclerAdapterAvanceMaterias(context, materias, seleccion, onCLick)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = itemRecycleAdapter
+        recyclerView.layoutManager = GridLayoutManager(context,2)
     }
 }

@@ -63,7 +63,7 @@ class AvanceCurricular : AppCompatActivity() {
         binding.recyclerSemestres.layoutManager = LinearLayoutManager(this@AvanceCurricular,
         RecyclerView.VERTICAL, false)
         var recycleAdapterSemestre: RecyclerAdapterAvanceSemestres = RecyclerAdapterAvanceSemestres(
-            this@AvanceCurricular, semestres, false)
+            this@AvanceCurricular, semestres, false, null)
         binding.recyclerSemestres.adapter= recycleAdapterSemestre
         recycleAdapterSemestre.notifyDataSetChanged()
     }

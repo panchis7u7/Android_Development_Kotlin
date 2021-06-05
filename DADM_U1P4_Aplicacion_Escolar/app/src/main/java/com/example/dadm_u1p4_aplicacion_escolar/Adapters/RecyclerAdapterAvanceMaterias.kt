@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.TableLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dadm_u1p4_aplicacion_escolar.Interfaces.IOnClickSelection
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
 import com.google.android.material.button.MaterialButton
@@ -31,6 +32,7 @@ class RecyclerAdapterAvanceMaterias(
     private val context: Context,
     private val materias: List<Materia>,
     private val seleccion: Boolean,
+    private val onCLick: IOnClickSelection?
 ) :
 RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
@@ -156,6 +158,10 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     materialButton.setPadding(5,0,5,0)
                     materialButton.layoutParams = buttonParams
                     materialButton.textSize = 12f
+                    materialButton.setOnClickListener {
+                        onCLick?.onSelectionClick(materia)
+                    }
+
                     row.addView(materialButton)
 
                     tableLayout.addView(row)
