@@ -1,6 +1,8 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.transition.Slide
 import android.view.Gravity
@@ -9,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.TableLayout
-import androidx.core.view.marginEnd
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
@@ -48,7 +49,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var materia: Materia = materias.get(position)
+        val materia: Materia = materias.get(position)
         holder.textViewClave.text = materia.clave
         holder.textViewMateria.text = materia.materia
         holder.textViewCalificacion.text = materia.calificacion
@@ -73,15 +74,13 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
     fun handleSelection(materia: Materia, holder: ItemHolder) {
         val view = LayoutInflater.from(context).inflate(R.layout.grupos_dialog_layout, null)
         val tableLayout: TableLayout = view.findViewById(R.id.tableLayoutGrupos)
-        //val alertDialog = AlertDialog.Builder(context).setView(view).setTitle("Cali").show()
-        val popupWindow = PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        popupWindow.width = 1000
-        popupWindow.height = 1200
-        popupWindow.showAtLocation(view , Gravity.CENTER, 0, 0);
+        val textViewClave: TextView = view.findViewById(R.id.textViewClave)
+        val textViewMateria: TextView = view.findViewById(R.id.textViewMateria)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            popupWindow.elevation = 30.0F
-        }
+        val popupWindow = PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){ popupWindow.elevation = 30.0F }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             val slideIn = Slide()
@@ -93,6 +92,8 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
             popupWindow.exitTransition = slideOut
         }
 
+        popupWindow.showAtLocation(view , Gravity.CENTER, 0, 0);
+
         view.findViewById<FloatingActionButton>(R.id.fabCloseSelection).setOnClickListener {
             popupWindow.dismiss()
         }
@@ -101,11 +102,10 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
             .whereEqualTo("clave", materia.clave)
             .orderBy("grupo", Query.Direction.ASCENDING)
         GlobalScope.launch(Dispatchers.IO) {
-            val materia = document.get().await()
+            val materiaDocs = document.get().await()
             val materias = mutableListOf<Materia>()
-            //val tableItems: MutableList<TextView> = MutableList(materia.documents.size) { TextView(context) }
-            var index: Int = 0
-            materia.documents.forEach { document ->
+            var index = 0
+            materiaDocs.documents.forEach { document ->
                 index++
                 materias.add(Materia(
                     clave = (document.get("clave") as String),
@@ -113,16 +113,18 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     materia = (document.get("materia") as String),
                     profesor = (document.get("profesor") as String),
                     horarios = (document.get("horarios") as List<String>),
-                    aulas =  (document.get("horarios") as List<String>)
+                    aulas =  (document.get("aulas") as List<String>)
                 ))
 
                 withContext(Dispatchers.Main) {
+                    textViewClave.text = materia.clave
+                    textViewMateria.text = materia.materia
                     val row = TableRow(context)
-                    val trParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
+                    val tableRowParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.WRAP_CONTENT)
-                    trParams.setMargins(0, 0, 0, 0)
+                    tableRowParams.setMargins(0, 0, 0, 0)
                     row.setPadding(0, 0, 0, 0)
-                    row.setLayoutParams(trParams)
+                    row.layoutParams = tableRowParams
 
                     val textViewGrupo = TextView(context)
                     textViewGrupo.setPadding(5, 10, 0, 10)
@@ -130,13 +132,21 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     textViewGrupo.setTextColor(context.resources.getColor(R.color.black))
                     row.addView(textViewGrupo)
 
+                    val textViewParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+                        TableLayout.LayoutParams.WRAP_CONTENT)
+                    textViewParams.setMargins(0, 5,15,5)
+
                     for (i in 0 .. 4) {
                         val textViewHorarios = TextView(context)
                         textViewHorarios.setPadding(5, 10, 0, 10)
+                        textViewHorarios.layoutParams = textViewParams
                         textViewHorarios.text = materias[index-1].horarios?.get(i) + "/" + materias[index-1].aulas?.get(i)
                         textViewHorarios.setTextColor(context.resources.getColor(R.color.black))
                         row.addView(textViewHorarios)
                     }
+
+
+
                     tableLayout.addView(row)
                 }
             }
