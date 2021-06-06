@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id("com.apollographql.apollo").version("2.5.8")
 }
 
 android {
@@ -10,6 +11,11 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    apollo {
+        // instruct the compiler to generate Kotlin models
+        generateKotlinModels.set(true)
     }
 
     defaultConfig {
@@ -77,6 +83,10 @@ dependencies {
     //Activities and fragments.
     implementation "androidx.activity:activity-ktx:1.2.2"
     implementation "androidx.fragment:fragment-ktx:1.3.3"
+
+    //Apollo Server.
+    implementation("com.apollographql.apollo:apollo-runtime:2.5.8")
+    implementation("com.apollographql.apollo:apollo-coroutines-support:2.5.8")
 
     //Retrofit.
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

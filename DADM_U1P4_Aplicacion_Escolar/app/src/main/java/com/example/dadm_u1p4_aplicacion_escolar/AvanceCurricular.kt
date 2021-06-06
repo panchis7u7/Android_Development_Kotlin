@@ -1,10 +1,12 @@
 package com.example.dadm_u1p4_aplicacion_escolar
 
+import GroupsQuery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.apollographql.apollo.coroutines.toFlow
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSemestres
 import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
@@ -67,14 +70,14 @@ class AvanceCurricular : AppCompatActivity() {
                 }
         }
 
-        val jwt = "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MjI5NTIxNDEsImV4cCI6MTYyMjk1OTM0MSwiaWRBbHVtbm8iOiIxNTc1YzY3Zi1lMjQ4LTQ2YmItOGNjNy03NDgyNzhmMzNiNmEiLCJjb3JyZW8iOiJzbWFkQGdtYWlsLmNvbSAgICAgICAgICAgICAgICAgICAgICIsIm5vbWJyZSI6IkNhcmxvcyBTZWJhc3RpYW4gTWFkcmlnYWwgUm9kcmlnZXV6Iiwibm9Db250cm9sIjoiMTgxMjE2OTkgICJ9.ctK4W6nV6WOjIXGY9Ur0LiG_8nLSDATdcYl5W9pSprPWxA2oXncJ5LcEdyBviZ44V6mnxKsE1owdT9GHuBqbTg"
-        val api = FetchManager(jwt)
-        var grupos: List<MateriaGrupos>? = api.getGrupos()
+        val graphApi = FetchManager(applicationContext)
         GlobalScope.launch {
-            grupos = async { api.getGrupos() }.await()
-        }
+            graphApi.apolloClient.query(GroupsQuery()).toFlow().collect {
+                it.data?.listAsignaturas?.forEach { asignatura->
 
-        Log.d("Prueba", grupos!![0].asignatura)
+                }
+            }
+        }
     }
 
     private fun semestresRecycler(semestres: MutableList<Semestre>){
