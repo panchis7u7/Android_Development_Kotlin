@@ -1,5 +1,7 @@
 -- Esto no lo hice a mano... Automatice la generacion de los inserts con python en base a archivos JSON que contienen los datos de cada profesor, materia y horarios; Lo demas es copy paste bruh. 
 
+INSERT INTO alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', '18121699', 'smad@gmail.com', '$2a$10$CUsYN8sFc.2z4kLgzSQVa.G5Xp034.jYZFKz6Jbwss/FIT/Rt2kIy', 'CARI289022HMNDDRA5', 'Carlos Sebastian Madrigal Rodriguez', '2000-06-14', '4438796750', 'M', null, null)
+
 INSERT INTO profesores VALUES (1, 'Mora Garcia Jorge');
 INSERT INTO profesores VALUES (2, 'Huerta Cortes Andres Ivan');
 INSERT INTO profesores VALUES (3, 'Pacheco Pimentel Efren de Jesus');
@@ -257,4 +259,3 @@ INSERT INTO grupos VALUES (79, 55, 48, 'AD', '', '', '', '', '', '', '', '', '',
 -- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'No cursada', 0, null, '', '', '');
 -- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'No cursada', 0, null, '', '', '');
 -- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'No cursada', 0, null, '', '', '');
--- INSERT INTO alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', '18121699', 'smad@gmail.com', '$2a$10$CUsYN8sFc.2z4kLgzSQVa.G5Xp034.jYZFKz6Jbwss/FIT/Rt2kIy', 'CARI289022HMNDDRA5', 'Carlos Sebastian Madrigal Rodriguez', '2000-06-14', '4438796750', 'M', null, null)
