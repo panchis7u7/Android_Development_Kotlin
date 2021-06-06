@@ -6,13 +6,19 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSemestres
+import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
+import com.example.dadm_u1p4_aplicacion_escolar.Models.MateriaGrupos
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurricularBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -60,6 +66,15 @@ class AvanceCurricular : AppCompatActivity() {
                         semestresRecycler(semestres)
                 }
         }
+
+        val jwt = "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MjI5NTIxNDEsImV4cCI6MTYyMjk1OTM0MSwiaWRBbHVtbm8iOiIxNTc1YzY3Zi1lMjQ4LTQ2YmItOGNjNy03NDgyNzhmMzNiNmEiLCJjb3JyZW8iOiJzbWFkQGdtYWlsLmNvbSAgICAgICAgICAgICAgICAgICAgICIsIm5vbWJyZSI6IkNhcmxvcyBTZWJhc3RpYW4gTWFkcmlnYWwgUm9kcmlnZXV6Iiwibm9Db250cm9sIjoiMTgxMjE2OTkgICJ9.ctK4W6nV6WOjIXGY9Ur0LiG_8nLSDATdcYl5W9pSprPWxA2oXncJ5LcEdyBviZ44V6mnxKsE1owdT9GHuBqbTg"
+        val api = FetchManager(jwt)
+        var grupos: List<MateriaGrupos>? = api.getGrupos()
+        GlobalScope.launch {
+            grupos = async { api.getGrupos() }.await()
+        }
+
+        Log.d("Prueba", grupos!![0].asignatura)
     }
 
     private fun semestresRecycler(semestres: MutableList<Semestre>){
