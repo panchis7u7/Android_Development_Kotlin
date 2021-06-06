@@ -8,6 +8,7 @@ query AvanceReticularQuery($id: ID!) {
                 asignatura{
                     clave
                     asignatura
+                    semestre
                 }
             }
         }

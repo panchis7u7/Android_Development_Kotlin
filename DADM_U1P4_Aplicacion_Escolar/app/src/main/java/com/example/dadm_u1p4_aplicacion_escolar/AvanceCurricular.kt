@@ -3,6 +3,7 @@ package com.example.dadm_u1p4_aplicacion_escolar
 import AvanceReticularQuery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apollographql.apollo.coroutines.toFlow
@@ -15,9 +16,11 @@ import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurric
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class AvanceCurricular : AppCompatActivity() {
@@ -38,10 +41,10 @@ class AvanceCurricular : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
-                index -> Semestre("",null)
+                index -> Semestre((index+1).toString(), mutableListOf())
         }
 
-        for (i in 1 .. Alumno.semestresCarrera+1) {
+        /*for (i in 1 .. Alumno.semestresCarrera+1) {
             db.collection("alumnos/${auth.currentUser.uid}/materias")
                 .whereEqualTo("semestre", i)
                 .orderBy("clave", Query.Direction.ASCENDING)
@@ -63,15 +66,23 @@ class AvanceCurricular : AppCompatActivity() {
                     if(i == Alumno.semestresCarrera)
                         semestresRecycler(semestres)
                 }
-        }
+        }*/
 
         val graphApi = FetchManager(applicationContext)
-        GlobalScope.launch {
-            graphApi.apolloClient.query(AvanceReticularQuery(Alumno.id.toString())).toFlow().collect {
-                it.data?.loadAlumno?.gruposAlumnos?.forEach { grupo ->
-                    println(grupo?.calificacion.toString() + grupo?.grupo?.asignatura.toString())
+        lifecycleScope.launch(Dispatchers.IO) {
+            graphApi.apolloClient.query(AvanceReticularQuery(Alumno.id.toString())).toFlow().collect { response ->
+                response.data!!.loadAlumno?.gruposAlumnos?.forEach { grupo ->
+                    grupo.let {
+                        semestres[it!!.grupo.asignatura.semestre-1].materias?.add(Materia(
+                            clave = it.grupo.asignatura.clave,
+                            materia = it.grupo.asignatura.asignatura,
+                            calificacion = it.calificacion.toString(),
+                            regularizacion = it.regularizacion
+                        ))
+                    }
                 }
             }
+            withContext(Dispatchers.Main){semestresRecycler(semestres)}
         }
     }
 
