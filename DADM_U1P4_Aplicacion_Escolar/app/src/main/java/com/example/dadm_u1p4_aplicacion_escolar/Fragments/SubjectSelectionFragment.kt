@@ -59,16 +59,18 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
                     val materia = document.get().await()
                     val materias = mutableListOf<Materia>()
                     materia.documents.forEach { document ->
-                        materias.add(Materia(
-                            clave = (document.get("clave") as String),
-                            materia = (document.get("materia") as String),
-                            creditos = (document.get("creditos") as Long),
-                            calificacion = (document.get("calificacion") as String),
-                            regularizacion = (document.get("regularizacion") as String),
-                            profesor = (document.get("profesor") as String)
-                        ))
-                        semestres[i-1].materias = materias
-                        semestres[i-1].semestre = i.toString()
+                        if(!document.contains("laboratorio")) {
+                            materias.add(Materia(
+                                clave = (document.get("clave") as String),
+                                materia = (document.get("materia") as String),
+                                creditos = (document.get("creditos") as Long),
+                                calificacion = (document.get("calificacion") as String),
+                                regularizacion = (document.get("regularizacion") as String),
+                                profesor = (document.get("profesor") as String)
+                            ))
+                            semestres[i - 1].materias = materias
+                            semestres[i - 1].semestre = i.toString()
+                        }
                     }
                     if (i == Alumno.semestresCarrera)
                         withContext(Dispatchers.Main) { semestresRecycler(semestres) }

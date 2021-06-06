@@ -54,6 +54,13 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         holder.textViewMateria.text = materia.materia
         holder.textViewCalificacion.text = materia.calificacion
         holder.textViewRegularizacion.text = materia.regularizacion
+        var calificacion: Int = 0
+
+        try {
+            calificacion = materia.calificacion!!.toInt()
+        } catch (e: Exception){
+            print(e.message)
+        }
 
         if(holder.textViewCalificacion.text == "" && materia.profesor!!.isNotEmpty()) {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursandoMateria))
@@ -61,6 +68,15 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         } else if (holder.textViewCalificacion.text == "") {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
             holder.textViewCalificacion.text = "No Cursada"
+            if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
+
+            holder.buttonSeleccionar.setOnClickListener {
+                handleSelection(materia, holder)
+            }
+
+        } else if (calificacion < 70) {
+            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursadaNoAcreditada))
+            holder.textViewCalificacion.text = "Cursada sin acreditar"
             if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
 
             holder.buttonSeleccionar.setOnClickListener {

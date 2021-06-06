@@ -17,22 +17,22 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class Calificaciones : AppCompatActivity() {
-
-    private lateinit var binding: ActivityCalificacionesBinding
+    private var _binding: ActivityCalificacionesBinding? = null
+    private val binding get() = _binding!!
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_calificaciones)
-        binding = ActivityCalificacionesBinding.inflate(layoutInflater)
+        _binding = ActivityCalificacionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
         /** Preinitialize the list because of order issues. **/
-        var kardex: MutableList<ReporteSemestral> = MutableList(Alumno.semestre-1){
+        val kardex: MutableList<ReporteSemestral> = MutableList(Alumno.semestre-1){
                 index -> ReporteSemestral("", null, 0f, 0)
         }
 
@@ -46,19 +46,23 @@ class Calificaciones : AppCompatActivity() {
                     var creditos: Long = 0
                     var noMaterias = documents.size()
                     for (document in documents){
-                        calificaciones.add(Materia(
-                            clave = (document.get("clave") as String),
-                            materia = (document.get("materia") as String),
-                            creditos = (document.get("creditos") as Long),
-                            calificacion = (document.get("calificacion") as String),
-                            evaluacion = (document.get("evaluacion") as String),
-                            observaciones = (document.get("observaciones") as String),
-                            regularizacion = (document.get("regularizacion") as String),
-                        ))
-                        if(!((document.get("calificacion") as String) == "ACA")) {
-                            promedio += (document.get("calificacion") as String).toInt()
+                        if(document.contains("laboratorio")) {
+                            noMaterias -= 1
+                        } else {
+                            calificaciones.add(Materia(
+                                clave = (document.get("clave") as String),
+                                materia = (document.get("materia") as String),
+                                creditos = (document.get("creditos") as Long),
+                                calificacion = (document.get("calificacion") as String),
+                                evaluacion = (document.get("evaluacion") as String),
+                                observaciones = (document.get("observaciones") as String),
+                                regularizacion = (document.get("regularizacion") as String),
+                            ))
+                            if (!((document.get("calificacion") as String) == "ACA")) {
+                                promedio += (document.get("calificacion") as String).toInt()
+                            }
+                            creditos += (document.get("creditos") as Long)
                         }
-                        creditos += (document.get("creditos") as Long)
                     }
                     promedio /= noMaterias
                     kardex[i-1].materias = calificaciones
@@ -74,8 +78,12 @@ class Calificaciones : AppCompatActivity() {
     private fun calificacionesRecycler(registros: MutableList<ReporteSemestral>){
         binding.recyclerCalificaciones.layoutManager = LinearLayoutManager(this@Calificaciones,
         RecyclerView.VERTICAL, false)
-        var recycleAdapterCalificaciones = RecyclerAdapterCalificaciones(
+        binding.recyclerCalificaciones.adapter = RecyclerAdapterCalificaciones(
             this@Calificaciones, registros)
-        binding.recyclerCalificaciones.adapter = recycleAdapterCalificaciones
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

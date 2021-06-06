@@ -28,4 +28,5 @@
     <!-- Color del item de calificaciones. -->
     <color name="colorCalificacionesItem">#009688</color>
     <color name="cursandoMateria">#8805A1</color>
+    <color name="cursadaNoAcreditada">#FFEA2F</color>
 </resources>

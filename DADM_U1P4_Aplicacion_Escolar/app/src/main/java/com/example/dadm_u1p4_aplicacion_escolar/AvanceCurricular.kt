@@ -17,7 +17,8 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class AvanceCurricular : AppCompatActivity() {
-    private lateinit var binding: ActivityAvanceCurricularBinding
+    private var _binding: ActivityAvanceCurricularBinding? = null
+    private val binding get() = _binding!!
 
     //Firebase.
     private lateinit var db: FirebaseFirestore
@@ -25,7 +26,7 @@ class AvanceCurricular : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAvanceCurricularBinding.inflate(layoutInflater)
+        _binding = ActivityAvanceCurricularBinding.inflate(layoutInflater)
         //setContentView(R.layout.activity_avance_curricular)
         setContentView(binding.root)
 
@@ -43,15 +44,17 @@ class AvanceCurricular : AppCompatActivity() {
                 .get().addOnSuccessListener { documents ->
                     var materias = mutableListOf<Materia>()
                     for (document in documents) {
-                        materias.add(Materia(
-                            clave = (document.get("clave") as String),
-                            materia = (document.get("materia") as String),
-                            calificacion = (document.get("calificacion") as String),
-                            regularizacion = (document.get("regularizacion") as String),
-                            profesor = (document.get("profesor") as String)
-                        ))
-                        semestres[i-1].materias = materias
-                        semestres[i-1].semestre = i.toString()
+                        if(!document.contains("laboratorio")) {
+                            materias.add(Materia(
+                                clave = (document.get("clave") as String),
+                                materia = (document.get("materia") as String),
+                                calificacion = (document.get("calificacion") as String),
+                                regularizacion = (document.get("regularizacion") as String),
+                                profesor = (document.get("profesor") as String)
+                            ))
+                            semestres[i - 1].materias = materias
+                            semestres[i - 1].semestre = i.toString()
+                        }
                     }
                     if(i == Alumno.semestresCarrera)
                         semestresRecycler(semestres)
@@ -66,5 +69,10 @@ class AvanceCurricular : AppCompatActivity() {
             this@AvanceCurricular, semestres, false, null)
         binding.recyclerSemestres.adapter= recycleAdapterSemestre
         recycleAdapterSemestre.notifyDataSetChanged()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
