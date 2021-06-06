@@ -1,0 +1,4 @@
+./gradlew downloadApolloSchema \
+  --endpoint="http://localhost:9090/graphql" \
+  --schema="app/src/main/graphql/schema.json" \
+  --header="Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MjMwMTgxMzYsImV4cCI6MTYyMzAyNTMzNiwiaWRBbHVtbm8iOiIxNTc1YzY3Zi1lMjQ4LTQ2YmItOGNjNy03NDgyNzhmMzNiNmEiLCJjb3JyZW8iOiJzbWFkQGdtYWlsLmNvbSAgICAgICAgICAgICAgICAgICAgICIsIm5vbWJyZSI6IkNhcmxvcyBTZWJhc3RpYW4gTWFkcmlnYWwgUm9kcmlndWV6Iiwibm9Db250cm9sIjoiMTgxMjE2OTkgICJ9.rdDdxAntqrUuJO--yrh9k2T90ZGFZXajxyDJdhn83PoNq3MbG-FQNhdVo1TDoYh7xUH_S5qTLWp_s-txlP3G5w"

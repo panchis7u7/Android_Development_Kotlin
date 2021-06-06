@@ -1,8 +1,14 @@
-query GroupsQuery {
-    listAlumnos {
-        grupos {
-            asignatura {
-                asignatura
+query AvanceReticularQuery($id: ID!) {
+    loadAlumno(id_alumno: $id) {
+        GruposAlumnos {
+            calificacion
+            regularizacion
+            grupo {
+                grupo
+                asignatura{
+                    clave
+                    asignatura
+                }
             }
         }
     }

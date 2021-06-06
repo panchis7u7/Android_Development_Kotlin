@@ -439,6 +439,39 @@
               "deprecationReason":null
             },
             {
+              "name":"updatePassword",
+              "description":"",
+              "args":[
+                {
+                  "name":"id",
+                  "description":"",
+                  "type":{
+                    "kind":"SCALAR",
+                    "name":"ID",
+                    "ofType":null
+                  },
+                  "defaultValue":null
+                },
+                {
+                  "name":"password",
+                  "description":"",
+                  "type":{
+                    "kind":"SCALAR",
+                    "name":"String",
+                    "ofType":null
+                  },
+                  "defaultValue":null
+                }
+              ],
+              "type":{
+                "kind":"OBJECT",
+                "name":"Alumno",
+                "ofType":null
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
               "name":"removeAlumno",
               "description":"",
               "args":[
@@ -643,7 +676,7 @@
               "deprecationReason":null
             },
             {
-              "name":"grupos",
+              "name":"GruposAlumnos",
               "description":"",
               "args":[
 
@@ -653,7 +686,7 @@
                 "name":null,
                 "ofType":{
                   "kind":"OBJECT",
-                  "name":"Grupo",
+                  "name":"GruposAlumnos",
                   "ofType":null
                 }
               },
@@ -761,9 +794,13 @@
 
               ],
               "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"String",
+                  "ofType":null
+                }
               },
               "isDeprecated":false,
               "deprecationReason":null
@@ -775,9 +812,13 @@
 
               ],
               "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"String",
+                  "ofType":null
+                }
               },
               "isDeprecated":false,
               "deprecationReason":null
@@ -789,9 +830,13 @@
 
               ],
               "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"String",
+                  "ofType":null
+                }
               },
               "isDeprecated":false,
               "deprecationReason":null
@@ -803,79 +848,13 @@
 
               ],
               "type":{
-                "kind":"SCALAR",
-                "name":"Int",
-                "ofType":null
-              },
-              "isDeprecated":false,
-              "deprecationReason":null
-            },
-            {
-              "name":"semestre_cursada",
-              "description":"",
-              "args":[
-
-              ],
-              "type":{
-                "kind":"SCALAR",
-                "name":"Int",
-                "ofType":null
-              },
-              "isDeprecated":false,
-              "deprecationReason":null
-            },
-            {
-              "name":"calificacion",
-              "description":"",
-              "args":[
-
-              ],
-              "type":{
-                "kind":"SCALAR",
-                "name":"Int",
-                "ofType":null
-              },
-              "isDeprecated":false,
-              "deprecationReason":null
-            },
-            {
-              "name":"regularizacion",
-              "description":"",
-              "args":[
-
-              ],
-              "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
-              },
-              "isDeprecated":false,
-              "deprecationReason":null
-            },
-            {
-              "name":"evaluacion",
-              "description":"",
-              "args":[
-
-              ],
-              "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
-              },
-              "isDeprecated":false,
-              "deprecationReason":null
-            },
-            {
-              "name":"observaciones",
-              "description":"",
-              "args":[
-
-              ],
-              "type":{
-                "kind":"SCALAR",
-                "name":"String",
-                "ofType":null
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"Int",
+                  "ofType":null
+                }
               },
               "isDeprecated":false,
               "deprecationReason":null
@@ -1354,9 +1333,13 @@
 
               ],
               "type":{
-                "kind":"OBJECT",
-                "name":"Asignatura",
-                "ofType":null
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"OBJECT",
+                  "name":"Asignatura",
+                  "ofType":null
+                }
               },
               "isDeprecated":false,
               "deprecationReason":null
@@ -1376,7 +1359,7 @@
               "deprecationReason":null
             },
             {
-              "name":"alumnos",
+              "name":"gruposAlumnos",
               "description":"",
               "args":[
 
@@ -1386,9 +1369,136 @@
                 "name":null,
                 "ofType":{
                   "kind":"OBJECT",
+                  "name":"GruposAlumnos",
+                  "ofType":null
+                }
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            }
+          ],
+          "inputFields":null,
+          "interfaces":[
+
+          ],
+          "enumValues":null,
+          "possibleTypes":null
+        },
+        {
+          "kind":"OBJECT",
+          "name":"GruposAlumnos",
+          "description":"",
+          "fields":[
+            {
+              "name":"alumno",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"OBJECT",
                   "name":"Alumno",
                   "ofType":null
                 }
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"grupo",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"OBJECT",
+                  "name":"Grupo",
+                  "ofType":null
+                }
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"estado",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"String",
+                  "ofType":null
+                }
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"semestre_cursada",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"NON_NULL",
+                "name":null,
+                "ofType":{
+                  "kind":"SCALAR",
+                  "name":"Int",
+                  "ofType":null
+                }
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"calificacion",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"SCALAR",
+                "name":"Int",
+                "ofType":null
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"regularizacion",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"SCALAR",
+                "name":"String",
+                "ofType":null
+              },
+              "isDeprecated":false,
+              "deprecationReason":null
+            },
+            {
+              "name":"observaciones",
+              "description":"",
+              "args":[
+
+              ],
+              "type":{
+                "kind":"SCALAR",
+                "name":"String",
+                "ofType":null
               },
               "isDeprecated":false,
               "deprecationReason":null

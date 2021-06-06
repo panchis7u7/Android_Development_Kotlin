@@ -1,9 +1,8 @@
 package com.example.dadm_u1p4_aplicacion_escolar
 
-import GroupsQuery
+import AvanceReticularQuery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apollographql.apollo.coroutines.toFlow
@@ -11,19 +10,15 @@ import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSe
 import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
-import com.example.dadm_u1p4_aplicacion_escolar.Models.MateriaGrupos
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Semestre
 import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurricularBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
-import kotlin.collections.HashMap
 
 class AvanceCurricular : AppCompatActivity() {
     private var _binding: ActivityAvanceCurricularBinding? = null
@@ -72,9 +67,9 @@ class AvanceCurricular : AppCompatActivity() {
 
         val graphApi = FetchManager(applicationContext)
         GlobalScope.launch {
-            graphApi.apolloClient.query(GroupsQuery()).toFlow().collect {
-                it.data?.listAsignaturas?.forEach { asignatura->
-
+            graphApi.apolloClient.query(AvanceReticularQuery(Alumno.id.toString())).toFlow().collect {
+                it.data?.loadAlumno?.gruposAlumnos?.forEach { grupo ->
+                    println(grupo?.calificacion.toString() + grupo?.grupo?.asignatura.toString())
                 }
             }
         }
