@@ -10,20 +10,15 @@ type Alumno {
     fotografia: String,
     contrasena: String,
     residencia: Residencia,
-    grupos: [Grupo]
+    GruposAlumnos: [GruposAlumnos]
 }
 
 type Asignatura {
     id: ID!,
-    asignatura: String,
-    clave: String,
-    creditos: String,
-    semestre: Int,
-    semestre_cursada: Int,
-    calificacion: Int,
-    regularizacion: String,
-    evaluacion: String,
-    observaciones: String,
+    asignatura: String!,
+    clave: String!,
+    creditos: String!,
+    semestre: Int!,
     grupos: [Grupo]
 }
 
@@ -40,9 +35,19 @@ type Grupo {
     aula_miercoles: String,
     aula_jueves: String,
     aula_viernes: String,
-    asignatura: Asignatura,
+    asignatura: Asignatura!,
     profesor: Profesor,
-    alumnos: [Alumno]
+    gruposAlumnos: [GruposAlumnos]
+}
+
+type GruposAlumnos {
+    alumno: Alumno!,
+    grupo: Grupo!,
+    estado: String!,
+    semestre_cursada: Int!,
+    calificacion: Int,
+    regularizacion: String,
+    observaciones: String
 }
 
 type Profesor {

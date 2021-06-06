@@ -26,11 +26,14 @@ data class Grupo (
     @ManyToOne @JoinColumn(name = "id_profesor", nullable = false)
     @JsonProperty("profesor") var profesor: Profesor,
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_alumnos",
         joinColumns = arrayOf(JoinColumn(name = "id_grupo")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "id_alumno")))
     @JsonIgnore
-    var alumnos: List<Alumno> = mutableListOf()
+    var alumnos: List<Alumno> = mutableListOf()*/
+
+    @OneToMany(mappedBy = "grupo", cascade = arrayOf(CascadeType.ALL))
+    val gruposAlumnos: List<GruposAlumnos>
 
     ) {}

@@ -33,7 +33,7 @@ class SgeApplication /* :CommandLineRunner*/ {
 		val registrationBean = FilterRegistrationBean<AuthFilter>()
 		registrationBean.filter = AuthFilter()
 		registrationBean.addUrlPatterns("/alumnos")
-		registrationBean.addUrlPatterns("/graphql/*")
+		//registrationBean.addUrlPatterns("/graphql/*")
 		registrationBean.addUrlPatterns("/profesores/*")
 		registrationBean.addUrlPatterns("/domicilios/*")
 		registrationBean.addUrlPatterns("/asignaturas/*")

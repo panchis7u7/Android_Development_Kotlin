@@ -52,6 +52,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             if(!optional.isPresent)
                 throw NotFoundException("No se encontro el alumno con el correo: $email!")
             val alumno = optional.get()
+            println(alumno.contrasena.trim())
             if(!BCryptPasswordEncoder().matches(password, alumno.contrasena.trim()))
                 throw AuthException("Usuario o contraseña incorrecto!")
             return alumno
@@ -82,7 +83,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
             alumno.fotografia?.replace("s/\\x00//g;", ""),
             alumno.contrasena,
             alumno.residencia,
-            alumno.grupos
+            alumno.gruposAlumnos
         )
         return alumnoRepository!!.save(al)
     }
@@ -192,7 +193,7 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
                 alumno.fotografia,
                 alumno.contrasena,
                 alumno.residencia,
-                alumno.grupos
+                alumno.gruposAlumnos
             ))
         } catch(e: Exception) {
             throw BusinessException(e.message)

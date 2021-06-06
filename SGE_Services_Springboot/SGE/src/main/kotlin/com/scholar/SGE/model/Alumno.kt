@@ -24,9 +24,12 @@ data class Alumno(
     @JoinColumn(name = "id_residencia", referencedColumnName = "id_residencia")
     var residencia: Residencia? = null,
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_alumnos",
         joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "id_grupo")))
-    var grupos: List<Grupo> = mutableListOf()
+    var grupos: List<Grupo> = mutableListOf()*/
+
+    @OneToMany(mappedBy = "alumno", cascade = arrayOf(CascadeType.ALL))
+    val gruposAlumnos: List<GruposAlumnos>
     ) {}

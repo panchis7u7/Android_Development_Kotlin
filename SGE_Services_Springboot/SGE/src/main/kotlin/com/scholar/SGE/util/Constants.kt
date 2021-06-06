@@ -12,5 +12,6 @@ class Constants {
         const val URL_ASIGNATURAS = "$URL_BASE_API/asignaturas"
         const val URL_DOMICILIOS = "$URL_BASE_API/domicilios"
         const val URL_GRUPOS = "$URL_BASE_API/grupos"
+        const val URL_GRUPOS_ALUMNOS = "$URL_BASE_API/gruposAlumnos"
     }
 }

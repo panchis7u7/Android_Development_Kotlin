@@ -27,13 +27,15 @@ data class AlumnoGraphQL (
     @JoinColumn(name = "id_residencia")
     val residencia: Residencia? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_asignatura")
-    val asignatura: Asignatura,
+    val asignatura: Asignatura,*/
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
     @JoinTable(name = "asignaturas_alumnos",
         joinColumns = arrayOf(JoinColumn(name = "id_alumno")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "id_grupo")))
-    var grupos: List<Grupo> = mutableListOf()
+    var grupos: List<Grupo> = mutableListOf()*/
+    @OneToMany(mappedBy = "alumno", cascade = arrayOf(CascadeType.ALL))
+    val gruposAlumnos: List<GruposAlumnos>
 ) {}
