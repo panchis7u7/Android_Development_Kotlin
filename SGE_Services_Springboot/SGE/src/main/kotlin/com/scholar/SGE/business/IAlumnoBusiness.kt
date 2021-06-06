@@ -14,6 +14,7 @@ interface IAlumnoBusiness {
     fun generateJWTToken(alumno: Alumno): Map<String, String>
 
     fun updateAlumno(idAlumno: String, telefono: String?, residencia: Residencia?): Alumno
+    fun updatePassword(idAlumno: String, password: String): Alumno
     fun saveAlumnoQL(alumno: AlumnoGraphQL): Alumno
     fun removeAlumno(idAlumno: String)
     fun getResidencia(idAlumno: String): Residencia

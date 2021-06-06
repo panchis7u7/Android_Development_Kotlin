@@ -177,6 +177,32 @@ class AlumnoBusiness: GraphQLQueryResolver, GraphQLMutationResolver, IAlumnoBusi
         return  optional.get()
     }
 
+    override fun updatePassword(idAlumno: String, password: String): Alumno {
+        val optional: Optional<Alumno>
+        try{
+            optional = alumnoRepository!!.findById(UUID.fromString(idAlumno))
+        } catch(e: Exception){
+            throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
+        }
+
+        if(!optional.isPresent)
+            throw NotFoundException("No se encontro el alumno con id ${idAlumno}!")
+
+        optional.get().contrasena = BCryptPasswordEncoder().encode(password)
+
+        try{
+            alumnoRepository!!.save(optional.get())
+        } catch(e: Exception){
+            throw BusinessException(e.message)
+        } catch (e2: IllegalArgumentException){
+            throw IllegalArgumentException(e2.message)
+        }
+
+        return  optional.get()
+    }
+
     @Throws(BusinessException::class)
     override fun saveAlumnoQL(alumno: AlumnoGraphQL): Alumno {
         try {

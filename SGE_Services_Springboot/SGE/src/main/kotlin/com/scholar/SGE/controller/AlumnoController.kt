@@ -73,6 +73,7 @@ class AlumnoController {
         }
     }
 
+    /*
     @PostMapping("")
     fun insert(@RequestBody alumno: Alumno): ResponseEntity<Any> {
         return try {
@@ -93,7 +94,7 @@ class AlumnoController {
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") idAlumno: String): ResponseEntity<Any> {

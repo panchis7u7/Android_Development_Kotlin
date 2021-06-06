@@ -140,5 +140,6 @@ type Query {
 type Mutation {
     registerUser(input: CreateAlumnoInput): Alumno
     updateAlumno(id: ID, telefono: String, residencia: CreateResidenciaInput): Alumno
+    updatePassword(id: ID, password: String): Alumno
     removeAlumno(id_alumno:ID): Boolean
 }
