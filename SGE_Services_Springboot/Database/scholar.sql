@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS asignaturas(
     asignatura VARCHAR(55) UNIQUE NOT NULL,
     clave CHAR(6) UNIQUE NOT NULL,
     creditos INTEGER NOT NULL,
-    semestre INTEGER NOT NULL,  
+    semestre INTEGER NOT NULL  
 );
 
 CREATE TABLE IF NOT EXISTS grupos(
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS grupos(
 CREATE TABLE IF NOT EXISTS grupos_alumnos(
     id_alumno UUID NOT NULL,
     id_grupo INTEGER NOT NULL,
-    estado CHAR(35),
-    semestre_cursada INTEGER,
+    estado CHAR(35) NOT NULL,
+    semestre_cursada INTEGER NOT NULL,
     calificacion INTEGER,
     regularizacion CHAR(4),
     evaluacion CHAR(40),
-    observaciones CHAR(20) 
+    observaciones CHAR(20), 
     PRIMARY KEY (id_alumno, id_grupo, estado),
     FOREIGN KEY (id_alumno) REFERENCES alumnos (id_alumno) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (id_grupo) REFERENCES grupos (id_grupo) ON UPDATE CASCADE ON DELETE CASCADE

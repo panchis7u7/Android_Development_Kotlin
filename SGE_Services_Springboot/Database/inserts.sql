@@ -62,12 +62,12 @@ INSERT INTO grupos VALUES (3, 3, 20, 'A', '16:00-17:00', '16:00-17:00', '16:00-1
 INSERT INTO grupos VALUES (4, 4, 24, 'A', '19:00-20:00', '19:00-20:00', '19:00-20:00', '', '', 'F6', 'F6', 'F6', '', '');
 INSERT INTO grupos VALUES (5, 5, 24, 'A', '15:00-16:00', '15:00-16:00', '15:00-16:00', '15:00-16:00', '', 'F6', 'F6', 'F6', 'F6', '');
 INSERT INTO grupos VALUES (6, 6, 22, 'A', '14:00-15:00', '14:00-15:00', '14:00-15:00', '14:00-15:00', '', 'F6', 'F6', 'F6', 'F6', '');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'Materia acreditada', 1, 73, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'Materia acreditada', 1, 93, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'Materia acreditada', 1, 70, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'Materia acreditada', 1, 83, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 5, 'Materia acreditada', 1, 70, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'Materia acreditada', 1, 86, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'Materia acreditada', 1, 73, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'Materia acreditada', 1, 93, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'Materia acreditada', 1, 70, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'Materia acreditada', 1, 83, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 5, 'Materia acreditada', 1, 70, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'Materia acreditada', 1, 86, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado');
 
 --2do Semestre.
 INSERT INTO asignaturas VALUES (7, 'Calculo Integral', 'B2T1', 5, 2);
@@ -84,14 +84,15 @@ INSERT INTO grupos VALUES (11, 10, 26, 'A', '9:00-10:00', '9:00-10:00', '9:00-10
 INSERT INTO grupos VALUES (12, 10, 30, 'B', '8:00-9:00', '8:00-9:00', '8:00-9:00', '8:00-9:00', '8:00-9:00', 'F5', 'F5', 'F5', 'F5', 'F5');
 INSERT INTO grupos VALUES (13, 11, 28, 'A', '10:00-11:00', '10:00-11:00', '10:00-11:00', '10:00-11:00', '10:00-11:00', 'F6', 'F6', 'F6', 'F6', 'F6');
 INSERT INTO grupos VALUES (14, 12, 31, 'A', '12:00-13:00', '12:00-13:00', '12:00-13:00', '12:00-13:00', '12:00-13:00', 'F6', 'F6', 'F6', 'F6', 'F6');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 7, 'Materia acreditada', 2, 90, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 9, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 10, 'Materia acreditada', 2, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 11, 'Materia acreditada', 2, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 13, 'Materia acreditada', 2, 87, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 14, 'Materia acreditada', 2, 89, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 7, 'Materia acreditada', 2, 90, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 9, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 10, 'Materia acreditada', 2, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 11, 'Materia acreditada', 2, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 13, 'Materia acreditada', 2, 87, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 14, 'Materia acreditada', 2, 89, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
 
 --3er Semestre.
+
 INSERT INTO asignaturas VALUES (13, 'Desarrollo Sustentable', 'B6T5', 5, 3);
 INSERT INTO asignaturas VALUES (14, 'Estructura y Organizacion de Datos', 'B3T2', 5, 3);
 INSERT INTO asignaturas VALUES (15, 'Matematicas para la Toma de Desiciones', 'B3T3', 5, 3);
@@ -111,13 +112,13 @@ INSERT INTO grupos VALUES (23, 17, 14, 'AB', '', '', '', '', '17:00-19:00', '', 
 INSERT INTO grupos VALUES (24, 18, 16, 'A', '18:00-19:00', '18:00-19:00', '', '', '', 'F5', 'F5', '', '', '');
 INSERT INTO grupos VALUES (25, 18, 16, 'B', '', '', '18:00-19:00', '18:00-19:00', '', '', 'F5', 'F5', '', '');
 INSERT INTO grupos VALUES (26, 19, 18, 'A', '17:00-18:00', '17:00-18:00', '17:00-18:00', '17:00-18:00', '', 'F5', 'F5', 'F5', 'F5', '');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 15, 'Materia acreditada', 4, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 17, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 19, 'Materia acreditada', 3, 94, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 20, 'Materia acreditada', 3, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 23, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 24, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 26, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 15, 'Materia acreditada', 4, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 17, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 19, 'Materia acreditada', 3, 94, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 20, 'Materia acreditada', 3, 95, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 23, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 24, 'Materia acreditada', 2, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 26, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
 
 --4to Semestre.
 INSERT INTO asignaturas VALUES (20, 'Matematicas Aplicadas a Comunicaciones', 'B4T1', 5, 4);
@@ -136,12 +137,12 @@ INSERT INTO grupos VALUES (33, 23, 37, 'B', '15:00-14:00', '15:00-14:00', '15:00
 INSERT INTO grupos VALUES (34, 24, 33, 'A', '8:00-9:00', '', '8:00-9:00', '8:00-9:00', '', '', '', '', '', '');
 INSERT INTO grupos VALUES (35, 24, 33, 'B', '7:00-8:00', '', '7:00-8:00', '7:00-8:00', '', 'F4', '', 'F4', 'F4', '');
 INSERT INTO grupos VALUES (36, 25, 32, 'A', '11:00-12:00', '11:00-12:00', '11:00-12:00', '11:00-12:00', 'F5', 'F5', 'F5', 'F5', '');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 27, 'Materia acreditada', 3, 95, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 29, 'Materia acreditada', 4, 98, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 30, 'Materia acreditada', 3, 98, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 32, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 34, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 36, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 27, 'Materia acreditada', 3, 95, 'R1', 'Evaluacion Regularizacion Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 29, 'Materia acreditada', 4, 98, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 30, 'Materia acreditada', 3, 98, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 32, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 34, 'Materia acreditada', 3, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 36, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
 
 --5to Semestre.
 INSERT INTO asignaturas VALUES (26,  'Analisis de Señales y Sistemas de Comunicacion', 'B5T1', 5, 5);
@@ -160,14 +161,15 @@ INSERT INTO grupos VALUES (43, 29, 5, 'A', '15:00-16:00', '15:00-16:00', '15:00-
 INSERT INTO grupos VALUES (44, 30, 4, 'A', '', '16:00-17:00', '', '16:00-17:00', '', '', 'F3', '', 'F3', '');
 INSERT INTO grupos VALUES (45, 30, 1, 'B', '10:00-11:00', '10:00-11:00', '', '', '', 'K7', 'K7', '', '', '');
 INSERT INTO grupos VALUES (46, 31, 6, 'A', '18:00-19:00', '18:00-19:00', '18:00-19:00', '18:00-19:00', '', 'F3', 'F3', 'F3', 'F3', '');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 37, 'Materia acreditada', 5, 97, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 39, 'Materia acreditada', 4, 88, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 41, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 43, 'Materia acreditada', 5, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 44, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 46, 'Materia acreditada', 5, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 37, 'Materia acreditada', 5, 97, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 39, 'Materia acreditada', 4, 88, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 41, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 43, 'Materia acreditada', 5, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 44, 'Materia acreditada', 4, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 46, 'Materia acreditada', 5, 100, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
 
 --6to Semestre.
+
 INSERT INTO asignaturas VALUES (32, 'Telecomunicaciones', 'B6T1', 5, 6);
 INSERT INTO asignaturas VALUES (33, 'Tecnologias Inalambricas', 'B6T6', 4, 6);
 INSERT INTO asignaturas VALUES (34, 'Interaccion Humano Computadora', 'B7T6', 4, 6);
@@ -183,12 +185,12 @@ INSERT INTO grupos VALUES (52, 35, 24, 'B', '11:00-12:00','11:00-12:00','11:00-1
 INSERT INTO grupos VALUES (53, 36, 43, 'A', '9:00-10:00', '', '9:00-11:00', '', '9:00-11:00', 'LC2', '', 'LC3', '', 'LC3');
 INSERT INTO grupos VALUES (54, 37, 39, 'A', '7:00-8:00', '7:00-8:00', '7:00-8:00', '7:00-8:00', '7:00-8:00', 'F4', 'F4', 'F4', 'F4', 'F4');
 INSERT INTO grupos VALUES (55, 37, 39, 'B', '15:00-16:00', '15:00-16:00', '15:00-16:00', '16:00-16:00', '15:00-16:00', 'F4', 'F4', 'F4', 'F4', 'F4');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 47, 'Cursando', 6, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 49, 'Materia acreditada', 5, 94, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 50, 'Materia acreditada', 4, 99, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 51, 'Cursando', 6, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 53, 'Materia acreditada', 5, 100, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 54, 'Materia acreditada', 4, 88, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 47, 'Cursando', 6, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 49, 'Materia acreditada', 5, 94, 'O1', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 50, 'Materia acreditada', 4, 99, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 51, 'Cursando', 6, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 53, 'Materia acreditada', 5, 100, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 54, 'Materia acreditada', 4, 88, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
 
 --7mo Semestre.
 INSERT INTO asignaturas VALUES (38, 'Introduccion a la Seguridad de la Informacion', 'B7T7', 5, 7);
@@ -208,13 +210,13 @@ INSERT INTO grupos VALUES (62, 42, 10, 'A', '18:00-19:00', '18:00-20:00', '', '1
 INSERT INTO grupos VALUES (63, 42, 10, 'B', '', '17:00-18:00', '18:00-20:00', '', '18:00-20:00', '', 'LIS', 'LIS', '', 'LIS');
 INSERT INTO grupos VALUES (64, 43, 8, 'A', '17:00-18:00', '17:00-18:00', '', '17:00-18:00', '17:00-18:00', 'F1', 'P1', '', 'F1', 'F3');
 INSERT INTO grupos VALUES (65, 44, 47, 'AD', '', '', '', '', '', '', '', '', '', '');
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 56, 'Cursando', 6, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 58, 'Cursando', 6, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 60, 'Cursando', 6, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'No cursada', 0, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 62, 'Cursando', 6, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 64, 'Materia acreditada', 5, 100, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 65, 'Materia acreditada', 5, null, 'AD', 'AD', 'AD')
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 56, 'Cursando', 6, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 58, 'Cursando', 6, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 60, 'Cursando', 6, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'No cursada', 0, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 62, 'Cursando', 6, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 64, 'Materia acreditada', 5, 100, '01', 'Evaluacion Ordinaria Primera Vez', 'Curso Aprobado');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 65, 'Materia acreditada', 5, null, 'AD', 'AD', 'AD');
 
 
 --8vo Semestre.
@@ -233,13 +235,13 @@ INSERT INTO grupos VALUES (70, 48, 38, 'A', '8:00-10:00', '8:00-10:00', '8:00-10
 INSERT INTO grupos VALUES (71, 49, 44, 'A', '14:00-15:00', '14:00:15:00', '14:00:15:00', '14:00:15:00', '14:00:15:00', 'F6', 'F6', 'F6', 'F6', 'F6');
 INSERT INTO grupos VALUES (72, 49, 44, 'B', '14:00-15:00', '14:00:15:00', '14:00:15:00', '14:00:15:00', '14:00:15:00', 'F6', 'F6', 'F6', 'F6', 'F6');
 INSERT INTO grupos VALUES (73, 50, 11, 'A', '15:00-16:00', '15:00:16:00', '15:00:16:00', '15:00:16:00', '15:00:16:00', 'F3', 'F3', 'F3', 'F3', 'F3');
---INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'No cursada', 0, null, '', '', '')
---INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'No cursada', 0, null, '', '', '')
---INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'No cursada', 0, null, '', '', '')
-INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 70, 'Cursando', 6, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 5, 'No cursada', 0, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'No cursada', 0, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'No cursada', 0, null, '', '', '')
+--INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'No cursada', 0, null, '', '', '');
+--INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'No cursada', 0, null, '', '', '');
+--INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'No cursada', 0, null, '', '', '');
+INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 70, 'Cursando', 6, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 5, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 6, 'No cursada', 0, null, '', '', '');
 
 --9no Semestre.
 INSERT INTO asignaturas VALUES (52, 'Seguridad en Redes', 'B9T7', 5, 9);
@@ -251,7 +253,8 @@ INSERT INTO grupos VALUES (76, 53, 45, 'A', '9:00-10:00', '9:00-10:00', '9:00-10
 INSERT INTO grupos VALUES (77, 53, 38, 'B', '10:00-11:00', '10:00-11:00', '10:00-11:00', '10:00-11:00', '10:00-11:00', 'K2', 'LSI', 'LSI', 'LSI', 'LRD');
 INSERT INTO grupos VALUES (78, 54, 6, 'A', '14:00-15:00', '14:00-15:00', '14:00-15:00', '14:00-15:00', '14:00-15:00', 'F1', 'F1', 'F1', 'F1', 'F1');
 INSERT INTO grupos VALUES (79, 55, 48, 'AD', '', '', '', '', '', '', '', '', '', '');
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'No cursada', 0, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'No cursada', 0, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'No cursada', 0, null, '', '', '')
--- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'No cursada', 0, null, '', '', '')
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 1, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 2, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 3, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO grupos_alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', 4, 'No cursada', 0, null, '', '', '');
+-- INSERT INTO alumnos VALUES ('1575c67f-e248-46bb-8cc7-748278f33b6a', '18121699', 'smad@gmail.com', '$2a$10$CUsYN8sFc.2z4kLgzSQVa.G5Xp034.jYZFKz6Jbwss/FIT/Rt2kIy', 'CARI289022HMNDDRA5', 'Carlos Sebastian Madrigal Rodriguez', '2000-06-14', '4438796750', 'M', null, null)
