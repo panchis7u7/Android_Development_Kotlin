@@ -1,0 +1,9 @@
+query GroupsQuery {
+    listAlumnos {
+        grupos {
+            asignatura {
+                asignatura
+            }
+        }
+    }
+}
