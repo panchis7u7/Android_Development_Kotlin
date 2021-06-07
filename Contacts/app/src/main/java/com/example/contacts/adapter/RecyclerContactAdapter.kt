@@ -1,6 +1,7 @@
 package com.example.contacts.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contacts.ContactActivity
+import com.example.contacts.MessageActivity
 import com.example.contacts.R
 import com.example.contacts.model.Contact
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,6 +59,15 @@ RecyclerView.Adapter<RecyclerContactAdapter.ItemHolder>(){
                 holder.isOpen = true
             }
 
+        }
+        holder.floatingActionMessage.setOnClickListener {
+            context.startActivity(Intent(context, MessageActivity::class.java)
+                .putExtra("contact", contact))
+        }
+
+        holder.floatingActionEdit.setOnClickListener {
+            context.startActivity(Intent(context, ContactActivity::class.java)
+                .putExtra("contact", contact))
         }
     }
 

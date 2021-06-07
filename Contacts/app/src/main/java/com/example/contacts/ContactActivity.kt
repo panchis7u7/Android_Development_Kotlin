@@ -1,17 +1,14 @@
 package com.example.contacts
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.ToggleButton
 import com.example.contacts.Utils.Companion.toast
 import com.example.contacts.databinding.ActivityContactBinding
 import com.example.contacts.model.Contact
 import com.example.contacts.model.DBManager
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.ByteArrayOutputStream
 
@@ -21,12 +18,28 @@ class ContactActivity : AppCompatActivity() {
 
     var byteFoto : ByteArray? = null
     lateinit var manager : DBManager
+    var isEdit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityContactBinding.inflate(layoutInflater)
         //setContentView(R.layout.activity_contact)
         setContentView(binding.root)
+
+        var contact: Contact? = null
+        if(intent.extras != null) {
+            contact = intent.getParcelableExtra<Contact>("contact")
+            isEdit = true
+        }
+
+        if(isEdit){
+            binding.editName.setText(contact?.name)
+            binding.editCel.setText(contact?.celphone)
+            contact?.photo?.let {
+                binding.imgContact.setImageBitmap(BitmapFactory.decodeByteArray(it, 0, it.size))
+            }
+            binding.tgBtnFav.isChecked = contact?.favorite == 1
+        }
 
         manager = DBManager(
             this,
