@@ -52,19 +52,21 @@ RecyclerView.Adapter<RecyclerMessageListAdapter.BaseViewHolder<*>>() {
     class SentMessageHolder(itemView: View) : BaseViewHolder<Message>(itemView) {
         val messageText: TextView = itemView.findViewById(R.id.text_gchat_message_me)
         val timeText: TextView = itemView.findViewById(R.id.text_gchat_date_me)
+        //val profileImage: ImageView = itemView.findViewById(R.id.image_gchat_profile_other)
 
         override fun bind(message: Message) {
             messageText.text = message.message
             // Format the stored timestamp into a readable String using method.
             //timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+            //Picasso.get().load(message.sender.profileURL).into(profileImage)
         }
     }
 
     class ReceivedMessageHolder(itemView: View) : BaseViewHolder<Message>(itemView) {
-        val messageText: TextView = itemView.findViewById(R.id.text_gchat_message_other);
-        val timeText: TextView = itemView.findViewById(R.id.text_gchat_timestamp_other);
-        val nameText: TextView = itemView.findViewById(R.id.text_gchat_user_other);
-        val profileImage: ImageView = itemView.findViewById(R.id.image_gchat_profile_other);
+        val messageText: TextView = itemView.findViewById(R.id.text_gchat_message_other)
+        val timeText: TextView = itemView.findViewById(R.id.text_gchat_timestamp_other)
+        val nameText: TextView = itemView.findViewById(R.id.text_gchat_user_other)
+        val profileImage: ImageView = itemView.findViewById(R.id.image_gchat_profile_other)
 
         override fun bind(message: Message) {
             messageText.text = message.message

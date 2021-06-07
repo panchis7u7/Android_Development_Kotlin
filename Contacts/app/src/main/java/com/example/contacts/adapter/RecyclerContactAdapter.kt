@@ -3,12 +3,14 @@ package com.example.contacts.adapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contacts.ContactActivity
 import com.example.contacts.MessageActivity
@@ -68,13 +70,20 @@ RecyclerView.Adapter<RecyclerContactAdapter.ItemHolder>(){
                 .putExtra("contact", contact))
         }
 
-        holder.itemView.setOnClickListener {
-            context.startActivity(Intent(context, ContactActivity::class.java)
-                .putExtra("contact", contact))
+        holder.floatingActionCall.setOnClickListener {
+            val stringTelephone : String = String.format("tel: ${contact.celphone}")
+            val call = Intent(Intent.ACTION_DIAL)
+            call.setData(Uri.parse(stringTelephone))
+            ContextCompat.startActivity(context, call, null)
         }
 
         holder.floatingActionDelete.setOnClickListener {
             onDelete(contact)
+        }
+
+        holder.itemView.setOnClickListener {
+            context.startActivity(Intent(context, ContactActivity::class.java)
+                .putExtra("contact", contact))
         }
     }
 
