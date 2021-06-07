@@ -15,7 +15,7 @@ data class Alumno(var nombre: String? = "",
                   var estado: String? = "",
                   var colonia: String? = "",
                   var codigoPostal: String? = "",
-                  var telefono: String? ="",) {
+                  var telefono: String? ="") {
 
     companion object {
         var semestre: Int = -1

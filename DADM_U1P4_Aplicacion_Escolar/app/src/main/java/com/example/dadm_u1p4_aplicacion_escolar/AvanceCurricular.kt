@@ -95,6 +95,7 @@ class AvanceCurricular : AppCompatActivity() {
                             if(materia.clave == it.grupo.asignatura.clave){
                                 materia.calificacion = it.calificacion.toString()
                                 materia.regularizacion = it.regularizacion
+                                materia.estado = it.estado
                                 break
                             }
                         }

@@ -1,0 +1,13 @@
+query EnhancedAvanceReticularQuery {
+    listAsignaturas{
+        semestre
+        clave
+        asignatura
+        grupos {
+            gruposAlumnos {
+                estado
+                calificacion
+            }
+        }
+    }
+}

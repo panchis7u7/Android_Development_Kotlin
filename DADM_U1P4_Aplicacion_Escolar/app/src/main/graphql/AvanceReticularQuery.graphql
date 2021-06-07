@@ -1,6 +1,7 @@
 query AvanceReticularQuery($id: ID!) {
     loadAlumno(id_alumno: $id) {
         GruposAlumnos {
+            estado
             calificacion
             regularizacion
             grupo {

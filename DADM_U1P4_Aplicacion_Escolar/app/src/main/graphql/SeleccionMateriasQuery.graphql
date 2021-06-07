@@ -1,0 +1,27 @@
+query SeleccionMateriasQuery {
+    listAsignaturas{
+        semestre
+        clave
+        asignatura
+        grupos {
+            grupo
+            horario_lunes
+            horario_martes
+            horario_miercoles
+            horario_jueves
+            horario_viernes
+            aula_lunes
+            aula_martes
+            aula_miercoles
+            aula_jueves
+            aula_viernes
+            profesor {
+                nombre
+            }
+            gruposAlumnos {
+                estado
+                calificacion
+            }
+        }
+    }
+}

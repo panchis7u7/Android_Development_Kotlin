@@ -13,5 +13,6 @@ data class Materia (var aula: String? = "",
                     var observaciones: String? = "",
                     var regularizacion: String? = "No cursada",
                     val horarios: List<String>? = null,
-                    val aulas: List<String>? = null ){
+                    val aulas: List<String>? = null,
+                    var estado: String? = "No cursada"){
 }

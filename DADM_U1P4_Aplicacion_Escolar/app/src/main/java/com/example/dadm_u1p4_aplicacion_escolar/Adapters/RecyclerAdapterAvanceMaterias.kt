@@ -54,18 +54,35 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         holder.textViewMateria.text = materia.materia
         holder.textViewCalificacion.text = materia.calificacion
         holder.textViewRegularizacion.text = materia.regularizacion
-        var calificacion: Int = 0
 
-        try {
-            calificacion = materia.calificacion!!.toInt()
-        } catch (e: Exception){
-            print(e.message)
+        when(materia.estado?.trim()){
+            "Cursando" -> {
+                holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursandoMateria))
+                holder.textViewCalificacion.text = "Cursando"
+            }
+            "No cursada" -> {
+                holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
+                holder.textViewCalificacion.text = "No Cursada"
+                if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
+                holder.buttonSeleccionar.setOnClickListener {
+                    handleSelection(materia, holder)
+                }
+            }
+            "Cursada sin acreditar" -> {
+                holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursadaNoAcreditada))
+                holder.textViewCalificacion.text = "Cursada sin acreditar"
+                if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
+                holder.buttonSeleccionar.setOnClickListener {
+                    handleSelection(materia, holder)
+                }
+            }
         }
 
-        if(holder.textViewCalificacion.text == "" && materia.profesor!!.isNotEmpty()) {
+        /*
+        if((materia.calificacion == null || materia.calificacion == "") && materia.profesor!!.isNotEmpty()) {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursandoMateria))
             holder.textViewCalificacion.text = "Cursando"
-        } else if (holder.textViewCalificacion.text == "") {
+        } else if (materia.calificacion == null || materia.calificacion == "") {
             holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
             holder.textViewCalificacion.text = "No Cursada"
             if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
@@ -82,7 +99,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
             holder.buttonSeleccionar.setOnClickListener {
                 handleSelection(materia, holder)
             }
-        }
+        }*/
     }
 
     override fun getItemCount(): Int = materias.size
@@ -114,6 +131,51 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         view.findViewById<FloatingActionButton>(R.id.fabCloseSelection).setOnClickListener {
             popupWindow.dismiss()
         }
+
+        /*
+
+        val graphApi = FetchManager(requireContext())
+        lifecycleScope.launch(Dispatchers.IO) {
+
+            val reticula = async { graphApi.getSeleccionMaterias() }
+
+            reticula.await().collect {  response ->
+                response.data!!.listAsignaturas?.forEach { materia ->
+                    materia.let {
+                        var horarios = listOf<String>()
+                        var aulas = listOf<String>()
+                        var estado: String
+                        var profesor: String
+                        it!!.grupos?.forEach { grupo ->
+                            horarios = listOf(
+                                grupo?.horario_lunes!!,
+                                grupo.horario_martes!!,
+                                grupo.horario_miercoles!!,
+                                grupo.horario_jueves!!,
+                                grupo.horario_viernes!!
+                            )
+                            aulas = listOf(
+                                grupo.aula_lunes!!,
+                                grupo.aula_martes!!,
+                                grupo.aula_miercoles!!,
+                                grupo.aula_jueves!!,
+                                grupo.aula_viernes!!
+                            )
+                        }
+                        semestres[it!!.semestre-1].materias?.add(Materia(
+                            clave = it.clave,
+                            materia = it.asignatura,
+                            estad0 = it.g
+                            horarios = horarios,
+                            aulas = aulas
+                        ))
+                    }
+                }
+            }
+            withContext(Dispatchers.Main){semestresRecycler(semestres)}
+        }
+
+         */
 
         val document = Firebase.firestore.collection("carreras/ITICs/reinscripcion")
             .whereEqualTo("clave", materia.clave)

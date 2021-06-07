@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSemestres
+import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.Interfaces.IOnClickSelection
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
@@ -26,6 +27,8 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -33,7 +36,7 @@ import kotlinx.coroutines.withContext
 class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
     private var _binding: FragmentSubjectSelectionBinding? = null
     private val binding get() = _binding!!
-    private var auth: FirebaseAuth? = null
+    //private var auth: FirebaseAuth? = null
     private val materiasViewModel: MateriaViewModel by activityViewModels()
     private lateinit var parentActivity: SeleccionActivity
 
@@ -45,7 +48,10 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
         _binding = FragmentSubjectSelectionBinding.inflate(layoutInflater)
 
         parentActivity = (requireActivity() as SeleccionActivity)
-        auth = FirebaseAuth.getInstance()
+        val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
+                index -> Semestre((index+1).toString(), mutableListOf())
+        }
+        /*auth = FirebaseAuth.getInstance()
         val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
                 index -> Semestre("",null)
         }
@@ -76,6 +82,24 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
                         withContext(Dispatchers.Main) { semestresRecycler(semestres) }
                 }
             }
+        }*/
+
+        val graphApi = FetchManager(requireContext())
+        lifecycleScope.launch(Dispatchers.IO) {
+
+            graphApi.getEnhancedReticula().collect {  response ->
+                response.data!!.listAsignaturas?.forEach { materia ->
+                    materia.let {
+                        semestres[it!!.semestre-1].materias?.add(Materia(
+                            clave = it.clave,
+                            materia = it.asignatura,
+                            calificacion = it.grupos?.get(0)!!.gruposAlumnos?.get(0)!!.calificacion.toString(),
+                            estado = it.grupos.get(0)!!.gruposAlumnos?.get(0)!!.estado
+                        ))
+                    }
+                }
+            }
+            withContext(Dispatchers.Main){semestresRecycler(semestres)}
         }
 
         return binding.root
