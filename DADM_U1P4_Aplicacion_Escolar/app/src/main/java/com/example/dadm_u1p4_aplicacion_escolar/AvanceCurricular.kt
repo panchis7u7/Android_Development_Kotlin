@@ -1,11 +1,13 @@
 package com.example.dadm_u1p4_aplicacion_escolar
 
 import AvanceReticularQuery
+import ReticulaQuery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.coroutines.toFlow
 import com.example.dadm_u1p4_aplicacion_escolar.Adapters.RecyclerAdapterAvanceSemestres
 import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
@@ -16,11 +18,10 @@ import com.example.dadm_u1p4_aplicacion_escolar.databinding.ActivityAvanceCurric
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.flow
 import java.util.*
 
 class AvanceCurricular : AppCompatActivity() {
@@ -70,15 +71,33 @@ class AvanceCurricular : AppCompatActivity() {
 
         val graphApi = FetchManager(applicationContext)
         lifecycleScope.launch(Dispatchers.IO) {
-            graphApi.apolloClient.query(AvanceReticularQuery(Alumno.id.toString())).toFlow().collect { response ->
+
+            val reticula = async { graphApi.getReticula() }
+            val avance = async { graphApi.getMaterias() }
+
+            reticula.await().collect {  response ->
+                response.data!!.listAsignaturas?.forEach { asignatura ->
+                    asignatura.let {
+                        semestres[it!!.semestre-1].materias?.add(Materia(
+                            clave = it.clave,
+                            materia = it.asignatura
+                        ))
+                    }
+                }
+            }
+
+            avance.await().collect {  response ->
                 response.data!!.loadAlumno?.gruposAlumnos?.forEach { grupo ->
                     grupo.let {
-                        semestres[it!!.grupo.asignatura.semestre-1].materias?.add(Materia(
-                            clave = it.grupo.asignatura.clave,
-                            materia = it.grupo.asignatura.asignatura,
-                            calificacion = it.calificacion.toString(),
-                            regularizacion = it.regularizacion
-                        ))
+                        var materia: Materia
+                        for(i in 0.. semestres[it!!.grupo.asignatura.semestre-1].materias?.size!! - 1){
+                            materia = semestres[it.grupo.asignatura.semestre-1].materias?.get(i)!!
+                            if(materia.clave == it.grupo.asignatura.clave){
+                                materia.calificacion = it.calificacion.toString()
+                                materia.regularizacion = it.regularizacion
+                                break
+                            }
+                        }
                     }
                 }
             }

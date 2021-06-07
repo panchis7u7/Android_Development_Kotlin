@@ -4,11 +4,10 @@ query AvanceReticularQuery($id: ID!) {
             calificacion
             regularizacion
             grupo {
-                grupo
                 asignatura{
-                    clave
                     asignatura
                     semestre
+                    clave
                 }
             }
         }
