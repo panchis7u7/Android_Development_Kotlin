@@ -8,8 +8,10 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.R
 import com.example.dadm_u1p4_aplicacion_escolar.SeleccionActivity
 import com.example.dadm_u1p4_aplicacion_escolar.Viewmodels.MateriaViewModel
@@ -30,6 +32,7 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
         _binding = FragmentCurrentSelectionBinding.inflate(layoutInflater)
 
         parentActivity = (requireActivity() as SeleccionActivity)
+        val graph = FetchManager(requireContext())
 
         materiasViewModel.materia.observe(viewLifecycleOwner) { materia ->
 
@@ -109,6 +112,8 @@ class CurrentSelectionFragment: Fragment(R.layout.fragment_current_selection) {
             }
 
             binding.textViewCreditosSeleccionados.text = parentActivity.noCreditos.toString()
+            binding.buttonSubmitCarga.setOnClickListener {
+            }
         }
 
         return binding.root
