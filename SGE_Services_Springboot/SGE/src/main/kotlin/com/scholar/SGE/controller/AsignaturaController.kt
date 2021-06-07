@@ -26,10 +26,10 @@ class AsignaturaController {
         }
     }
 
-    @GetMapping("/{id}")
-    fun load(@PathVariable("id") idAsignatura: Long): ResponseEntity<Asignatura> {
+    @GetMapping("/{clave}")
+    fun load(@PathVariable("clave") clave: String): ResponseEntity<Asignatura> {
         return try {
-            ResponseEntity(asignaturaBusiness!!.loadAsignatura(idAsignatura), HttpStatus.OK)
+            ResponseEntity(asignaturaBusiness!!.loadAsignatura(clave), HttpStatus.OK)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         } catch(e: NotFoundException) {

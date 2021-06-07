@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.TableLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dadm_u1p4_aplicacion_escolar.Controllers.FetchManager
 import com.example.dadm_u1p4_aplicacion_escolar.Interfaces.IOnClickSelection
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Materia
 import com.example.dadm_u1p4_aplicacion_escolar.R
@@ -21,6 +22,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -72,6 +74,11 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                 holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursadaNoAcreditada))
                 holder.textViewCalificacion.text = "Cursada sin acreditar"
                 if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
+                holder.buttonSeleccionar.setOnClickListener {
+                    handleSelection(materia, holder)
+                }
+            }
+            else -> {
                 holder.buttonSeleccionar.setOnClickListener {
                     handleSelection(materia, holder)
                 }
@@ -132,51 +139,70 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
             popupWindow.dismiss()
         }
 
-        /*
 
-        val graphApi = FetchManager(requireContext())
-        lifecycleScope.launch(Dispatchers.IO) {
+        val graphApi = FetchManager(context)
+        GlobalScope.launch(Dispatchers.IO) {
+            graphApi.getGroupsByKey(materia.clave!!).collect { response ->
+                response.data?.let {
+                    it.loadAsignatura?.grupos?.forEach { grupo ->
+                        withContext(Dispatchers.Main) {
 
-            val reticula = async { graphApi.getSeleccionMaterias() }
+                            val horarios = listOf(grupo?.horario_lunes!!, grupo.horario_martes!!, grupo.horario_miercoles!!, grupo.horario_jueves!!, grupo.horario_viernes!!)
+                            val aulas = listOf(grupo.aula_lunes!!, grupo.aula_martes!!, grupo.aula_miercoles!!, grupo.aula_jueves!!, grupo.aula_viernes!!)
+                            val materiaQL = Materia(clave = materia.clave, materia = it.loadAsignatura.asignatura, creditos = it.loadAsignatura.creditos.toLong(), grupo = grupo.grupo, horarios = horarios, aulas = aulas)
 
-            reticula.await().collect {  response ->
-                response.data!!.listAsignaturas?.forEach { materia ->
-                    materia.let {
-                        var horarios = listOf<String>()
-                        var aulas = listOf<String>()
-                        var estado: String
-                        var profesor: String
-                        it!!.grupos?.forEach { grupo ->
-                            horarios = listOf(
-                                grupo?.horario_lunes!!,
-                                grupo.horario_martes!!,
-                                grupo.horario_miercoles!!,
-                                grupo.horario_jueves!!,
-                                grupo.horario_viernes!!
-                            )
-                            aulas = listOf(
-                                grupo.aula_lunes!!,
-                                grupo.aula_martes!!,
-                                grupo.aula_miercoles!!,
-                                grupo.aula_jueves!!,
-                                grupo.aula_viernes!!
-                            )
+                            textViewClave.text = materia.clave
+                            textViewMateria.text = materia.materia
+                            textViewCreditos.text = "Creditos: ${it.loadAsignatura.creditos}"
+                            val row = TableRow(context)
+                            val tableRowParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
+                                TableLayout.LayoutParams.WRAP_CONTENT)
+                            tableRowParams.setMargins(0, 0, 0, 0)
+                            row.setPadding(0, 0, 0, 0)
+                            row.layoutParams = tableRowParams
+
+                            val textViewGrupo = TextView(context)
+                            textViewGrupo.setPadding(5, 10, 0, 10)
+                            textViewGrupo.text = grupo.grupo
+                            textViewGrupo.setTextColor(context.resources.getColor(R.color.black))
+                            row.addView(textViewGrupo)
+
+                            val textViewParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+                                TableLayout.LayoutParams.WRAP_CONTENT)
+                            textViewParams.setMargins(0, 5,15,5)
+
+                            for (i in 0 .. 4) {
+                                val textViewHorarios = TextView(context)
+                                textViewHorarios.setPadding(5, 10, 0, 10)
+                                textViewHorarios.layoutParams = textViewParams
+                                textViewHorarios.text = horarios[i] + "/" + aulas[i]
+                                textViewHorarios.setTextColor(context.resources.getColor(R.color.black))
+                                row.addView(textViewHorarios)
+                            }
+
+                            val buttonParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
+                                100)
+                            val materialButton = MaterialButton(context)
+                            materialButton.text = "Seleccionar"
+                            materialButton.setBackgroundColor(context.resources.getColor(R.color.red))
+                            materialButton.setTextColor(context.resources.getColor(R.color.white))
+                            materialButton.isAllCaps = false
+                            materialButton.setPadding(5,0,5,0)
+                            materialButton.layoutParams = buttonParams
+                            materialButton.textSize = 12f
+                            row.addView(materialButton)
+                            tableLayout.addView(row)
+
+                            materialButton.setOnClickListener {
+                                val rowSelected = it.getParent() as TableRow
+                                onCLick?.onSelectionClick(materiaQL, rowSelected)
+                            }
                         }
-                        semestres[it!!.semestre-1].materias?.add(Materia(
-                            clave = it.clave,
-                            materia = it.asignatura,
-                            estad0 = it.g
-                            horarios = horarios,
-                            aulas = aulas
-                        ))
                     }
                 }
             }
-            withContext(Dispatchers.Main){semestresRecycler(semestres)}
         }
-
-         */
-
+        /*
         val document = Firebase.firestore.collection("carreras/ITICs/reinscripcion")
             .whereEqualTo("clave", materia.clave)
             .orderBy("grupo", Query.Direction.ASCENDING)
@@ -197,56 +223,10 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                 ))
 
                 withContext(Dispatchers.Main) {
-                    textViewClave.text = materia.clave
-                    textViewMateria.text = materia.materia
-                    textViewCreditos.text = "Creditos: ${materia.creditos.toString()}"
-                    val row = TableRow(context)
-                    val tableRowParams = TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,
-                        TableLayout.LayoutParams.WRAP_CONTENT)
-                    tableRowParams.setMargins(0, 0, 0, 0)
-                    row.setPadding(0, 0, 0, 0)
-                    row.layoutParams = tableRowParams
 
-                    val textViewGrupo = TextView(context)
-                    textViewGrupo.setPadding(5, 10, 0, 10)
-                    textViewGrupo.text = materias[index-1].grupo
-                    textViewGrupo.setTextColor(context.resources.getColor(R.color.black))
-                    row.addView(textViewGrupo)
-
-                    val textViewParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
-                        TableLayout.LayoutParams.WRAP_CONTENT)
-                    textViewParams.setMargins(0, 5,15,5)
-
-                    for (i in 0 .. 4) {
-                        val textViewHorarios = TextView(context)
-                        textViewHorarios.setPadding(5, 10, 0, 10)
-                        textViewHorarios.layoutParams = textViewParams
-                        textViewHorarios.text = materias[index-1].horarios?.get(i) + "/" + materias[index-1].aulas?.get(i)
-                        textViewHorarios.setTextColor(context.resources.getColor(R.color.black))
-                        row.addView(textViewHorarios)
                     }
-
-                    val buttonParams = TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT,
-                        100)
-
-                    val materialButton = MaterialButton(context)
-                    materialButton.text = "Seleccionar"
-                    materialButton.setBackgroundColor(context.resources.getColor(R.color.red))
-                    materialButton.setTextColor(context.resources.getColor(R.color.white))
-                    materialButton.isAllCaps = false
-                    materialButton.setPadding(5,0,5,0)
-                    materialButton.layoutParams = buttonParams
-                    materialButton.textSize = 12f
-                    row.addView(materialButton)
-                    tableLayout.addView(row)
-
-                    materialButton.setOnClickListener {
-                        val rowSelected = it.getParent() as TableRow
-                        onCLick?.onSelectionClick(materia, rowSelected)
-                    }
-
                 }
             }
-        }
+        }*/
     }
 }

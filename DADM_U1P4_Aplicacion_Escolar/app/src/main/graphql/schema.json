@@ -152,11 +152,11 @@
               "description":"",
               "args":[
                 {
-                  "name":"id_asignatura",
+                  "name":"clave",
                   "description":"",
                   "type":{
                     "kind":"SCALAR",
-                    "name":"ID",
+                    "name":"String",
                     "ofType":null
                   },
                   "defaultValue":null
@@ -834,7 +834,7 @@
                 "name":null,
                 "ofType":{
                   "kind":"SCALAR",
-                  "name":"String",
+                  "name":"Int",
                   "ofType":null
                 }
               },

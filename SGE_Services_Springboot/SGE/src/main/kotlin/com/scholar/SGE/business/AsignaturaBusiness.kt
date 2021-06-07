@@ -39,10 +39,10 @@ class AsignaturaBusiness: GraphQLQueryResolver, IAsignaturaBusiness {
     }
 
     @Throws(BusinessException::class, NotFoundException::class)
-    override fun loadAsignatura(idAsignatura: Long): Asignatura {
+    override fun loadAsignatura(clave: String): Asignatura {
         val optional: Optional<Asignatura>
         try{
-            optional = asignaturaRepository!!.findById(idAsignatura)
+            optional = asignaturaRepository!!.findByCLave(clave)
         } catch(e: Exception){
             throw BusinessException(e.message)
         } catch (e2: IllegalArgumentException){
@@ -50,7 +50,7 @@ class AsignaturaBusiness: GraphQLQueryResolver, IAsignaturaBusiness {
         }
 
         if(!optional.isPresent)
-            throw NotFoundException("No se encontro el Asignatura con id $idAsignatura!")
+            throw NotFoundException("No se encontro el Asignatura con la clave $clave!")
 
         return optional.get()
     }

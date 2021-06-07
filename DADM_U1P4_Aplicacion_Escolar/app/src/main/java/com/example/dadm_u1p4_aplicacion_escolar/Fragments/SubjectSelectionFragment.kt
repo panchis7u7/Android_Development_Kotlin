@@ -87,21 +87,38 @@ class SubjectSelectionFragment: Fragment(R.layout.fragment_subject_selection) {
         val graphApi = FetchManager(requireContext())
         lifecycleScope.launch(Dispatchers.IO) {
 
-            graphApi.getEnhancedReticula().collect {  response ->
-                response.data!!.listAsignaturas?.forEach { materia ->
-                    materia.let {
+            val reticula = async { graphApi.getReticula() }
+            val avance = async { graphApi.getMaterias() }
+
+            reticula.await().collect {  response ->
+                response.data!!.listAsignaturas?.forEach { asignatura ->
+                    asignatura.let {
                         semestres[it!!.semestre-1].materias?.add(Materia(
                             clave = it.clave,
-                            materia = it.asignatura,
-                            calificacion = it.grupos?.get(0)!!.gruposAlumnos?.get(0)!!.calificacion.toString(),
-                            estado = it.grupos.get(0)!!.gruposAlumnos?.get(0)!!.estado
+                            materia = it.asignatura
                         ))
+                    }
+                }
+            }
+
+            avance.await().collect {  response ->
+                response.data!!.loadAlumno?.gruposAlumnos?.forEach { grupo ->
+                    grupo.let {
+                        var materia: Materia
+                        for(i in 0.. semestres[it!!.grupo.asignatura.semestre-1].materias?.size!! - 1){
+                            materia = semestres[it.grupo.asignatura.semestre-1].materias?.get(i)!!
+                            if(materia.clave == it.grupo.asignatura.clave){
+                                materia.calificacion = it.calificacion.toString()
+                                materia.regularizacion = it.regularizacion
+                                materia.estado = it.estado
+                                break
+                            }
+                        }
                     }
                 }
             }
             withContext(Dispatchers.Main){semestresRecycler(semestres)}
         }
-
         return binding.root
     }
 

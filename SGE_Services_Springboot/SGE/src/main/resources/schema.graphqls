@@ -17,7 +17,7 @@ type Asignatura {
     id: ID!,
     asignatura: String!,
     clave: String!,
-    creditos: String!,
+    creditos: Int!,
     semestre: Int!,
     grupos: [Grupo]
 }
@@ -126,7 +126,7 @@ type Query {
     listProfesores:[Profesor]
     loadProfesor(id_profesor:ID):Profesor
     listAsignaturas:[Asignatura]
-    loadAsignatura(id_asignatura:ID):Asignatura
+    loadAsignatura(clave:String):Asignatura
     listResidencias:[Residencia]
     loadResidencia(id_residencia:ID):Residencia
     getResidencia(id_alumno: String): Residencia

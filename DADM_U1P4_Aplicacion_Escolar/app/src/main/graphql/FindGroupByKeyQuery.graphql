@@ -1,8 +1,7 @@
-query SeleccionMateriasQuery {
-    listAsignaturas{
-        semestre
-        clave
+query FindGroupByKeyQuery($clave: String!) {
+    loadAsignatura(clave: $clave) {
         asignatura
+        creditos
         grupos {
             grupo
             horario_lunes
@@ -15,13 +14,6 @@ query SeleccionMateriasQuery {
             aula_miercoles
             aula_jueves
             aula_viernes
-            profesor {
-                nombre
-            }
-            gruposAlumnos {
-                estado
-                calificacion
-            }
         }
     }
 }

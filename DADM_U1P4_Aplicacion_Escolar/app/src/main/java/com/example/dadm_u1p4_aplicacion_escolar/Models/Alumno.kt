@@ -21,6 +21,6 @@ data class Alumno(var nombre: String? = "",
         var semestre: Int = -1
         var semestresCarrera: Int = -1
         var id: UUID = UUID.fromString("1575c67f-e248-46bb-8cc7-748278f33b6a")
-        var token: String = "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MjMwMjU1NTEsImV4cCI6MTYyMzAzMjc1MSwiaWRBbHVtbm8iOiIxNTc1YzY3Zi1lMjQ4LTQ2YmItOGNjNy03NDgyNzhmMzNiNmEiLCJjb3JyZW8iOiJzbWFkQGdtYWlsLmNvbSAgICAgICAgICAgICAgICAgICAgICIsIm5vbWJyZSI6IkNhcmxvcyBTZWJhc3RpYW4gTWFkcmlnYWwgUm9kcmlndWV6Iiwibm9Db250cm9sIjoiMTgxMjE2OTkgICJ9.bvbEJy382nwEeSq7If8S9bMJd3RpeFy_K_saajMYg7MMs0EC0lxjoo6xAD1gZc2QDL1tquYVBdaRJNNuMmLw6g"
+        var token: String = "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MjMwNDA1NTAsImV4cCI6MTYyMzA0Nzc1MCwiaWRBbHVtbm8iOiIxNTc1YzY3Zi1lMjQ4LTQ2YmItOGNjNy03NDgyNzhmMzNiNmEiLCJjb3JyZW8iOiJzbWFkQGdtYWlsLmNvbSAgICAgICAgICAgICAgICAgICAgICIsIm5vbWJyZSI6IkNhcmxvcyBTZWJhc3RpYW4gTWFkcmlnYWwgUm9kcmlndWV6Iiwibm9Db250cm9sIjoiMTgxMjE2OTkgICJ9.edOy-DdJ_F6n86T2f00JzKjq2i-SmL-6HV4N5eYrzvBjUnkH6fem3Yl8DOKUXQzeFW_ZKrf6W6W8ce7-XKMjQg"
     }
 }
