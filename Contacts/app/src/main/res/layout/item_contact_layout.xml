@@ -12,69 +12,122 @@
     app:cardCornerRadius="20dp"
     app:cardElevation="20dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewContact"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@mipmap/ic_launcher"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:id="@+id/linearLayoutContacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textViewContactName"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewContact"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewContactName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contacto"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewContactNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Celular"
+                    android:textColor="#4D4D4D"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contacto"
-                android:textColor="#000"
-                android:textSize="18sp" />
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="Edit"
+                android:src="@drawable/icon_edit"
+                app:borderWidth="0dp"
+                app:fabSize="mini" />
 
-            <TextView
-                android:id="@+id/textViewContactNumber"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#4D4D4D"
-                android:text="Celular"
-                android:textSize="14sp" />
+                android:layout_gravity="center"
+                android:backgroundTint="@color/softRed"
+                android:contentDescription="Delete"
+                android:src="@drawable/icon_message"
+                app:borderWidth="0dp"
+                app:fabSize="mini" />
 
         </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutOpciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutContacto"
+        app:layout_constraintEnd_toEndOf="@id/linearLayoutContacto"
+        android:visibility="gone"
+        android:layout_marginEnd="8dp">
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingAction1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_edit"
-            android:contentDescription="Edit"
-            android:backgroundTint="@color/white"
-            app:borderWidth="0dp"
-            android:layout_marginRight="5dp"
             app:fabSize="mini"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingAction2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingAction3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingAction4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:backgroundTint="@color/softRed"
             android:contentDescription="Delete"
             android:src="@drawable/icon_delete"
-            android:backgroundTint="@color/softRed"
             app:borderWidth="0dp"
-            app:fabSize="mini"/>
-
+            app:fabSize="mini" />
 
     </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

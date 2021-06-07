@@ -16,8 +16,8 @@ class MessageActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_message)
         setContentView(binding.root)
 
-        binding.recyclerGchat.adapter = RecyclerMessageListAdapter(this)
-        binding.recyclerGchat.layoutManager = LinearLayoutManager(this)
+        /*binding.recyclerGchat.adapter = RecyclerMessageListAdapter(this)
+        binding.recyclerGchat.layoutManager = LinearLayoutManager(this)*/
 
     }
 
