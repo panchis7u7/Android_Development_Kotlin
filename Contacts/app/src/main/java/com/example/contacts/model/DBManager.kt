@@ -30,7 +30,7 @@ class DBManager(
             """
             it.execSQL(sql)
 
-            sql = "INSERT INTO contacts(name,celphone) VALUES('Yo','4433000000')"
+            sql = "INSERT INTO contacts(name,celphone) VALUES('Sebastain','4433657680')"
 
             it.execSQL(sql)
         }

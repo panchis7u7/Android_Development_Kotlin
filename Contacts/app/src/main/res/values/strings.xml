@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Contacts</string>
+    <string name="db_name">BD_ContactsApp</string>
+    <integer name="db_version">1</integer>
 </resources>

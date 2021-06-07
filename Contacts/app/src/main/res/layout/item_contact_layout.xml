@@ -5,7 +5,8 @@
     app:cardBackgroundColor="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     app:cardCornerRadius="20dp"
@@ -23,6 +24,10 @@
             android:layout_height="60dp"
             android:src="@mipmap/ic_launcher"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -42,6 +47,7 @@
                 android:id="@+id/textViewContactNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#4D4D4D"
                 android:text="Celular"
                 android:textSize="14sp" />
 
@@ -65,6 +71,7 @@
             android:contentDescription="Delete"
             android:src="@drawable/icon_delete"
             android:backgroundTint="@color/softRed"
+            app:borderWidth="0dp"
             app:fabSize="mini"/>
 
 
