@@ -5,7 +5,6 @@ import FindGroupByKeyQuery
 import ReticulaQuery
 import android.content.Context
 import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.api.Mutation
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.coroutines.toFlow
 import com.example.dadm_u1p4_aplicacion_escolar.Models.Alumno
@@ -15,7 +14,7 @@ import java.util.*
 
 class FetchManager(val context: Context) {
     private val graphqlEndpoint: String = "http://192.168.1.133:9090/graphql"
-    private var apolloClient: ApolloClient
+    var apolloClient: ApolloClient
 
     init {
         apolloClient = ApolloClient.builder()
@@ -37,8 +36,8 @@ class FetchManager(val context: Context) {
                          calificacion: Int,
                          regularizacion: String,
                          evaluacion: String,
-                         observaciones: String): Mutation<Any, Any, Any> {
-        apolloClient.mutate(AddGroupMutation(id_alumno,id_grupo,estado,semestre_cursada,calificacion,regularizacion,evaluacion,observaciones)) }*/
+                         observaciones: String): ApolloMutationCall<ADDGroupMutation> {
+        apolloClient.mutate(AddGroupMutation(id_alumno,id_grupo,estado,semestre_cursada,calificacion,regularizacion,evaluacion,observaciones).toFlow()) }*/
 
     fun getGroupsByKey(clave: String): Flow<Response<FindGroupByKeyQuery.Data>> = apolloClient.query(FindGroupByKeyQuery(clave)).toFlow()
 

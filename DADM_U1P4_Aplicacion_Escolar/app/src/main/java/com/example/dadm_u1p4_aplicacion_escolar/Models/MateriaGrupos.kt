@@ -22,6 +22,7 @@ data class Grupo(
    val aulaMiercoles: String,
    val aulaJueves: String,
    val aulaViernes: String,
+   val profesor: Profesor
 ){}
 
 data class Profesor(

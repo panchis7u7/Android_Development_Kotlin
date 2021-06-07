@@ -1,5 +1,6 @@
 package com.example.dadm_u1p4_aplicacion_escolar.Adapters
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Build
 import android.transition.Slide
@@ -130,7 +131,7 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
 
                             val horarios = listOf(grupo?.horario_lunes!!, grupo.horario_martes!!, grupo.horario_miercoles!!, grupo.horario_jueves!!, grupo.horario_viernes!!)
                             val aulas = listOf(grupo.aula_lunes!!, grupo.aula_martes!!, grupo.aula_miercoles!!, grupo.aula_jueves!!, grupo.aula_viernes!!)
-                            val materiaQL = Materia(clave = materia.clave, materia = it.loadAsignatura.asignatura, creditos = it.loadAsignatura.creditos.toLong(), grupo = grupo.grupo, horarios = horarios, aulas = aulas)
+                            val materiaQL = Materia(clave = materia.clave, materia = it.loadAsignatura.asignatura, creditos = it.loadAsignatura.creditos.toLong(), grupo = grupo.grupo, horarios = horarios, aulas = aulas, id_grupo = grupo.id.toLong())
 
                             textViewClave.text = materia.clave
                             textViewMateria.text = materia.materia

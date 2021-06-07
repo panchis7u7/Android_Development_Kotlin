@@ -43,7 +43,7 @@ RecyclerView.Adapter<RecyclerAdapterDashboard.ItemHolder>(){
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var gridButton: GridButton = buttons.get(position)
+        val gridButton: GridButton = buttons.get(position)
         holder.tituloGridItem.text = gridButton.texto
         holder.imagenGridItem.setImageResource(gridButton.icono)
     }

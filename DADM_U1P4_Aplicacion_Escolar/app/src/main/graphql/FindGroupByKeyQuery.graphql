@@ -3,6 +3,7 @@ query FindGroupByKeyQuery($clave: String!) {
         asignatura
         creditos
         grupos {
+            id
             grupo
             horario_lunes
             horario_martes

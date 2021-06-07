@@ -1,5 +1,3 @@
-mutation ADDGroupMutation($id_alumno: ID!, $id_grupo: ID!, $estado: String!, $semestre_cursada: Int, $calificacion: Int, $regularizacion: String, $evaluacion: String, $observaciones: String){
-    addGroup(id_alumno: $id_alumno, id_grupo: $id_grupo, estado: $estado, semestre_cursada: $semestre_cursada, calificacion: $calificacion, regularizacion: $regularizacion, evaluacion: $evaluacion, observaciones: $observaciones){
-
-    }
+mutation AddGroupMutation($id_alumno: ID!, $id_grupo: ID!, $estado: String!, $semestre_cursada: Int, $calificacion: Int, $regularizacion: String, $evaluacion: String, $observaciones: String){
+    addGroup(id_alumno: $id_alumno, id_grupo: $id_grupo, estado: $estado, semestre_cursada: $semestre_cursada, calificacion: $calificacion, regularizacion: $regularizacion, evaluacion: $evaluacion, observaciones: $observaciones)
 }

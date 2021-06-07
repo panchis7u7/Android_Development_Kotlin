@@ -14,5 +14,15 @@ data class Materia (var aula: String? = "",
                     var regularizacion: String? = "No cursada",
                     val horarios: List<String>? = null,
                     val aulas: List<String>? = null,
-                    var estado: String? = "No cursada"){
+                    var estado: String? = "No cursada",
+                    var id_grupo: Long? = 0){
 }
+
+/*
+data class Materia(
+    var id: Int,
+    var asignatura: String,
+    var clave: String,
+    var creditos: Int,
+    var semestre: Int
+){}*/
