@@ -21,12 +21,11 @@ RecyclerView.Adapter<RecyclerContactAdapter.ItemHolder>(){
         val fabClose = AnimationUtils.loadAnimation(context, R.anim.fab_close_animation)
         val textViewName: TextView = itemView.findViewById(R.id.textViewContactName)
         val textViewNumber: TextView = itemView.findViewById(R.id.textViewContactNumber)
-        val floatingActionEdit: FloatingActionButton = itemView.findViewById(R.id.floatingActionEdit)
+        val floatingActionOptions: FloatingActionButton = itemView.findViewById(R.id.floatingActionOptions)
         val floatingActionMessage: FloatingActionButton = itemView.findViewById(R.id.floatingActionMessage)
-        val floatingActionMessage1: FloatingActionButton = itemView.findViewById(R.id.floatingAction1)
-        val floatingActionMessage2: FloatingActionButton = itemView.findViewById(R.id.floatingAction2)
-        val floatingActionMessage3: FloatingActionButton = itemView.findViewById(R.id.floatingAction3)
-        val floatingActionMessage4: FloatingActionButton = itemView.findViewById(R.id.floatingAction4)
+        val floatingActionDelete: FloatingActionButton = itemView.findViewById(R.id.floatingActionDelete)
+        val floatingActionEdit: FloatingActionButton = itemView.findViewById(R.id.floatingActionEdit)
+        val floatingActionCall: FloatingActionButton = itemView.findViewById(R.id.floatingActionCall)
         val linearLayoutOpciones: LinearLayout = itemView.findViewById(R.id.linearLayoutOpciones)
 
         init {
@@ -42,20 +41,18 @@ RecyclerView.Adapter<RecyclerContactAdapter.ItemHolder>(){
         val contact = contactos.get(position)
         holder.textViewName.text = contact.name
         holder.textViewNumber.text = contact.celphone
-        holder.floatingActionEdit.setOnClickListener {
+        holder.floatingActionOptions.setOnClickListener {
             if (holder.isOpen){
                 holder.linearLayoutOpciones.visibility = View.GONE
-                holder.floatingActionMessage1.startAnimation(holder.fabClose)
-                holder.floatingActionMessage2.startAnimation(holder.fabClose)
-                holder.floatingActionMessage3.startAnimation(holder.fabClose)
-                holder.floatingActionMessage4.startAnimation(holder.fabClose)
+                holder.floatingActionDelete.startAnimation(holder.fabClose)
+                holder.floatingActionEdit.startAnimation(holder.fabClose)
+                holder.floatingActionCall.startAnimation(holder.fabClose)
                 holder.isOpen = false
             } else {
                 holder.linearLayoutOpciones.visibility = View.VISIBLE
-                holder.floatingActionMessage1.startAnimation(holder.fabOpen)
-                holder.floatingActionMessage2.startAnimation(holder.fabOpen)
-                holder.floatingActionMessage3.startAnimation(holder.fabOpen)
-                holder.floatingActionMessage4.startAnimation(holder.fabOpen)
+                holder.floatingActionDelete.startAnimation(holder.fabOpen)
+                holder.floatingActionEdit.startAnimation(holder.fabOpen)
+                holder.floatingActionCall.startAnimation(holder.fabOpen)
                 holder.isOpen = true
             }
 

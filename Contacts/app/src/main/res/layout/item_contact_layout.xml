@@ -62,14 +62,14 @@
             </LinearLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionEdit"
+                android:id="@+id/floatingActionOptions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
                 android:backgroundTint="@color/white"
                 android:contentDescription="Edit"
-                android:src="@drawable/icon_edit"
+                android:src="@drawable/icon_expand_more"
                 app:borderWidth="0dp"
                 app:fabSize="mini" />
 
@@ -94,29 +94,41 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayoutContacto"
         app:layout_constraintEnd_toEndOf="@id/linearLayoutContacto"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginEnd="8dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingAction1"
+            android:id="@+id/floatingActionCall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fabSize="mini"/>
+            android:layout_gravity="center"
+            android:backgroundTint="#BFFF9C"
+            android:contentDescription="Delete"
+            android:src="@drawable/icon_call"
+            app:borderWidth="0dp"
+            app:fabSize="mini" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingAction2"
+            android:id="@+id/floatingActionEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fabSize="mini"/>
+            android:layout_gravity="center"
+            android:backgroundTint="#0698E3"
+            android:contentDescription="Delete"
+            android:src="@drawable/icon_edit"
+            app:borderWidth="0dp"
+            app:fabSize="mini" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingAction3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingAction4"
+            android:id="@+id/floatingActionDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
