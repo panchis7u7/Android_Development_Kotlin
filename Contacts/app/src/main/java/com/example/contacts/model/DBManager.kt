@@ -1,5 +1,6 @@
 package com.example.contacts.model
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -93,4 +94,21 @@ class DBManager(
         db.close()
     }
 
+    fun update(contact: Contact) {
+        val db = writableDatabase
+        val data = ContentValues()
+        data.put("name", contact.name)
+        data.put("celphone", contact.celphone)
+        data.put("favorite", contact.favorite)
+        data.put("photo", contact.photo)
+
+        db.update("contacts", data, "id = ?", arrayOf(contact.id.toString()))
+    }
+
+    fun delete(id: Int) {
+        val db = writableDatabase
+        val data = ContentValues()
+
+        db.delete("contacts","id = ?", arrayOf(id.toString()))
+    }
 }

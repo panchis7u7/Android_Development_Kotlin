@@ -78,38 +78,54 @@ class ContactActivity : AppCompatActivity() {
         binding.btnCancelar.setOnClickListener { finish() }
 
         binding.btnGuardar.setOnClickListener {
-            var validated = true
-            if(binding.editName.text.isEmpty()) {
-                validated = false
-                binding.editName.setError("El nombre es requerido")
-            }
-            if(binding.editCel.text.isEmpty()) {
-                validated = false
-                binding.editCel.setError("El celular es requerido")
-            }
-            // Si todo es correcto
-            if(validated) {
-                val contacto = Contact(
-                    0,
-                    binding.editName.text.toString(),
-                    binding.editCel.text.toString(),
-                    if(binding.tgBtnFav.isSelected) 1 else 0,
-                    byteFoto
-                )
-                // Se guarda en la BD
+            if(isEdit) {
                 try {
-                    manager.create(contacto)
-
-                    "Se agrego el contacto ${binding.editName.text}".toast(this)
+                    binding.editName.text.toString()
+                    manager.update(Contact(
+                        contact!!.id,
+                        binding.editName.text.toString(),
+                        binding.editCel.text.toString(),
+                        binding.tgBtnFav.isChecked.toInt(),
+                        null
+                    ))
+                    "Se actualizo el contacto ${binding.editName.text}".toast(this)
                 } catch (e: Exception) {
                     e.printStackTrace()
-
-                    "Error al crear el contacto".toast(this)
+                    "Error al actualizar el contacto".toast(this)
                 }
-                finish()
+            } else {
+                var validated = true
+                if (binding.editName.text.isEmpty()) {
+                    validated = false
+                    binding.editName.setError("El nombre es requerido")
+                }
+                if (binding.editCel.text.isEmpty()) {
+                    validated = false
+                    binding.editCel.setError("El celular es requerido")
+                }
+                // Si todo es correcto
+                if (validated) {
+                    val contacto = Contact(
+                        0,
+                        binding.editName.text.toString(),
+                        binding.editCel.text.toString(),
+                        if (binding.tgBtnFav.isSelected) 1 else 0,
+                        byteFoto
+                    )
+                    // Se guarda en la BD
+                    try {
+                        manager.create(contacto)
+
+                        "Se agrego el contacto ${binding.editName.text}".toast(this)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+
+                        "Error al crear el contacto".toast(this)
+                    }
+                    finish()
+                }
             }
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -144,6 +160,8 @@ class ContactActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun Boolean.toInt() = if (this) 1 else 0
 
     override fun onDestroy() {
         super.onDestroy()

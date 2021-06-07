@@ -108,25 +108,6 @@
             app:borderWidth="0dp"
             app:fabSize="mini" />
 
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="match_parent"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#0698E3"
-            android:contentDescription="Delete"
-            android:src="@drawable/icon_edit"
-            app:borderWidth="0dp"
-            app:fabSize="mini" />
-
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="match_parent"/>
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionDelete"
             android:layout_width="wrap_content"

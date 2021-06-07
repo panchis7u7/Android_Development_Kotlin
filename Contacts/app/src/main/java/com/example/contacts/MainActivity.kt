@@ -54,7 +54,12 @@ class MainActivity : AppCompatActivity() {
         try {
             val contacts = manager.find(binding.editTextSearch.text)
 
-            binding.recyclerViewContact.adapter = RecyclerContactAdapter(this, contacts)
+            binding.recyclerViewContact.adapter = object : RecyclerContactAdapter(this, contacts){
+                override fun onDelete(contact: Contact) {
+                    manager.delete(contact.id)
+                    refreshContacts()
+                }
+            }
             binding.recyclerViewContact.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         } catch (e: Exception) {
