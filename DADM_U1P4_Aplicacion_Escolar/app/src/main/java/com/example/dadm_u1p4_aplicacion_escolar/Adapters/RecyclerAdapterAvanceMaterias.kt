@@ -78,35 +78,17 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     handleSelection(materia, holder)
                 }
             }
+            "" -> {
+                holder.buttonSeleccionar.setOnClickListener {
+                    handleSelection(materia, holder)
+                }
+            }
             else -> {
                 holder.buttonSeleccionar.setOnClickListener {
                     handleSelection(materia, holder)
                 }
             }
         }
-
-        /*
-        if((materia.calificacion == null || materia.calificacion == "") && materia.profesor!!.isNotEmpty()) {
-            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursandoMateria))
-            holder.textViewCalificacion.text = "Cursando"
-        } else if (materia.calificacion == null || materia.calificacion == "") {
-            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.colorNoCursado))
-            holder.textViewCalificacion.text = "No Cursada"
-            if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
-
-            holder.buttonSeleccionar.setOnClickListener {
-                handleSelection(materia, holder)
-            }
-
-        } else if (calificacion < 70) {
-            holder.cardViewAvance.setCardBackgroundColor(context.resources.getColor(R.color.cursadaNoAcreditada))
-            holder.textViewCalificacion.text = "Cursada sin acreditar"
-            if(seleccion) holder.buttonSeleccionar.visibility = View.VISIBLE else View.GONE
-
-            holder.buttonSeleccionar.setOnClickListener {
-                handleSelection(materia, holder)
-            }
-        }*/
     }
 
     override fun getItemCount(): Int = materias.size
@@ -138,7 +120,6 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
         view.findViewById<FloatingActionButton>(R.id.fabCloseSelection).setOnClickListener {
             popupWindow.dismiss()
         }
-
 
         val graphApi = FetchManager(context)
         GlobalScope.launch(Dispatchers.IO) {
@@ -202,7 +183,11 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                 }
             }
         }
-        /*
+    }
+}
+
+/* FIREBASE Implementation.
+
         val document = Firebase.firestore.collection("carreras/ITICs/reinscripcion")
             .whereEqualTo("clave", materia.clave)
             .orderBy("grupo", Query.Direction.ASCENDING)
@@ -227,6 +212,5 @@ RecyclerView.Adapter<RecyclerAdapterAvanceMaterias.ItemHolder>(){
                     }
                 }
             }
-        }*/
-    }
-}
+        }
+ */

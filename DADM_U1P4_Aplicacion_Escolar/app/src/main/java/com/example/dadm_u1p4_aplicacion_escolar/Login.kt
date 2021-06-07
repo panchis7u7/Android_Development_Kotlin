@@ -31,8 +31,7 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.textRegister.setOnClickListener {
-            var intent: Intent = Intent(this, Registrar::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Registrar::class.java))
         }
 
         if(FirebaseAuth.getInstance().currentUser != null) {

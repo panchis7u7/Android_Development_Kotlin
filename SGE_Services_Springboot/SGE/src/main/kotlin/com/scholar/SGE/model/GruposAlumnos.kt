@@ -17,11 +17,11 @@ data class GruposAlumnos(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_alumno", updatable = false, insertable = false)
-    val alumno: Alumno,
+    val alumno: Alumno?,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_grupo", updatable = false, insertable = false)
-    val grupo: Grupo,
+    val grupo: Grupo?,
 
     ) {
     fun estado(): String = gruposAlumnosIdentity.estado

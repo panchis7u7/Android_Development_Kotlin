@@ -4,6 +4,7 @@ import AvanceReticularQuery
 import ReticulaQuery
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,8 +39,8 @@ class AvanceCurricular : AppCompatActivity() {
         //setContentView(R.layout.activity_avance_curricular)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        //auth = FirebaseAuth.getInstance()
+        //db = FirebaseFirestore.getInstance()
 
         val semestres: MutableList<Semestre> = MutableList(Alumno.semestresCarrera){
                 index -> Semestre((index+1).toString(), mutableListOf())
@@ -78,7 +79,8 @@ class AvanceCurricular : AppCompatActivity() {
             reticula.await().collect {  response ->
                 response.data!!.listAsignaturas?.forEach { asignatura ->
                     asignatura.let {
-                        semestres[it!!.semestre-1].materias?.add(Materia(
+                        if(!(it!!.asignatura.contains("Laboratorio")))
+                        semestres[it.semestre-1].materias?.add(Materia(
                             clave = it.clave,
                             materia = it.asignatura
                         ))
@@ -92,7 +94,7 @@ class AvanceCurricular : AppCompatActivity() {
                         var materia: Materia
                         for(i in 0.. semestres[it!!.grupo.asignatura.semestre-1].materias?.size!! - 1){
                             materia = semestres[it.grupo.asignatura.semestre-1].materias?.get(i)!!
-                            if(materia.clave == it.grupo.asignatura.clave){
+                            if(materia.clave == it.grupo.asignatura.clave && !(materia.materia!!.contains("Laboratorio"))){
                                 materia.calificacion = it.calificacion.toString()
                                 materia.regularizacion = it.regularizacion
                                 materia.estado = it.estado

@@ -142,4 +142,5 @@ type Mutation {
     updateAlumno(id: ID, telefono: String, residencia: CreateResidenciaInput): Alumno
     updatePassword(id: ID, password: String): Alumno
     removeAlumno(id_alumno:ID): Boolean
+    addGroup(id_alumno: ID!, id_grupo: ID!, estado: String!, semestre_cursada: Int, calificacion: Int, regularizacion: String, evaluacion: String, observaciones: String): Boolean
 }

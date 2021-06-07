@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/colorBlack"/>
     <item>
-        <bitmap android:src="@drawable/built_with_firebase_logo_dark"
-            android:gravity="fill_horizontal"/>
+        <bitmap android:src="@drawable/graphql"
+            android:gravity="center"/>
     </item>
 </layer-list>

@@ -22,7 +22,16 @@ class GruposAlumnosController {
     @PostMapping("")
     fun insert(@RequestBody grupoAlumno: GruposAlumnos): ResponseEntity<Any> {
         return try {
-            gruposAlumnosBusiness!!.saveGrupoAlumno(grupoAlumno)
+            gruposAlumnosBusiness!!.addGroup(
+                grupoAlumno.gruposAlumnosIdentity.id_alumno,
+                grupoAlumno.gruposAlumnosIdentity.id_grupo,
+                grupoAlumno.gruposAlumnosIdentity.estado,
+                grupoAlumno.semestre_cursada!!,
+                grupoAlumno.calificacion!!,
+                grupoAlumno.regularizacion!!,
+                grupoAlumno.evaluacion!!,
+                grupoAlumno.observaciones!!
+            )
             ResponseEntity(HttpStatus.CREATED)
         } catch(e: BusinessException) {
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)

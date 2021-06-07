@@ -5,6 +5,7 @@ query AvanceReticularQuery($id: ID!) {
             calificacion
             regularizacion
             grupo {
+                grupo
                 asignatura{
                     asignatura
                     semestre
