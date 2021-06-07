@@ -13,21 +13,23 @@ import com.squareup.picasso.Picasso
 
 class RecyclerMessageListAdapter(val context: Context, val messages: List<Any>):
 RecyclerView.Adapter<RecyclerMessageListAdapter.BaseViewHolder<*>>() {
-    private val VIEW_TYPE_MESSAGE_SENT = 1
-    private val VIEW_TYPE_MESSAGE_RECEIVED = 2
 
     abstract class BaseViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
         abstract fun bind(item: T)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return (messages as List<Message>).get(position).type
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
-            VIEW_TYPE_MESSAGE_SENT -> {
+            Message.VIEW_TYPE_MESSAGE_SENT -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_message_layout, parent, false)
                 SentMessageHolder(view)
             }
-            VIEW_TYPE_MESSAGE_RECEIVED -> {
+            Message.VIEW_TYPE_MESSAGE_RECEIVED -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_message_dest_layout, parent, false)
                 ReceivedMessageHolder(view)

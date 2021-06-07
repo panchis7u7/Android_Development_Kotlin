@@ -17,10 +17,8 @@ class DBManager(
 ) : SQLiteOpenHelper(context, name, factory, version) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        var sql = ""
-
         db?.let {
-            sql = """
+            var sql = """
                 CREATE TABLE contacts(
                     id INTEGER PRIMARY KEY NOT NULL,
                     name TEXT NOT NULL,
